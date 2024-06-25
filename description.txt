@@ -1,0 +1,4 @@
+LIGHTWORK FOR BOO TAO
+
+todo: implement hu tao charged atk
+use other mods in recipes/buffs

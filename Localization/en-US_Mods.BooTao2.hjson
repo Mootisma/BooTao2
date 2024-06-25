@@ -1,0 +1,110 @@
+# This file will automatically update with entries for new content after a build and reload.
+
+Items: {
+	HuTaoHoma: {
+		DisplayName: Hu Tao
+		Tooltip:
+			'''
+			[c/FFFF00:Normal Attack: Secret Spear of Wangsheng ]
+			Perform a [c/c2ac06:Charged Attack], lunging forward and dealing damage along the way.
+			[c/FFFF00:Elemental Skill: Guide to Afterlife]
+			Right Click to enter the [c/FF9696:Paramita Papilio] state, consuming 30% of current HP
+			[c/FF9696:Paramita Papilio]
+			[c/c2ac06:Charged Attack] Damage is increased based on consumed HP.
+			[c/c2ac06:Charged Attack] Damage is increased when below half health.
+			[c/c2ac06:Charged Attack] is performed faster.
+			[c/c2ac06:Charged Attack] apply [c/FF9696:Blood Blossom] for 8 seconds.
+			Gain Max HP +100, immunity to knockback and fall damage, and 50% damage reduction.
+			9 second duration, 7 second cooldown.
+			While on cooldown, crit rate is increased by 12%.
+			[c/FF9696:Blood Blossom]
+			Periodically take additional damage based on the damage dealt by [c/c2ac06:Charged Attack]
+			'''
+	}
+
+	Crouton: {
+		DisplayName: Crouton
+		Tooltip: it is a hammer
+	}
+
+	Homa: {
+		DisplayName: Homa
+		Tooltip:
+			'''
+			was never a staff
+			[c/FF9696:This text is red.]
+			'''
+	}
+
+	Homa2: {
+		DisplayName: R2 Homa
+		Tooltip:
+			'''
+			[c/FF9696:HP increased by 25%. Additionally, provides an ATK Bonus based on 1% of the wielder's Max HP.]
+			[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.2% of Max HP.]
+			Permanent Spelunker and Honter potion effects
+			'''
+	}
+
+	Homa3: {
+		DisplayName: R3 Homa
+		Tooltip:
+			'''
+			[c/FF9696:HP increased by 30%. Additionally, provides an ATK Bonus based on 1.2% of the wielder's Max HP.]
+			[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.4% of Max HP.]
+			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table
+			'''
+	}
+
+	Platform1Item: {
+		DisplayName: shrek platform
+		Tooltip: I promise this is QOL
+	}
+
+	SuiseiChannel: {
+		DisplayName: sui-chan wa
+		Tooltip: very good
+	}
+
+	SuiseiChannel2: {
+		DisplayName: sui-chan wa
+		Tooltip: stellar
+	}
+
+	SuiseiChannel3: {
+		DisplayName: sui-chan wa
+		Tooltip: kyou mo
+	}
+
+	Homa4: {
+		DisplayName: R4 Homa
+		Tooltip:
+			'''
+			[c/FF9696:HP increased by 35%. Additionally, provides an ATK Bonus based on 1.4% of the wielder's Max HP.]
+			[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.6% of Max HP.]
+			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table
+			'''
+	}
+}
+
+Buffs: {
+	Platform1Buff: {
+		DisplayName: shrek platform buff
+		Description: increased life and mana regen and item pickup range
+	}
+
+	Platform1Buff2: {
+		DisplayName: shrek platform buff 2
+		Description: increased life and mana regen and item pickup range\nincreased defense and minion count
+	}
+
+	BloodBlossomBuff: {
+		Description: Decreases Defense by 25%
+		DisplayName: Blood Blossom
+	}
+}
+
+Projectiles: {
+	SuiseiChannelProj.DisplayName: sui-chan wa
+	HuTaoHomaProj.DisplayName: Hu Tao Homa Proj
+}
