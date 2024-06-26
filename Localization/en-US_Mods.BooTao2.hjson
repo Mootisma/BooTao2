@@ -5,7 +5,7 @@ Items: {
 		DisplayName: Hu Tao
 		Tooltip:
 			'''
-			[c/FFFF00:Normal Attack: Secret Spear of Wangsheng ]
+			[c/FFFF00:Normal Attack: Secret Spear of Wangsheng]
 			Perform a [c/c2ac06:Charged Attack], lunging forward and dealing damage along the way.
 			[c/FFFF00:Elemental Skill: Guide to Afterlife]
 			Right Click to enter the [c/FF9696:Paramita Papilio] state, consuming 30% of current HP
@@ -85,6 +85,20 @@ Items: {
 			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table
 			'''
 	}
+
+	HertaMinionItem: {
+		DisplayName: Herta
+		Tooltip:
+			'''
+			Art by [c/73a9ff:@seseren]
+			[c/FFFF00:Talent: Fine, I'll Do It Myself]
+			Herta will fly towards enemies and deal contact damage.
+			[c/FFFF00:Ultimate: It's Magic, I Added Some Magic]
+			Every 5 seconds in combat, Herta will give a [c/c2ac06:Big Diamond] to the nearest enemy.
+			[c/c2ac06:Big Diamond]
+			A homing projectile that does double damage.
+			'''
+	}
 }
 
 Buffs: {
@@ -102,9 +116,16 @@ Buffs: {
 		Description: Decreases Defense by 25%
 		DisplayName: Blood Blossom
 	}
+
+	HertaMinionBuff: {
+		Description: Herta fights for you! turn the sound up :)
+		DisplayName: Herta Minion
+	}
 }
 
 Projectiles: {
 	SuiseiChannelProj.DisplayName: sui-chan wa
 	HuTaoHomaProj.DisplayName: Hu Tao Homa Proj
+	HertaMinionProj.DisplayName: Herta Minion Proj
+	HertaDiamondProj.DisplayName: Herta Diamond Proj
 }

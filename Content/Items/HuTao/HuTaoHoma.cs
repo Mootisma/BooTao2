@@ -13,25 +13,25 @@ namespace BooTao2.Content.Items.HuTao
 	// https://github.com/tModLoader/tModLoader/tree/stable/ExampleMod
 	public class HuTaoHoma : ModItem
 	{
-		SoundStyle NoECharge = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/NoECharge") {
+		SoundStyle NoECharge = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/HuTao/NoECharge") {
 			Volume = 0.9f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
 		};
 		
-		SoundStyle HuTaoE = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/HuTaoE") {
+		SoundStyle HuTaoE = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/HuTao/HuTaoE") {
 			Volume = 0.9f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
 		};
 		
-		SoundStyle ECharged = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/ECharged") {
+		SoundStyle ECharged = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/HuTao/ECharged") {
 			Volume = 0.9f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
 		};
 		
-		SoundStyle silence = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/HuTaoE") {
+		SoundStyle silence = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/HuTao/HuTaoE") {
 			Volume = 0f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
