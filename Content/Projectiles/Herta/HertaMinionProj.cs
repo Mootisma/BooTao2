@@ -29,7 +29,7 @@ namespace BooTao2.Content.Projectiles.Herta
 		};
 		
 		SoundStyle diamond = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/diamond") {
-			Volume = 0.4f,
+			Volume = 0.7f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
 		};
@@ -60,10 +60,10 @@ namespace BooTao2.Content.Projectiles.Herta
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			if (Main.rand.NextBool(3)) {
+			if (Main.rand.NextBool(5)) {
 				SoundEngine.PlaySound(KuruKuru2);
 			}
-			else if (Main.rand.NextBool(3)) {
+			else if (Main.rand.NextBool(5)) {
 				SoundEngine.PlaySound(Kururin);
 			}
 			//target.AddBuff(47, 30);
@@ -169,7 +169,7 @@ namespace BooTao2.Content.Projectiles.Herta
 
 		private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter) {
 			// Starting search distance
-			distanceFromTarget = 1400f;
+			distanceFromTarget = 1000f;
 			targetCenter = Projectile.position;
 			foundTarget = false;
 
@@ -179,7 +179,7 @@ namespace BooTao2.Content.Projectiles.Herta
 				float between = Vector2.Distance(npc.Center, Projectile.Center);
 
 				// Reasonable distance away so it doesn't target across multiple screens
-				if (between < 2300f) {
+				if (between < 1700f) {
 					distanceFromTarget = between;
 					targetCenter = npc.Center;
 					foundTarget = true;
@@ -196,7 +196,7 @@ namespace BooTao2.Content.Projectiles.Herta
 						bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
 						// Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
 						// The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
-						bool closeThroughWall = between < 1000f;
+						bool closeThroughWall = between < 850f;
 
 						if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall)) {
 							distanceFromTarget = between;
@@ -216,8 +216,8 @@ namespace BooTao2.Content.Projectiles.Herta
 
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition, out Vector2 vel) {
 			// Default movement parameters (here for attacking)
-			float speed = 12f;
-			float inertia = 30f;
+			float speed = 16f;
+			float inertia = 10f;
 
 			if (foundTarget) {
 				// Minion has a target: attack (here, fly towards the enemy)
@@ -234,7 +234,7 @@ namespace BooTao2.Content.Projectiles.Herta
 				// Minion doesn't have a target: return to player and idle
 				if (distanceToIdlePosition > 600f) {
 					// Speed up the minion if it's away from the player
-					speed = 16f;
+					speed = 20f;
 					inertia = 60f;
 				}
 				else {

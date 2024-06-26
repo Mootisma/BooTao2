@@ -14,7 +14,7 @@ Items: {
 			[c/c2ac06:Charged Attack] Damage is increased when below half health.
 			[c/c2ac06:Charged Attack] is performed faster.
 			[c/c2ac06:Charged Attack] apply [c/FF9696:Blood Blossom] for 8 seconds.
-			Gain Max HP +100, immunity to knockback and fall damage, and 50% damage reduction.
+			Gain Max HP +100, immunity to knockback and fall damage, and 90% damage reduction.
 			9 second duration, 7 second cooldown.
 			While on cooldown, crit rate is increased by 12%.
 			[c/FF9696:Blood Blossom]
@@ -58,7 +58,14 @@ Items: {
 
 	Platform1Item: {
 		DisplayName: shrek platform
-		Tooltip: I promise this is QOL
+		Tooltip: 
+			'''
+			Unlimited placement, emits light, and significantly increased grab range and speed
+			Provides the equivalent of the following:
+			Campfire, Heart Lantern, Star in a Bottle
+			After R3 Homa:
+			Bast Statue, Bewitching Table
+			'''
 	}
 
 	SuiseiChannel: {
@@ -104,16 +111,16 @@ Items: {
 Buffs: {
 	Platform1Buff: {
 		DisplayName: shrek platform buff
-		Description: increased life and mana regen and item pickup range
+		Description: increased life and mana regen, and item pickup range and speed
 	}
 
 	Platform1Buff2: {
 		DisplayName: shrek platform buff 2
-		Description: increased life and mana regen and item pickup range\nincreased defense and minion count
+		Description: increased life and mana regen, and item pickup range and speed\nincreased defense and minion count
 	}
 
 	BloodBlossomBuff: {
-		Description: Decreases Defense by 25%
+		Description: Damage Over Time
 		DisplayName: Blood Blossom
 	}
 

@@ -65,7 +65,7 @@ namespace BooTao2
 		
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers) {
 			if (der > 0) {
-				modifiers.FinalDamage *= 0.5f;
+				modifiers.FinalDamage *= 0.1f;
 			}
 		}
 		
@@ -122,6 +122,21 @@ namespace BooTao2
 				//player.GetModPlayer<BooTaoPlayer>().Magnet = true; //paste to accessory :)
 				grabRange += 3700;
 			}
+		}
+		
+		//public override void PostUpdate(Item item) {
+		//	item.velocity *= 2;
+		//}
+		
+		public override bool GrabStyle(Item item, Player player) {
+			if(player.GetModPlayer<BooTaoPlayer>().Magnet)
+			{
+				Vector2 movement = item.DirectionTo(player.Center) * 20f;
+				item.velocity = movement;
+				// item.velocity = Collision.TileCollision(item.position, item.velocity, item.width, item.height);
+				return true;
+			}
+			return false;
 		}
     }
 	

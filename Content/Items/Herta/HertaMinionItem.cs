@@ -26,7 +26,12 @@ namespace BooTao2.Content.Items.Herta
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 47;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				Item.damage = 40;
+			}
+			else {
+				Item.damage = 20;
+			}
 			Item.knockBack = 3.2f;
 			Item.mana = 10; // mana cost
 			Item.width = 32;
@@ -78,3 +83,13 @@ namespace BooTao2.Content.Items.Herta
 		}
 	}
 }
+/*
+https://docs.tmodloader.net/docs/stable/class_n_p_c.html
+https://docs.tmodloader.net/docs/stable/class_projectile.html
+https://github.com/ThePaperLuigi/The-Stars-Above/blob/main/Projectiles/Ranged/PleniluneGaze/FrostflakeArrow.cs
+https://docs.tmodloader.net/docs/stable/class_projectile.html#a76031be1e4228ce7e8a3ec67e2c293ad
+https://docs.tmodloader.net/docs/stable/class_mod_projectile.html
+https://hsr.yatta.top/en/archive/avatar/1013/herta?mode=details
+https://static.wikia.nocookie.net/houkai-star-rail/images/9/96/Herta_Sticker_02.png/revision/latest?cb=20231220232741
+
+*/
