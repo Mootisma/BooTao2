@@ -31,7 +31,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
 
 		// Custom AI
 		public override void AI() {
-			float maxDetectRadius = 500f; // The maximum radius at which a projectile can detect a target
+			float maxDetectRadius = 400f; // The maximum radius at which a projectile can detect a target
 			float projSpeed = 7f; // The speed at which the projectile moves towards the target
 			if (Main.rand.Next(3) == 0) {
 				int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);

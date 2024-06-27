@@ -25,6 +25,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
         int idlePause;
         bool floatUpOrDown; //false is Up, true is Down
 		bool damageState = false;
+		bool shoot = false;
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
@@ -37,14 +38,17 @@ namespace BooTao2.Content.Projectiles.Ningguang
 					Main.dust[dustnumber].noGravity = true;
 				}
 				
-				float maxDetectRadius = 500f;
+				float maxDetectRadius = 420f;
 				float projSpeed = 10f;
 
 				NPC closestNPC = FindClosestNPC(maxDetectRadius);
 				if (closestNPC == null) {
 					// if no nearest npc, point to cursor
-					Projectile.velocity = projSpeed * ((Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY)) - player.Center).SafeNormalize(Vector2.UnitX);
-					Projectile.rotation = Projectile.velocity.ToRotation();
+					if (!shoot) {
+						Projectile.velocity = projSpeed * ((Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY)) - player.Center).SafeNormalize(Vector2.UnitX);
+						Projectile.rotation = Projectile.velocity.ToRotation();
+						shoot = true;
+					}
 					return;
 				}
 
