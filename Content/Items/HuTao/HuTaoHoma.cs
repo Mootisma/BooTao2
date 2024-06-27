@@ -45,8 +45,8 @@ namespace BooTao2.Content.Items.HuTao
 
 		public override void SetDefaults() {
 			// Common Properties
-			Item.rare = ItemRarityID.Red; // Assign this item a rarity level of Pink
-			Item.value = Item.sellPrice(silver: 30); // The number and type of coins item can be sold for to an NPC
+			Item.rare = ItemRarityID.Red;
+			Item.value = Item.sellPrice(silver: 30);
 
 			// Use Properties
 			Item.useStyle = ItemUseStyleID.Shoot; // How you use the item (swinging, holding out, etc.)
@@ -59,7 +59,7 @@ namespace BooTao2.Content.Items.HuTao
 
 			// Weapon Properties
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 80;
+				Item.damage = 100;
 			}
 			else {
 				Item.damage = 40;
@@ -83,7 +83,6 @@ namespace BooTao2.Content.Items.HuTao
 			if (player.altFunctionUse == 2){
 				//Item.buffType = ModContent.BuffType<Buffs.ExampleDefenseBuff>(); // Specify an existing buff to be applied when used.
 				//Item.buffTime = 5400; // The amount of time the buff declared in Item.buffType will last in ticks.
-				player.GetModPlayer<BooTaoPlayer>().HuTaoE = true;
 				if (player.GetModPlayer<BooTaoPlayer>().CanUseHuTaoE()) {
 					Item.useTime = 20;
 					Item.useAnimation = 20;
@@ -92,16 +91,7 @@ namespace BooTao2.Content.Items.HuTao
 					SoundEngine.PlaySound(HuTaoE, player.Center);
 				}
 				else {
-					if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
-						Item.useAnimation = 26;
-						Item.useTime = 40;
-					}
-					else {
-						Item.useAnimation = 40;
-						Item.useTime = 60;
-					}
-					Item.shootSpeed = 3.7f;
-					Item.shoot = ModContent.ProjectileType<HuTaoHomaProj>();
+					return false;
 				}
 			}
 			else {
@@ -123,7 +113,7 @@ namespace BooTao2.Content.Items.HuTao
 		public override bool? UseItem(Player player) {
 			// Because we're skipping sound playback on use animation start, we have to play it ourselves whenever the item is actually used.
 			if (!Main.dedServ && Item.UseSound.HasValue) {
-				SoundEngine.PlaySound(NoECharge, player.Center);
+				SoundEngine.PlaySound(silence, player.Center);
 			}
 
 			return null;
@@ -133,9 +123,6 @@ namespace BooTao2.Content.Items.HuTao
 		{
 			if (player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped = true) {
 				player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped = false;
-			}
-			if (player.GetModPlayer<BooTaoPlayer>().HuTaoE = true) {
-				player.GetModPlayer<BooTaoPlayer>().HuTaoE = false;
 			}
 			if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
 				player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().HuTaoHPDmgBuff; // Increase ALL player damage
@@ -219,7 +206,7 @@ namespace BooTao2.Content.Items.HuTao
 				
 				// set the new velocities 
 				newVelocity.Y = direction.Y * DashVelocity * 1.5f;
-				newVelocity.X += direction.X * DashVelocity;
+				newVelocity.X = direction.X * DashVelocity;
 				
 				// start our dash
 				DashDelay = DashCooldown;
@@ -234,7 +221,7 @@ namespace BooTao2.Content.Items.HuTao
 				// Some examples include:  spawning dust where the player is, adding buffs, making the player immune, etc.
 				// Here we take advantage of "player.eocDash" and "player.armorEffectDrawShadowEOCShield" to get the Shield of Cthulhu's afterimage effect
 				// Player.eocDash = DashTimer;
-				Player.armorEffectDrawShadowLokis = true;
+				Player.armorEffectDrawShadowEOCShield = true;
 
 				// count down frames remaining
 				DashTimer--;

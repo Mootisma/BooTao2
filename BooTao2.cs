@@ -24,6 +24,20 @@ namespace BooTao2
 			recipe = Recipe.Create(ItemID.AdamantiteBar);
 			recipe.AddIngredient(ItemID.TitaniumBar);
 			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.JungleRose);
+			recipe.AddIngredient(ItemID.JungleSpores);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.FeralClaws);
+			recipe.AddIngredient(ItemID.JungleSpores);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.LavaCharm);
+			recipe.AddIngredient(ItemID.HellstoneBar, 7);
+			recipe.AddIngredient(ItemID.Obsidian);
+			recipe.AddIngredient(ItemID.Shackle);
+			recipe.Register();
 		}
 	}
 	
@@ -33,14 +47,18 @@ namespace BooTao2
 		public bool Shrek;
 		public bool lifeRegenDebuff;
 		public bool BloodBlossom;
+		public bool NingHolding; // player.GetModPlayer<BooTaoPlayer>().NingHolding
+		public bool NingJade1State;
+		public bool NingJade2State;
+		public bool NingJade3State;
 		//
-		public bool HuTaoE;
 		public const int HuTaoEDuration = 540;
 		public const int HuTaoECD = 960;
 		public int coold = 0;
 		public int der = 0;
 		public float HuTaoHPDmgBuff = 0;
 		//
+		public int NingNumBuff = 0;
 		
 		public override void ResetEffects()
 		{
@@ -48,11 +66,14 @@ namespace BooTao2
 			Shrek = false;
 			lifeRegenDebuff = false;
 			BloodBlossom = false;
-			HuTaoE = false;
+			NingHolding = false;
+			NingJade1State = false;
+			NingJade2State = false;
+			NingJade3State = false;
 		}
 		
 		public bool CanUseHuTaoE() {
-			if (coold == 0 && HuTaoE) {
+			if (coold == 0) {
 				Player player = Main.LocalPlayer;
 				HuTaoHPDmgBuff = (float)((player.statLife * 0.3) / 100);
 				player.statLife = (int)(player.statLife * 0.7);
