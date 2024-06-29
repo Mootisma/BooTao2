@@ -59,10 +59,10 @@ namespace BooTao2.Content.Items.HuTao
 
 			// Weapon Properties
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 100;
+				Item.damage = 120;
 			}
 			else {
-				Item.damage = 40;
+				Item.damage = 60;
 			}
 			Item.crit = 5;
 			Item.knockBack = 6.5f;

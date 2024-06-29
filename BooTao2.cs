@@ -59,6 +59,8 @@ namespace BooTao2
 		public float HuTaoHPDmgBuff = 0;
 		//
 		public int NingNumBuff = 0;
+		//
+		public float FurinaDmgBuff = 0;
 		
 		public override void ResetEffects()
 		{

@@ -10,7 +10,7 @@ namespace BooTao2.Content.Projectiles.Herta
 	public class HertaDiamondProj : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true; // Make the cultist resistant to this projectile, as it's resistant to all homing projectiles.
+			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false; // Make the cultist resistant to this projectile, as it's resistant to all homing projectiles.
 		}
 
 		// Setting the default parameters of the projectile
@@ -20,7 +20,7 @@ namespace BooTao2.Content.Projectiles.Herta
 			Projectile.height = 32; // The height of projectile hitbox
 
 			Projectile.aiStyle = 0; // The ai style of the projectile (0 means custom AI). For more please reference the source code of Terraria
-			Projectile.DamageType = DamageClass.Ranged; // What type of damage does this projectile affect?
+			Projectile.DamageType = DamageClass.Summon; // What type of damage does this projectile affect?
 			Projectile.friendly = true; // Can the projectile deal damage to enemies?
 			Projectile.hostile = false; // Can the projectile deal damage to the player?
 			Projectile.ignoreWater = true; // Does the projectile's speed be influenced by water?

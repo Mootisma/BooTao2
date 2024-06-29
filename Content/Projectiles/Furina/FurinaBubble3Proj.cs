@@ -3,36 +3,40 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BooTao2.Content.Projectiles.Ningguang
+namespace BooTao2.Content.Projectiles.Furina
 {
-	public class NingGeoProj : ModProjectile
+	public class FurinaBubble3Proj : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
+			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false; // Make the cultist resistant to this projectile, as it's resistant to all homing projectiles.
 		}
 
-		// https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation
 		public override void SetDefaults() {
-			Projectile.width = 16;
-			Projectile.height = 16;
+			Projectile.width = 32;
+			Projectile.height = 32;
 			Projectile.aiStyle = 0;
-			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.DamageType = DamageClass.Summon;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.ignoreWater = true;
 			Projectile.light = 1f;
 			Projectile.tileCollide = false;
-			Projectile.timeLeft = 240;
+			Projectile.timeLeft = 300;
+		}
+		
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
+			Player player = Main.LocalPlayer;
+			if (player.statLife > (int)(player.statLifeMax2 * 0.5) + 5) {
+				player.statLife -= 5;
+				player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff += 0.01f;
+				player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
+			}
 		}
 
 		// Custom AI
 		public override void AI() {
-			float maxDetectRadius = 400f;
-			float projSpeed = 7f;
-			if (Main.rand.Next(3) == 0) {
-				int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
-				Main.dust[dustnumber].noGravity = true;
-			}
+			float maxDetectRadius = 500f; //
+			float projSpeed = 10f; // 
 
 			NPC closestNPC = FindClosestNPC(maxDetectRadius);
 			if (closestNPC == null)
@@ -55,10 +59,6 @@ namespace BooTao2.Content.Projectiles.Ningguang
 				}
 			}
 			return closestNPC;
-		}
-		
-		public override bool? CanCutTiles() {
-			return false;
 		}
 	}
 }

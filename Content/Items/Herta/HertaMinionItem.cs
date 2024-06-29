@@ -12,12 +12,6 @@ namespace BooTao2.Content.Items.Herta
 {
 	public class HertaMinionItem : ModItem
 	{
-		SoundStyle KuruKuru = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/kurukuru") {
-			Volume = 0.9f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
 		public override void SetStaticDefaults() {
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true; // This lets the player target anywhere on the whole screen while using a controller
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
@@ -27,10 +21,10 @@ namespace BooTao2.Content.Items.Herta
 
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 40;
+				Item.damage = 70;
 			}
 			else {
-				Item.damage = 20;
+				Item.damage = 40;
 			}
 			Item.knockBack = 3.2f;
 			Item.mana = 10; // mana cost
@@ -41,7 +35,12 @@ namespace BooTao2.Content.Items.Herta
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.Cyan;
-			Item.UseSound = KuruKuru; // What sound should play when using the item
+			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/DoYouKnowHerta") {
+				Volume = 0.9f,
+				PitchVariance = 0f,
+				MaxInstances = 1,
+				SoundLimitBehavior = SoundLimitBehavior.IgnoreNew//ReplaceOldest
+			};
 
 			// These below are needed for a minion weapon
 			Item.noMelee = true; // this item doesn't do any melee damage
@@ -57,6 +56,14 @@ namespace BooTao2.Content.Items.Herta
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
+			foreach (var proj in Main.ActiveProjectiles)
+            {
+                if (proj.active && proj.type == Item.shoot && proj.owner == player.whoAmI)
+                {
+                    proj.active = false;
+                }
+            }
+			
 			// This is needed so the buff that keeps your minion alive and allows you to despawn it properly applies
 			player.AddBuff(Item.buffType, 2);
 

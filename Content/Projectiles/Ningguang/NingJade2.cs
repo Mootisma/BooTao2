@@ -154,5 +154,9 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			player.GetModPlayer<BooTaoPlayer>().NingJade2State = false;
 			damageState = false;
 		}
+		
+		public override bool? CanCutTiles() {
+			return false;
+		}
     }
 }

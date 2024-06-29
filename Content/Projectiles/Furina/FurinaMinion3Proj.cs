@@ -1,5 +1,5 @@
-using BooTao2.Content.Items.Herta;
-using BooTao2.Content.Buffs.Herta;
+using BooTao2.Content.Items.Furina;
+using BooTao2.Content.Buffs.Furina;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -8,67 +8,29 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace BooTao2.Content.Projectiles.Herta
+namespace BooTao2.Content.Projectiles.Furina
 {
-	// This minion shows a few mandatory things that make it behave properly.
-	// Its attack pattern is simple: If an enemy is in range of 43 tiles, it will fly to it and deal contact damage
-	// If the player targets a certain NPC with right-click, it will fly through tiles to it
-	// If it isn't attacking, it will float near the player with minimal movement
-	public class HertaMinionProj : ModProjectile
+	public class FurinaMinion3Proj : ModProjectile
 	{
-		SoundStyle KuruKuru2 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/kurukuru") {
-			Volume = 0.4f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
-		SoundStyle Kururin = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/kururinnn") {
-			Volume = 0.4f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
-		SoundStyle diamond = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/diamond") {
-			Volume = 0.7f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
 		public override void SetStaticDefaults() {
-			// Sets the amount of frames this minion has on its spritesheet
-			Main.projFrames[Projectile.type] = 6;
-			// This is necessary for right-click targeting
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
-
-			Main.projPet[Projectile.type] = true; // Denotes that this projectile is a pet or minion
-
-			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true; // This is needed so your minion can properly spawn when summoned and replaced when other minions are summoned
+			Main.projPet[Projectile.type] = true;
+			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false;
 		}
 
 		public sealed override void SetDefaults() {
 			Projectile.width = 50;
 			Projectile.height = 50;
-			Projectile.tileCollide = false; // Makes the minion go through tiles freely
-
+			Projectile.tileCollide = false;
 			// These below are needed for a minion weapon
-			Projectile.friendly = true; // Only controls if it deals damage to enemies on contact (more on that later)
-			Projectile.minion = true; // Declares this as a minion (has many effects)
-			Projectile.DamageType = DamageClass.Summon; // Declares the damage type (needed for it to deal damage)
-			Projectile.minionSlots = 1f; // Amount of slots this minion occupies from the total minion slots available to the player (more on that later)
-			Projectile.penetrate = -1; // Needed so the minion doesn't despawn on collision with enemies or tiles
+			Projectile.friendly = true; // 
+			Projectile.minion = true; // Declares this as a minion
+			Projectile.DamageType = DamageClass.Summon; // Declares the damage type
+			Projectile.minionSlots = 1f; // Amount of slots
+			Projectile.penetrate = -1; // Needed so the minion doesn't despawn
 		}
 		
-		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			if (Main.rand.NextBool(5)) {
-				SoundEngine.PlaySound(KuruKuru2);
-			}
-			else if (Main.rand.NextBool(5)) {
-				SoundEngine.PlaySound(Kururin);
-			}
-			//target.AddBuff(47, 30);
-		}
-
 		// Here you can decide if your minion breaks things like grass or pots
 		public override bool? CanCutTiles() {
 			return false;
@@ -91,13 +53,13 @@ namespace BooTao2.Content.Projectiles.Herta
 			GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);
 			SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
 			Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition, out Vector2 vel);
-			Visuals();
+			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
+			//Projectile.rotation = Projectile.velocity.X * 0.05f;
 			
 			// Main.rand.NextBool(20)
-			if (foundTarget && (counter >= 300) && (Main.myPlayer == Projectile.owner)) {
-				SoundEngine.PlaySound(diamond);
+			if (foundTarget && (counter >= 90) && (Main.myPlayer == Projectile.owner)) {
 				counter = 0;
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<HertaDiamondProj>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner, 0, 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<FurinaBubble3Proj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
 			}
 			else {
 				counter++;
@@ -109,12 +71,12 @@ namespace BooTao2.Content.Projectiles.Herta
 		// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
 		private bool CheckActive(Player owner) {
 			if (owner.dead || !owner.active) {
-				owner.ClearBuff(ModContent.BuffType<HertaMinionBuff>());
+				owner.ClearBuff(ModContent.BuffType<FurinaMinionBuff>());
 
 				return false;
 			}
 
-			if (owner.HasBuff(ModContent.BuffType<HertaMinionBuff>())) {
+			if (owner.HasBuff(ModContent.BuffType<FurinaMinionBuff>())) {
 				Projectile.timeLeft = 2;
 			}
 
@@ -125,29 +87,20 @@ namespace BooTao2.Content.Projectiles.Herta
 			Vector2 idlePosition = owner.Center;
 			idlePosition.Y -= 48f; // Go up 48 coordinates (three tiles from the center of the player)
 
-			// If your minion doesn't aimlessly move around when it's idle, you need to "put" it into the line of other summoned minions
-			// The index is projectile.minionPos
 			float minionPositionOffsetX = (10 + Projectile.minionPos * 40) * -owner.direction;
 			idlePosition.X += minionPositionOffsetX; // Go behind the player
 
-			// All of this code below this line is adapted from Spazmamini code (ID 388, aiStyle 66)
-
-			// Teleport to player if distance is too big
 			vectorToIdlePosition = idlePosition - Projectile.Center;
 			distanceToIdlePosition = vectorToIdlePosition.Length();
 
 			if (Main.myPlayer == owner.whoAmI && distanceToIdlePosition > 2000f) {
-				// Whenever you deal with non-regular events that change the behavior or position drastically, make sure to only run the code on the owner of the projectile,
-				// and then set netUpdate to true
 				Projectile.position = idlePosition;
 				Projectile.velocity *= 0.1f;
 				Projectile.netUpdate = true;
 			}
 
-			// If your minion is flying, you want to do this independently of any conditions
 			float overlapVelocity = 0.04f;
 
-			// Fix overlap with other minions
 			foreach (var other in Main.ActiveProjectiles) {
 				if (other.whoAmI != Projectile.whoAmI && other.owner == Projectile.owner && Math.Abs(Projectile.position.X - other.position.X) + Math.Abs(Projectile.position.Y - other.position.Y) < Projectile.width) {
 					if (Projectile.position.X < other.position.X) {
@@ -168,12 +121,10 @@ namespace BooTao2.Content.Projectiles.Herta
 		}
 
 		private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter) {
-			// Starting search distance
 			distanceFromTarget = 1000f;
 			targetCenter = Projectile.position;
 			foundTarget = false;
 
-			// This code is required if your minion weapon has the targeting feature
 			if (owner.HasMinionAttackTargetNPC) {
 				NPC npc = Main.npc[owner.MinionAttackTargetNPC];
 				float between = Vector2.Distance(npc.Center, Projectile.Center);
@@ -187,15 +138,12 @@ namespace BooTao2.Content.Projectiles.Herta
 			}
 
 			if (!foundTarget) {
-				// This code is required either way, used for finding a target
 				foreach (var npc in Main.ActiveNPCs) {
 					if (npc.CanBeChasedBy()) {
 						float between = Vector2.Distance(npc.Center, Projectile.Center);
 						bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 						bool inRange = between < distanceFromTarget;
 						bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
-						// Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
-						// The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
 						bool closeThroughWall = between < 850f;
 
 						if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall)) {
@@ -206,29 +154,30 @@ namespace BooTao2.Content.Projectiles.Herta
 					}
 				}
 			}
-
-			// friendly needs to be set to true so the minion can deal contact damage
-			// friendly needs to be set to false so it doesn't damage things like target dummies while idling
-			// Both things depend on if it has a target or not, so it's just one assignment here
-			// You don't need this assignment if your minion is shooting things instead of dealing contact damage
 			Projectile.friendly = foundTarget;
 		}
 
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition, out Vector2 vel) {
-			// Default movement parameters (here for attacking)
-			float speed = 16f;
-			float inertia = 10f;
+			float speed = 9f;
+			float inertia = 60f;
+			Vector2 direction = Projectile.Center;
 
 			if (foundTarget) {
 				// Minion has a target: attack (here, fly towards the enemy)
-				if (distanceFromTarget > 40f) {
+				if (distanceFromTarget > 400f) {
 					// The immediate range around the target (so it doesn't latch onto it when close)
-					Vector2 direction = targetCenter - Projectile.Center;
-					direction.Normalize();
-					direction *= speed;
-
-					Projectile.velocity = (Projectile.velocity * (inertia - 1) + direction) / inertia;
+					direction = targetCenter - Projectile.Center;
 				}
+				else {
+					//float rotation = MathHelper.ToRadians(45);
+					direction = Projectile.Center - targetCenter;
+					//direction = direction.RotatedBy(MathHelper.Lerp(-rotation, rotation, 0.1f));
+				}
+				direction.Normalize();
+				direction *= speed;
+				Projectile.velocity = (Projectile.velocity * (inertia - 1) + direction) / inertia;
+				//float desiredRotation = direction.ToRotation();
+				//Projectile.rotation = Projectile.rotation.AngleTowards(desiredRotation, 0.02f);
 			}
 			else {
 				// Minion doesn't have a target: return to player and idle
@@ -244,9 +193,6 @@ namespace BooTao2.Content.Projectiles.Herta
 				}
 
 				if (distanceToIdlePosition > 20f) {
-					// The immediate range around the player (when it passively floats about)
-
-					// This is a simple movement formula using the two parameters and its desired direction to create a "homing" movement
 					vectorToIdlePosition.Normalize();
 					vectorToIdlePosition *= speed;
 					Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
@@ -256,30 +202,10 @@ namespace BooTao2.Content.Projectiles.Herta
 					Projectile.velocity.X = -0.15f;
 					Projectile.velocity.Y = -0.05f;
 				}
+				//Projectile.rotation = Projectile.velocity.X * 0.05f;
 			}
-			vel = Projectile.velocity;
-		}
-
-		private void Visuals() {
-			// So it will lean slightly towards the direction it's moving
 			Projectile.rotation = Projectile.velocity.X * 0.05f;
-
-			// This is a simple "loop through all frames from top to bottom" animation
-			int frameSpeed = 5;
-
-			Projectile.frameCounter++;
-
-			if (Projectile.frameCounter >= frameSpeed) {
-				Projectile.frameCounter = 0;
-				Projectile.frame++;
-
-				if (Projectile.frame >= Main.projFrames[Projectile.type]) {
-					Projectile.frame = 0;
-				}
-			}
-
-			// Some visuals here
-			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
+			vel = Projectile.velocity;
 		}
 	}
 }

@@ -34,7 +34,7 @@ namespace BooTao2.Content.Items.Ningguang
 			if (CalamityActive)
 				Item.damage = 80;
 			else
-				Item.damage = 40;
+				Item.damage = 47;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 20;
 			Item.crit = 5;
@@ -64,6 +64,11 @@ namespace BooTao2.Content.Items.Ningguang
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingHoldProj>(), 0, 4, player.whoAmI, 0f);
 			}
 			base.HoldItem(player);
+		}
+		
+		public override void UpdateInventory (Player player) {
+			if (player.ownedProjectileCounts[ModContent.ProjectileType<NingHoldProj>()] < 1)
+				player.GetModPlayer<BooTaoPlayer>().NingNumBuff = 0;
 		}
 		
 		public override bool AltFunctionUse(Player player) {
@@ -109,15 +114,15 @@ namespace BooTao2.Content.Items.Ningguang
 		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 1) {
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade1>(), Item.damage / 2, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade1>(), Item.damage / 2, 1, player.whoAmI, 0f);
 				Jade1Flag = true;
 			}
 			else if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 3) {
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade2>(), Item.damage / 2, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade2>(), Item.damage / 2, 1, player.whoAmI, 0f);
 				Jade2Flag = true;
 			}
 			else if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 5) {
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade3>(), Item.damage / 2, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade3>(), Item.damage / 2, 1, player.whoAmI, 0f);
 				Jade3Flag = true;
 			}
 			if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff < 6)

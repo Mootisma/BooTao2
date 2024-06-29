@@ -50,8 +50,7 @@ Items: {
 		DisplayName: R3 Homa
 		Tooltip:
 			'''
-			[c/FF9696:HP increased by 30%. Additionally, provides an ATK Bonus based on 1.2% of the wielder's Max HP.]
-			[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.4% of Max HP.]
+			Permanent Spelunker and Honter potion effects
 			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table
 			'''
 	}
@@ -87,8 +86,7 @@ Items: {
 		DisplayName: R4 Homa
 		Tooltip:
 			'''
-			[c/FF9696:HP increased by 35%. Additionally, provides an ATK Bonus based on 1.4% of the wielder's Max HP.]
-			[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.6% of Max HP.]
+			Permanent Spelunker and Honter potion effects
 			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table
 			'''
 	}
@@ -97,7 +95,8 @@ Items: {
 		DisplayName: Herta
 		Tooltip:
 			'''
-			Art by [c/73a9ff:@seseren]
+			Art by [c/73a9ff:seseren]
+			Only one can be summoned at a time.
 			[c/FFFF00:Talent: Fine, I'll Do It Myself]
 			Herta will fly towards enemies and deal contact damage.
 			[c/FFFF00:Ultimate: It's Magic, I Added Some Magic]
@@ -122,6 +121,27 @@ Items: {
 			'''
 		DisplayName: Ningguang
 	}
+
+	# Art by [c/73a9ff:天雪えすか]
+	# [c/73a9ff:うたえ！ぼくのなのもとに！]
+	FurinaMinionItem: {
+		DisplayName: Furina
+		Tooltip:
+			'''
+			Art by [c/73a9ff:@amayuki]
+			[c/FFFF00:Salon Solitaire]
+			Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance:
+			the Ball Octopus-shaped [c/c2ac06:Gentilhomme Usher], the Bubbly Seahorse-shaped [c/c2ac06:Surintendante Chevalmarin], and the Armored Crab-shaped [c/c2ac06:Mademoiselle Crabaletta].
+			Only one can be summoned at a time.
+			They will attack nearby opponents at intervals. If Furina is above 50% Max HP, their attacks will reduce Furina's HP but grant a damage buff. This damage buff resets every 20 seconds.
+			[c/c2ac06:Gentilhomme Usher]
+			Attacks every 3.3 seconds by firing a projectile at the opponent. Drains 10 HP and grants a 2% damage buff.
+			[c/c2ac06:Surintendante Chevalmarin]
+			Attacks every 1.5 seconds by firing a projectile at the opponent. Drains 5 HP and grants a 1% damage buff.
+			[c/c2ac06:Mademoiselle Crabaletta]
+			Attacks every 5 seconds by ramming into the opponent. Drains 15 HP and grants a 3% damage buff.
+			'''
+	}
 }
 
 Buffs: {
@@ -132,7 +152,7 @@ Buffs: {
 
 	Platform1Buff2: {
 		DisplayName: shrek platform buff 2
-		Description: increased life and mana regen, and item pickup range and speed\nincreased defense and minion count
+		Description: increased: life and mana regen, item pickup range and speed, defense, and minion count
 	}
 
 	BloodBlossomBuff: {
@@ -143,6 +163,11 @@ Buffs: {
 	HertaMinionBuff: {
 		Description: Herta fights for you! turn the sound up :)
 		DisplayName: Herta Minion
+	}
+
+	FurinaMinionBuff: {
+		DisplayName: Furina Minion Buff
+		Description: The Salon Solitaire join you in battle!
 	}
 }
 
@@ -158,4 +183,9 @@ Projectiles: {
 	NingJade3.DisplayName: Ning Jade3
 	NingJade2.DisplayName: Ning Jade2
 	NingJade1.DisplayName: Ning Jade1
+	FurinaMinionProj.DisplayName: Mademoiselle Crabaletta
+	FurinaMinion2Proj.DisplayName: Gentilhomme Usher
+	FurinaMinion3Proj.DisplayName: Surintendante Chevalmarin
+	FurinaBubble2Proj.DisplayName: Furina Bubble2 Proj
+	FurinaBubble3Proj.DisplayName: Furina Bubble3 Proj
 }
