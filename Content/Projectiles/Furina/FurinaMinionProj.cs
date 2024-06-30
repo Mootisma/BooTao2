@@ -67,8 +67,10 @@ namespace BooTao2.Content.Projectiles.Furina
 			
 			counter++;
 			bufftimer++;
-			if (bufftimer > 1200)
+			if (bufftimer > 1200) {
 				owner.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff = 0f;
+				bufftimer = 0;
+			}
 			if (!foundTarget) {
 				counter = 0;
 				bufftimer = 0;

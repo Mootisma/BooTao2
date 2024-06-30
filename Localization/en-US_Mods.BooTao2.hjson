@@ -96,7 +96,7 @@ Items: {
 		Tooltip:
 			'''
 			Art by [c/73a9ff:seseren]
-			Only one can be summoned at a time.
+			Only one can be summoned at a time. Requires 1 minion slot.
 			[c/FFFF00:Talent: Fine, I'll Do It Myself]
 			Herta will fly towards enemies and deal contact damage.
 			[c/FFFF00:Ultimate: It's Magic, I Added Some Magic]
@@ -132,7 +132,7 @@ Items: {
 			[c/FFFF00:Salon Solitaire]
 			Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance:
 			the Ball Octopus-shaped [c/c2ac06:Gentilhomme Usher], the Bubbly Seahorse-shaped [c/c2ac06:Surintendante Chevalmarin], and the Armored Crab-shaped [c/c2ac06:Mademoiselle Crabaletta].
-			Only one can be summoned at a time.
+			Only one can be summoned at a time. Requires 3 minion slots to be summoned.
 			They will attack nearby opponents at intervals. If Furina is above 50% Max HP, their attacks will reduce Furina's HP but grant a damage buff. This damage buff resets every 20 seconds.
 			[c/c2ac06:Gentilhomme Usher]
 			Attacks every 3.3 seconds by firing a projectile at the opponent. Drains 10 HP and grants a 2% damage buff.
@@ -166,7 +166,7 @@ Buffs: {
 	}
 
 	FurinaMinionBuff: {
-		DisplayName: Furina Minion Buff
+		DisplayName: Furina's Minions
 		Description: The Salon Solitaire join you in battle!
 	}
 }
