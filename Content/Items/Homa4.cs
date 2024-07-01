@@ -3,18 +3,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using BooTao2.Content.Dusts;//https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Content/Dusts
+using BooTao2.Content.Dusts;
 
 namespace BooTao2.Content.Items
 {
 	public class Homa4 : ModItem
 	{
-		//public override void SetStaticDefaults()
-		//{
-		//	DisplayName.SetDefault("R3 Homa"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-		//	Tooltip.SetDefault("[c/FF9696:HP increased by 30%. Additionally, provides an ATK Bonus based on 1.2% of the wielder's Max HP.]\n[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.4% of Max HP.]\nBuffs the Shrek Platform: Adds Bast Statue and Bewitching Table");
-		//}//https://terraria.wiki.gg/wiki/Chat#Tags
-
 		public override void SetDefaults()
 		{
 			Item.damage = 22;
@@ -26,8 +20,7 @@ namespace BooTao2.Content.Items
 			Item.useAnimation = 6;
 			Item.useStyle = 1;
 			Item.knockBack = 12;
-			Item.pick = 190;
-            Item.axe = 75;
+			Item.pick = 205;
             Item.tileBoost = 4;
 			Item.value = 2;
 			Item.rare = 10;
@@ -42,65 +35,11 @@ namespace BooTao2.Content.Items
 		{//Recipe recipe = Recipe.Create(ModContent.ItemType<Items.ExampleItem>(), 999);
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<Homa3>(), 1);
-			recipe.AddIngredient(ItemID.AdamantiteBar, 2);
+			recipe.AddIngredient(ItemID.HallowedBar, 2);
 			//recipe.AddIngredient(ItemID.HunterPotion, 1);
 			//recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
-		}
-		
-		public override bool AltFunctionUse(Player player) {
-			return true;
-		}
-		public override bool CanUseItem(Player player){
-			if (player.altFunctionUse == 2){
-				Item.useTime = 45;
-				Item.useAnimation = 45;
-				Item.shoot = ProjectileID.StarWrath; // ID of the projectiles the sword will shoot
-				Item.shootSpeed = 9f; // Speed of the projectiles the sword will shoot
-			}//Item.shoot = ProjectileType<AegisDriverOff>();
-			else{
-				Item.useTime = 6;
-				Item.useAnimation = 6;
-				Item.shoot = 0;
-				Item.shootSpeed = 0f;
-			}
-			return base.CanUseItem(player);
-		}
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
-			Vector2 target = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
-			float ceilingLimit = target.Y;
-			if (ceilingLimit > player.Center.Y - 200f) {
-				ceilingLimit = player.Center.Y - 200f;
-			}
-			// Loop these functions 3 times.
-			for (int i = 0; i < 3; i++) {
-				position = player.Center - new Vector2(Main.rand.NextFloat(401) * player.direction, 600f);
-				position.Y -= 100 * i;
-				Vector2 heading = target - position;
-
-				if (heading.Y < 0f) {
-					heading.Y *= -1f;
-				}
-
-				if (heading.Y < 20f) {
-					heading.Y = 20f;
-				}
-
-				heading.Normalize();
-				heading *= velocity.Length();
-				heading.Y += Main.rand.Next(-40, 41) * 0.02f;
-				Projectile.NewProjectile(source, position, heading, type, damage * 2, knockback, player.whoAmI, 0f, ceilingLimit);
-			}
-
-			return false;
-		}
-		
-		public override void MeleeEffects(Player player, Rectangle hitbox) {
-			if (Main.rand.NextBool(3)) {
-				// Emit dusts when the sword is swung
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<Dusts.Sparkle>());
-			}
 		}
 		
 		public override void UpdateInventory (Player player) {
@@ -125,6 +64,23 @@ namespace BooTao2.Content.Items
 			player.accThirdEye = true;
 			player.GetModPlayer<BooTaoPlayer>().Shrek = true;
 			//player.enemySpawns = true;
+			//
+			player.scope = true;
+			player.accStopwatch = true;
+			player.longInvince = true;
+            player.starCloak = true;
+            player.panic = true;
+			player.jumpBoost = true;
+			player.doubleJumpCloud = true;
+            player.doubleJumpBlizzard = true;
+			player.doubleJumpSandstorm = true;
+			player.autoJump = true;
+			player.jumpSpeedBoost += 7f;
+			player.extraFall += 40;
+			player.luck += 0.05f;
+			//player.blockRange += 10;//
+            //Player.tileRangeX += 10;//
+            //Player.tileRangeY += 10;//block placement ranges
 		}
 	}
 }

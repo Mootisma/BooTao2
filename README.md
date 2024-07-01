@@ -9,11 +9,11 @@ Platforms that are unlimited, provide light, significantly increased item grab r
 
 A Yoyo line that has suisei on it\
 A special lance that mimicks Hu Tao\
-A minion that mimicks Herta
-A weapon that mimicks Ningguang
+A minion that mimicks Herta\
+A weapon that mimicks Ningguang\
+A minion that mimicks Furina\
 
 ## Todo
-Furina's summons as minions\
 Surtr\
 Mostima\
 Navia\

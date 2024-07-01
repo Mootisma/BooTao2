@@ -33,6 +33,8 @@ Items: {
 			'''
 			was never a staff
 			[c/FF9696:This text is red.]
+			Grants significantly increased wall and tile placement speed, and mining speed.
+			Grants light emitting from the player and night vision potion effect.
 			'''
 	}
 
@@ -42,7 +44,9 @@ Items: {
 			'''
 			[c/FF9696:HP increased by 25%. Additionally, provides an ATK Bonus based on 1% of the wielder's Max HP.]
 			[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.2% of Max HP.]
-			Permanent Spelunker and Honter potion effects
+			Grants significantly increased wall and tile placement speed, and mining speed.
+			Grants light emitting from the player and night vision potion effect.
+			Grants Spelunker and Honter potion effects.
 			'''
 	}
 
@@ -50,8 +54,11 @@ Items: {
 		DisplayName: R3 Homa
 		Tooltip:
 			'''
-			Permanent Spelunker and Honter potion effects
-			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table
+			Grants significantly increased wall and tile placement speed, and mining speed.
+			Grants light emitting from the player and night vision potion effect.
+			Grants Spelunker and Honter potion effects.
+			Grants a few fishing related accessory effects.
+			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
 			'''
 	}
 
@@ -86,8 +93,14 @@ Items: {
 		DisplayName: R4 Homa
 		Tooltip:
 			'''
-			Permanent Spelunker and Honter potion effects
-			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table
+			Grants significantly increased wall and tile placement speed, and mining speed.
+			Grants light emitting from the player and night vision potion effect.
+			Grants Spelunker and Honter potion effects.
+			Grants a few fishing related accessory effects.
+			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
+			Grants several mimic accessory effects: Star Cloak, Cross Necklace, and Panic Necklace.
+			Grants the Cloud, Blizzard, and Desert in a Balloon jump effects, along with Frog Leg effects.
+			Grants the Rifle Scope effect, at all times.
 			'''
 	}
 
