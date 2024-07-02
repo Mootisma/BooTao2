@@ -30,7 +30,7 @@ namespace BooTao2.Content.Items
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 1);
+			recipe.AddIngredient(ItemID.CopperAxe, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

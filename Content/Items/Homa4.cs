@@ -15,7 +15,6 @@ namespace BooTao2.Content.Items
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;
 			Item.height = 40;
-			//Item.scale = 1f;
 			Item.useTime = 6;
 			Item.useAnimation = 6;
 			Item.useStyle = 1;
@@ -28,23 +27,18 @@ namespace BooTao2.Content.Items
 			Item.autoReuse = true;
 			Item.useTurn = true;
 			Item.maxStack = 9999;
-			//Item.defense = 1;https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_item.html
 		}
 
 		public override void AddRecipes()
-		{//Recipe recipe = Recipe.Create(ModContent.ItemType<Items.ExampleItem>(), 999);
+		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<Homa3>(), 1);
 			recipe.AddIngredient(ItemID.HallowedBar, 2);
-			//recipe.AddIngredient(ItemID.HunterPotion, 1);
-			//recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 		
 		public override void UpdateInventory (Player player) {
-			//player.tileRangeX += 10;//
-            //player.tileRangeY += 10;//block placement ranges
 			player.wallSpeed += 60;
 			player.tileSpeed += 60;
 			player.pickSpeed -= 0.35f;
@@ -68,15 +62,13 @@ namespace BooTao2.Content.Items
 			player.scope = true;
 			player.accStopwatch = true;
 			player.longInvince = true;
-            player.starCloak = true;
             player.panic = true;
+			player.manaFlower = true;
+            player.pStone = true;
 			player.jumpBoost = true;
-			player.doubleJumpCloud = true;
-            player.doubleJumpBlizzard = true;
-			player.doubleJumpSandstorm = true;
+			player.frogLegJumpBoost = true;
 			player.autoJump = true;
-			player.jumpSpeedBoost += 7f;
-			player.extraFall += 40;
+			player.jumpSpeedBoost += 2f;
 			player.luck += 0.05f;
 			//player.blockRange += 10;//
             //Player.tileRangeX += 10;//

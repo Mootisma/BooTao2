@@ -1,3 +1,7 @@
 displayName = Boo Tao
 author = mootisma
 version = 1.0.4
+homepage = https://myanimelist.net/profile/Mootisma
+hideCode = false
+hideResources = false
+includeSource = true
