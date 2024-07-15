@@ -17,7 +17,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			Projectile.height = 32;
 
 			Projectile.aiStyle = 0;
-			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.DamageType = DamageClass.Summon;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.ignoreWater = true;

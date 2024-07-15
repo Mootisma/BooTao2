@@ -169,6 +169,21 @@ Items: {
 			Attacks every 5 seconds by ramming into the opponent. Drains 15 HP and grants a 3% damage buff.
 			'''
 	}
+
+	YelanMinionItem: {
+		DisplayName: Yelan
+		Tooltip:
+			'''
+			[c/FFFF00:Depth-Clarion Dice]
+			Yelan creates an [c/c2ac06:Exquisite Throw] which aids her in battle.
+			Only one can be summoned at a time. Requires 1 minion slot to be summoned.
+			[c/c2ac06:Exquisite Throw]
+			Follows Yelan around and will initiate a coordinated attack every second in combat.
+			[c/FFFF00:Adapt with Ease]
+			So long as an Exquisite Throw is in play, you gain 3.5% DMG buff when a coordinated attack is launched. 
+			The maximum increase to DMG dealt is 50%. This resets every 20 seconds or when out of combat.
+			'''
+	}
 }
 
 Buffs: {
@@ -196,6 +211,11 @@ Buffs: {
 		DisplayName: Furina's Minions
 		Description: The Salon Solitaire join you in battle!
 	}
+
+	YelanMinionBuff: {
+		DisplayName: Yelan's Depth-Clarion Dice
+		Description: A gambling addiction is going to do you no good.
+	}
 }
 
 Projectiles: {
@@ -215,4 +235,6 @@ Projectiles: {
 	FurinaMinion3Proj.DisplayName: Surintendante Chevalmarin
 	FurinaBubble2Proj.DisplayName: Furina Bubble2 Proj
 	FurinaBubble3Proj.DisplayName: Furina Bubble3 Proj
+	YelanDiceAttackProj.DisplayName: Yelan Dice Attack Proj
+	YelanMinionProj.DisplayName: Yelan Minion Proj
 }
