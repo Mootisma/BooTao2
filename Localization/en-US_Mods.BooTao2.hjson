@@ -103,6 +103,21 @@ Items: {
 			'''
 	}
 
+	Homa5: {
+		DisplayName: R5 Homa
+		Tooltip:
+			'''
+			Grants significantly increased wall and tile placement speed, and mining speed.
+			Grants light emitting from the player and night vision potion effect.
+			Grants Spelunker and Honter potion effects.
+			Grants a few fishing related accessory effects.
+			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
+			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
+			Grants the Frog Leg effects, the Rifle Scope effect at all times, and the Mana Flower effect.
+			Grants the same Shrek Platform buff.
+			'''
+	}
+
 	HertaMinionItem: {
 		DisplayName: Herta
 		Tooltip:
@@ -164,7 +179,7 @@ Buffs: {
 
 	Platform1Buff2: {
 		DisplayName: shrek platform buff 2
-		Description: increased: life and mana regen, item pickup range and speed, defense, and minion count
+		Description: increased life and mana regen, and item pickup range and speed, and defense and minion count
 	}
 
 	BloodBlossomBuff: {

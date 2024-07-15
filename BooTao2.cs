@@ -17,26 +17,30 @@ namespace BooTao2
 		public override void AddRecipes()
 		{//https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_i_d_1_1_item_i_d.html
 			Recipe recipe = Recipe.Create(/*ModContent.ItemType<Items.ExampleItem>()*/ItemID.BlackInk, 1);
-			recipe.AddIngredient(ItemID.StoneBlock);
+			recipe.AddIngredient(ItemID.StoneBlock, 2);
 			recipe.Register();
 			//
-			//
-			recipe = Recipe.Create(ItemID.AdamantiteBar);
-			recipe.AddIngredient(ItemID.TitaniumBar);
-			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.JungleRose);
-			recipe.AddIngredient(ItemID.JungleSpores);
+			recipe.AddIngredient(ItemID.JungleSpores, 5);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.FeralClaws);
-			recipe.AddIngredient(ItemID.JungleSpores);
+			recipe.AddIngredient(ItemID.JungleSpores, 5);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.LavaCharm);
 			recipe.AddIngredient(ItemID.HellstoneBar, 7);
 			recipe.AddIngredient(ItemID.Obsidian);
 			recipe.AddIngredient(ItemID.Shackle);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.ChlorophyteBar);
+			recipe.AddIngredient(ItemID.ChlorophyteOre);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.PixieDust);
+			recipe.AddIngredient(ItemID.SoulofLight);
 			recipe.Register();
 		}
 	}
