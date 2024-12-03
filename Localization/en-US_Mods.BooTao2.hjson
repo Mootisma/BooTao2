@@ -184,6 +184,21 @@ Items: {
 			The maximum increase to DMG dealt is 50%. This resets every 20 seconds or when out of combat.
 			'''
 	}
+
+	ThornsItem: {
+		DisplayName: Thorns
+		Tooltip:
+			'''
+			[c/FFFF00:Destreza]
+			SP Cost: 15 | Duration: 30 seconds
+			Thorns' base damage and attack speed increases by 25%
+			Upon the second activation of this skill and afterwards, 
+			this skill has unlimited duration, and its bonuses are twice the base amount
+			[c/FFFF00:Nerve Corrosion]
+			Attacks poison the target, dealing 1/4 the damage dealt every second
+			Stacks up to 4 times, and lasts 3 seconds
+			'''
+	}
 }
 
 Buffs: {
@@ -237,4 +252,5 @@ Projectiles: {
 	FurinaBubble3Proj.DisplayName: Furina Bubble3 Proj
 	YelanDiceAttackProj.DisplayName: Yelan Dice Attack Proj
 	YelanMinionProj.DisplayName: Yelan Minion Proj
+	ThornsProj.DisplayName: Thorns Proj
 }

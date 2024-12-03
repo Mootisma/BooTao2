@@ -35,7 +35,7 @@ namespace BooTao2.Content.Items.Yelan
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
 			Item.value = Item.sellPrice(gold: 20);
 			Item.rare = ItemRarityID.Cyan;
-			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/DoYouKnowHerta") {
+			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Yelan/YelanBurst") {
 				Volume = 0.9f,
 				PitchVariance = 0f,
 				MaxInstances = 1,

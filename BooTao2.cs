@@ -67,6 +67,11 @@ namespace BooTao2
 		public float FurinaDmgBuff = 0;
 		//
 		public float YelanDmgBuff = 0f;
+		//
+		public int ThornsSP = 0;
+		public int ThornsS3numUses = 0;
+		public int ThornsDOTstack = 0;
+		public int ThornsS3duration = 0;
 		
 		public override void ResetEffects()
 		{
@@ -174,6 +179,9 @@ namespace BooTao2
 		public override bool InstancePerEntity => true;
 		public bool BloodBlossom;
 		public int BloodBlossomDmg = 8;
+		public int ThornsDOTstack = 0;
+		public int ThornsDOTdmg = 0;
+		public int ThornsDOTduration = 0;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
@@ -188,7 +196,7 @@ namespace BooTao2
 
 		public override void DrawEffects(NPC npc, ref Color drawColor) {
 			// This simple color effect indicates that the buff is active
-			if (BloodBlossom) {
+			if (BloodBlossom || ThornsDOTstack > 0) {
 				drawColor.G = 0;
 			}
 		}
@@ -203,6 +211,18 @@ namespace BooTao2
 				npc.lifeRegen -= BloodBlossomDmg;
 				damage = BloodBlossomDmg;
 			}
+			if (ThornsDOTstack > 0 && ThornsDOTduration > 0) {
+				if (npc.lifeRegen > 0) {
+					npc.lifeRegen = 0;
+				}
+				npc.lifeRegen -= ThornsDOTdmg;
+				damage = ThornsDOTdmg;
+			}
+			else {
+				ThornsDOTstack = 0;
+				ThornsDOTduration = 0;
+			}
+			ThornsDOTduration--;
 		}
 		
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {

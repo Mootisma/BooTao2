@@ -5,8 +5,8 @@ namespace BooTao2.Content.Buffs.BloodBlossomBuff
 {
 	public class BloodBlossomBuff : ModBuff
 	{
-		public const int DefenseReductionPercent = 25;
-		public static float DefenseMultiplier = 1 - DefenseReductionPercent / 100f;
+		// public const int DefenseReductionPercent = 25;
+		// public static float DefenseMultiplier = 1 - DefenseReductionPercent / 100f;
 
 		public override void SetStaticDefaults() {
 			Main.pvpBuff[Type] = true; // This buff can be applied by other players in Pvp, so we need this to be true.
