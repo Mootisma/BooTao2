@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using BooTao2.Content.Dusts;
 using BooTao2.Content.Buffs;
+using BooTao2.Content.Buffs.Thorns;
 using Terraria.Audio;
 
 namespace BooTao2.Content.Items.Thorns
@@ -21,7 +22,7 @@ namespace BooTao2.Content.Items.Thorns
 		};
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 60 : 40;
+			Item.damage = (CalamityActive) ? 75 : 50;
 			Item.DamageType = DamageClass.Melee;
 			Item.shoot = ModContent.ProjectileType<ThornsProj>();
 			Item.shootSpeed = 16f;
@@ -32,7 +33,7 @@ namespace BooTao2.Content.Items.Thorns
 			Item.useStyle = 1;
 			Item.knockBack = 6;
 			//
-			Item.value = Item.sellPrice(silver: 30);
+			Item.value = Item.sellPrice(gold: 30);
 			Item.rare = 3;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
@@ -59,6 +60,19 @@ namespace BooTao2.Content.Items.Thorns
 			if (player.GetModPlayer<BooTaoPlayer>().ThornsS3duration > 0) {
 				player.GetModPlayer<BooTaoPlayer>().ThornsS3duration--;
 			}
+		}
+		
+		public override void HoldItem(Player player) {
+			if (player.GetModPlayer<BooTaoPlayer>().ThornsHealingCD > 0){
+				player.GetModPlayer<BooTaoPlayer>().ThornsHealingCD--;
+			}
+			if (player.GetModPlayer<BooTaoPlayer>().ThornsHealingCD <= 0){
+				player.AddBuff(ModContent.BuffType<ThornsRegen>(), 2, true);
+			}
+		}
+		
+		public override void MeleeEffects(Player player, Rectangle hitbox){
+			player.GetModPlayer<BooTaoPlayer>().ThornsHealingCD = 121;
 		}
 		
 		public override bool CanUseItem(Player player) {
@@ -88,17 +102,17 @@ namespace BooTao2.Content.Items.Thorns
 				if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 1 && player.GetModPlayer<BooTaoPlayer>().ThornsS3duration > 0){
 					Item.useAnimation = 30;
 					Item.useTime = 30;
-					Item.damage = (CalamityActive) ? 75 : 50;
+					Item.damage = (CalamityActive) ? 100 : 65;
 				}
 				else if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 2){
 					Item.useAnimation = 20;
 					Item.useTime = 20;
-					Item.damage = (CalamityActive) ? 90 : 60;
+					Item.damage = (CalamityActive) ? 120 : 78;
 				}
 				else {
 					Item.useAnimation = 40;
 					Item.useTime = 40;
-					Item.damage = (CalamityActive) ? 60 : 40;
+					Item.damage = (CalamityActive) ? 80 : 52;
 				}
 			}
 			return true;

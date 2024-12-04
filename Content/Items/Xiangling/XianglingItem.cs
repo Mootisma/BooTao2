@@ -1,5 +1,5 @@
-using BooTao2.Content.Buffs.Herta;
-using BooTao2.Content.Projectiles.Herta;
+using BooTao2.Content.Buffs.Xiangling;
+using BooTao2.Content.Projectiles.Xiangling;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -8,31 +8,30 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace BooTao2.Content.Items.Herta
+namespace BooTao2.Content.Items.Xiangling
 {
-	public class HertaMinionItem : ModItem
+	public class XianglingItem : ModItem
 	{
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		
 		public override void SetStaticDefaults() {
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true; // This lets the player target anywhere on the whole screen while using a controller
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
-
 			ItemID.Sets.StaffMinionSlotsRequired[Type] = 1f; // The default value is 1, but other values are supported. See the docs for more guidance. 
 		}
 
 		public override void SetDefaults() {
 			Item.damage = (CalamityActive) ? 70 : 40;
-			Item.knockBack = 3.2f;
-			Item.mana = 10; // mana cost
+			Item.knockBack = 5f;
+			Item.mana = 10;
 			Item.width = 32;
 			Item.height = 32;
 			Item.useTime = 30;
 			Item.useAnimation = 30;
-			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
+			Item.useStyle = ItemUseStyleID.Swing;
 			Item.value = Item.sellPrice(gold: 10);
-			Item.rare = ItemRarityID.Cyan;
-			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/DoYouKnowHerta") {
+			Item.rare = ItemRarityID.LightRed;
+			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Xiangling/EatThis") {
 				Volume = 0.9f,
 				PitchVariance = 0f,
 				MaxInstances = 1,
@@ -41,10 +40,10 @@ namespace BooTao2.Content.Items.Herta
 
 			// These below are needed for a minion weapon
 			Item.noMelee = true; // this item doesn't do any melee damage
-			Item.DamageType = DamageClass.Summon; // Makes the damage register as summon. If your item does not have any damage type, it becomes true damage (which means that damage scalars will not affect it). Be sure to have a damage type
-			Item.buffType = ModContent.BuffType<HertaMinionBuff>();
+			Item.DamageType = DamageClass.Summon; // Makes the damage register as summon.
+			Item.buffType = ModContent.BuffType<XianglingBuff>();
 			// No buffTime because otherwise the item tooltip would say something like "1 minute duration"
-			Item.shoot = ModContent.ProjectileType<HertaMinionProj>(); // This item creates the minion projectile
+			Item.shoot = ModContent.ProjectileType<XianglingPyronado>();
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
@@ -72,28 +71,20 @@ namespace BooTao2.Content.Items.Herta
 			return false;
 		}
 
-		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {
 			Recipe recipe = CreateRecipe();
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("PurifiedGel", out ModItem purifiedGel) ) {
 				recipe.AddIngredient(purifiedGel.Type);
 			}
-			else {
-				recipe.AddIngredient(ItemID.Bone, 1);
-			}
+			recipe.AddIngredient(ItemID.Gel, 1);
 			recipe.AddIngredient(ItemID.HellstoneBar, 1);
+			recipe.AddIngredient(ItemID.Torch, 1);
+			recipe.AddIngredient(ItemID.Spear, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 	}
 }
 /*
-https://docs.tmodloader.net/docs/stable/class_n_p_c.html
-https://docs.tmodloader.net/docs/stable/class_projectile.html
-https://github.com/ThePaperLuigi/The-Stars-Above/blob/main/Projectiles/Ranged/PleniluneGaze/FrostflakeArrow.cs
-https://docs.tmodloader.net/docs/stable/class_projectile.html#a76031be1e4228ce7e8a3ec67e2c293ad
-https://docs.tmodloader.net/docs/stable/class_mod_projectile.html
-https://hsr.yatta.top/en/archive/avatar/1013/herta?mode=details
-https://static.wikia.nocookie.net/houkai-star-rail/images/9/96/Herta_Sticker_02.png/revision/latest?cb=20231220232741
-
+https://www.reddit.com/r/Genshin_Impact/comments/l78506/ningguang_xiangling_and_xiao_emotes/
 */

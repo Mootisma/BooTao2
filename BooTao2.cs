@@ -72,6 +72,7 @@ namespace BooTao2
 		public int ThornsS3numUses = 0;
 		public int ThornsDOTstack = 0;
 		public int ThornsS3duration = 0;
+		public int ThornsHealingCD = 0;
 		
 		public override void ResetEffects()
 		{
@@ -135,6 +136,8 @@ namespace BooTao2
 				Player.lifeRegen -= 16;
 			}
 		}
+		
+		// public override void UpdateLifeRegen() {}
 		
 		public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright) {
 			if (BloodBlossom) {

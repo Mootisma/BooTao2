@@ -189,7 +189,7 @@ Items: {
 		DisplayName: Thorns
 		Tooltip:
 			'''
-			[c/FFFF00:Destreza]
+			[c/FFFF00:Destreza] (right click)
 			SP Cost: 15 | Duration: 30 seconds
 			Thorns' base damage and attack speed increases by 25%
 			Upon the second activation of this skill and afterwards, 
@@ -197,6 +197,19 @@ Items: {
 			[c/FFFF00:Nerve Corrosion]
 			Attacks poison the target, dealing 1/4 the damage dealt every second
 			Stacks up to 4 times, and lasts 3 seconds
+			[c/FFFF00:Echoes of Ancestral Waves]
+			If Thorns hasn't attacked for 2 seconds, restores 5 HP every second
+			'''
+	}
+
+	XianglingItem: {
+		DisplayName: Xiangling
+		Tooltip:
+			'''
+			[c/FFFF00:Pyronado]
+			Displaying her mastery over both fire and polearms, Xiangling sends a Pyronado whirling around her.
+			The Pyronado will move with your character for the ability's duration, dealing Pyro DMG to all opponents in its path.
+			Only one can be summoned at a time. Requires 1 minion slot.
 			'''
 	}
 }
@@ -231,6 +244,16 @@ Buffs: {
 		DisplayName: Yelan's Depth-Clarion Dice
 		Description: A gambling addiction is going to do you no good.
 	}
+
+	ThornsRegen: {
+		DisplayName: Echoes of Ancestral Waves
+		Description: 5 HP/s
+	}
+
+	XianglingBuff: {
+		DisplayName: Xiangling Buff
+		Description: There will never be enough heat. Never.
+	}
 }
 
 Projectiles: {
@@ -253,4 +276,5 @@ Projectiles: {
 	YelanDiceAttackProj.DisplayName: Yelan Dice Attack Proj
 	YelanMinionProj.DisplayName: Yelan Minion Proj
 	ThornsProj.DisplayName: Thorns Proj
+	XianglingPyronado.DisplayName: Xiangling Pyronado
 }

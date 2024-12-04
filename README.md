@@ -1,6 +1,6 @@
 # BooTao2
-My own Terraria Mod that I work on by myself for my own benefit. \
-Contains content and QoL changes.
+My own Terraria Mod that I work on by myself for my own benefit.\
+Contains content and QoL.
 
 ## Content
 Pickaxe line that has a fast use time, for mining faster.\
@@ -13,7 +13,8 @@ A minion that mimicks Herta\
 A weapon that mimicks Ningguang\
 A minion that mimicks Furina\
 A minion that mimicks Yelan\
-A sword that mimicks Thorns
+A sword that mimicks Thorns\
+A minion that mimicks Xiangling
 
 ## Todo
 Surtr\
