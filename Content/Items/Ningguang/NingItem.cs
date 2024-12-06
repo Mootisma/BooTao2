@@ -31,10 +31,7 @@ namespace BooTao2.Content.Items.Ningguang
 			Item.UseSound = SoundID.Item20;
 
 			// Weapon Properties
-			if (CalamityActive)
-				Item.damage = 80;
-			else
-				Item.damage = 47;
+			Item.damage = (CalamityActive) ? 80 : 47;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 20;
 			Item.crit = 5;
@@ -75,14 +72,15 @@ namespace BooTao2.Content.Items.Ningguang
 			return true;
 		}
 		
+		// public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers) {}
+		// modifiers.FinalDamage.Base
+		// https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Weapons/HitModifiersShowcase.cs
+		
 		bool Jade1Flag = false;
 		bool Jade2Flag = false;
 		bool Jade3Flag = false;
 		public override bool CanUseItem(Player player) {
-			if (CalamityActive)
-				Item.damage = 30;
-			else
-				Item.damage = 15;
+			Item.damage = (CalamityActive) ? 30 : 15;
 			if (player.altFunctionUse == 2){
 				if (Jade1Flag) {
 					player.GetModPlayer<BooTaoPlayer>().NingJade1State = true;

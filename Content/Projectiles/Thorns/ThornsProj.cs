@@ -14,7 +14,7 @@ namespace BooTao2.Content.Projectiles.Thorns {
 			Projectile.hostile = false;
 			Projectile.ignoreWater = true;
 			Projectile.light = 0.1f;
-			Projectile.tileCollide = false;
+			Projectile.tileCollide = true;
 			Projectile.timeLeft = 60;
 		}
 		

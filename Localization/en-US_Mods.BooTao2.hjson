@@ -190,7 +190,7 @@ Items: {
 		Tooltip:
 			'''
 			[c/FFFF00:Destreza] (right click)
-			SP Cost: 15 | Duration: 30 seconds
+			SP Cost: 15 [Offensive Recovery] | Duration: 30 seconds
 			Thorns' base damage and attack speed increases by 25%
 			Upon the second activation of this skill and afterwards, 
 			this skill has unlimited duration, and its bonuses are twice the base amount

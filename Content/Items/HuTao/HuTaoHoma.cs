@@ -197,10 +197,14 @@ namespace BooTao2.Content.Items.HuTao
 			if (DashAccessoryEquipped && DashDelay == 0) {
 				// store the new velocity
 				Vector2 newVelocity = Player.velocity;
+				
 				// get position of mouse
+				// Main.MouseWorld
 				Vector2 aim = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
+				
 				// obtain the difference between mouse position and player position
 				Vector2 target = aim - Player.Center;
+				
 				// use it to draw a vector to obtain the direction
 				Vector2 direction = target.SafeNormalize(Vector2.UnitX);
 				

@@ -55,6 +55,7 @@ namespace BooTao2
 		public bool NingJade1State;
 		public bool NingJade2State;
 		public bool NingJade3State;
+		public bool FiammettaS3;
 		//
 		public const int HuTaoEDuration = 540;
 		public const int HuTaoECD = 960;
@@ -73,6 +74,9 @@ namespace BooTao2
 		public int ThornsDOTstack = 0;
 		public int ThornsS3duration = 0;
 		public int ThornsHealingCD = 0;
+		//
+		public int FiammettaSP = 0;
+		public Vector2 FiammettaStoreMouse = new Vector2(0, 0);
 		
 		public override void ResetEffects()
 		{
@@ -84,6 +88,7 @@ namespace BooTao2
 			NingJade1State = false;
 			NingJade2State = false;
 			NingJade3State = false;
+			FiammettaS3 = false;
 		}
 		
 		public bool CanUseHuTaoE() {

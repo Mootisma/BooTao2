@@ -22,7 +22,7 @@ namespace BooTao2.Content.Items.Thorns
 		};
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 75 : 50;
+			Item.damage = (CalamityActive) ? 80 : 52;
 			Item.DamageType = DamageClass.Melee;
 			Item.shoot = ModContent.ProjectileType<ThornsProj>();
 			Item.shootSpeed = 16f;
