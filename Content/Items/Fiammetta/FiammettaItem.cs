@@ -63,9 +63,9 @@ namespace BooTao2.Content.Items.Fiammetta
 		{
 			Recipe recipe = CreateRecipe();
 			// recipe.AddIngredient(ModContent.ItemType<Homa4>(), 1);
-			recipe.AddIngredient(ItemID.PearlsandBlock, 1);
-			recipe.AddIngredient(ItemID.SandBlock, 1);
-			recipe.AddIngredient(ItemID.Sandgun, 1);
+			recipe.AddIngredient(ItemID.OnyxBlaster, 1);
+			recipe.AddIngredient(ItemID.LivingFireBlock, 1);
+			recipe.AddIngredient(ItemID.AngelHalo, 1);
 			recipe.AddIngredient(ItemID.SoulofMight, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();

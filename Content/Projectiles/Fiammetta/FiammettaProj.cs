@@ -104,4 +104,7 @@ https://terraria.wiki.gg/wiki/File:Flamethrower_(projectile).gif
 https://github.com/tModLoader/tModLoader/wiki/Coordinates
 https://github.com/ThePaperLuigi/The-Stars-Above/blob/main/Projectiles/Summon/KroniicPrincipality/TemporalTimepiece2.cs
 https://docs.tmodloader.net/docs/stable/class_dust.html
+https://terraria.wiki.gg/wiki/Dust_IDs
+https://github.com/ThePaperLuigi/The-Stars-Above/blob/main/Projectiles/Magic/RedMage/VerholyExplosion.cs
+https://docs.tmodloader.net/docs/stable/class_projectile.html
 */
