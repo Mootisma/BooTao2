@@ -214,8 +214,20 @@ Items: {
 	}
 
 	FiammettaItem: {
-		DisplayName: Fiammetta Item
-		Tooltip: ""
+		DisplayName: Fiammetta
+		Tooltip:
+			'''
+			[c/FFFF00:'Reponite'] (right click)
+			SP Cost: 15 [Offensive Recovery] | Duration: Infinite
+			Changes the attack to a vertical barrage aimed at the cursor.
+			Explosion area, damage and knockback are greatly increased.
+			Enemies closer to the impact site in a smaller area take double damage.
+			[c/FFFF00:Sufferer of Tribulations]
+			Continually loses HP over time (HP cannot drop below 50% as a result of this effect)
+			While HP is above 50%, increases ATK by 30%; this effect is doubled above 80% HP 
+			[c/FFFF00:'Out-Law' Special Ammunition Surplus]
+			Attacks ignore 10 DEF
+			'''
 	}
 }
 
@@ -284,4 +296,5 @@ Projectiles: {
 	XianglingPyronado.DisplayName: Xiangling Pyronado
 	FiammettaProj.DisplayName: Fiammetta Proj
 	FiammettaExplosionProj.DisplayName: Fiammetta Explosion Proj
+	FiammettaExplosionProj2.DisplayName: Fiammetta Explosion Proj2
 }

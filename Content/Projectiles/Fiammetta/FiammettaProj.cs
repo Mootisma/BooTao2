@@ -2,12 +2,26 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Audio;
 
 namespace BooTao2.Content.Projectiles.Fiammetta {
 	public class FiammettaProj : ModProjectile {
+		
+		SoundStyle BOOM = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Fiammetta/BOOM") {
+			Volume = 0.9f,
+			PitchVariance = 0f,
+			MaxInstances = 3,
+		};
+		
+		SoundStyle BasicBoom = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Fiammetta/BasicBoom") {
+			Volume = 0.9f,
+			PitchVariance = 0f,
+			MaxInstances = 3,
+		};
+		
 		public override void SetDefaults() {
-			Projectile.width = 14;
-			Projectile.height = 14;
+			Projectile.width = 20;
+			Projectile.height = 20;
 			Projectile.aiStyle = 0;
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.friendly = true;
@@ -34,11 +48,15 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 				
 				// kill the projectile when it gets to the mouse position
 				float distancebtwn = Vector2.Distance(player.GetModPlayer<BooTaoPlayer>().FiammettaStoreMouse, Projectile.Center);
-				if (distancebtwn < 10 && ((Projectile.timeLeft < 55 && player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) || player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0)) {
+				if (distancebtwn < 25 && ((Projectile.timeLeft < 55 && player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) || player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0)) {
 					Projectile.Kill();//
 				}
 			}
+			//position, width, height, type, speedx, speedy, alpha, color, scale
+			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+			Dust.NewDust(Projectile.Center, 0, 0, 127, Projectile.velocity.X / 10, Projectile.velocity.Y / 10, 150, default, 1f);
 			//modifiers.SourceDamage.Flat += (int)(target.statLifeMax * 0.2);
+			// Main.rand.Next(-20, 20)
 		}
 		
 		public override void OnKill(int timeLeft) {
@@ -46,7 +64,15 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 			// spawn the explosion projectile after this projectile does its job
 			//var ffaf = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, 0), ProjectileID.Flames, Projectile.damage, Projectile.knockBack, Projectile.owner);
 			//ffaf.scale = 2f;
-			Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<FiammettaExplosionProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+			if (player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) {
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + new Vector2(0, -65), new Vector2(0, 0), ModContent.ProjectileType<FiammettaExplosionProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				SoundEngine.PlaySound(BOOM, Projectile.Center);
+				// SoundEngine.PlaySound(phoenix, player.Center);
+			}
+			else {
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<FiammettaExplosionProj2>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				SoundEngine.PlaySound(BasicBoom, Projectile.Center);
+			}
 		}// + new Vector2(0, -60)
 		
 		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
@@ -77,4 +103,5 @@ https://terraria.wiki.gg/wiki/Projectile_IDs
 https://terraria.wiki.gg/wiki/File:Flamethrower_(projectile).gif
 https://github.com/tModLoader/tModLoader/wiki/Coordinates
 https://github.com/ThePaperLuigi/The-Stars-Above/blob/main/Projectiles/Summon/KroniicPrincipality/TemporalTimepiece2.cs
+https://docs.tmodloader.net/docs/stable/class_dust.html
 */
