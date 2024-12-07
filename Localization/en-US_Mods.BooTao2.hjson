@@ -212,6 +212,11 @@ Items: {
 			Only one can be summoned at a time. Requires 1 minion slot.
 			'''
 	}
+
+	FiammettaItem: {
+		DisplayName: Fiammetta Item
+		Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -277,4 +282,6 @@ Projectiles: {
 	YelanMinionProj.DisplayName: Yelan Minion Proj
 	ThornsProj.DisplayName: Thorns Proj
 	XianglingPyronado.DisplayName: Xiangling Pyronado
+	FiammettaProj.DisplayName: Fiammetta Proj
+	FiammettaExplosionProj.DisplayName: Fiammetta Explosion Proj
 }
