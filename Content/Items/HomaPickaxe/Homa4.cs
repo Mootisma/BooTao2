@@ -59,7 +59,7 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			player.GetModPlayer<BooTaoPlayer>().Shrek = true;
 			//player.enemySpawns = true;
 			//
-			player.scope = true;
+			//player.scope = true;
 			player.accStopwatch = true;
 			player.longInvince = true;
             player.panic = true;

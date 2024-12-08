@@ -65,12 +65,12 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 			//var ffaf = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, 0), ProjectileID.Flames, Projectile.damage, Projectile.knockBack, Projectile.owner);
 			//ffaf.scale = 2f;
 			if (player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) {
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + new Vector2(0, -65), new Vector2(0, 0), ModContent.ProjectileType<FiammettaExplosionProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + new Vector2(0, -65), Vector2.Zero, ModContent.ProjectileType<FiammettaExplosionProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
 				SoundEngine.PlaySound(BOOM, Projectile.Center);
 				// SoundEngine.PlaySound(phoenix, player.Center);
 			}
 			else {
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<FiammettaExplosionProj2>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FiammettaExplosionProj2>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
 				SoundEngine.PlaySound(BasicBoom, Projectile.Center);
 			}
 		}// + new Vector2(0, -60)

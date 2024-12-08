@@ -41,6 +41,7 @@ namespace BooTao2.Content.Items.Fiammetta
 		public override void SetDefaults() {
 			Item.damage = (CalamityActive) ? 350 : 200;
 			Item.DamageType = DamageClass.Ranged;
+			Item.crit = 16;
 			Item.shoot = ModContent.ProjectileType<FiammettaProj>();
 			Item.shootSpeed = 20f;
 			Item.width = 40;
@@ -49,7 +50,7 @@ namespace BooTao2.Content.Items.Fiammetta
 			Item.useAnimation = 60;
 			Item.knockBack = 3;
 			//
-			//Item.noUseGraphic = true;
+			Item.noUseGraphic = true;
 			Item.noMelee = true;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.value = Item.sellPrice(gold: 30);

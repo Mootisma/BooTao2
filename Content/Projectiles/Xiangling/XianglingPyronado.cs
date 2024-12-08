@@ -29,6 +29,9 @@ namespace BooTao2.Content.Projectiles.Xiangling
 			Projectile.DamageType = DamageClass.Summon; // Declares the damage type
 			Projectile.minionSlots = 1f; // Amount of slots
 			Projectile.penetrate = -1; // Needed so the minion doesn't despawn
+			//
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 50;// measured in ticks
 		}
 		
 		// Here you can decide if your minion breaks things like grass or pots

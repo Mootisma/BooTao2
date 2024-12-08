@@ -42,6 +42,11 @@ namespace BooTao2
 			recipe = Recipe.Create(ItemID.PixieDust);
 			recipe.AddIngredient(ItemID.SoulofLight);
 			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.AngelHalo);
+			recipe.AddIngredient(ItemID.SoulofLight, 10);
+			recipe.AddIngredient(ItemID.CrystalBullet, 10);
+			recipe.Register();
 		}
 	}
 	
@@ -77,6 +82,9 @@ namespace BooTao2
 		public int FiammettaS3 = 0;
 		public int FiammettaSP = 0;
 		public Vector2 FiammettaStoreMouse = new Vector2(0, 0);
+		//
+		public float SkadiATK = 0;
+		public int SkadiSP = 0;
 		
 		public override void ResetEffects()
 		{

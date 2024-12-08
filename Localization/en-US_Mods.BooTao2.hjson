@@ -229,6 +229,29 @@ Items: {
 			Attacks ignore 10 DEF
 			'''
 	}
+
+	TestItem: {
+		DisplayName: Test Item
+		Tooltip: ""
+	}
+
+	SkadiItem: {
+		DisplayName: Skadi the Corrupting Heart
+		Tooltip:
+			'''
+			[c/FFFF00:Trait]
+			Does not attack. Only one can be summoned at a time. Requires 1 minion slot.
+			Increases life regen of all players within range by 10% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK
+			[c/FFFF00:Wish of Burial Beyond the Light] (Auto Trigger)
+			SP Cost: 56 [Auto Recovery] | Duration: Infinite
+			The life regen effect of this unit's Trait is doubled
+			All players within range gain [c/c2ac06:Inspiration]
+			[c/c2ac06:Inspiration]
+			Increases player's (vanilla) damage by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK, as a percentage
+			Increases player's defense by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK
+			[c/34b2fa:Skadi the Corrupting Heart] is unaffected by [c/c2ac06:Inspiration]
+			'''
+	}
 }
 
 Buffs: {
@@ -271,6 +294,25 @@ Buffs: {
 		DisplayName: Xiangling Buff
 		Description: There will never be enough heat. Never.
 	}
+
+	TestBuff: {
+		DisplayName: Test Buff
+		Description: Mods.BooTao2.Buffs.TestBuff.Description
+	}
+
+	SkadiMinionBuff: {
+		DisplayName: Skadi the Corrupting Heart
+		Description: Are you willing to welcome it?
+	}
+
+	SkadiS2Buff: {
+		DisplayName: Skadi the Corrupting Heart's Buff
+		Description:
+		'''
+		......Well, this isn't good news either. The hematopoietic cells we biopsied... are proliferating.
+		Separated from Skadi's body, in a petri dish... they're proliferating.
+		'''
+	}
 }
 
 Projectiles: {
@@ -297,4 +339,6 @@ Projectiles: {
 	FiammettaProj.DisplayName: Fiammetta Proj
 	FiammettaExplosionProj.DisplayName: Fiammetta Explosion Proj
 	FiammettaExplosionProj2.DisplayName: Fiammetta Explosion Proj2
+	Test.DisplayName: Test
+	SkadiMinionProj.DisplayName: Skadi Minion Proj
 }

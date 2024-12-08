@@ -14,7 +14,9 @@ A weapon that mimicks Ningguang\
 A minion that mimicks Furina\
 A minion that mimicks Yelan\
 A sword that mimicks Thorns\
-A minion that mimicks Xiangling
+A minion that mimicks Xiangling\
+A weapon that mimicks Fiammetta\
+A minion that mimicks Skadi the Corrupting Heart
 
 ## Todo
 Surtr\
