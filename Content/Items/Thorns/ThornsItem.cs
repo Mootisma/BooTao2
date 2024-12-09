@@ -21,6 +21,12 @@ namespace BooTao2.Content.Items.Thorns
 			MaxInstances = 3,
 		};
 		
+		SoundStyle SkillActivate = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/SkillActivate") {
+			Volume = 1f,
+			PitchVariance = 0f,
+			MaxInstances = 3,
+		};
+		
 		public override void SetDefaults() {
 			Item.damage = (CalamityActive) ? 80 : 52;
 			Item.DamageType = DamageClass.Melee;
@@ -78,42 +84,30 @@ namespace BooTao2.Content.Items.Thorns
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
 				if (player.GetModPlayer<BooTaoPlayer>().ThornsSP >= 15 && player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses < 2) {
-					Item.shoot = 0;
-					Item.shootSpeed = 0f;
-					if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 1){
-						player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses = 2;
-						player.GetModPlayer<BooTaoPlayer>().ThornsSP = 0;
-						SoundEngine.PlaySound(Skill, player.Center);
-					}
-					if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 0){
-						player.GetModPlayer<BooTaoPlayer>().ThornsSP = 0;
-						player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses = 1;
-						player.GetModPlayer<BooTaoPlayer>().ThornsS3duration = 1800;
-						SoundEngine.PlaySound(Skill, player.Center);
-					}
+					player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses += 1;
+					player.GetModPlayer<BooTaoPlayer>().ThornsS3duration = 1800;
+					player.GetModPlayer<BooTaoPlayer>().ThornsSP = 0;
+					SoundEngine.PlaySound(Skill, player.Center);
+					SoundEngine.PlaySound(SkillActivate, player.Center);
 				}
-				else {
-					return false;
-				}
+				return false;
+			}
+			Item.shoot = ModContent.ProjectileType<ThornsProj>();
+			Item.shootSpeed = 16f;
+			if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 1 && player.GetModPlayer<BooTaoPlayer>().ThornsS3duration > 0){
+				Item.useAnimation = 30;
+				Item.useTime = 30;
+				Item.damage = (CalamityActive) ? 100 : 65;
+			}
+			else if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 2){
+				Item.useAnimation = 20;
+				Item.useTime = 20;
+				Item.damage = (CalamityActive) ? 120 : 78;
 			}
 			else {
-				Item.shoot = ModContent.ProjectileType<ThornsProj>();
-				Item.shootSpeed = 16f;
-				if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 1 && player.GetModPlayer<BooTaoPlayer>().ThornsS3duration > 0){
-					Item.useAnimation = 30;
-					Item.useTime = 30;
-					Item.damage = (CalamityActive) ? 100 : 65;
-				}
-				else if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 2){
-					Item.useAnimation = 20;
-					Item.useTime = 20;
-					Item.damage = (CalamityActive) ? 120 : 78;
-				}
-				else {
-					Item.useAnimation = 40;
-					Item.useTime = 40;
-					Item.damage = (CalamityActive) ? 80 : 52;
-				}
+				Item.useAnimation = 40;
+				Item.useTime = 40;
+				Item.damage = (CalamityActive) ? 80 : 52;
 			}
 			return true;
 		}

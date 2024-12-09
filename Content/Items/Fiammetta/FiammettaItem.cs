@@ -38,6 +38,26 @@ namespace BooTao2.Content.Items.Fiammetta
 			MaxInstances = 3,
 		};
 		
+		SoundStyle SkillActivate = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Fiammetta/SkillActivate") {
+			Volume = 1f,
+			PitchVariance = 0f,
+			MaxInstances = 3,
+		};
+		
+		SoundStyle SightsLocked = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Fiammetta/Select1") {
+			Volume = 1f,
+			PitchVariance = 0f,
+			MaxInstances = 1,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
+		
+		SoundStyle Boring = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Fiammetta/Select2") {
+			Volume = 1f,
+			PitchVariance = 0f,
+			MaxInstances = 1,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
+		
 		public override void SetDefaults() {
 			Item.damage = (CalamityActive) ? 350 : 200;
 			Item.DamageType = DamageClass.Ranged;
@@ -108,7 +128,14 @@ namespace BooTao2.Content.Items.Fiammetta
 			}
 			//return true;
 		}
-		// public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers) {}
+		
+		// useless counter so i can play a sound when i hold fiammetta
+		int ligma = 0;
+		public override void UpdateInventory (Player player) {
+			if (ligma > 0) {
+				ligma--;
+			}
+		}
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
@@ -116,6 +143,7 @@ namespace BooTao2.Content.Items.Fiammetta
 					player.GetModPlayer<BooTaoPlayer>().FiammettaSP = 0;
 					player.GetModPlayer<BooTaoPlayer>().FiammettaS3 = 1;
 					SoundEngine.PlaySound(Skill, player.Center);
+					SoundEngine.PlaySound(SkillActivate, player.Center);
 				}
 				return false;
 			}
@@ -135,6 +163,15 @@ namespace BooTao2.Content.Items.Fiammetta
 		
 		int counter = 0;
 		public override void HoldItem(Player player) {
+			if (ligma == 0) {
+				if (Main.rand.Next(2) == 1) {
+					SoundEngine.PlaySound(SightsLocked, player.Center);
+				}
+				else {
+					SoundEngine.PlaySound(Boring, player.Center);
+				}
+			}
+			ligma = 2;
 			counter++;
 			if (player.statLife >= (player.statLifeMax2 * 0.5) && counter >= 10) {
 				player.statLife -= 1;
@@ -144,3 +181,6 @@ namespace BooTao2.Content.Items.Fiammetta
 		}
 	}
 }
+/*
+https://docs.tmodloader.net/docs/1.4-preview/class_terraria_1_1_utilities_1_1_unified_random.html
+*/

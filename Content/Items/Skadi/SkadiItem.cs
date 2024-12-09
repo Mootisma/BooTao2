@@ -31,7 +31,7 @@ namespace BooTao2.Content.Items.Skadi
 			Item.useAnimation = 120;
 			//Item.reuseDelay = 60;
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
-			Item.value = Item.sellPrice(gold: 30);
+			Item.value = Item.sellPrice(gold: 40);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Skadi/Deployment") {
 				Volume = 1f,

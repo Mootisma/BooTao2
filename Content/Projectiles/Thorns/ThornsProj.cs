@@ -31,5 +31,9 @@ namespace BooTao2.Content.Projectiles.Thorns {
 			}
 			target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTdmg = (int)(damageDone * target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack / 4);
 		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
+		}
 	}
 }

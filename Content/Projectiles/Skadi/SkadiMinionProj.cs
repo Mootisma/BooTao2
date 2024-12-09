@@ -16,6 +16,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 			Volume = 1f,
 			PitchVariance = 0f,
 			MaxInstances = 1,
+			SoundLimitBehavior = SoundLimitBehavior.IgnoreNew
 		};
 		
 		public override void SetStaticDefaults() {
