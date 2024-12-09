@@ -20,7 +20,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 		
 		public override void SetStaticDefaults() {
 			// Sets the amount of frames this minion has on its spritesheet
-			Main.projFrames[Projectile.type] = 88;
+			Main.projFrames[Projectile.type] = 53;
 			// This is necessary for right-click targeting
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 			Main.projPet[Projectile.type] = true;
@@ -32,6 +32,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 			Projectile.width = 200;
 			Projectile.height = 200;
 			Projectile.tileCollide = false; // Makes the minion go through tiles freely
+			Projectile.alpha = 255;
 
 			// These below are needed for a minion weapon
 			Projectile.friendly = true; // Only controls if it deals damage to enemies on contact (more on that later)
@@ -76,6 +77,10 @@ namespace BooTao2.Content.Projectiles.Skadi
 				counter = 0;
 			}
 			counter++;
+			
+			if (Projectile.alpha > 0) {
+				Projectile.alpha -= 4;
+			}
 
 			GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);
 			Movement(distanceToIdlePosition, vectorToIdlePosition, out Vector2 vel);
@@ -99,7 +104,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 
 		private void GeneralBehavior(Player owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition) {
 			Vector2 idlePosition = owner.Center;
-			idlePosition.Y -= 48f; // Go up 48 coordinates (three tiles from the center of the player)
+			idlePosition.Y -= 68f; // Go up 48 coordinates (three tiles from the center of the player)
 
 			// If your minion doesn't aimlessly move around when it's idle, you need to "put" it into the line of other summoned minions
 			// The index is projectile.minionPos
@@ -148,14 +153,14 @@ namespace BooTao2.Content.Projectiles.Skadi
 			float speed = 6f;
 			float inertia = 10f;
 
-			if (distanceToIdlePosition > 200f) {
+			if (distanceToIdlePosition > 300f) {
 				// Speed up the minion if it's away from the player
 				speed = 20f;
-				inertia = 40f;
+				inertia = 30f;
 			}
 			else {
 				// Slow down the minion if closer to the player
-				speed = 2f;
+				speed = 1.5f;
 				inertia = 40f;
 			}
 
@@ -180,7 +185,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 			// Projectile.rotation = Projectile.velocity.X * 0.05f;
 
 			// This is a simple "loop through all frames from top to bottom" animation
-			int frameSpeed = 2;
+			int frameSpeed = 3;
 
 			Projectile.frameCounter++;
 
@@ -200,4 +205,5 @@ namespace BooTao2.Content.Projectiles.Skadi
 }
 /*
 https://docs.tmodloader.net/docs/stable/class_main.html#aa9306db95b98d19297cf4cf9c4f6dd27
+https://prts.wiki/w/%E6%B5%8A%E5%BF%83%E6%96%AF%E5%8D%A1%E8%92%82#%E6%B3%A8%E9%87%8A%E4%B8%8E%E9%93%BE%E6%8E%A5
 */

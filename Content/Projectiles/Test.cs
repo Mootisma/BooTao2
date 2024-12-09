@@ -26,11 +26,12 @@ namespace BooTao2.Content.Projectiles {
 		
 		int counter = 0;
 		public override void AI() {
-			if (counter > 120) {
+			if (counter > 120) { //https://docs.tmodloader.net/docs/stable/class_main.html#a55969af8fef5fd9819d1854403cf794b
 				foreach (var proj in Main.ActiveProjectiles) {
-					if (proj.active) {
-						proj.velocity = Vector2.Zero;
-					}
+					proj.velocity = Vector2.Zero;
+				}
+				foreach (var npc in Main.ActiveNPCs) {
+					npc.velocity = Vector2.Zero;
 				}
 				counter = 0;
 			}

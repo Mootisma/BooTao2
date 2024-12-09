@@ -27,9 +27,9 @@ namespace BooTao2.Content.Items.Skadi
 			Item.mana = 100; // mana cost
 			Item.width = 32;
 			Item.height = 32;
-			Item.useTime = 20;
-			Item.useAnimation = 20;
-			Item.reuseDelay = 60;
+			Item.useTime = 120;
+			Item.useAnimation = 120;
+			//Item.reuseDelay = 60;
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
 			Item.value = Item.sellPrice(gold: 30);
 			Item.rare = ItemRarityID.Cyan;
