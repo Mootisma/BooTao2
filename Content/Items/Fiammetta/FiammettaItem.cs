@@ -173,8 +173,8 @@ namespace BooTao2.Content.Items.Fiammetta
 			}
 			ligma = 2;
 			counter++;
-			if (player.statLife >= (player.statLifeMax2 * 0.5) && counter >= 10) {
-				player.statLife -= 1;
+			if (player.statLife > (player.statLifeMax2 / 2) && counter >= 12) {
+				player.statLife -= (int)(player.statLife * 0.009) + 1;
 				counter = 0;
 			}
 			// player.lifeRegen -= 16;
