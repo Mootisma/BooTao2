@@ -31,12 +31,6 @@ namespace BooTao2.Content.Items.HuTao
 			MaxInstances = 3,
 		};
 		
-		SoundStyle silence = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/HuTao/HuTaoE") {
-			Volume = 0f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
 		// The Display Name and Tooltip of this item can be edited in the 'Localization/en-US_Mods.BooTao2.hjson' file.
 		public override void SetStaticDefaults() {
 			ItemID.Sets.SkipsInitialUseSound[Item.type] = true; // This skips use animation-tied sound playback, so that we're able to make it be tied to use time instead in the UseItem() hook.
@@ -55,8 +49,6 @@ namespace BooTao2.Content.Items.HuTao
 			// Item.UseSound = SoundID.Item71; // The sound that this item plays when used.
 			Item.autoReuse = true; // Allows the player to hold click to automatically use the item again. Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
 			
-			Item.UseSound = silence;
-
 			// Weapon Properties
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
 				Item.damage = 120;
@@ -110,14 +102,14 @@ namespace BooTao2.Content.Items.HuTao
 			return player.ownedProjectileCounts[Item.shoot] < 1;
 		}
 
-		public override bool? UseItem(Player player) {
+		/* public override bool? UseItem(Player player) {
 			// Because we're skipping sound playback on use animation start, we have to play it ourselves whenever the item is actually used.
 			if (!Main.dedServ && Item.UseSound.HasValue) {
 				SoundEngine.PlaySound(silence, player.Center);
 			}
 
 			return null;
-		}
+		} */
 		
 		public override void HoldItem(Player player)
 		{

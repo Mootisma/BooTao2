@@ -24,11 +24,12 @@ namespace BooTao2.Content.Items.Skadi
 		public override void SetDefaults() {
 			Item.damage = (CalamityActive) ? 120 : 100;
 			Item.knockBack = 1f;
-			Item.mana = 30; // mana cost
+			Item.mana = 100; // mana cost
 			Item.width = 32;
 			Item.height = 32;
 			Item.useTime = 20;
 			Item.useAnimation = 20;
+			Item.reuseDelay = 60;
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
 			Item.value = Item.sellPrice(gold: 30);
 			Item.rare = ItemRarityID.Cyan;

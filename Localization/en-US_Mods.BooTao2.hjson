@@ -297,7 +297,7 @@ Buffs: {
 
 	TestBuff: {
 		DisplayName: Test Buff
-		Description: Mods.BooTao2.Buffs.TestBuff.Description
+		Description: TestBuff.Description
 	}
 
 	SkadiMinionBuff: {
@@ -308,10 +308,10 @@ Buffs: {
 	SkadiS2Buff: {
 		DisplayName: Skadi the Corrupting Heart's Buff
 		Description:
-		'''
-		......Well, this isn't good news either. The hematopoietic cells we biopsied... are proliferating.
-		Separated from Skadi's body, in a petri dish... they're proliferating.
-		'''
+			'''
+			......Well, this isn't good news either. The hematopoietic cells we biopsied... are proliferating.
+			Separated from Skadi's body, in a petri dish... they're proliferating.
+			'''
 	}
 }
 
