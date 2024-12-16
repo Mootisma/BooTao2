@@ -4,8 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using BooTao2.Content.Dusts;
-using BooTao2.Content.Buffs;
 using Terraria.Audio;
 
 namespace BooTao2.Content.Items.Fiammetta
@@ -84,10 +82,9 @@ namespace BooTao2.Content.Items.Fiammetta
 		{
 			Recipe recipe = CreateRecipe();
 			// recipe.AddIngredient(ModContent.ItemType<Homa4>(), 1);
-			recipe.AddIngredient(ItemID.OnyxBlaster, 1);
 			recipe.AddIngredient(ItemID.LivingFireBlock, 1);
 			recipe.AddIngredient(ItemID.AngelHalo, 1);
-			recipe.AddIngredient(ItemID.SoulofMight, 1);
+			recipe.AddIngredient(ItemID.SoulofFright, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

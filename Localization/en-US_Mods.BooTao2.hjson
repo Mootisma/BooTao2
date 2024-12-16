@@ -230,11 +230,6 @@ Items: {
 			'''
 	}
 
-	TestItem: {
-		DisplayName: Test Item
-		Tooltip: ""
-	}
-
 	SkadiItem: {
 		DisplayName: Skadi the Corrupting Heart
 		Tooltip:
@@ -250,6 +245,23 @@ Items: {
 			Increases player's (vanilla) damage by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK, as a percentage
 			Increases player's defense by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK
 			[c/34b2fa:Skadi the Corrupting Heart] is unaffected by [c/c2ac06:Inspiration]
+			'''
+	}
+
+	MostimaItem: {
+		DisplayName: Mostima
+		Tooltip:
+			'''
+			[c/FFFF00:Trait]
+			Only one can be summoned at a time. Requires 1 minion slot.
+			Attacks deal AOE damage aimed at the closest enemy within range to the cursor.
+			[c/FFFF00:Key of Chronology] (right click)
+			SP Cost: 63 [Auto Recovery] | Duration: 27 seconds
+			Attack Range increases, attacks turn into ripples that spread outward,
+			knockback is greatly increased, damage is tripled, and the effects of [c/c2ac06:Subjective Time Dilation] are tripled.
+			[c/c2ac06:Subjective Time Dilation]
+			Movement speed of all enemies and projectiles in Mostima's range is reduced by 33%
+			Movement speed of all enemies and projectiles outside Mostima's range is instead reduced by 18% (unaffected by skill)
 			'''
 	}
 }
@@ -272,7 +284,7 @@ Buffs: {
 
 	HertaMinionBuff: {
 		Description: Herta fights for you! turn the sound up :)
-		DisplayName: Herta Minion
+		DisplayName: Herta
 	}
 
 	FurinaMinionBuff: {
@@ -291,13 +303,8 @@ Buffs: {
 	}
 
 	XianglingBuff: {
-		DisplayName: Xiangling Buff
+		DisplayName: Xiangling
 		Description: There will never be enough heat. Never.
-	}
-
-	TestBuff: {
-		DisplayName: Test Buff
-		Description: TestBuff.Description
 	}
 
 	SkadiMinionBuff: {
@@ -311,6 +318,16 @@ Buffs: {
 			'''
 			......Well, this isn't good news either. The hematopoietic cells we biopsied... are proliferating.
 			Separated from Skadi's body, in a petri dish... they're proliferating.
+			'''
+	}
+
+	MostimaMinionBuff: {
+		DisplayName: Keeper of the Lock and Keys
+		Description:
+			'''
+			Give her the ultimate stage, and give her a little time to prepare.
+			When she pulls the other staff out, no matter how great her enemies are,
+			they'll be dust on the wind.
 			'''
 	}
 }
@@ -339,6 +356,8 @@ Projectiles: {
 	FiammettaProj.DisplayName: Fiammetta Proj
 	FiammettaExplosionProj.DisplayName: Fiammetta Explosion Proj
 	FiammettaExplosionProj2.DisplayName: Fiammetta Explosion Proj2
-	Test.DisplayName: Test
 	SkadiMinionProj.DisplayName: Skadi Minion Proj
+	MostimaMinion.DisplayName: Mostima Minion
+	MostimaBasicProj.DisplayName: Mostima Basic Proj
+	MostimaSkillProj.DisplayName: Mostima Skill Proj
 }

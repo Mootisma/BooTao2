@@ -81,10 +81,15 @@ namespace BooTao2
 		//
 		public int FiammettaS3 = 0;
 		public int FiammettaSP = 0;
-		public Vector2 FiammettaStoreMouse = new Vector2(0, 0);
+		public Vector2 FiammettaStoreMouse = Vector2.Zero;
 		//
 		public float SkadiATK = 0;
 		public int SkadiSP = 0;
+		//
+		public int MostimaSkillDuration = 0;
+		public int MostimaSkillSP = 0;
+		public bool MostimaSkill;
+		//
 		
 		public override void ResetEffects()
 		{
