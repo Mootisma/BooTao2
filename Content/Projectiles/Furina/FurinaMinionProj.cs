@@ -36,7 +36,6 @@ namespace BooTao2.Content.Projectiles.Furina
 			return false;
 		}
 
-		// This is mandatory if your minion deals contact damage (further related stuff in AI() in the Movement region)
 		int counter = 0;
 		int bufftimer = 0;
 		public override bool MinionContactDamage() {
@@ -47,9 +46,7 @@ namespace BooTao2.Content.Projectiles.Furina
 			Player player = Main.LocalPlayer;
 			if (player.statLife > (int)(player.statLifeMax2 * 0.5) + 15) {
 				player.statLife -= 15;
-				//player.GetDamage(DamageClass.Generic) -= player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
 				player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff += 0.03f;
-				//player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
 			}
 		}
 
@@ -68,7 +65,6 @@ namespace BooTao2.Content.Projectiles.Furina
 			
 			counter++;
 			bufftimer++;
-			owner.GetDamage(DamageClass.Generic) += owner.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
 			if (bufftimer > 1200) {
 				//owner.GetDamage(DamageClass.Generic) -= owner.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
 				owner.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff = 0f;

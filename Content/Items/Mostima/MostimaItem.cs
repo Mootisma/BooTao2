@@ -19,14 +19,14 @@ namespace BooTao2.Content.Items.Mostima
 		};
 		
 		SoundStyle Select1 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Mostima/Select1") {
-			Volume = 1f,
+			Volume = 1.2f,
 			PitchVariance = 0f,
 			MaxInstances = 1,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
 		};
 		
 		SoundStyle Select2 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Mostima/Select2") {
-			Volume = 1f,
+			Volume = 1.2f,
 			PitchVariance = 0f,
 			MaxInstances = 1,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
@@ -40,14 +40,14 @@ namespace BooTao2.Content.Items.Mostima
 		};
 		
 		SoundStyle Deploy1 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Mostima/Deploy1") {
-			Volume = 1f,
+			Volume = 1.2f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
 		};
 		
 		SoundStyle Deploy2 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Mostima/Deploy2") {
-			Volume = 1f,
+			Volume = 1.2f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
@@ -84,7 +84,7 @@ namespace BooTao2.Content.Items.Mostima
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		
 		public override void SetDefaults() {
-			Item.damage = 100;
+			Item.damage = (CalamityActive) ? 150 : 100;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 24;
 			Item.shoot = ModContent.ProjectileType<MostimaMinion>();

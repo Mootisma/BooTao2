@@ -8,6 +8,8 @@ namespace BooTao2.Content.Items.SuiseiYoyo
 {
 	public class SuiseiChannel2 : ModItem
 	{
+		public override string Texture => "BooTao2/Content/Items/SuiseiYoyo/SuiseiChannel";
+		
 		public override void SetStaticDefaults() {
 			// These are all related to gamepad controls and don't seem to affect anything else
 			//DisplayName.SetDefault("sui-chan wa");
@@ -19,8 +21,7 @@ namespace BooTao2.Content.Items.SuiseiYoyo
 
 		public override void SetDefaults() {
 			Item.width = 50; // The width of the item's hitbox.
-			Item.height = 50; // The height of the item's hitbox.
-			Item.maxStack = 9999;
+			Item.height = 50;
 			Item.useStyle = ItemUseStyleID.Shoot; // The way the item is used (e.g. swinging, throwing, etc.)
 			Item.useTime = 25; // All vanilla yoyos have a useTime of 25.
 			Item.useAnimation = 25; // All vanilla yoyos have a useAnimation of 25.

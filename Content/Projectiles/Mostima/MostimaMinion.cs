@@ -77,6 +77,8 @@ namespace BooTao2.Content.Projectiles.Mostima
 
 		public override void AI() {
 			Player owner = Main.player[Projectile.owner];
+			if (Main.myPlayer != Projectile.owner)
+				return;
 
 			if (!CheckActive(owner)) {
 				return;
@@ -170,7 +172,7 @@ namespace BooTao2.Content.Projectiles.Mostima
 		private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter) {
 			// Starting search distance
 			distanceFromTarget = 300f;
-			targetCenter = Projectile.position;
+			targetCenter = Main.MouseWorld;
 			foundTarget = false;
 
 			// This code is required if your minion weapon has the targeting feature

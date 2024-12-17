@@ -19,7 +19,7 @@ namespace BooTao2.Content.Projectiles.Mostima {
 			Projectile.ignoreWater = true;
 			Projectile.light = 0.9f;
 			Projectile.tileCollide = false;
-			Projectile.timeLeft = 15;
+			Projectile.timeLeft = 20;
 			Projectile.penetrate = -1;
 			
 			Projectile.alpha = 0;
@@ -34,7 +34,7 @@ namespace BooTao2.Content.Projectiles.Mostima {
 		
 		public override void AI() {
 			//position, width, height, type, speedx, speedy, alpha, color, scale
-			for (int d = 0; d < 10; d++) {
+			for (int d = 0; d < 8; d++) {
 				Dust.NewDust(Projectile.position, 300, 300, 68, 0, 0, 150, default, 1f);
 				Dust.NewDust(Projectile.position, 300, 300, 69, 0, 0, 150, default, 1f);
 				Dust.NewDust(Projectile.position, 300, 300, 70, 0, 0, 150, default, 1f);
@@ -43,7 +43,7 @@ namespace BooTao2.Content.Projectiles.Mostima {
 			}
 			Projectile.rotation = Projectile.velocity.ToRotation();
 			
-			int frameSpeed = 3;
+			int frameSpeed = 4;
 
 			Projectile.frameCounter++;
 

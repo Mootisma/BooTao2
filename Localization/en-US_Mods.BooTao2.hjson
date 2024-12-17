@@ -5,6 +5,7 @@ Items: {
 		DisplayName: Hu Tao
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Normal Attack: Secret Spear of Wangsheng]
 			Perform a [c/c2ac06:Charged Attack], lunging forward and dealing damage along the way.
 			[c/FFFF00:Elemental Skill: Guide to Afterlife]
@@ -32,7 +33,6 @@ Items: {
 		Tooltip:
 			'''
 			was never a staff
-			[c/FF9696:This text is red.]
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
 			'''
@@ -42,11 +42,9 @@ Items: {
 		DisplayName: R2 Homa
 		Tooltip:
 			'''
-			[c/FF9696:HP increased by 25%. Additionally, provides an ATK Bonus based on 1% of the wielder's Max HP.]
-			[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.2% of Max HP.]
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
-			Grants Spelunker and Honter potion effects.
+			Grants Spelunker and Hunter potion effects.
 			'''
 	}
 
@@ -56,7 +54,7 @@ Items: {
 			'''
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
-			Grants Spelunker and Honter potion effects.
+			Grants Spelunker and Hunter potion effects.
 			Grants a few fishing related accessory effects.
 			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
 			'''
@@ -95,11 +93,11 @@ Items: {
 			'''
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
-			Grants Spelunker and Honter potion effects.
+			Grants Spelunker and Hunter potion effects.
 			Grants a few fishing related accessory effects.
 			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
 			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
-			Grants the Frog Leg effects, the Rifle Scope effect at all times, and the Mana Flower effect.
+			Grants the Frog Leg effects and the Mana Flower effect.
 			'''
 	}
 
@@ -109,11 +107,11 @@ Items: {
 			'''
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
-			Grants Spelunker and Honter potion effects.
+			Grants Spelunker and Hunter potion effects.
 			Grants a few fishing related accessory effects.
 			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
 			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
-			Grants the Frog Leg effects, the Rifle Scope effect at all times, and the Mana Flower effect.
+			Grants the Frog Leg effects and the Mana Flower effect.
 			Grants the same Shrek Platform buff.
 			'''
 	}
@@ -122,7 +120,7 @@ Items: {
 		DisplayName: Herta
 		Tooltip:
 			'''
-			Art by [c/73a9ff:seseren]
+			Art by [c/73a9ff:seseren]. Contains assets from the game [c/73a9ff:Honkai: Star Rail]
 			Only one can be summoned at a time. Requires 1 minion slot.
 			[c/FFFF00:Talent: Fine, I'll Do It Myself]
 			Herta will fly towards enemies and deal contact damage.
@@ -136,6 +134,7 @@ Items: {
 	NingItem: {
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Sparkling Scatter]
 			[c/FF9696:Normal Attack]
 			Left click to shoot two gems and gain 1 [c/c2ac06:Star Jade] (max 3)
@@ -155,7 +154,7 @@ Items: {
 		DisplayName: Furina
 		Tooltip:
 			'''
-			Art by [c/73a9ff:@amayuki]
+			Art by [c/73a9ff:@amayuki] and Discord user ID [c/73a9ff:1263407368826261595]. Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Salon Solitaire]
 			Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance:
 			the Ball Octopus-shaped [c/c2ac06:Gentilhomme Usher], the Bubbly Seahorse-shaped [c/c2ac06:Surintendante Chevalmarin], and the Armored Crab-shaped [c/c2ac06:Mademoiselle Crabaletta].
@@ -174,6 +173,7 @@ Items: {
 		DisplayName: Yelan
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Depth-Clarion Dice]
 			Yelan creates an [c/c2ac06:Exquisite Throw] which aids her in battle.
 			Only one can be summoned at a time. Requires 1 minion slot to be summoned.
@@ -189,6 +189,7 @@ Items: {
 		DisplayName: Thorns
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Destreza] (right click)
 			SP Cost: 15 [Offensive Recovery] | Duration: 30 seconds
 			Thorns' ATK and ASPD increases by 25%
@@ -206,6 +207,7 @@ Items: {
 		DisplayName: Xiangling
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Pyronado]
 			Displaying her mastery over both fire and polearms, Xiangling sends a Pyronado whirling around her.
 			The Pyronado will move with your character for the ability's duration, dealing Pyro DMG to all opponents in its path.
@@ -217,6 +219,7 @@ Items: {
 		DisplayName: Fiammetta
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:'Reponite'] (right click)
 			SP Cost: 15 [Offensive Recovery] | Duration: Infinite
 			Changes the attack to a vertical barrage aimed at the cursor.
@@ -234,6 +237,7 @@ Items: {
 		DisplayName: Skadi the Corrupting Heart
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Trait]
 			Does not attack. Only one can be summoned at a time. Requires 1 minion slot.
 			Increases life regen of all players within range by 10% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK
@@ -252,6 +256,7 @@ Items: {
 		DisplayName: Mostima
 		Tooltip:
 			'''
+			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Trait]
 			Only one can be summoned at a time. Requires 1 minion slot.
 			Attacks deal AOE damage aimed at the closest enemy within range to the cursor.

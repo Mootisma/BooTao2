@@ -25,6 +25,7 @@ namespace BooTao2.Content.Buffs.Yelan
 				player.DelBuff(buffIndex);
 				buffIndex--;
 			}
+			player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().YelanDmgBuff;
 		}
 	}
 }

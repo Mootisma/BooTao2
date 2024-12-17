@@ -55,40 +55,34 @@ namespace BooTao2.Content.Projectiles.Yelan
 			SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
 			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
 			
-			if (foundTarget && (counter == 60) && (Main.myPlayer == Projectile.owner)) {
-				Vector2 projvel = 10 * ((Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY)) - Projectile.Center).SafeNormalize(Vector2.UnitX);
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projvel, ModContent.ProjectileType<YelanDiceAttackProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
-			}
-			if (foundTarget && (counter == 62) && (Main.myPlayer == Projectile.owner)) {
-				Vector2 projvel = 10 * ((Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY)) - Projectile.Center).SafeNormalize(Vector2.UnitX);
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projvel, ModContent.ProjectileType<YelanDiceAttackProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
-			}
-			if (foundTarget && (counter == 64) && (Main.myPlayer == Projectile.owner)) {
-				counter = 0;
-				//
-				//owner.GetDamage(DamageClass.Generic) -= owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff;
-				owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff += 0.035f;
-				if (owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff >= 0.5f) {
-					owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff = 0.5f;
+			Vector2 projvel = Vector2.Zero;
+			if ((Main.myPlayer == Projectile.owner) && foundTarget) {
+				if (counter > 59)
+					projvel = 12f * (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.UnitX);
+				if (counter == 60) {
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projvel, ModContent.ProjectileType<YelanDiceAttackProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
 				}
-				//owner.GetDamage(DamageClass.Generic) += owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff;
-				//
-				Vector2 projvel = 10 * ((Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY)) - Projectile.Center).SafeNormalize(Vector2.UnitX);
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projvel, ModContent.ProjectileType<YelanDiceAttackProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				if (counter == 62) {
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projvel, ModContent.ProjectileType<YelanDiceAttackProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				}
+				if (counter == 64){
+					counter = 0;
+					owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff += 0.035f;
+					if (owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff >= 0.5f) {
+						owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff = 0.5f;
+					}
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projvel, ModContent.ProjectileType<YelanDiceAttackProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				}
 			}
-			// the game handles this thing on its own; no need to subtract values from it
-			owner.GetDamage(DamageClass.Generic) += owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff;
 			counter++;
 			bufftimer++;
 			if (bufftimer > 1200) {
-				//owner.GetDamage(DamageClass.Generic) -= owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff;
 				owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff = 0.01f;
 				bufftimer = 0;
 			}
 			if (!foundTarget) {
 				counter = 0;
 				bufftimer = 0;
-				//owner.GetDamage(DamageClass.Generic) -= owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff;
 				owner.GetModPlayer<BooTaoPlayer>().YelanDmgBuff = 0f;
 			}
 		}

@@ -28,9 +28,7 @@ namespace BooTao2.Content.Projectiles.Furina
 			Player player = Main.LocalPlayer;
 			if (player.statLife > (int)(player.statLifeMax2 * 0.5) + 10) {
 				player.statLife -= 10;
-				//player.GetDamage(DamageClass.Generic) -= player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
 				player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff += 0.02f;
-				//player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
 			}
 		}
 

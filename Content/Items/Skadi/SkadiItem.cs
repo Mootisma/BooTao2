@@ -30,7 +30,7 @@ namespace BooTao2.Content.Items.Skadi
 			Item.useTime = 120;
 			Item.useAnimation = 120;
 			//Item.reuseDelay = 60;
-			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
+			Item.useStyle = ItemUseStyleID.Swing;
 			Item.value = Item.sellPrice(gold: 40);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Skadi/Deployment") {
@@ -40,9 +40,9 @@ namespace BooTao2.Content.Items.Skadi
 				SoundLimitBehavior = SoundLimitBehavior.IgnoreNew//ReplaceOldest
 			};
 
-			// These below are needed for a minion weapon
+			Item.noUseGraphic = true;
 			Item.noMelee = true; // this item doesn't do any melee damage
-			Item.DamageType = DamageClass.Summon; // Makes the damage register as summon. If your item does not have any damage type, it becomes true damage (which means that damage scalars will not affect it). Be sure to have a damage type
+			Item.DamageType = DamageClass.Summon; // Makes the damage register as summon
 			Item.buffType = ModContent.BuffType<SkadiMinionBuff>();
 			// No buffTime because otherwise the item tooltip would say something like "1 minute duration"
 			Item.shoot = ModContent.ProjectileType<SkadiMinionProj>(); // This item creates the minion projectile
@@ -74,7 +74,6 @@ namespace BooTao2.Content.Items.Skadi
 			return false;
 		}
 
-		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.DukeFishronMask, 1);

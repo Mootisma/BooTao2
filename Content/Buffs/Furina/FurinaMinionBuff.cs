@@ -25,6 +25,7 @@ namespace BooTao2.Content.Buffs.Furina
 				player.DelBuff(buffIndex);
 				buffIndex--;
 			}
+			player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
 		}
 	}
 }
