@@ -30,10 +30,18 @@ namespace BooTao2.Content.Projectiles.Thorns {
 				target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack++;
 			}
 			target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTdmg = (int)(damageDone * target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack / 4);
+			
+			for (int d = 0; d < 5; d++) {
+				Dust.NewDust(Projectile.position, 0, 0, 32, 0, 0, 150, default, 1f);
+			}
 		}
 		
 		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
 			modifiers.DamageVariationScale *= 0f;
+		}
+		
+		public override void AI() {
+			Dust.NewDust(Projectile.position, 0, 0, 32, 0, 0, 150, default, 1f);
 		}
 	}
 }

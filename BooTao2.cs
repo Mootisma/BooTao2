@@ -90,6 +90,7 @@ namespace BooTao2
 		public int MostimaSkillSP = 0;
 		public bool MostimaSkill;
 		//
+		public bool SkillReady;
 		
 		public override void ResetEffects()
 		{
@@ -101,6 +102,7 @@ namespace BooTao2
 			NingJade1State = false;
 			NingJade2State = false;
 			NingJade3State = false;
+			SkillReady = false;
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -119,6 +121,16 @@ namespace BooTao2
 			if (der > 0) {
 				modifiers.FinalDamage *= 0.1f;
 			}
+		}
+		
+		public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) {
+			ThornsSP = 0;
+			ThornsS3numUses = 0;
+			FiammettaS3 = 0;
+			FiammettaSP = 0;
+			MostimaSkillDuration = 0;
+			MostimaSkillSP = 0;
+			SkadiSP = 0;
 		}
 		
 		/*public override void NaturalLifeRegen (ref float regen)

@@ -1,3 +1,4 @@
+using BooTao2.Content.Projectiles;
 using BooTao2.Content.Projectiles.Thorns;
 using Terraria;
 using Terraria.ID;
@@ -74,6 +75,13 @@ namespace BooTao2.Content.Items.Thorns
 			}
 			if (player.GetModPlayer<BooTaoPlayer>().ThornsHealingCD <= 0){
 				player.AddBuff(ModContent.BuffType<ThornsRegen>(), 2, true);
+			}
+			
+			if (player.GetModPlayer<BooTaoPlayer>().ThornsSP >= 15 && player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses < 2) {
+				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
+				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);
+				}
 			}
 		}
 		

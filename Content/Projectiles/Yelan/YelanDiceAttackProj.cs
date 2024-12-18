@@ -40,6 +40,8 @@ namespace BooTao2.Content.Projectiles.Yelan
 
 			Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
+			
+			Dust.NewDust(Projectile.position, 0, 0, 33, 0, 0, 150, default, 1f);
 		}
 
 		public NPC FindClosestNPC(float maxDetectDistance) {

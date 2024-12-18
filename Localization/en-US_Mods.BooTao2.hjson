@@ -365,4 +365,5 @@ Projectiles: {
 	MostimaMinion.DisplayName: Mostima Minion
 	MostimaBasicProj.DisplayName: Mostima Basic Proj
 	MostimaSkillProj.DisplayName: Mostima Skill Proj
+	SkillReady.DisplayName: Skill Ready
 }

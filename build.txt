@@ -1,6 +1,6 @@
 displayName = Mootisma's Collection | Genshin Impact & Arknights
 author = mootisma
-version = 1.0.0
+version = 1.0.1
 homepage = https://bsky.app/profile/mootisma.bsky.social
 hideCode = true
 hideResources = true

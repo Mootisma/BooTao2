@@ -1,3 +1,4 @@
+using BooTao2.Content.Projectiles;
 using BooTao2.Content.Projectiles.Fiammetta;
 using Terraria;
 using Terraria.ID;
@@ -175,6 +176,13 @@ namespace BooTao2.Content.Items.Fiammetta
 				counter = 0;
 			}
 			// player.lifeRegen -= 16;
+			
+			if ((player.GetModPlayer<BooTaoPlayer>().FiammettaSP >= 15) && (player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0)) {
+				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
+				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);
+				}
+			}
 		}
 	}
 }

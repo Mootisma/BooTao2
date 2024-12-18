@@ -1,3 +1,4 @@
+using BooTao2.Content.Projectiles;
 using BooTao2.Content.Projectiles.Mostima;
 using BooTao2.Content.Buffs.Mostima;
 using Terraria;
@@ -211,6 +212,12 @@ namespace BooTao2.Content.Items.Mostima
 				}
 			}
 			ligma = 2;
+			if (player.GetModPlayer<BooTaoPlayer>().MostimaSkillSP >= 3780 && !player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
+				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
+				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);
+				}
+			}
 		}
 	}
 }
