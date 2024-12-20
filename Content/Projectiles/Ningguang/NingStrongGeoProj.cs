@@ -17,7 +17,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			Projectile.height = 32;
 
 			Projectile.aiStyle = 0;
-			Projectile.DamageType = DamageClass.Summon;
+			Projectile.DamageType = DamageClass.Magic;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.ignoreWater = true;
@@ -40,7 +40,9 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			if (closestNPC == null)
 				return;
 
-			Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+			// We only rotate by 3 degrees an update to give it a smooth trajectory. Increase the rotation speed here to make tighter turns
+			float targetAngle = Projectile.AngleTo(closestNPC.Center);
+			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(3)).ToRotationVector2() * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
 			
 			Dust.NewDust(Projectile.position, 0, 0, 32, 0, 0, 150, default, 1f);

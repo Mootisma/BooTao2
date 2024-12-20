@@ -16,7 +16,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			Projectile.width = 16;
 			Projectile.height = 16;
 			Projectile.aiStyle = 0;
-			Projectile.DamageType = DamageClass.Summon;
+			Projectile.DamageType = DamageClass.Magic;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.ignoreWater = true;
@@ -29,16 +29,15 @@ namespace BooTao2.Content.Projectiles.Ningguang
 		public override void AI() {
 			float maxDetectRadius = 400f;
 			float projSpeed = 7f;
-			if (Main.rand.Next(3) == 0) {
-				int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
-				Main.dust[dustnumber].noGravity = true;
-			}
+			int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
+			Main.dust[dustnumber].noGravity = true;
 
 			NPC closestNPC = FindClosestNPC(maxDetectRadius);
 			if (closestNPC == null)
 				return;
 
-			Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+			float targetAngle = Projectile.AngleTo(closestNPC.Center);
+			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(8)).ToRotationVector2() * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
 		}
 

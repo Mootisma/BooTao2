@@ -29,6 +29,7 @@ namespace BooTao2.Content.Items.Xiangling
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Swing;
+			Item.noUseGraphic = true;
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Xiangling/EatThis") {

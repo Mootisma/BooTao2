@@ -39,9 +39,10 @@ namespace BooTao2.Content.Projectiles.Herta
 			if (closestNPC == null)
 				return;
 
-			// If found, change the velocity of the projectile and turn it in the direction of the target
-			// Use the SafeNormalize extension method to avoid NaNs returned by Vector2.Normalize when the vector is zero
-			Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+			// We only rotate by 4 degrees an update to give it a smooth trajectory. Increase the rotation speed here to make tighter turns
+			//float length = Projectile.velocity.Length();
+			float targetAngle = Projectile.AngleTo(closestNPC.Center);
+			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(4)).ToRotationVector2() * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
 		}
 

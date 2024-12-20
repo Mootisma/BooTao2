@@ -19,9 +19,13 @@ A sword that mimicks Thorns\
 A minion that mimicks Xiangling\
 A weapon that mimicks Fiammetta\
 A minion that mimicks Skadi the Corrupting Heart\
-A minion that mimicks Mostima
+A minion that mimicks Mostima\
+A minion that mimicks Lancet-2
 
 ## Todo
 Surtr\
 Navia\
-A defensive item, like a shield to absorb dmg
+A defensive item, like a shield to absorb dmg\
+A healing item that works in multiplayer\
+A sentry minion (that can block enemies?)\
+Bosses and other enemies

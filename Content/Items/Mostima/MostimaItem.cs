@@ -222,6 +222,7 @@ namespace BooTao2.Content.Items.Mostima
 	}
 }
 /*
+https://docs.tmodloader.net/docs/stable/class_main.html#a55969af8fef5fd9819d1854403cf794b
 https://docs.tmodloader.net/docs/1.4-preview/class_terraria_1_1_utilities_1_1_unified_random.html
 https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/NPCs/ExampleCustomAISlimeNPC.cs
 https://www.w3schools.com/cs/cs_enums.php

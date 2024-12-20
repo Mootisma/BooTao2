@@ -32,7 +32,8 @@ namespace BooTao2.Content.Items.Yelan
 			Item.height = 32;
 			Item.useTime = 30;
 			Item.useAnimation = 30;
-			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.noUseGraphic = true;
 			Item.value = Item.sellPrice(gold: 20);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Yelan/YelanBurst") {

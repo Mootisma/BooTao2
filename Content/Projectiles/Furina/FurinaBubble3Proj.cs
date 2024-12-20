@@ -7,6 +7,8 @@ namespace BooTao2.Content.Projectiles.Furina
 {
 	public class FurinaBubble3Proj : ModProjectile
 	{
+		public override string Texture => "BooTao2/Content/Projectiles/Furina/FurinaBubble2Proj";
+		
 		public override void SetStaticDefaults() {
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false; // Make the cultist resistant to this projectile, as it's resistant to all homing projectiles.
 		}
@@ -43,7 +45,8 @@ namespace BooTao2.Content.Projectiles.Furina
 			if (closestNPC == null)
 				return;
 
-			Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+			float targetAngle = Projectile.AngleTo(closestNPC.Center);
+			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(5)).ToRotationVector2() * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
 			
 			Dust.NewDust(Projectile.position, 0, 0, 33, 0, 0, 150, default, 1f);

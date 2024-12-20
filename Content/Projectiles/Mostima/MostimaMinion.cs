@@ -446,7 +446,7 @@ namespace BooTao2.Content.Projectiles.Mostima
 		
 		int counter = 0;
 		private void TimeStop(bool isSkillActive) {
-			if (counter > 10) { //https://docs.tmodloader.net/docs/stable/class_main.html#a55969af8fef5fd9819d1854403cf794b
+			if (counter > 6) { //https://docs.tmodloader.net/docs/stable/class_main.html#a55969af8fef5fd9819d1854403cf794b
 				foreach (var proj in Main.ActiveProjectiles) {
 				if (proj.owner == Projectile.owner || !proj.friendly) {
 						continue;
@@ -466,6 +466,10 @@ namespace BooTao2.Content.Projectiles.Mostima
 						proj.velocity *= 0.82f;
 						Dust.NewDust(proj.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					}
+					// if they reach zero velocity give them a nudge
+					if (proj.velocity.Y <= 0.05f && proj.velocity.X <= 0.05f) {
+						proj.velocity = new Vector2(0.1f, 0.1f);
+					}
 				}
 				foreach (var npc in Main.ActiveNPCs) {
 					float between = Vector2.Distance(npc.Center, Main.MouseWorld);
@@ -481,6 +485,10 @@ namespace BooTao2.Content.Projectiles.Mostima
 					else {
 						npc.velocity *= 0.82f;
 						Dust.NewDust(npc.Center, 0, 0, 56, 0, 0, 150, default, 1f);
+					}
+					// if they reach zero velocity give them a nudge
+					if (npc.velocity.Y <= 0.05f && npc.velocity.X <= 0.05f) {
+						npc.velocity = new Vector2(0.1f, 0.1f);
 					}
 				}
 				counter = 0;

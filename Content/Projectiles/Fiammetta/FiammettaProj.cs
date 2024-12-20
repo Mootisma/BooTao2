@@ -41,8 +41,7 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 					// redirect the projectile to the mouse after it was sent straight up
 					if (Projectile.timeLeft == 55) {
 						Projectile.velocity = (player.GetModPlayer<BooTaoPlayer>().FiammettaStoreMouse - Projectile.Center).SafeNormalize(Vector2.UnitX);
-						Projectile.velocity.X *= 40f;
-						Projectile.velocity.Y *= 40f;
+						Projectile.velocity *= 40f;
 					}
 				}
 				

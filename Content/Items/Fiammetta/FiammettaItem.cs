@@ -82,7 +82,6 @@ namespace BooTao2.Content.Items.Fiammetta
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			// recipe.AddIngredient(ModContent.ItemType<Homa4>(), 1);
 			recipe.AddIngredient(ItemID.LivingFireBlock, 1);
 			recipe.AddIngredient(ItemID.AngelHalo, 1);
 			recipe.AddIngredient(ItemID.SoulofFright, 1);

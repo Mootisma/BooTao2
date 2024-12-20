@@ -32,7 +32,7 @@ namespace BooTao2.Content.Items.Ningguang
 
 			// Weapon Properties
 			Item.damage = (CalamityActive) ? 80 : 47;
-			Item.DamageType = DamageClass.Summon;
+			Item.DamageType = DamageClass.Magic;
 			Item.mana = 20;
 			Item.crit = 5;
 			Item.knockBack = 5.5f;

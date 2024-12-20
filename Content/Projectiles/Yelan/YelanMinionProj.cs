@@ -110,10 +110,10 @@ namespace BooTao2.Content.Projectiles.Yelan
             Projectile.rotation = owner.velocity.X * 0.05f;
 
             if (Projectile.spriteDirection == 1) {
-                Projectile.position.X = owner.Center.X + 48;
+                Projectile.position.X = owner.Center.X + 45;
             }
             else {
-                Projectile.position.X = owner.Center.X - 88;
+                Projectile.position.X = owner.Center.X - 100;
 
             }
             Projectile.position.Y = ownerMountedCenter.Y - Projectile.height / 2 - 38;

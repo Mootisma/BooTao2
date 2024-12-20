@@ -80,7 +80,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 			counter++;
 			
 			if (Projectile.alpha > 0) {
-				Projectile.alpha -= 4;
+				Projectile.alpha -= 5;
 			}
 
 			GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);

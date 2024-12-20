@@ -22,7 +22,7 @@ namespace BooTao2.Content.Items.Herta
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 70 : 40;
+			Item.damage = (CalamityActive) ? 60 : 35;
 			Item.knockBack = 3.2f;
 			Item.mana = 10; // mana cost
 			Item.width = 32;
@@ -30,6 +30,7 @@ namespace BooTao2.Content.Items.Herta
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
+			Item.noUseGraphic = true;
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/DoYouKnowHerta") {
@@ -75,13 +76,8 @@ namespace BooTao2.Content.Items.Herta
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {
 			Recipe recipe = CreateRecipe();
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("PurifiedGel", out ModItem purifiedGel) ) {
-				recipe.AddIngredient(purifiedGel.Type);
-			}
-			else {
-				recipe.AddIngredient(ItemID.Bone, 1);
-			}
-			recipe.AddIngredient(ItemID.HellstoneBar, 1);
+			recipe.AddIngredient(ItemID.GoldenKey, 1);
+			recipe.AddIngredient(ItemID.MeteoriteBar, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

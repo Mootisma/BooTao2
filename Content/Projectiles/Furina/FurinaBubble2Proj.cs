@@ -41,7 +41,8 @@ namespace BooTao2.Content.Projectiles.Furina
 			if (closestNPC == null)
 				return;
 
-			Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+			float targetAngle = Projectile.AngleTo(closestNPC.Center);
+			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(5)).ToRotationVector2() * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
 			
 			Dust.NewDust(Projectile.position, 0, 0, 33, 0, 0, 150, default, 1f);

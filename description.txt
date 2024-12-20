@@ -4,7 +4,6 @@ Contains content and QoL.
 If you have suggestions, you can message me on Discord: mootisma
 
 ## Notable Content
-A Yoyo line that has Suisei on it
 A special lance that mimicks Hu Tao
 A minion that mimicks Herta
 A weapon that mimicks Ningguang
@@ -15,7 +14,12 @@ A minion that mimicks Xiangling
 A weapon that mimicks Fiammetta
 A minion that mimicks Skadi the Corrupting Heart
 A minion that mimicks Mostima
+A minion that mimicks Lancet-2
 
-
+A Yoyo line that has Suisei on it
 Pickaxe line that has a fast use time, for mining faster.
 Platforms that are unlimited, provide light, significantly increased item grab range and speed, and equivalent buffs to typical tiles such as campfires.
+
+## Changelog
+1.0.2: Added Lancet-2
+1.0.1: Added Skill Ready indicators for Thorns, Fiammetta, and Mostima

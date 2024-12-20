@@ -31,7 +31,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
             Player player = Main.player[Projectile.owner];
 			if (player.GetModPlayer<BooTaoPlayer>().NingJade1State || damageState) {
 				damageState = true;
-				Projectile.DamageType = DamageClass.Summon;
+				Projectile.DamageType = DamageClass.Magic;
 				Projectile.friendly = true;
 				if (Main.rand.Next(6) == 0) {
 					int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
@@ -52,7 +52,8 @@ namespace BooTao2.Content.Projectiles.Ningguang
 					return;
 				}
 
-				Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+				float targetAngle = Projectile.AngleTo(closestNPC.Center);
+				Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(8)).ToRotationVector2() * projSpeed;
 				Projectile.rotation = Projectile.velocity.ToRotation();
 				
 				Dust.NewDust(Projectile.position, 0, 0, 32, 0, 0, 150, default, 1f);

@@ -31,13 +31,12 @@ namespace BooTao2.Content.Items.SuiseiYoyo
 			Item.damage = 8; // The amount of damage the item does to an enemy or player.
 			Item.DamageType = DamageClass.MeleeNoSpeed; // The type of damage the weapon does. MeleeNoSpeed means the item will not scale with attack speed.
 			Item.knockBack = 3f; // The amount of knockback the item inflicts.
-			Item.crit = 100; // The percent chance for the weapon to deal a critical strike. Defaults to 4.
+			Item.crit = 46; // The percent chance for the weapon to deal a critical strike. Defaults to 4.
 			Item.channel = true; // Set to true for items that require the attack button to be held out (e.g. yoyos and magic missile weapons)
 			//Item.rare = ModContent.RarityType<ExampleModRarity>(); // The item's rarity. This changes the color of the item's name.
 			//Item.value = Item.buyPrice(gold: 1); // The amount of money that the item is can be bought for.
 			Item.value = 1;
 			Item.rare = 2;
-			Item.maxStack = 9999;
 			Item.shoot = ModContent.ProjectileType<SuiseiChannelProj>(); // Which projectile this item will shoot. We set this to our corresponding projectile.
 			Item.shootSpeed = 16f; // The velocity of the shot projectile.			
 		}

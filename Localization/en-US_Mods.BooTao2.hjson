@@ -269,6 +269,24 @@ Items: {
 			Movement speed of all enemies and projectiles outside Mostima's range is instead reduced by 18% (unaffected by skill)
 			'''
 	}
+
+	TestItem: {
+		DisplayName: Test Item
+		Tooltip: ""
+	}
+
+	Lancet2Item: {
+		DisplayName: Lancet2
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Trait]
+			Only one can be summoned at a time. Requires 0 minion slots, but has a long Redeployment Time.
+			Does not attack enemies. Restores the HP of allies in range based on Lancet-2's ATK.
+			[c/FFFF00:Support Spray]
+			Immediately heals all players on deployment.
+			'''
+	}
 }
 
 Buffs: {
@@ -288,7 +306,7 @@ Buffs: {
 	}
 
 	HertaMinionBuff: {
-		Description: Herta fights for you! turn the sound up :)
+		Description: It's about seventy percent similar to how I looked as a child.
 		DisplayName: Herta
 	}
 
@@ -335,6 +353,16 @@ Buffs: {
 			they'll be dust on the wind.
 			'''
 	}
+
+	TestBuff: {
+		DisplayName: Test Buff
+		Description: test
+	}
+
+	Lancet2Buff: {
+		DisplayName: Lancet2
+		Description: She knows that she's a robot.
+	}
 }
 
 Projectiles: {
@@ -366,4 +394,8 @@ Projectiles: {
 	MostimaBasicProj.DisplayName: Mostima Basic Proj
 	MostimaSkillProj.DisplayName: Mostima Skill Proj
 	SkillReady.DisplayName: Skill Ready
+	Test.DisplayName: Test
+	TestProj2.DisplayName: Test Proj2
+	Lancet2Minion.DisplayName: Lancet2 Minion
+	Lancet2Proj.DisplayName: Lancet2 Proj
 }
