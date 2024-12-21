@@ -256,7 +256,7 @@ Items: {
 		DisplayName: Mostima
 		Tooltip:
 			'''
-			Contains assets from the game [c/73a9ff:Arknights]
+			Art by [c/73a9ff:silenxe*]. Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Trait]
 			Only one can be summoned at a time. Requires 1 minion slot.
 			Attacks deal AOE damage aimed at the closest enemy within range to the cursor.
@@ -301,13 +301,13 @@ Buffs: {
 	}
 
 	BloodBlossomBuff: {
-		Description: Damage Over Time
 		DisplayName: Blood Blossom
+		Description: The spear opens the path to the afterlife, and the butterflies bridge this world and the next.
 	}
 
 	HertaMinionBuff: {
-		Description: It's about seventy percent similar to how I looked as a child.
 		DisplayName: Herta
+		Description: It's about seventy percent similar to how I looked as a child.
 	}
 
 	FurinaMinionBuff: {

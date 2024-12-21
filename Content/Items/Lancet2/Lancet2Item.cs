@@ -15,8 +15,8 @@ namespace BooTao2.Content.Items.Lancet2 {
 			Item.knockBack = 0f;
 			Item.width = 32;
 			Item.height = 32;
-			Item.useTime = 6;
-			Item.useAnimation = 6;
+			Item.useTime = 30;
+			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noUseGraphic = true;
 			Item.value = Item.sellPrice(silver: 1);
