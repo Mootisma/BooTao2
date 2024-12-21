@@ -13,11 +13,10 @@ namespace BooTao2.Content.Projectiles
         {
             Projectile.width = 61;
             Projectile.height = 61;
-            Projectile.timeLeft = 60;
+            Projectile.timeLeft = 10;
             Projectile.penetrate = -1;
             Projectile.hide = false;
             Projectile.alpha = 0;
-            Projectile.netImportant = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
 			Projectile.scale = 0.7f;

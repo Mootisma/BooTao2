@@ -72,7 +72,7 @@ namespace BooTao2.Content.Items.Fiammetta
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
 			Item.useStyle = ItemUseStyleID.HoldUp;
-			Item.value = Item.sellPrice(gold: 30);
+			Item.value = Item.sellPrice(gold: 40);
 			Item.rare = ItemRarityID.Red;
 			//Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;

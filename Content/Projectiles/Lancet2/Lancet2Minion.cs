@@ -148,7 +148,8 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 				bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 				bool inRange = between < distanceFromTarget;
 				bool inRange2 = between < 500f;
-				if (((closest && inRange && player.statLife < trackLife) || !foundTarget) && inRange2) {
+				bool NotFull = player.statLife < player.statLifeMax2;
+				if (((closest && inRange && player.statLife < trackLife) || !foundTarget) && inRange2 && NotFull) {
 					distanceFromTarget = between;
 					targetCenter = player.Center;
 					foundTarget = true;

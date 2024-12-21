@@ -13,7 +13,7 @@ namespace BooTao2.Content.Buffs.Thorns {
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			player.lifeRegen += 10;
+			player.lifeRegen += 10;//5 hp/s
 		}
 	}
 }

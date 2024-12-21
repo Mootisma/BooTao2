@@ -85,6 +85,9 @@ namespace BooTao2.Content.Projectiles.Mostima
 			}
 			
 			TimeStop(owner.GetModPlayer<BooTaoPlayer>().MostimaSkill);
+			if (owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration == 1) {
+				TimeResume();
+			}
 			if (owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration > 0) {
 				owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration--;
 			}
@@ -92,9 +95,6 @@ namespace BooTao2.Content.Projectiles.Mostima
 				owner.GetModPlayer<BooTaoPlayer>().MostimaSkillSP++;
 			if (owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration <= 0) {
 				owner.GetModPlayer<BooTaoPlayer>().MostimaSkill = false;
-			}
-			if (owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration == 1) {
-				TimeResume();
 			}
 			
 			if (Projectile.alpha > 0) {
@@ -340,23 +340,24 @@ namespace BooTao2.Content.Projectiles.Mostima
 				case StateMachine.Attack:
 					// loop attack anim
 					frameSpeed = 3;
+					
+					// checks to go into new state
 					if (Projectile.frame >= 75) {
 						Projectile.frame = 58;
-						
-						// checks to go into new state
 						if (!foundTarget) {
 							myVar = StateMachine.Idle;
 							frameSpeed = 4;
 							Projectile.frame = 10;
 							Projectile.frameCounter = 0;
 						}
-						if (player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
-							myVar = StateMachine.SkillStart;
-							frameSpeed = 3;
-							Projectile.frame = 75;
-							Projectile.frameCounter = 0;
-						}
 					}
+					if (player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
+						myVar = StateMachine.SkillStart;
+						frameSpeed = 3;
+						Projectile.frame = 75;
+						Projectile.frameCounter = 0;
+					}
+					
 					// if on the 7th frame, spawn the projectile
 					if (Projectile.frame == 64 && Projectile.frameCounter == 0) {
 						Projectile.NewProjectile(Projectile.GetSource_FromThis(), targetCenter, Vector2.Zero, ModContent.ProjectileType<MostimaBasicProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
@@ -402,23 +403,24 @@ namespace BooTao2.Content.Projectiles.Mostima
 				case StateMachine.SkillAttack:
 					// loop attack anim
 					frameSpeed = 3;
+					
+					// checks to go into new state
 					if (Projectile.frame >= 120) {
 						Projectile.frame = 102;
-						
-						// checks to go into new state
 						if (!foundTarget) {
 							myVar = StateMachine.SkillIdle;
 							frameSpeed = 6;
 							Projectile.frame = 82;
 							Projectile.frameCounter = 0;
 						}
-						if (!player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
-							myVar = StateMachine.SkillEnd;
-							frameSpeed = 3;
-							Projectile.frame = 120;
-							Projectile.frameCounter = 0;
-						}
 					}
+					if (!player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
+						myVar = StateMachine.SkillEnd;
+						frameSpeed = 3;
+						Projectile.frame = 120;
+						Projectile.frameCounter = 0;
+					}
+					
 					// if on the 7th frame, spawn the projectile
 					if (Projectile.frame == 109 && Projectile.frameCounter == 0) {
 						Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, (targetCenter - Projectile.Center).SafeNormalize(Vector2.UnitX) * new Vector2(70f, 70f), ModContent.ProjectileType<MostimaSkillProj>(), Projectile.damage * 3, Projectile.knockBack * 5f, Projectile.owner, 0, 1);
@@ -486,9 +488,22 @@ namespace BooTao2.Content.Projectiles.Mostima
 						npc.velocity *= 0.82f;
 						Dust.NewDust(npc.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					}
-					// if they reach zero velocity give them a nudge
-					if (npc.velocity.Y <= 0.05f && npc.velocity.X <= 0.05f) {
-						npc.velocity = new Vector2(0.1f, 0.1f);
+					// if they approach zero velocity give them a nudge
+					if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
+						if (isSkillActive) {
+							npc.velocity *= 2f;
+						}
+						else {
+							npc.velocity *= 4f;
+						}
+					}
+					if (Math.Abs(npc.velocity.Y) <= 0.5f && Math.Abs(npc.velocity.X) <= 0.5f && npc.boss) {
+						if (isSkillActive) {
+							npc.velocity *= 2f;
+						}
+						else {
+							npc.velocity *= 5f;
+						}
 					}
 				}
 				counter = 0;

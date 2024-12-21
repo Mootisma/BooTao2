@@ -11,7 +11,7 @@ using BooTao2.Content.Buffs.Lancet2;
 namespace BooTao2.Content.Items.Lancet2 {
 	public class Lancet2Item : ModItem {
 		public override void SetDefaults() {
-			Item.damage = 10;
+			Item.damage = 5;
 			Item.knockBack = 0f;
 			Item.width = 32;
 			Item.height = 32;

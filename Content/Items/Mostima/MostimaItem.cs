@@ -20,14 +20,14 @@ namespace BooTao2.Content.Items.Mostima
 		};
 		
 		SoundStyle Select1 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Mostima/Select1") {
-			Volume = 1.2f,
+			Volume = 1.3f,
 			PitchVariance = 0f,
 			MaxInstances = 1,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
 		};
 		
 		SoundStyle Select2 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Mostima/Select2") {
-			Volume = 1.2f,
+			Volume = 1.3f,
 			PitchVariance = 0f,
 			MaxInstances = 1,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
@@ -85,7 +85,7 @@ namespace BooTao2.Content.Items.Mostima
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 150 : 100;
+			Item.damage = (CalamityActive) ? 130 : 90;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 24;
 			Item.shoot = ModContent.ProjectileType<MostimaMinion>();
@@ -99,7 +99,7 @@ namespace BooTao2.Content.Items.Mostima
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
-			Item.value = Item.sellPrice(silver: 1);
+			Item.value = Item.sellPrice(gold: 40);
 			Item.rare = ItemRarityID.Blue;
 			Item.autoReuse = false;
 			Item.useTurn = false;
@@ -156,13 +156,13 @@ namespace BooTao2.Content.Items.Mostima
 			// https://docs.tmodloader.net/docs/1.4-preview/class_terraria_1_1_n_p_c.html
 			// also is there a better way to check these :skull:
 			if (NPC.downedMechBoss1)//destroyer
-				damage += 10;
+				damage += 3;
 			if (NPC.downedMechBoss2)//twins
-				damage += 10;
+				damage += 3;
 			if (NPC.downedMechBoss3)//skeletron prime
-				damage += 10;
+				damage += 3;
 			if (NPC.downedPlantBoss)
-				damage += 10;
+				damage += 11;
 			if (NPC.downedGolemBoss)
 				damage += 10;
 			if (NPC.downedAncientCultist)//lunatic cultist

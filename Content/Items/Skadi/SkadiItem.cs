@@ -22,7 +22,7 @@ namespace BooTao2.Content.Items.Skadi
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 120 : 100;
+			Item.damage = (CalamityActive) ? 100 : 80;
 			Item.knockBack = 1f;
 			Item.mana = 100; // mana cost
 			Item.width = 32;
