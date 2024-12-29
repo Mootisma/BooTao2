@@ -76,6 +76,19 @@ namespace BooTao2.Content.Projectiles {
 			Item.noMelee = true; 
 			Item.DamageType = DamageClass.Magic;
 		}
+		
+		//public override void UpdateInventory (Player player) {
+		//	player.GetModPlayer<BooTaoPlayer>().damageTest++;
+		//}
+		
+		//public override void HoldItem(Player player) {
+		//	player.GetModPlayer<BooTaoPlayer>().damageTest++;
+		//}
+		
+		public override bool CanUseItem(Player player) {
+			player.GetModPlayer<BooTaoPlayer>().damageTest++;
+			return true;
+		}
 	}
 	
 	public class TestBuff : ModBuff
@@ -88,13 +101,6 @@ namespace BooTao2.Content.Projectiles {
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			if (player.ownedProjectileCounts[ModContent.ProjectileType<Lancet2Minion>()] > 0) {
-				player.buffTime[buffIndex] = 18000;
-			}
-			else {
-				player.DelBuff(buffIndex);
-				buffIndex--;
-			}
 		}
 	}
 }

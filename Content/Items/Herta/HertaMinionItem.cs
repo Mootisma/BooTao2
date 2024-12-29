@@ -22,9 +22,9 @@ namespace BooTao2.Content.Items.Herta
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 60 : 35;
+			Item.damage = (CalamityActive) ? 45 : 30;
 			Item.knockBack = 3.2f;
-			Item.mana = 10; // mana cost
+			Item.mana = 20; // mana cost
 			Item.width = 32;
 			Item.height = 32;
 			Item.useTime = 30;
@@ -78,6 +78,7 @@ namespace BooTao2.Content.Items.Herta
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.GoldenKey, 1);
 			recipe.AddIngredient(ItemID.MeteoriteBar, 1);
+			recipe.AddIngredient(ItemID.HellstoneBar, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

@@ -44,6 +44,8 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 			modifiers.ArmorPenetration += 10f;
 			
 			Player player = Main.LocalPlayer;
+			if (Main.myPlayer != Projectile.owner)
+				return;
 			
 			float distancebtwn = Vector2.Distance(target.Center, player.GetModPlayer<BooTaoPlayer>().FiammettaStoreMouse);
 			if (distancebtwn < 100) {

@@ -198,7 +198,7 @@ namespace BooTao2.Content.Items.Mostima
 						SoundEngine.PlaySound(Battle4, player.Center);
 				}
 				return false;
-			}
+			}// return player.ownedProjectileCounts[Item.shoot] < 1;
 			return true;
 		}
 		

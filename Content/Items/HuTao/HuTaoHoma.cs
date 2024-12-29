@@ -119,7 +119,7 @@ namespace BooTao2.Content.Items.HuTao
 			if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
 				player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().HuTaoHPDmgBuff; // Increase ALL player damage
 				//player.endurance = 1f - (0.1f * (1f - player.endurance));
-				player.statLifeMax2 += 100;
+				// player.statLifeMax2 += 100;
 				//player.statDefense += 50;
 				player.noKnockback = true;
 				player.noFallDmg = true;

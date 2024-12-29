@@ -64,8 +64,16 @@ namespace BooTao2.Content.Projectiles.Skadi
 			
 			if (counter > 60) {
 				foreach (var player in Main.ActivePlayers) {
+					//only buff allies on the same team
+					// || player.team == 0 checks if the player is in a team (singleplayer cant pick teams though)
+					// (Main.netMode != NetmodeID.SinglePlayer)
+					if (owner.team != player.team) {
+						continue;
+					}
+					
 					float distancebtwn = Vector2.Distance(Projectile.Center, player.Center);
 					if (distancebtwn < 1500) {
+						player.ClearBuff(ModContent.BuffType<SkadiS2Buff>());
 						player.AddBuff(ModContent.BuffType<SkadiS2Buff>(), 120, true);
 					}
 				}

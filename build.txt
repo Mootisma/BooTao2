@@ -1,6 +1,6 @@
 displayName = Mootisma's Collection
 author = mootisma
-version = 1.0.3
+version = 1.0.5.0
 homepage = https://bsky.app/profile/mootisma.bsky.social
 hideCode = true
 hideResources = true

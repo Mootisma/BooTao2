@@ -10,6 +10,8 @@ namespace BooTao2.Content.Items.HomaPickaxe
 {
 	public class Homa5 : ModItem
 	{
+		public override string Texture => "BooTao2/Content/Items/HomaPickaxe/Homa";
+		
 		public override void SetDefaults()
 		{
 			Item.damage = 39;
@@ -22,12 +24,12 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Item.knockBack = 12;
 			Item.pick = 350;
             Item.tileBoost = 5;
-			Item.value = 3;
+			Item.value = 4;
 			Item.rare = 10;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.useTurn = true;
-			Item.maxStack = 9999;
+			Item.maxStack = 1;
 		}
 
 		public override void AddRecipes()

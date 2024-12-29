@@ -75,6 +75,11 @@ namespace BooTao2.Content.Items.SuiseiYoyo
 				.AddIngredient(ItemID.CrimsonYoyo, 1)
 				.AddTile(TileID.WorkBenches)
 				.Register();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<SuiseiChannel>(), 1)
+				.AddIngredient(ItemID.CorruptYoyo, 1)
+				.AddTile(TileID.WorkBenches)
+				.Register();
 		}
 	}
 }

@@ -40,7 +40,7 @@ namespace BooTao2.Content.Items.Thorns
 			Item.useStyle = 1;
 			Item.knockBack = 6;
 			//
-			Item.value = Item.sellPrice(gold: 30);
+			Item.value = Item.sellPrice(gold: 4);
 			Item.rare = 3;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;

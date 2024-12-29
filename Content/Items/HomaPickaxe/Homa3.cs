@@ -15,6 +15,8 @@ namespace BooTao2.Content.Items.HomaPickaxe
 		//	Tooltip.SetDefault("[c/FF9696:HP increased by 30%. Additionally, provides an ATK Bonus based on 1.2% of the wielder's Max HP.]\n[c/FF9696:When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.4% of Max HP.]\nBuffs the Shrek Platform: Adds Bast Statue and Bewitching Table");
 		//}//https://terraria.wiki.gg/wiki/Chat#Tags
 
+		public override string Texture => "BooTao2/Content/Items/HomaPickaxe/Homa";
+		
 		public override void SetDefaults()
 		{
 			Item.damage = 15;
@@ -33,7 +35,7 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.useTurn = true;
-			Item.maxStack = 9999;
+			Item.maxStack = 1;
 			//Item.defense = 1;https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_item.html
 		}
 

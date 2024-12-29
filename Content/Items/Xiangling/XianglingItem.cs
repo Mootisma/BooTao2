@@ -21,7 +21,7 @@ namespace BooTao2.Content.Items.Xiangling
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 70 : 40;
+			Item.damage = (CalamityActive) ? 80 : 60;
 			Item.knockBack = 5f;
 			Item.mana = 10;
 			Item.width = 32;
@@ -79,7 +79,7 @@ namespace BooTao2.Content.Items.Xiangling
 			}
 			recipe.AddIngredient(ItemID.Gel, 1);
 			recipe.AddIngredient(ItemID.HellstoneBar, 1);
-			recipe.AddIngredient(ItemID.Torch, 1);
+			recipe.AddIngredient(ItemID.CookingPot, 1);
 			recipe.AddIngredient(ItemID.Spear, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();

@@ -12,6 +12,7 @@ namespace BooTao2.Content.Items.Lancet2 {
 	public class Lancet2Item : ModItem {
 		public override void SetDefaults() {
 			Item.damage = 5;
+			Item.mana = 3;
 			Item.knockBack = 0f;
 			Item.width = 32;
 			Item.height = 32;

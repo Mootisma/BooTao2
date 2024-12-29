@@ -144,6 +144,11 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 			trackLife = 0;
 			
 			foreach (var player in Main.ActivePlayers) {
+				//dont heal players on a different team than the owner
+				// || player.team == 0
+				if (Main.player[Projectile.owner].team != player.team) {
+					continue;
+				}
 				float between = Vector2.Distance(player.Center, Projectile.Center);
 				bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 				bool inRange = between < distanceFromTarget;

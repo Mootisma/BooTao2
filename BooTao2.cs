@@ -1,5 +1,10 @@
 using BooTao2.Content.Buffs.BloodBlossomBuff;
+using BooTao2.Content.Buffs.Aventurine;
 using BooTao2.Content.Items.HuTao;
+using BooTao2.Content.Items.RaidenShogun;
+using BooTao2.Content.Items.Herta;
+using BooTao2.Content.Projectiles.RaidenShogun;
+using BooTao2.Content.Buffs.RaidenShogun;
 using Microsoft.Xna.Framework;
 using System;
 using System.IO;
@@ -47,6 +52,30 @@ namespace BooTao2
 			recipe.AddIngredient(ItemID.SoulofLight, 10);
 			recipe.AddIngredient(ItemID.CrystalBullet, 10);
 			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.WormholePotion, 30);
+			recipe.AddIngredient(ItemID.DirtBlock, 1);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.Revolver, 1);
+			recipe.AddIngredient(ItemID.DemoniteBar, 9);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.Revolver, 1);
+			recipe.AddIngredient(ItemID.CrimtaneBar, 9);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.Pho, 1);
+			recipe.AddIngredient(ItemID.Mushroom, 1);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.DPSMeter, 1);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.Spear, 1);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+			recipe.Register();
 		}
 	}
 	
@@ -91,6 +120,15 @@ namespace BooTao2
 		public bool MostimaSkill;
 		//
 		public bool SkillReady;
+		//
+		public int damageTest = 0;
+		//
+		public int AventurineShieldHP = 0;
+		public int AventurineBlindBet = 0;
+		//
+		public bool RaidenShogunSkill;
+		public int RaidenShogunSkillDamage = 0;
+		public int RaidenShogunCooldown = 0;
 		
 		public override void ResetEffects()
 		{
@@ -103,6 +141,7 @@ namespace BooTao2
 			NingJade2State = false;
 			NingJade3State = false;
 			SkillReady = false;
+			RaidenShogunSkill = false;
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -131,6 +170,7 @@ namespace BooTao2
 			MostimaSkillDuration = 0;
 			MostimaSkillSP = 0;
 			SkadiSP = 0;
+			AventurineShieldHP = 0;
 		}
 		
 		/*public override void NaturalLifeRegen (ref float regen)
@@ -177,6 +217,62 @@ namespace BooTao2
 		}
 		
 		//https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_player.html#ae8dbfbc03aeba36009cca97321fb8754
+		
+		/*public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot) {
+			if (damageTest > 0) {
+				damageTest = 0;
+				return false;
+			}
+			return true;
+		}*/
+		
+		public override bool ConsumableDodge(Player.HurtInfo info) {
+			if (AventurineShieldHP > 0) {
+				foreach (var ligma in Main.ActivePlayers) {
+					if (ligma.HasBuff(ModContent.BuffType<AventurineShieldOrigin>())) {
+						ligma.GetModPlayer<BooTaoPlayer>().AventurineBlindBet++;
+					}
+				}
+				damageTest = info.Damage;
+				//SoundEngine.PlaySound(SoundID.Shatter with { Pitch = 0.5f });
+				// if the shield can tank the hit
+				if (AventurineShieldHP >= info.Damage) {
+					AventurineShieldHP -= info.Damage;
+				}
+				// else, break the shield and take the remaining dmg
+				else {
+					SoundEngine.PlaySound(new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Aventurine/GlassBreaking"));
+					Player.HurtInfo ALLORNOTHING = new Player.HurtInfo();
+					ALLORNOTHING.Damage = info.Damage - AventurineShieldHP;
+					ALLORNOTHING.DamageSource = PlayerDeathReason.ByCustomReason("Lost it all...");
+					ALLORNOTHING.PvP = false;
+					ALLORNOTHING.Dodgeable = true;
+					ALLORNOTHING.Knockback = 4f;
+					ALLORNOTHING.HitDirection = Player.direction;
+					Player.Hurt(ALLORNOTHING);
+					AventurineShieldHP = 0;
+				}
+				Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+				
+				//if (Player.whoAmI != Main.myPlayer) { return; }
+				//if (Main.netMode != NetmodeID.SinglePlayer) {
+					//SendExampleDodgeMessage;
+				//}
+				return true;
+			}
+			return false;
+		}
+		
+		public override void OnHitAnything(float x, float y, Entity victim){
+			if (RaidenShogunSkill && RaidenShogunCooldown == 0) {
+				int damage = (int)(RaidenShogunSkillDamage / 5);
+				if (Player.HasBuff(ModContent.BuffType<RaidenShogunBuff>()))
+					damage = RaidenShogunSkillDamage;
+				Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(x, y), Vector2.Zero, ModContent.ProjectileType<RaidenShogunSkillProj>(), damage, 1, Player.whoAmI);
+				RaidenShogunCooldown = 54;
+				SoundEngine.PlaySound(SoundID.Item94);
+			}
+		}
 	}
 	
 	public class BooTaoGlobalItem : GlobalItem
@@ -258,10 +354,18 @@ namespace BooTao2
 		}
 		
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {
-			if (npc.type == NPCID.WallofFlesh)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HuTaoHoma>(), 50));
+			if (npc.type == NPCID.WallofFlesh){
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HuTaoHoma>(), 40));
             }
+			if (npc.type == NPCID.MeteorHead || npc.type == NPCID.AngryBones || npc.type == NPCID.DungeonSpirit){
+				npcLoot.Add(ItemDropRule.Common(ItemID.Meteorite, 3, 1, 4));
+			}
+			if (npc.type == NPCID.MartianSaucer){
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RaidenShogunItem>(), 30));
+			}
+			if (npc.type == NPCID.IceElemental){
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HertaMinionItem>(), 30));
+			}
 		}
 	}
 }
