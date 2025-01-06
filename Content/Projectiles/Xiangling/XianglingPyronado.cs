@@ -69,6 +69,10 @@ namespace BooTao2.Content.Projectiles.Xiangling
 			Projectile.rotation = Projectile.rotation + MathHelper.ToRadians(10);
 
 			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.2f);
+			for (int d = 0; d < 3; d++) {
+				Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
+				Dust.NewDustPerfect(Projectile.Center + speed * 32, 127, speed * 2, 120, default, 1f);
+			}
 		}
 
 		// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not

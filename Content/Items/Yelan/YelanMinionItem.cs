@@ -21,10 +21,10 @@ namespace BooTao2.Content.Items.Yelan
 
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 100;
+				Item.damage = 90;
 			}
 			else {
-				Item.damage = 55;
+				Item.damage = 50;
 			}
 			Item.knockBack = 3.2f;
 			Item.mana = 10; // mana cost
@@ -79,8 +79,8 @@ namespace BooTao2.Content.Items.Yelan
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {//FragmentOfTide
 			Recipe recipe = CreateRecipe();
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("PyreMantle", out ModItem pyremantle) ) {
-				recipe.AddIngredient(pyremantle.Type);
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("OldDie", out ModItem OldDie) ) {
+				recipe.AddIngredient(OldDie.Type);
 			}
 			recipe.AddIngredient(ItemID.ChlorophyteBar, 1);
 			if (ModLoader.TryGetMod("SOTS", out Mod sots)){

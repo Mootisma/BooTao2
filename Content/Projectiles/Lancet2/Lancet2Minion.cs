@@ -44,7 +44,7 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 			Projectile.light = 0.9f;
 			Projectile.tileCollide = true;
 			Projectile.penetrate = -1;
-			Projectile.minion = true;
+			Projectile.minion = true;//Projectile.sentry = true
 			Projectile.DamageType = DamageClass.Summon;
 			Projectile.minionSlots = 0f;
 			Projectile.penetrate = -1;

@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using BooTao2.Content.Dusts;//https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Content/Dusts
+using BooTao2.Content.Buffs;
 
 namespace BooTao2.Content.Items.HomaPickaxe
 {
@@ -36,42 +36,23 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Item.autoReuse = true;
 			Item.useTurn = true;
 			Item.maxStack = 1;
-			//Item.defense = 1;https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_item.html
 		}
 
 		public override void AddRecipes()
-		{//Recipe recipe = Recipe.Create(ModContent.ItemType<Items.ExampleItem>(), 999);
+		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<Homa2>(), 1);
 			recipe.AddIngredient(ItemID.HellstoneBar, 1);
-			//recipe.AddIngredient(ItemID.HunterPotion, 1);
-			//recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
+			recipe.AddIngredient(ItemID.CatBast, 1);
+			recipe.AddIngredient(ItemID.BewitchingTable, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 		
 		public override void UpdateInventory (Player player) {
-			//player.tileRangeX += 10;//
-            //player.tileRangeY += 10;//block placement ranges
-			player.wallSpeed += 60;
-			player.tileSpeed += 60;
-			player.pickSpeed -= 0.35f;
-			Lighting.AddLight(player.position, 1.1f, 1.1f, 1.1f);//crank it up to like 5 for something funny
-			player.nightVision = true;
-			//https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_player.html
-			player.GetModPlayer<BooTaoPlayer>().Magnet = true;
-			player.detectCreature = true;
-			player.findTreasure = true;
-			player.dangerSense = true;
-			
-			player.dontHurtCritters = true;
-			player.accLavaFishing = true;
-			player.accTackleBox = true;
-			player.accOreFinder = true;
-			player.accWeatherRadio = true;
-			player.accThirdEye = true;
-			player.GetModPlayer<BooTaoPlayer>().Shrek = true;
-			//player.enemySpawns = true;
+			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
+			player.GetModPlayer<BooTaoPlayer>().Homa2 = true;
+			player.GetModPlayer<BooTaoPlayer>().Homa3 = true;
 		}
 	}
 }

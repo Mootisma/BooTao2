@@ -1,3 +1,4 @@
+using BooTao2.Content.Buffs;
 using BooTao2.Content.Buffs.BloodBlossomBuff;
 using BooTao2.Content.Buffs.Aventurine;
 using BooTao2.Content.Items.HuTao;
@@ -76,13 +77,77 @@ namespace BooTao2
 			recipe = Recipe.Create(ItemID.Spear, 1);
 			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 3);
 			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.SummoningPotion, 1);
+			recipe.AddIngredient(ItemID.SoulofLight, 2);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.ChocolateChipCookie, 1);
+			recipe.AddIngredient(ItemID.Mushroom, 2);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.ZapinatorOrange, 1);
+			recipe.AddIngredient(ItemID.SoulofLight, 2);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.FrogLeg, 1);
+			recipe.AddIngredient(ItemID.ShinyRedBalloon, 1);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.Shellphone, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.MagicMirror, 1);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.BouncingShield, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.Gatligator, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.Katana, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.ZapinatorGray, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.CoinGun, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.PaladinsShield, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.BlueBerries, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.AnkhCharm, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.IceSkates, 1);
+			recipe.AddIngredient(ItemID.IceBlock, 2);
+			recipe.AddIngredient(ItemID.HermesBoots, 1);
+			recipe.Register();
+			//
+			if (ModLoader.TryGetMod("SOTS", out Mod sots)) {
+				if (sots.TryFind("TinyPlanetFish", out ModItem planetfish)) {
+					recipe = Recipe.Create(planetfish.Type, 1);
+					recipe.AddIngredient(ItemID.SoulofLight, 1);
+					recipe.AddIngredient(ItemID.Feather, 1);
+					recipe.Register();
+				}
+			}
 		}
 	}
 	
 	public class BooTaoPlayer : ModPlayer
 	{
 		public bool Magnet;
-		public bool Shrek;
+		public bool Homa2;
+		public bool Homa3;
+		public bool Homa4;
+		public bool Homa5;
+		public bool Homa6;
 		public bool lifeRegenDebuff;
 		public bool BloodBlossom;
 		public bool NingHolding; // player.GetModPlayer<BooTaoPlayer>().NingHolding
@@ -121,19 +186,22 @@ namespace BooTao2
 		//
 		public bool SkillReady;
 		//
-		public int damageTest = 0;
-		//
 		public int AventurineShieldHP = 0;
 		public int AventurineBlindBet = 0;
 		//
 		public bool RaidenShogunSkill;
 		public int RaidenShogunSkillDamage = 0;
 		public int RaidenShogunCooldown = 0;
+		//
+		public int BeehunterHolding = 0;
+		public int BeehunterStacks = 0;
+		public int JackieHolding = 0;
+		public int JackieSP = 0;
+		public bool JackieDodged;
 		
 		public override void ResetEffects()
 		{
 			Magnet = false;
-			Shrek = false;
 			lifeRegenDebuff = false;
 			BloodBlossom = false;
 			NingHolding = false;
@@ -142,6 +210,13 @@ namespace BooTao2
 			NingJade3State = false;
 			SkillReady = false;
 			RaidenShogunSkill = false;
+			if (!Player.HasBuff(ModContent.BuffType<HomaPickaxeBuff>())) {
+				Homa2 = false;
+				Homa3 = false;
+				Homa4 = false;
+				Homa5 = false;
+				Homa6 = false;
+			}
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -171,6 +246,11 @@ namespace BooTao2
 			MostimaSkillSP = 0;
 			SkadiSP = 0;
 			AventurineShieldHP = 0;
+			JackieDodged = false;
+		}
+		
+		public override void OnRespawn() {
+			AventurineShieldHP = 0;//https://docs.tmodloader.net/docs/stable/class_mod_player.html
 		}
 		
 		/*public override void NaturalLifeRegen (ref float regen)
@@ -181,16 +261,6 @@ namespace BooTao2
 		}*/
 		
 		/*public override void UpdateLifeRegen() {
-            /*Player player = Main.LocalPlayer;
-            Tile tile;
-            foreach(Point coord in player.TouchedTiles){
-                tile = Main.tile[coord.X, coord.Y];
-                if(tile.type == ModContent.TileType<Tiles.HolyDirt>() && HolyGrace /*player.HasItem(ModContent.ItemType<Items.Accesories.HolyFeet>()) && player.HasItem(mod.ItemType("HolyFeet")))*//*) {
-                    //player.AddBuff(ModContent.BuffType<Buffs.HolyGrace>(),100);
-                    player.lifeRegen += 6;
-                    Main.NewText("Healing"); // Debug
-                }
-            }
         }*/
 		
 		public override void UpdateBadLifeRegen() {
@@ -216,15 +286,48 @@ namespace BooTao2
 			}
 		}
 		
-		//https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_player.html#ae8dbfbc03aeba36009cca97321fb8754
+		//https://docs.tmodloader.net/docs/stable/class_mod_player.html
 		
 		/*public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot) {
-			if (damageTest > 0) {
-				damageTest = 0;
-				return false;
+			if (BeehunterHolding > 0) {
+				if (Main.rand.Next(10) <= 3) {
+					Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+					return false;
+				}
+				return true;
 			}
 			return true;
 		}*/
+		
+		public override bool FreeDodge(Player.HurtInfo info) {
+			/*if(info.DamageSource.TryGetCausingEntity(out Entity entity) && entity is Projectile proj) {
+				SoundEngine.PlaySound(new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Aventurine/GlassBreaking"));
+				Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+				return false;
+			}
+			else {
+				SoundEngine.PlaySound(new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/RaidenShogun/ElementalSkill_NoEscape"));
+				return false;
+			}*/
+			if (BeehunterHolding > 0 && Main.rand.Next(10) <= 5) {
+				//can't dodge projectiles
+				if(info.DamageSource.TryGetCausingEntity(out Entity entity) && entity is Projectile proj) {
+					return false;
+				}
+				Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+				return true;
+			}
+			if (JackieHolding > 0 && Main.rand.Next(10) <= 2) {
+				//can't dodge projectiles
+				if(info.DamageSource.TryGetCausingEntity(out Entity entity) && entity is Projectile proj) {
+					return false;
+				}
+				Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+				JackieDodged = true;
+				return true;
+			}
+			return false;
+		}
 		
 		public override bool ConsumableDodge(Player.HurtInfo info) {
 			if (AventurineShieldHP > 0) {
@@ -233,7 +336,6 @@ namespace BooTao2
 						ligma.GetModPlayer<BooTaoPlayer>().AventurineBlindBet++;
 					}
 				}
-				damageTest = info.Damage;
 				//SoundEngine.PlaySound(SoundID.Shatter with { Pitch = 0.5f });
 				// if the shield can tank the hit
 				if (AventurineShieldHP >= info.Damage) {

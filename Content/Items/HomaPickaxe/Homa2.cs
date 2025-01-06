@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using BooTao2.Content.Dusts;//https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Content/Dusts
+using BooTao2.Content.Buffs;
 
 namespace BooTao2.Content.Items.HomaPickaxe
 {
@@ -38,6 +38,8 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			recipe.AddIngredient(ItemID.DeathbringerPickaxe, 1);
 			recipe.AddIngredient(ItemID.HunterPotion, 1);
 			recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
+			recipe.AddIngredient(ItemID.Campfire, 1);
+			recipe.AddIngredient(ItemID.StarinaBottle, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 			recipe = CreateRecipe();
@@ -45,19 +47,15 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			recipe.AddIngredient(ItemID.NightmarePickaxe, 1);
 			recipe.AddIngredient(ItemID.HunterPotion, 1);
 			recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
+			recipe.AddIngredient(ItemID.Campfire, 1);
+			recipe.AddIngredient(ItemID.StarinaBottle, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 		
 		public override void UpdateInventory (Player player) {
-			player.wallSpeed += 60;
-			player.tileSpeed += 60;
-			player.pickSpeed -= 0.35f;
-			Lighting.AddLight(player.position, 1f, 1f, 1f);
-			player.nightVision = true;
-			player.GetModPlayer<BooTaoPlayer>().Magnet = true;
-			player.detectCreature = true;
-			player.findTreasure = true;
+			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
+			player.GetModPlayer<BooTaoPlayer>().Homa2 = true;
 		}
 	}
 }

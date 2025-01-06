@@ -85,7 +85,7 @@ namespace BooTao2.Content.Items.Mostima
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 130 : 90;
+			Item.damage = (CalamityActive) ? 90 : 70;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 24;
 			Item.shoot = ModContent.ProjectileType<MostimaMinion>();
@@ -166,9 +166,9 @@ namespace BooTao2.Content.Items.Mostima
 			if (NPC.downedGolemBoss)
 				damage += 10;
 			if (NPC.downedAncientCultist)//lunatic cultist
-				damage += 40;
+				damage += 20;
 			if (NPC.downedMoonlord)
-				damage += 60;
+				damage += 30;
 		}
 		
 		// useless counter so i can play a sound when i hold Mostima

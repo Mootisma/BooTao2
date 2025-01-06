@@ -58,7 +58,7 @@ namespace BooTao2.Content.Projectiles.Yelan
 			Vector2 projvel = Vector2.Zero;
 			if ((Main.myPlayer == Projectile.owner) && foundTarget) {
 				if (counter > 59)
-					projvel = 12f * (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.UnitX);
+					projvel = 15f * (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.UnitX);
 				if (counter == 60) {
 					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projvel, ModContent.ProjectileType<YelanDiceAttackProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
 				}

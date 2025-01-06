@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using BooTao2.Content.Dusts;
+using BooTao2.Content.Buffs;
 
 namespace BooTao2.Content.Items.HomaPickaxe
 {
@@ -26,7 +26,6 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.useTurn = true;
-			Item.maxStack = 9999;
 		}
 
 		public override void AddRecipes()
@@ -38,11 +37,7 @@ namespace BooTao2.Content.Items.HomaPickaxe
 		}
 		
 		public override void UpdateInventory (Player player) {
-			player.wallSpeed += 60;
-			player.tileSpeed += 60;
-			player.pickSpeed -= 0.35f;
-			Lighting.AddLight(player.position, 1f, 1f, 1f);
-			player.nightVision = true;
+			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
 		}
 	}
 }

@@ -86,7 +86,6 @@ namespace BooTao2.Content.Projectiles {
 		//}
 		
 		public override bool CanUseItem(Player player) {
-			player.GetModPlayer<BooTaoPlayer>().damageTest++;
 			return true;
 		}
 	}

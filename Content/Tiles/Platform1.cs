@@ -48,15 +48,6 @@ namespace BooTao2.Content.Tiles
 		public override void NearbyEffects(int i, int j, bool closer)// i is x coord, j is y coord (of tile)
 		{
 			//
-			if(closer)
-			{
-				//Main.LocalPlayer.AddBuff(BuffID.Campfire, 360, true);
-				if(Main.LocalPlayer.GetModPlayer<BooTaoPlayer>().Shrek == false){
-					Main.LocalPlayer.AddBuff(ModContent.BuffType<Platform1Buff>(), 10, true);
-				} else {
-					Main.LocalPlayer.AddBuff(ModContent.BuffType<Platform1Buff2>(), 10, true);
-				}
-			}//ModContent.BuffType<T>
 		}
 		
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

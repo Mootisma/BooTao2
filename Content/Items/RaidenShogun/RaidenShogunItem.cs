@@ -19,7 +19,7 @@ namespace BooTao2.Content.Items.RaidenShogun
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 52;
+			Item.damage = 50;
 			Item.knockBack = 1f;
 			Item.mana = 20;
 			Item.width = 32;

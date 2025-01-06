@@ -25,12 +25,14 @@ A weapon that mimicks Fiammetta\
 A minion that mimicks Skadi the Corrupting Heart\
 A minion that mimicks Mostima\
 A minion that mimicks Lancet-2\
-A weapon that mimicks Aventurine
+A weapon that mimicks Aventurine\
+A minion that mimicks Raiden Shogun\
+A weapon that mimicks Beehunter\
+A weapon that mimicks Jackie
 
 ## Todo
 Surtr\
 Navia\
 Hibiscus and Hibiscus the Purifier\
-Raiden Shogun's elemental skill\
 A sentry minion (that can block enemies?)\
 Bosses and other enemies

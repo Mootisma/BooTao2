@@ -469,8 +469,8 @@ namespace BooTao2.Content.Projectiles.Mostima
 						Dust.NewDust(proj.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					}
 					// if they reach zero velocity give them a nudge
-					if (proj.velocity.Y <= 0.05f && proj.velocity.X <= 0.05f) {
-						proj.velocity = new Vector2(0.1f, 0.1f);
+					if (Math.Abs(proj.velocity.Y) <= 0.1f && Math.Abs(proj.velocity.X) <= 0.1f) {
+						proj.velocity *= 2f;
 					}
 				}
 				foreach (var npc in Main.ActiveNPCs) {

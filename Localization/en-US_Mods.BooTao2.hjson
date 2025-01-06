@@ -35,6 +35,7 @@ Items: {
 			was never a staff
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
+			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
 			'''
 	}
 
@@ -44,6 +45,7 @@ Items: {
 			'''
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
+			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
 			Grants Spelunker and Hunter potion effects.
 			'''
 	}
@@ -54,9 +56,10 @@ Items: {
 			'''
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
+			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
 			Grants Spelunker and Hunter potion effects.
-			Grants a few fishing related accessory effects.
-			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
+			Grants a few Cell Phone accessory effects.
+			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
 			'''
 	}
 
@@ -65,11 +68,7 @@ Items: {
 		Tooltip:
 			'''
 			i need to rebrand this
-			Unlimited placement, emits light, and significantly increased grab range and speed
-			Provides the equivalent of the following:
-			Campfire, Heart Lantern, Star in a Bottle
-			After R3 Homa:
-			Bast Statue, Bewitching Table
+			Unlimited placement and emits light
 			'''
 	}
 
@@ -94,9 +93,10 @@ Items: {
 			'''
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
+			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
 			Grants Spelunker and Hunter potion effects.
-			Grants a few fishing related accessory effects.
-			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
+			Grants a few Cell Phone related accessory effects.
+			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
 			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
 			Grants the Frog Leg effects and the Mana Flower effect.
 			'''
@@ -108,12 +108,13 @@ Items: {
 			'''
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
+			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
 			Grants Spelunker and Hunter potion effects.
 			Grants a few fishing related accessory effects.
-			Buffs the Shrek Platform: Adds Bast Statue and Bewitching Table.
+			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
 			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
 			Grants the Frog Leg effects and the Mana Flower effect.
-			Grants the same Shrek Platform buff.
+			Grants the Bundle of Balloons' effects, and immunity to knockback and fall damage.
 			'''
 	}
 
@@ -191,7 +192,7 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
-			[c/FFFF00:Destreza] (right click)
+			[c/FFFF00:Destreza] (Right Click)
 			SP Cost: 15 [Offensive Recovery] | Duration: 30 seconds
 			Thorns' ATK and ASPD increases by 25%
 			Upon the second activation of this skill and afterwards, 
@@ -221,7 +222,7 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
-			[c/FFFF00:'Reponite'] (right click)
+			[c/FFFF00:'Reponite'] (Right Click)
 			SP Cost: 15 [Offensive Recovery] | Duration: Infinite
 			Changes the attack to a vertical barrage aimed at the cursor.
 			Explosion area, damage and knockback are greatly increased.
@@ -261,7 +262,7 @@ Items: {
 			[c/FFFF00:Trait]
 			Only one can be summoned at a time. Requires 1 minion slot.
 			Attacks deal AOE damage aimed at the closest enemy within range to the cursor.
-			[c/FFFF00:Key of Chronology] (right click)
+			[c/FFFF00:Key of Chronology] (Right Click)
 			SP Cost: 63 [Auto Recovery] | Duration: 27 seconds
 			Attack Range increases, attacks turn into ripples that spread outward,
 			knockback is greatly increased, damage is tripled, and the effects of [c/c2ac06:Subjective Time Dilation] are tripled.
@@ -313,7 +314,7 @@ Items: {
 	}
 
 	RaidenShogunItem: {
-		DisplayName: Raiden Shogun Item
+		DisplayName: Raiden Shogun
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Genshin Impact]
@@ -327,19 +328,52 @@ Items: {
 			Additionally, slightly increases mana regen and DMG%.
 			'''
 	}
+
+	Homa6: {
+		DisplayName: R6 Homa
+		Tooltip:
+			'''
+			Grants significantly increased wall and tile placement speed, and mining speed.
+			Grants light emitting from the player and night vision potion effect.
+			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+			Grants Spelunker and Hunter potion effects.
+			Grants a few fishing related accessory effects.
+			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
+			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
+			Grants the Frog Leg effects and the Mana Flower effect.
+			Grants the Bundle of Balloons' effects, and immunity to knockback and fall damage.
+			Grants 12% (vanilla) damage increase.
+			When not moving, slightly increases life regen and defense, and grants +1 minion and sentry.
+			'''
+	}
+
+	Beehunter: {
+		DisplayName: Beehunter
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Flexibility] (Passive)
+			60% chance to dodge contact damage.
+			[c/FFFF00:Boxer's Concentration]
+			Hits increase Beehunter's damage by 1, stacking up to 6. Stacks are reset on switching to a different item.
+			'''
+	}
+
+	Jackie: {
+		DisplayName: Jackie
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Grit Those Teeth!] (Auto Trigger)
+			SP Cost: 3 [Offensive Recovery]
+			Increases the ATK of next attack to 250%
+			[c/FFFF00:Extreme Evasion]
+			30% chance to dodge contact damage. After a successful dodge, slightly increase Jackie's ASPD for 5 seconds.
+			'''
+	}
 }
 
 Buffs: {
-	Platform1Buff: {
-		DisplayName: shrek platform buff
-		Description: increased life and mana regen, and item pickup range and speed
-	}
-
-	Platform1Buff2: {
-		DisplayName: shrek platform buff 2
-		Description: increased life and mana regen, and item pickup range and speed, and defense and minion count
-	}
-
 	BloodBlossomBuff: {
 		DisplayName: Blood Blossom
 		Description: The spear opens the path to the afterlife, and the butterflies bridge this world and the next.
@@ -415,13 +449,18 @@ Buffs: {
 	}
 
 	RaidenShogunBuff: {
-		Description: Baleful Omen
-		DisplayName: Her Excellency, the Almighty Narukami Ogosho, who promised the people of Inazuma an unchanging Eternity.
+		DisplayName: Baleful Omen
+		Description: Her Excellency, the Almighty Narukami Ogosho, who promised the people of Inazuma an unchanging Eternity.
 	}
 
 	RaidenShogunAura: {
-		Description: Eye of Stormy Judgment
-		DisplayName: Your attacks will unleash a coordinated attack. Slightly increased mana regen and DMG%.
+		DisplayName: Eye of Stormy Judgment
+		Description: Your attacks will unleash a coordinated attack. Slightly increased mana regen and DMG%.
+	}
+
+	HomaPickaxeBuff: {
+		DisplayName: Homa Pickaxe Buff
+		Description: One day, after dinner, while my younger sister and I were lounging about in Mr. Gopher Wo
 	}
 }
 
@@ -461,4 +500,5 @@ Projectiles: {
 	AventurineProj.DisplayName: Aventurine Proj
 	RaidenShogunSkillProj.DisplayName: Raiden Shogun Skill Proj
 	RaidenShogunProj.DisplayName: Raiden Shogun Proj
+	BeehunterProj.DisplayName: Beehunter Proj
 }

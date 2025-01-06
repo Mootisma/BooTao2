@@ -38,8 +38,8 @@ namespace BooTao2.Content.Items.Aventurine
 			Item.shootSpeed = 1f;
 			Item.width = 40;
 			Item.height = 40;
-			Item.useTime = 80;
-			Item.useAnimation = 80;
+			Item.useTime = 70;
+			Item.useAnimation = 70;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.knockBack = 1;
 			//

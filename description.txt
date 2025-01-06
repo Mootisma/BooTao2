@@ -26,8 +26,13 @@ A minion that mimicks Mostima
 A minion that mimicks Lancet-2
 A weapon that mimicks Aventurine
 A minion that mimicks Raiden Shogun
+A weapon that mimicks Beehunter
+A weapon that mimicks Jackie
 
 ## Changelog
+1.0.6.0: Added Beehunter and Jackie
+1.0.5.2: Added R6 Homa (pickaxe); Recipes, bug fixes, balances, and other adjustments
+1.0.5.1: Bug fixes, balances, and other adjustments
 1.0.5.0: Added Raiden Shogun
 1.0.4.1: Added recipes and other adjustments
 1.0.4: Added Aventurine
