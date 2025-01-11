@@ -10,6 +10,7 @@ Links to arts used:
 [Herta](https://www.pixiv.net/en/artworks/107442519)  
 [Furina's summons](https://www.pixiv.net/en/artworks/114000440)  
 discord.gg/furinamains  
+[Kafka](https://twitter.com/dorkdragoon)  
 
 If you have suggestions, you can message me on Discord: mootisma
 
@@ -28,11 +29,14 @@ A minion that mimicks Lancet-2\
 A weapon that mimicks Aventurine\
 A minion that mimicks Raiden Shogun\
 A weapon that mimicks Beehunter\
-A weapon that mimicks Jackie
+A weapon that mimicks Jackie\
+A weapon that mimicks Qingque
 
 ## Todo
 Surtr\
 Navia\
+Virtuosa\
+Kafka\
 Hibiscus and Hibiscus the Purifier\
 A sentry minion (that can block enemies?)\
 Bosses and other enemies

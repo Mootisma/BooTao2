@@ -9,6 +9,7 @@ Mostima: https://www.pixiv.net/en/artworks/105771410
 Herta: https://www.pixiv.net/en/artworks/107442519
 Furina: https://www.pixiv.net/en/artworks/114000440
 discord.gg/furinamains
+Kafka: https://twitter.com/dorkdragoon
 
 If you have suggestions, you can message me on bluesky
 
@@ -28,8 +29,10 @@ A weapon that mimicks Aventurine
 A minion that mimicks Raiden Shogun
 A weapon that mimicks Beehunter
 A weapon that mimicks Jackie
+A weapon that mimicks Qingque
 
 ## Changelog
+1.0.7.0: Added Qingque
 1.0.6.0: Added Beehunter and Jackie
 1.0.5.2: Added R6 Homa (pickaxe); Recipes, bug fixes, balances, and other adjustments
 1.0.5.1: Bug fixes, balances, and other adjustments

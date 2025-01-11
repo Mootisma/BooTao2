@@ -26,7 +26,7 @@ namespace BooTao2.Content.Projectiles.RaidenShogun
 			Projectile.alpha = 100;
 			Projectile.friendly = true; // 
 			Projectile.minion = true; // Declares this as a minion
-			Projectile.DamageType = DamageClass.Summon; // Declares the damage type
+			Projectile.DamageType = DamageClass.Summon; // Main.player[Projectile.owner].HeldItem.DamageType;
 			Projectile.minionSlots = 1f; // Amount of slots
 			Projectile.penetrate = -1; // Needed so the minion doesn't despawn
 			//

@@ -24,17 +24,11 @@ namespace BooTao2.Content.Projectiles {
 			Projectile.penetrate = -1;
 		}
 		
-		int counter = 0;
 		public override void AI() {
 			if (Main.myPlayer != Projectile.owner)
 				return;
 			
 			Projectile.Kill();
-		}
-		
-		public override bool OnTileCollide(Vector2 oldVelocity) {
-			Projectile.velocity = Vector2.Zero;
-			return false;
 		}
 	}
 	
@@ -64,7 +58,7 @@ namespace BooTao2.Content.Projectiles {
 		public override string Texture => "Terraria/Images/Item_" + ItemID.Meowmere;
 		
 		public override void SetDefaults() {
-			Item.damage = 1;
+			Item.damage = 2;
 			Item.knockBack = 1f;
 			Item.width = 32;
 			Item.height = 32;
@@ -73,20 +67,27 @@ namespace BooTao2.Content.Projectiles {
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.LightRed;
-			Item.noMelee = true; 
-			Item.DamageType = DamageClass.Magic;
+			Item.DamageType = DamageClass.Melee;
 		}
 		
-		//public override void UpdateInventory (Player player) {
-		//	player.GetModPlayer<BooTaoPlayer>().damageTest++;
-		//}
-		
-		//public override void HoldItem(Player player) {
-		//	player.GetModPlayer<BooTaoPlayer>().damageTest++;
-		//}
-		
 		public override bool CanUseItem(Player player) {
+			//foreach (var npc in Main.ActiveNPCs) {
+			//	npc.AddBuff(ModContent.BuffType<TestBuff>(), 300);
+			//}
+			//foreach (var teehee in Main.ActivePlayers) {
+			//	teehee.AddBuff(ModContent.BuffType<TestBuff>(), 300, true);
+			//}
 			return true;
+		}
+		
+		//public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone){}
+		public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
+			if (target.lifeRegen < 0) {
+				modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+					hitInfo.Damage += Math.Abs(target.lifeRegen);
+				};
+			}
 		}
 	}
 	
@@ -95,11 +96,18 @@ namespace BooTao2.Content.Projectiles {
 		public override string Texture => "Terraria/Images/Buff_" + 3;
 		
 		public override void SetStaticDefaults() {
+			Main.debuff[Type] = true;
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
+			player.moveSpeed *= 0.5f;
+		}
+		
+		public override void Update(NPC npc, ref int buffIndex) {
+			//npc.velocity *= 0.5f;
+			npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
 		}
 	}
 }

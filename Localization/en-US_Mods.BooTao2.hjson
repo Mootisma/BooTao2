@@ -6,11 +6,11 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Genshin Impact]
-			[c/FFFF00:Normal Attack: Secret Spear of Wangsheng]
+			[c/FFFF00:Normal Attack: Secret Spear of Wangsheng] (Left Click)
 			Perform a [c/c2ac06:Charged Attack], lunging forward and dealing damage along the way.
 			[c/FFFF00:Elemental Skill: Guide to Afterlife]
 			Right Click to enter the [c/FF9696:Paramita Papilio] state, consuming 30% of current HP
-			[c/FF9696:Paramita Papilio]
+			[c/FF9696:Paramita Papilio] (Right Click)
 			[c/c2ac06:Charged Attack] Damage is increased based on consumed HP.
 			[c/c2ac06:Charged Attack] Damage is increased when below half health.
 			[c/c2ac06:Charged Attack] is performed faster.
@@ -295,9 +295,9 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
-			[c/FFFF00:Basic ATK: Straight Bet]
+			[c/FFFF00:Basic ATK: Straight Bet] (Left Click)
 			Deals DMG equal to 100% of Aventurine's DEF to a single target enemy.
-			[c/FFFF00:Skill: Cornerstone Deluxe] (right click)
+			[c/FFFF00:Skill: Cornerstone Deluxe] (Right Click)
 			Provides all allies with a [c/c2ac06:Fortified Wager] equal to 100% of Aventurine's DEF. 120s cooldown.
 			[c/FFFF00:Talent: Shot Loaded Right]
 			When allied players with [c/c2ac06:Fortified Wager] get attacked, Aventurine gains one stack of [c/c2ac06:Blind Bet].
@@ -343,7 +343,7 @@ Items: {
 			Grants the Frog Leg effects and the Mana Flower effect.
 			Grants the Bundle of Balloons' effects, and immunity to knockback and fall damage.
 			Grants 12% (vanilla) damage increase.
-			When not moving, slightly increases life regen and defense, and grants +1 minion and sentry.
+			When not moving, slightly increases life regen, defense, minion and sentry count.
 			'''
 	}
 
@@ -370,6 +370,33 @@ Items: {
 			[c/FFFF00:Extreme Evasion]
 			30% chance to dodge contact damage. After a successful dodge, slightly increase Jackie's ASPD for 5 seconds.
 			'''
+	}
+
+	QingqueItem: {
+		DisplayName: Qingque
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
+			[c/FFFF00:Basic ATK: Flower Pick] (Left Click)
+			Tosses 1 jade tile from the suit to deal damage. Partially refunds the mana cost.
+			[c/FFFF00:Enhanced Basic ATK: Cherry on Top!] (Left Click)
+			Tosses 1 jade tile from the suit to deal 140% damage to the target, then 100% damage in an explosion centered on the target.
+			[c/FFFF00:Skill: A Scoop of Moon] (Right Click)
+			Use 20 Mana to draw up to 2 jade tiles and increases DMG by 38.0% until the end of the current turn. 
+			This effect stacks endlessly. Skill cannot be used if Qingque has less than 20 Mana or if Qingque has 4 tiles of the same suit.
+			[c/FFFF00:Talent: Celestial Jade]
+			Qingque can hold up to 4 tiles from 4 different suits (meme fish hehe).
+			If Qingque has 4 tiles of the same suit, Qingque enhances her [c/FFFF00:Basic ATK: Flower Pick], becoming [c/FFFF00:Enhanced Basic ATK: Cherry on Top!].
+			Qingque's next attack will be further boosted by 72%.
+			[c/FFFF00:Right on the Tiles]
+			After using Skill, there is a 25.0% to gain [c/FFFF00:Self-Sufficer]: 
+			The next attack will launch a follow-up attack equal to 100% of Basic ATK DMG or Enhanced Basic ATK DMG.
+			'''
+	}
+
+	KafkaItem: {
+		DisplayName: Kafka Item
+		Tooltip: ""
 	}
 }
 
@@ -498,7 +525,11 @@ Projectiles: {
 	Lancet2Minion.DisplayName: Lancet2 Minion
 	Lancet2Proj.DisplayName: Lancet2 Proj
 	AventurineProj.DisplayName: Aventurine Proj
-	RaidenShogunSkillProj.DisplayName: Raiden Shogun Skill Proj
-	RaidenShogunProj.DisplayName: Raiden Shogun Proj
+	RaidenShogunSkillProj.DisplayName: Raiden Shogun Coordinated Attack
+	RaidenShogunProj.DisplayName: Raiden Shogun
 	BeehunterProj.DisplayName: Beehunter Proj
+	QingqueProj.DisplayName: Qingque Proj
+	QingqueExplosionProj.DisplayName: Qingque Explosion Proj
+	QingqueExplosionProj2.DisplayName: Qingque Explosion Proj2
+	KafkaProj.DisplayName: Kafka Proj
 }

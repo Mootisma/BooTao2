@@ -482,12 +482,11 @@ namespace BooTao2.Content.Projectiles.Mostima
 						else {
 							npc.velocity *= 0.66f;
 						}
-						Dust.NewDust(npc.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					}
 					else {
 						npc.velocity *= 0.82f;
-						Dust.NewDust(npc.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					}
+					Dust.NewDust(npc.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					// if they approach zero velocity give them a nudge
 					if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
 						if (isSkillActive) {

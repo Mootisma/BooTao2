@@ -155,8 +155,6 @@ namespace BooTao2
 		public bool NingJade2State;
 		public bool NingJade3State;
 		//
-		public const int HuTaoEDuration = 540;
-		public const int HuTaoECD = 960;
 		public int coold = 0;
 		public int der = 0;
 		public float HuTaoHPDmgBuff = 0;
@@ -198,6 +196,10 @@ namespace BooTao2
 		public int JackieHolding = 0;
 		public int JackieSP = 0;
 		public bool JackieDodged;
+		//
+		public bool QingqueHolding;
+		public int[] QingqueTiles = [0,1,2,3];
+		public bool QingqueFUA;
 		
 		public override void ResetEffects()
 		{
@@ -210,6 +212,7 @@ namespace BooTao2
 			NingJade3State = false;
 			SkillReady = false;
 			RaidenShogunSkill = false;
+			QingqueHolding = false;
 			if (!Player.HasBuff(ModContent.BuffType<HomaPickaxeBuff>())) {
 				Homa2 = false;
 				Homa3 = false;
@@ -224,8 +227,8 @@ namespace BooTao2
 				Player player = Main.LocalPlayer;
 				HuTaoHPDmgBuff = (float)((player.statLife * 0.3) / 100);
 				player.statLife = (int)(player.statLife * 0.7);
-				coold = HuTaoECD;
-				der = HuTaoEDuration;
+				coold = 960;
+				der = 540;
 				return true;
 			}
 			return false;
@@ -412,9 +415,12 @@ namespace BooTao2
 		public int ThornsDOTstack = 0;
 		public int ThornsDOTdmg = 0;
 		public int ThornsDOTduration = 0;
+		public bool test;
+		public int ligma = 0;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
+			test = false;
 		}
 
 		/*public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
@@ -430,8 +436,21 @@ namespace BooTao2
 				drawColor.G = 0;
 			}
 		}
-		
-		//public override void AI(NPC npc) {}
+		//https://docs.tmodloader.net/docs/stable/class_global_n_p_c.html
+		public override bool PreAI(NPC npc) {
+			if (test) {
+				//Vector2 ligmaballs = Vector2.Lerp(npc.position, npc.oldPos[1], 1);
+				//npc.position -= ligmaballs * 0.5f;
+				ligma++;
+				Dust.NewDust(npc.Center, 0, 0, 200, 0, 0, 150, default, 1f);
+				if (ligma % 60 <= 50)
+					return false;
+			}
+			else {
+				ligma = 0;
+			}
+			return true;
+		}
 		
 		public override void UpdateLifeRegen(NPC npc, ref int damage) {
 			if (BloodBlossom) {
