@@ -129,6 +129,14 @@ namespace BooTao2
 			recipe.AddIngredient(ItemID.HermesBoots, 1);
 			recipe.Register();
 			//
+			recipe = Recipe.Create(ItemID.StylistKilLaKillScissorsIWish, 1);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.CompanionCube, 1);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+			recipe.Register();
+			//
 			if (ModLoader.TryGetMod("SOTS", out Mod sots)) {
 				if (sots.TryFind("TinyPlanetFish", out ModItem planetfish)) {
 					recipe = Recipe.Create(planetfish.Type, 1);
@@ -416,11 +424,15 @@ namespace BooTao2
 		public int ThornsDOTdmg = 0;
 		public int ThornsDOTduration = 0;
 		public bool test;
-		public int ligma = 0;
+		public bool KafkaAKSleep;
+		//
+		public int KafkaDOTdmg = 0;
+		public int KafkaDOTduration = 0;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
 			test = false;
+			KafkaAKSleep = false;
 		}
 
 		/*public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
@@ -438,19 +450,34 @@ namespace BooTao2
 		}
 		//https://docs.tmodloader.net/docs/stable/class_global_n_p_c.html
 		public override bool PreAI(NPC npc) {
-			if (test) {
+			if (KafkaAKSleep) {
 				//Vector2 ligmaballs = Vector2.Lerp(npc.position, npc.oldPos[1], 1);
 				//npc.position -= ligmaballs * 0.5f;
-				ligma++;
-				Dust.NewDust(npc.Center, 0, 0, 200, 0, 0, 150, default, 1f);
-				if (ligma % 60 <= 50)
-					return false;
-			}
-			else {
-				ligma = 0;
+				Dust.NewDust(npc.Center, 0, 0, 34, 0, 0, 150, default, 1f);
+				return false;
 			}
 			return true;
 		}
+		
+		public override bool? CanBeHitByItem(NPC npc, Player player, Item item) {
+			if (KafkaAKSleep)
+				return false;
+			return null;
+		}
+		
+		public override bool? CanBeHitByProjectile(NPC npc, Projectile projectile){
+			if (KafkaAKSleep)
+				return false;
+			return null;
+		}
+		
+		public override bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot){
+			if (KafkaAKSleep)
+				return false;
+			return true;
+		}
+		
+		// public override void PostAI(NPC npc) {}
 		
 		public override void UpdateLifeRegen(NPC npc, ref int damage) {
 			if (BloodBlossom) {
@@ -458,20 +485,28 @@ namespace BooTao2
 					npc.lifeRegen = 0;
 				}
 				npc.lifeRegen -= BloodBlossomDmg;
-				damage = BloodBlossomDmg;
 			}
 			if (ThornsDOTstack > 0 && ThornsDOTduration > 0) {
+				ThornsDOTduration--;
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
 				npc.lifeRegen -= ThornsDOTdmg;
-				damage = ThornsDOTdmg;
 			}
 			else {
 				ThornsDOTstack = 0;
 				ThornsDOTduration = 0;
 			}
-			ThornsDOTduration--;
+			if (KafkaDOTduration > 0) {
+				KafkaDOTduration--;
+				if (npc.lifeRegen > 0) {
+					npc.lifeRegen = 0;
+				}
+				if (KafkaDOTdmg < 30)
+					npc.lifeRegen -= 30;
+				else
+					npc.lifeRegen -= KafkaDOTdmg;
+			}
 		}
 		
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {
@@ -482,10 +517,10 @@ namespace BooTao2
 				npcLoot.Add(ItemDropRule.Common(ItemID.Meteorite, 3, 1, 4));
 			}
 			if (npc.type == NPCID.MartianSaucer){
-				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RaidenShogunItem>(), 30));
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RaidenShogunItem>(), 40));
 			}
 			if (npc.type == NPCID.IceElemental){
-				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HertaMinionItem>(), 30));
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HertaMinionItem>(), 40));
 			}
 		}
 	}

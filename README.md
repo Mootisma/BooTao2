@@ -15,12 +15,12 @@ discord.gg/furinamains
 If you have suggestions, you can message me on Discord: mootisma
 
 ## Notable Content
-A special lance that mimicks Hu Tao\
+A weapon that mimicks Hu Tao\
 A minion that mimicks Herta\
 A weapon that mimicks Ningguang\
 A minion that mimicks Furina\
 A minion that mimicks Yelan\
-A sword that mimicks Thorns\
+A weapon that mimicks Thorns\
 A minion that mimicks Xiangling\
 A weapon that mimicks Fiammetta\
 A minion that mimicks Skadi the Corrupting Heart\
@@ -30,7 +30,9 @@ A weapon that mimicks Aventurine\
 A minion that mimicks Raiden Shogun\
 A weapon that mimicks Beehunter\
 A weapon that mimicks Jackie\
-A weapon that mimicks Qingque
+A weapon that mimicks Qingque\
+A weapon that mimicks Kafka (HSR)\
+A weapon that mimicks Kafka (AK)
 
 ## Todo
 Surtr\

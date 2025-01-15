@@ -14,12 +14,12 @@ Kafka: https://twitter.com/dorkdragoon
 If you have suggestions, you can message me on bluesky
 
 ## Notable Content
-A special lance that mimicks Hu Tao
+A weapon that mimicks Hu Tao
 A minion that mimicks Herta
 A weapon that mimicks Ningguang
 A minion that mimicks Furina
 A minion that mimicks Yelan
-A sword that mimicks Thorns
+A weapon that mimicks Thorns
 A minion that mimicks Xiangling
 A weapon that mimicks Fiammetta
 A minion that mimicks Skadi the Corrupting Heart
@@ -30,8 +30,14 @@ A minion that mimicks Raiden Shogun
 A weapon that mimicks Beehunter
 A weapon that mimicks Jackie
 A weapon that mimicks Qingque
+A weapon that mimicks Kafka (HSR)
+A weapon that mimicks Kafka (AK)
 
 ## Changelog
+1.0.9.1: Fixed NPC friendly fire
+1.0.9.0: Added Kafka (AK)
+1.0.8.1: Optimized Mostima's sprite sheet file size
+1.0.8.0: Added Kafka (HSR)
 1.0.7.0: Added Qingque
 1.0.6.0: Added Beehunter and Jackie
 1.0.5.2: Added R6 Homa (pickaxe); Recipes, bug fixes, balances, and other adjustments

@@ -71,9 +71,9 @@ namespace BooTao2.Content.Projectiles {
 		}
 		
 		public override bool CanUseItem(Player player) {
-			//foreach (var npc in Main.ActiveNPCs) {
-			//	npc.AddBuff(ModContent.BuffType<TestBuff>(), 300);
-			//}
+			foreach (var npc in Main.ActiveNPCs) {
+				npc.AddBuff(ModContent.BuffType<TestBuff>(), 300);
+			}
 			//foreach (var teehee in Main.ActivePlayers) {
 			//	teehee.AddBuff(ModContent.BuffType<TestBuff>(), 300, true);
 			//}
@@ -106,8 +106,8 @@ namespace BooTao2.Content.Projectiles {
 		}
 		
 		public override void Update(NPC npc, ref int buffIndex) {
-			//npc.velocity *= 0.5f;
-			npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
+			npc.velocity *= 0f;
+			//npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
 		}
 	}
 }

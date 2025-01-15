@@ -395,8 +395,31 @@ Items: {
 	}
 
 	KafkaItem: {
-		DisplayName: Kafka Item
-		Tooltip: ""
+		DisplayName: Kafka
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
+			[c/FFFF00:Skill: Caressing Moonlight] (Left Click)
+			Attacks at the cursor. If the target enemy is currently receiving DoT, 
+			all DoTs currently placed on that enemy immediately produce DMG equal to 75% of their original DMG.
+			[c/FFFF00:Talent: Gentle but Cruel] (Right Click)
+			Kafka uses her gun. Inflicts Shock DoT on the target hit equal to damage dealt, lasting for 3 seconds.
+			Shock DoT will not be lesser than 15 hp/s.
+			Kafka's attacks cannot crit.
+			'''
+	}
+
+	KafkaAKItem: {
+		DisplayName: Kafka
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			Has a 15 second redeployment time.
+			[c/FFFF00:Strange Cube] (Passive)
+			Inflict [c/c2ac06:Sleep] on nearby non-boss enemies for 5 seconds.
+			[c/c2ac06:Sleep]
+			Unable to move, take action, or take damage.
+			'''
 	}
 }
 
@@ -489,6 +512,11 @@ Buffs: {
 		DisplayName: Homa Pickaxe Buff
 		Description: One day, after dinner, while my younger sister and I were lounging about in Mr. Gopher Wo
 	}
+
+	KafkaAKBuff: {
+		DisplayName: Kafka A K Buff
+		Description: Mods.BooTao2.Buffs.KafkaAKBuff.Description
+	}
 }
 
 Projectiles: {
@@ -532,4 +560,6 @@ Projectiles: {
 	QingqueExplosionProj.DisplayName: Qingque Explosion Proj
 	QingqueExplosionProj2.DisplayName: Qingque Explosion Proj2
 	KafkaProj.DisplayName: Kafka Proj
+	KafkaProj2.DisplayName: Kafka Proj2
+	KafkaAKProj.DisplayName: Kafka A K Proj
 }
