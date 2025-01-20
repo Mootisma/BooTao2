@@ -32,13 +32,14 @@ A weapon that mimicks Beehunter\
 A weapon that mimicks Jackie\
 A weapon that mimicks Qingque\
 A weapon that mimicks Kafka (HSR)\
-A weapon that mimicks Kafka (AK)
+A weapon that mimicks Kafka (AK)\
+A weapon that mimicks Absinthe
 
 ## Todo
 Surtr\
 Navia\
 Virtuosa\
-Kafka\
+Kaeya\
 Hibiscus and Hibiscus the Purifier\
 A sentry minion (that can block enemies?)\
 Bosses and other enemies

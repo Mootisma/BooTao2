@@ -32,8 +32,10 @@ A weapon that mimicks Jackie
 A weapon that mimicks Qingque
 A weapon that mimicks Kafka (HSR)
 A weapon that mimicks Kafka (AK)
+A weapon that mimicks Absinthe
 
 ## Changelog
+1.0.10.0: Added Absinthe
 1.0.9.1: Fixed NPC friendly fire
 1.0.9.0: Added Kafka (AK)
 1.0.8.1: Optimized Mostima's sprite sheet file size

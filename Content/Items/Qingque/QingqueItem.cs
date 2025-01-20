@@ -34,7 +34,7 @@ namespace BooTao2.Content.Items.Qingque
 			Item.UseSound = SoundID.Item20;
 
 			// Weapon Properties
-			Item.damage = (CalamityActive) ? 50 : 40;
+			Item.damage = (CalamityActive) ? 45 : 35;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 20;
 			Item.crit = 6;

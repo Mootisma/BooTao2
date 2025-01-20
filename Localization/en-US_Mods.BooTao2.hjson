@@ -421,6 +421,22 @@ Items: {
 			Unable to move, take action, or take damage.
 			'''
 	}
+
+	AbsintheItem: {
+		DisplayName: Absinthe
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Ultimatum] (Right Click)
+			SP Cost: 50 [Auto Recovery] | Duration: 30 seconds
+			Each attack turns into bursts of 4 attacks that each deal 90% damage, but
+			enemies above 50% HP will only take 1 damage
+			[c/FFFF00:Enforcer]
+			Increases damage dealt to enemies below 50% HP by 38%
+			[c/FFFF00:'Custodia' Individual Comm-Unit]
+			Attacks ignore 10 DEF
+			'''
+	}
 }
 
 Buffs: {
@@ -562,4 +578,5 @@ Projectiles: {
 	KafkaProj.DisplayName: Kafka Proj
 	KafkaProj2.DisplayName: Kafka Proj2
 	KafkaAKProj.DisplayName: Kafka A K Proj
+	AbsintheProj.DisplayName: Absinthe Proj
 }
