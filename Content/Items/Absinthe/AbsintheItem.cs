@@ -65,7 +65,6 @@ namespace BooTao2.Content.Items.Absinthe
 			recipe.Register();
 		}
 		
-		//proj.ai[]: tile position (for holding), basic/enhanced basic, basic/enhanced's tile type
 		public override void HoldItem(Player player) {
 			if (!AbsintheSkillActive && AbsintheSP >= 50) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
@@ -120,11 +119,9 @@ namespace BooTao2.Content.Items.Absinthe
 					Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numProjs - 1)));
 					Projectile.NewProjectile(source, position, perturbedSpeed, type, (int)(damage * 0.9), knockback, player.whoAmI, 5f);
 				}
+				return false;
 			}
-			else {
-				return true;
-			}
-			return false;
+			return true;
 		}
 	}
 }

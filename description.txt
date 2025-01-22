@@ -33,8 +33,10 @@ A weapon that mimicks Qingque
 A weapon that mimicks Kafka (HSR)
 A weapon that mimicks Kafka (AK)
 A weapon that mimicks Absinthe
+A weapon that mimicks La Pluma
 
 ## Changelog
+1.0.11.0: Added La Pluma
 1.0.10.0: Added Absinthe
 1.0.9.1: Fixed NPC friendly fire
 1.0.9.0: Added Kafka (AK)

@@ -33,7 +33,8 @@ A weapon that mimicks Jackie\
 A weapon that mimicks Qingque\
 A weapon that mimicks Kafka (HSR)\
 A weapon that mimicks Kafka (AK)\
-A weapon that mimicks Absinthe
+A weapon that mimicks Absinthe\
+A weapon that mimicks La Pluma
 
 ## Todo
 Surtr\

@@ -208,6 +208,10 @@ namespace BooTao2
 		public bool QingqueHolding;
 		public int[] QingqueTiles = [0,1,2,3];
 		public bool QingqueFUA;
+		//
+		public float LaPlumaPassive = 0f;
+		public bool LaPlumaHolding;
+		public bool LaPlumaLifeRegen;
 		
 		public override void ResetEffects()
 		{
@@ -221,6 +225,8 @@ namespace BooTao2
 			SkillReady = false;
 			RaidenShogunSkill = false;
 			QingqueHolding = false;
+			LaPlumaHolding = false;
+			LaPlumaLifeRegen = false;
 			if (!Player.HasBuff(ModContent.BuffType<HomaPickaxeBuff>())) {
 				Homa2 = false;
 				Homa3 = false;
@@ -258,6 +264,7 @@ namespace BooTao2
 			SkadiSP = 0;
 			AventurineShieldHP = 0;
 			JackieDodged = false;
+			LaPlumaPassive = 0f;
 		}
 		
 		public override void OnRespawn() {
@@ -271,8 +278,13 @@ namespace BooTao2
 			}
 		}*/
 		
-		/*public override void UpdateLifeRegen() {
-        }*/
+		public override void UpdateLifeRegen() {
+			if (LaPlumaLifeRegen) {
+				if (Player.lifeRegen > 0)
+					Player.lifeRegen = 0;
+				Player.lifeRegenTime = 0;
+			}
+        }
 		
 		public override void UpdateBadLifeRegen() {
 			if (lifeRegenDebuff) {

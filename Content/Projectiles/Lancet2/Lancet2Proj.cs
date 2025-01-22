@@ -55,7 +55,7 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 				float between = Vector2.Distance(player.Center, Projectile.Center);
 				bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 				bool inRange = between < distanceFromTarget;
-				bool inRange2 = between < 300f;
+				bool inRange2 = between < 300f && !player.GetModPlayer<BooTaoPlayer>().LaPlumaLifeRegen;
 				if (((closest && inRange && player.statLife < trackLife) || !foundTarget) && inRange2) {
 					distanceFromTarget = between;
 					targetCenter = player.Center;

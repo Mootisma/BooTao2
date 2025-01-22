@@ -437,6 +437,23 @@ Items: {
 			Attacks ignore 10 DEF
 			'''
 	}
+
+	LaPlumaItem: {
+		DisplayName: La Pluma
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Trait]
+			Disables life regen. Attacks recover 5 hp per enemy hit.
+			[c/FFFF00:Reap] (Right Click)
+			SP Cost: 40 [Auto Recovery] | Duration: 25 seconds
+			Attack Interval greatly reduced and ATK +70% 
+			ATK increases by an additional +50% against enemies with less than 50% HP
+			[c/FFFF00:Into the Groove]
+			ASPD +3 after defeating an enemy (stacks up to 12 times)
+			While at max stacks, ATK +8%
+			'''
+	}
 }
 
 Buffs: {
@@ -530,8 +547,13 @@ Buffs: {
 	}
 
 	KafkaAKBuff: {
-		DisplayName: Kafka A K Buff
-		Description: Mods.BooTao2.Buffs.KafkaAKBuff.Description
+		DisplayName: Strange Cube
+		Description: Sleep
+	}
+
+	LaPlumaBuff: {
+		DisplayName: Into the Groove
+		Description: 3 ASPD per stack
 	}
 }
 
@@ -576,7 +598,8 @@ Projectiles: {
 	QingqueExplosionProj.DisplayName: Qingque Explosion Proj
 	QingqueExplosionProj2.DisplayName: Qingque Explosion Proj2
 	KafkaProj.DisplayName: Kafka Proj
-	KafkaProj2.DisplayName: Kafka Proj2
-	KafkaAKProj.DisplayName: Kafka A K Proj
+	KafkaProj2.DisplayName: Kafka Gun
+	KafkaAKProj.DisplayName: Kafka Strange Cube
 	AbsintheProj.DisplayName: Absinthe Proj
+	LaPlumaProj.DisplayName: La Pluma Proj
 }

@@ -54,7 +54,8 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 			SoundEngine.PlaySound(RogerThat, Projectile.Center);
 			Projectile.frame = 23;
 			foreach (var player in Main.ActivePlayers) {
-				player.Heal(Projectile.damage);
+				if (!player.GetModPlayer<BooTaoPlayer>().LaPlumaLifeRegen)
+					player.Heal(Projectile.damage);
 			}
 		}
 		
@@ -152,7 +153,7 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 				float between = Vector2.Distance(player.Center, Projectile.Center);
 				bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 				bool inRange = between < distanceFromTarget;
-				bool inRange2 = between < 500f;
+				bool inRange2 = between < 500f && !player.GetModPlayer<BooTaoPlayer>().LaPlumaLifeRegen;
 				bool NotFull = player.statLife < player.statLifeMax2;
 				if (((closest && inRange && player.statLife < trackLife) || !foundTarget) && inRange2 && NotFull) {
 					distanceFromTarget = between;
