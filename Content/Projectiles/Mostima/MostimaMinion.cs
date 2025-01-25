@@ -450,7 +450,7 @@ namespace BooTao2.Content.Projectiles.Mostima
 		private void TimeStop(bool isSkillActive) {
 			if (counter > 6) { //https://docs.tmodloader.net/docs/stable/class_main.html#a55969af8fef5fd9819d1854403cf794b
 				foreach (var proj in Main.ActiveProjectiles) {
-				if (proj.owner == Projectile.owner || !proj.friendly) {
+					if (proj.owner == Projectile.owner || !proj.hostile) {
 						continue;
 					}
 					float between = Vector2.Distance(proj.Center, Projectile.Center);

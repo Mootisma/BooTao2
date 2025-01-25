@@ -52,6 +52,9 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 			target = Main.player[Projectile.owner];
 			
 			foreach (var player in Main.ActivePlayers) {
+				if (Main.player[Projectile.owner].team != player.team) {
+					continue;
+				}
 				float between = Vector2.Distance(player.Center, Projectile.Center);
 				bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 				bool inRange = between < distanceFromTarget;

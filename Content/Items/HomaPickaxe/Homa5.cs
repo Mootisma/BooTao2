@@ -3,8 +3,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using BooTao2.Content.Dusts;
 using BooTao2.Content.Buffs;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.HomaPickaxe
 {
@@ -38,17 +38,22 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			recipe.AddIngredient(ModContent.ItemType<Homa4>(), 1);
 			recipe.AddIngredient(ItemID.Picksaw, 1);
 			recipe.AddIngredient(ItemID.Ectoplasm, 1);
-			recipe.AddIngredient(ItemID.BundleofBalloons, 1);
+			if (ModContent.GetInstance<BooTaoServerConfig>().Homa5) {
+				recipe.AddIngredient(ItemID.BundleofBalloons, 1);
+			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 		
 		public override void UpdateInventory (Player player) {
 			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
-			player.GetModPlayer<BooTaoPlayer>().Homa2 = true;
-			player.GetModPlayer<BooTaoPlayer>().Homa3 = true;
-			player.GetModPlayer<BooTaoPlayer>().Homa4 = true;
-			player.GetModPlayer<BooTaoPlayer>().Homa5 = true;
+			bool[] ligma = player.GetModPlayer<BooTaoPlayer>().GetHomaConfig();
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[0] = ligma[0];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[1] = ligma[1];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[2] = ligma[2];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[3] = ligma[3];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[4] = ligma[4];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[5] = ligma[5];
 		}
 	}
 }

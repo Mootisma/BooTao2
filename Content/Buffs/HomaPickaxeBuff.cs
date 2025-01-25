@@ -16,19 +16,23 @@ namespace BooTao2.Content.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.wallSpeed += 60;
-			player.tileSpeed += 60;
-			player.pickSpeed -= 0.35f;
-			Lighting.AddLight(player.position, 1f, 1f, 1f);
-			player.nightVision = true;
-			player.lifeRegen += 4;
-			player.manaRegenBonus += 5;
-			if (player.GetModPlayer<BooTaoPlayer>().Homa2 == true){
+			if (player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[0] == true){
 				player.GetModPlayer<BooTaoPlayer>().Magnet = true;
+			}
+			if (player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[1] == true){
+				player.wallSpeed += 60;
+				player.tileSpeed += 60;
+				player.pickSpeed -= 0.35f;
+				Lighting.AddLight(player.position, 1f, 1f, 1f);
+				player.nightVision = true;
+			}
+			if (player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[2] == true){
 				player.detectCreature = true;
 				player.findTreasure = true;
+				player.lifeRegen += 4;
+				player.manaRegenBonus += 5;
 			}
-			if (player.GetModPlayer<BooTaoPlayer>().Homa3 == true){
+			if (player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[3] == true){
 				player.dontHurtCritters = true;
 				player.accLavaFishing = true;
 				player.accTackleBox = true;
@@ -39,7 +43,7 @@ namespace BooTao2.Content.Buffs
 				player.statDefense += 5;
 				player.maxMinions += 1;
 			}
-			if (player.GetModPlayer<BooTaoPlayer>().Homa4 == true){
+			if (player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[4] == true){
 				player.longInvince = true;
 				player.panic = true;
 				player.manaFlower = true;
@@ -50,7 +54,7 @@ namespace BooTao2.Content.Buffs
 				player.jumpSpeedBoost += 2f;
 				player.luck += 0.05f;
 			}
-			if (player.GetModPlayer<BooTaoPlayer>().Homa5 == true){
+			if (player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[5] == true){
 				//https://docs.tmodloader.net/docs/stable/class_extra_jump.html
 				//https://github.com/tModLoader/tModLoader/blob/57a888322fe33bd693c25f02894ba4b84c91301a/ExampleMod/Content/Items/Accessories/ExampleExtraJumpAccessory.cs#L31
 				player.GetJumpState<SandstormInABottleJump>().Enable();
@@ -59,7 +63,7 @@ namespace BooTao2.Content.Buffs
 				player.noFallDmg = true;
 				player.noKnockback = true;
 			}
-			if (player.GetModPlayer<BooTaoPlayer>().Homa6 == true){
+			if (player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[6] == true){
 				player.GetDamage(DamageClass.Generic) += 0.12f;
 				if (player.velocity == Vector2.Zero){
 					//player.GetModPlayer<BooTaoPlayer>().damageTest = 1;

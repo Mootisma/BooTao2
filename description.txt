@@ -35,7 +35,12 @@ A weapon that mimicks Kafka (AK)
 A weapon that mimicks Absinthe
 A weapon that mimicks La Pluma
 
+## Known Issues
+Some items don't actually work in multiplayer. I don't know how to fix these yet.
+
 ## Changelog
+1.0.11.2: Bug fix
+1.0.11.1: Added a config for the pickaxes
 1.0.11.0: Added La Pluma
 1.0.10.0: Added Absinthe
 1.0.9.1: Fixed NPC friendly fire

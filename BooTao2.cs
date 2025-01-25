@@ -94,6 +94,16 @@ namespace BooTao2
 			recipe.AddIngredient(ItemID.ShinyRedBalloon, 1);
 			recipe.Register();
 			//
+			recipe = Recipe.Create(ItemID.PanicNecklace, 1);
+			recipe.AddIngredient(ItemID.Aglet, 1);
+			recipe.AddIngredient(ItemID.HealingPotion, 1);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.ManaFlower, 1);
+			recipe.AddIngredient(ItemID.JungleRose, 1);
+			recipe.AddIngredient(ItemID.ManaPotion, 1);
+			recipe.Register();
+			//
 			recipe = Recipe.Create(ItemID.Shellphone, 1);
 			recipe.AddIngredient(ItemID.LunarBar, 2);
 			recipe.AddIngredient(ItemID.MagicMirror, 1);
@@ -151,11 +161,8 @@ namespace BooTao2
 	public class BooTaoPlayer : ModPlayer
 	{
 		public bool Magnet;
-		public bool Homa2;
-		public bool Homa3;
-		public bool Homa4;
-		public bool Homa5;
-		public bool Homa6;
+		public bool[] HomaPickaxes = new bool[7];
+		public static bool[] HomaConfig = new bool[7];
 		public bool lifeRegenDebuff;
 		public bool BloodBlossom;
 		public bool NingHolding; // player.GetModPlayer<BooTaoPlayer>().NingHolding
@@ -228,11 +235,7 @@ namespace BooTao2
 			LaPlumaHolding = false;
 			LaPlumaLifeRegen = false;
 			if (!Player.HasBuff(ModContent.BuffType<HomaPickaxeBuff>())) {
-				Homa2 = false;
-				Homa3 = false;
-				Homa4 = false;
-				Homa5 = false;
-				Homa6 = false;
+				HomaPickaxes = new bool[7];
 			}
 		}
 		
@@ -246,6 +249,11 @@ namespace BooTao2
 				return true;
 			}
 			return false;
+		}
+		
+		//https://learn.microsoft.com/en-us/dotnet/csharp/tutorials/ranges-indexes
+		public bool[] GetHomaConfig() {
+			return HomaConfig;
 		}
 		
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers) {
@@ -390,7 +398,7 @@ namespace BooTao2
 		
 		public override void OnHitAnything(float x, float y, Entity victim){
 			if (RaidenShogunSkill && RaidenShogunCooldown == 0) {
-				int damage = (int)(RaidenShogunSkillDamage / 5);
+				int damage = (int)(RaidenShogunSkillDamage / 5) + 1;
 				if (Player.HasBuff(ModContent.BuffType<RaidenShogunBuff>()))
 					damage = RaidenShogunSkillDamage;
 				Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(x, y), Vector2.Zero, ModContent.ProjectileType<RaidenShogunSkillProj>(), damage, 1, Player.whoAmI);
@@ -407,7 +415,7 @@ namespace BooTao2
 			if(player.GetModPlayer<BooTaoPlayer>().Magnet)
 			{
 				//player.GetModPlayer<BooTaoPlayer>().Magnet = true; //paste to accessory :)
-				grabRange += 3700;
+				grabRange += 2000;
 			}
 		}
 		

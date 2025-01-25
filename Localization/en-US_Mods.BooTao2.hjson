@@ -33,9 +33,10 @@ Items: {
 		Tooltip:
 			'''
 			was never a staff
+			All effects below can be toggled via the config.
+			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
-			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
 			'''
 	}
 
@@ -43,6 +44,8 @@ Items: {
 		DisplayName: R2 Homa
 		Tooltip:
 			'''
+			All effects below can be toggled via the config.
+			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
 			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
@@ -54,6 +57,8 @@ Items: {
 		DisplayName: R3 Homa
 		Tooltip:
 			'''
+			All effects below can be toggled via the config.
+			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
 			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
@@ -91,6 +96,8 @@ Items: {
 		DisplayName: R4 Homa
 		Tooltip:
 			'''
+			All effects below can be toggled via the config.
+			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
 			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
@@ -106,6 +113,8 @@ Items: {
 		DisplayName: R5 Homa
 		Tooltip:
 			'''
+			All effects below can be toggled via the config.
+			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
 			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
@@ -333,6 +342,8 @@ Items: {
 		DisplayName: R6 Homa
 		Tooltip:
 			'''
+			All effects below can be toggled via the config.
+			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
 			Grants light emitting from the player and night vision potion effect.
 			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
@@ -602,4 +613,92 @@ Projectiles: {
 	KafkaAKProj.DisplayName: Kafka Strange Cube
 	AbsintheProj.DisplayName: Absinthe Proj
 	LaPlumaProj.DisplayName: La Pluma Proj
+}
+
+Configs: {
+	BooTaoServerConfig: {
+		DisplayName: Server-side Config
+		Headers.Pickaxes: Pickaxe Effects
+
+		Magnet: {
+			Label: Magnet
+			Tooltip:
+				'''
+				Toggle (true=enabled, false=disabled) the Magnet
+
+				Grants greatly increased item grab range and speed.
+				'''
+		}
+
+		Homa1: {
+			Label: Homa
+			Tooltip:
+				'''
+				Toggle (true=enabled, false=disabled) the new benefits (except the Magnet) granted by Homa
+				A restart is not required to enable/disable its effects
+
+				Grants significantly increased wall and tile placement speed, and mining speed.
+				Grants light emitting from the player and night vision potion effect.
+				'''
+		}
+
+		Homa2: {
+			Label: R2 Homa
+			Tooltip:
+				'''
+				Toggle (true=enabled, false=disabled) the new benefits granted by R2 Homa
+				A restart is required to alter R2 Homa's recipe, but a restart is not required to enable/disable its effects
+
+				Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+				Grants Spelunker and Hunter potion effects.
+				'''
+		}
+
+		Homa3: {
+			Label: R3 Homa
+			Tooltip:
+				'''
+				Toggle (true=enabled, false=disabled) the new benefits granted by R3 Homa
+				A restart is required to alter R3 Homa's recipe, but a restart is not required to enable/disable its effects
+
+				Grants a few fishing related accessory effects.
+				Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
+				'''
+		}
+
+		Homa4: {
+			Label: R4 Homa
+			Tooltip:
+				'''
+				Toggle (true=enabled, false=disabled) the new benefits granted by R4 Homa
+				A restart is required to alter R4 Homa's recipe, but a restart is not required to enable/disable its effects
+
+				Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
+				Grants the Frog Leg effects and the Mana Flower effect.
+				'''
+		}
+
+		Homa5: {
+			Label: R5 Homa
+			Tooltip:
+				'''
+				Toggle (true=enabled, false=disabled) the new benefits granted by R5 Homa
+				A restart is required to alter R5 Homa's recipe, but a restart is not required to enable/disable its effects
+
+				Grants the Bundle of Balloons' effects, and immunity to knockback and fall damage.
+				'''
+		}
+
+		Homa6: {
+			Label: R6 Homa
+			Tooltip:
+				'''
+				Toggle (true=enabled, false=disabled) the new benefits granted by R6 Homa
+				A restart is required to alter R6 Homa's recipe, but a restart is not required to enable/disable its effects
+
+				Grants 12% (vanilla) damage increase.
+				When not moving, slightly increases life regen, defense, minion and sentry count.
+				'''
+		}
+	}
 }

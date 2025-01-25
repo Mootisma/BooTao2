@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using BooTao2.Content.Buffs;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.HomaPickaxe
 {
@@ -36,26 +37,33 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<Homa>(), 1);
 			recipe.AddIngredient(ItemID.DeathbringerPickaxe, 1);
-			recipe.AddIngredient(ItemID.HunterPotion, 1);
-			recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
-			recipe.AddIngredient(ItemID.Campfire, 1);
-			recipe.AddIngredient(ItemID.StarinaBottle, 1);
+			if (ModContent.GetInstance<BooTaoServerConfig>().Homa2) {
+				recipe.AddIngredient(ItemID.HunterPotion, 1);
+				recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
+				recipe.AddIngredient(ItemID.Campfire, 1);
+				recipe.AddIngredient(ItemID.StarinaBottle, 1);
+			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 			recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<Homa>(), 1);
 			recipe.AddIngredient(ItemID.NightmarePickaxe, 1);
-			recipe.AddIngredient(ItemID.HunterPotion, 1);
-			recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
-			recipe.AddIngredient(ItemID.Campfire, 1);
-			recipe.AddIngredient(ItemID.StarinaBottle, 1);
+			if (ModContent.GetInstance<BooTaoServerConfig>().Homa2) {
+				recipe.AddIngredient(ItemID.HunterPotion, 1);
+				recipe.AddIngredient(ItemID.SpelunkerPotion, 1);
+				recipe.AddIngredient(ItemID.Campfire, 1);
+				recipe.AddIngredient(ItemID.StarinaBottle, 1);
+			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 		
 		public override void UpdateInventory (Player player) {
 			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
-			player.GetModPlayer<BooTaoPlayer>().Homa2 = true;
+			bool[] ligma = player.GetModPlayer<BooTaoPlayer>().GetHomaConfig();
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[0] = ligma[0];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[1] = ligma[1];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[2] = ligma[2];
 		}
 	}
 }

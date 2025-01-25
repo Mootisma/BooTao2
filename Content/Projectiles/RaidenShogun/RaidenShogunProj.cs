@@ -56,12 +56,12 @@ namespace BooTao2.Content.Projectiles.RaidenShogun
 			Lighting.AddLight(Projectile.Center, Color.Purple.ToVector3() * 0.5f);
 			
 			foreach (var player in Main.ActivePlayers) {
+				player.GetModPlayer<BooTaoPlayer>().RaidenShogunSkillDamage = Projectile.damage;
 				if (player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown > 0)
 					player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown--;
 			}
 			
 			if (counter > 53) {
-				owner.GetModPlayer<BooTaoPlayer>().RaidenShogunSkillDamage = Projectile.damage;
 				foreach (var player in Main.ActivePlayers) {
 					//only buff allies on the same team
 					// || player.team == 0 checks if the player is in a team (singleplayer cant pick teams though)

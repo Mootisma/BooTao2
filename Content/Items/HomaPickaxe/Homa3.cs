@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using BooTao2.Content.Buffs;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.HomaPickaxe
 {
@@ -43,16 +44,21 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<Homa2>(), 1);
 			recipe.AddIngredient(ItemID.HellstoneBar, 1);
-			recipe.AddIngredient(ItemID.CatBast, 1);
-			recipe.AddIngredient(ItemID.BewitchingTable, 1);
+			if (ModContent.GetInstance<BooTaoServerConfig>().Homa3) {
+				recipe.AddIngredient(ItemID.CatBast, 1);
+				recipe.AddIngredient(ItemID.BewitchingTable, 1);
+			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 		
 		public override void UpdateInventory (Player player) {
 			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
-			player.GetModPlayer<BooTaoPlayer>().Homa2 = true;
-			player.GetModPlayer<BooTaoPlayer>().Homa3 = true;
+			bool[] ligma = player.GetModPlayer<BooTaoPlayer>().GetHomaConfig();
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[0] = ligma[0];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[1] = ligma[1];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[2] = ligma[2];
+			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[3] = ligma[3];
 		}
 	}
 }
