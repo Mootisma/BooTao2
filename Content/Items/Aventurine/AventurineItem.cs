@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
+using BooTao2.Content.Projectiles.Fiammetta;
 using BooTao2.Content.Projectiles.Aventurine;
 using BooTao2.Content.Buffs.Aventurine;
 
@@ -90,24 +91,14 @@ namespace BooTao2.Content.Items.Aventurine
 					target.X += Main.rand.NextFloat(30) * player.direction * i;
 					Projectile.NewProjectile(player.GetSource_FromThis(), target, heading, ModContent.ProjectileType<AventurineProj>(), (int)(Item.damage / 4), 3, player.whoAmI);
 				}
-				foreach (var ligma in Main.ActivePlayers) {
-					if (ligma.team != player.team) {
-						continue;
-					}
-					ligma.ClearBuff(ModContent.BuffType<AventurineShieldOrigin>());
-					ligma.AddBuff(ModContent.BuffType<AventurineShield>(), 59);
-					ligma.GetModPlayer<BooTaoPlayer>().AventurineShieldHP += (int)(Item.damage / 3);
-					if (ligma.GetModPlayer<BooTaoPlayer>().AventurineShieldHP >= Item.damage * 2) {
-						ligma.GetModPlayer<BooTaoPlayer>().AventurineShieldHP = Item.damage * 2;
-					}
-				}
-				player.AddBuff(ModContent.BuffType<AventurineShieldOrigin>(), 59);
+				Projectile.NewProjectile(player.GetSource_FromThis(), target, Vector2.Zero, Item.shoot, 0, 3f, player.whoAmI, 2f, 1f);
 			}
 		}
 		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			// dont shoot anything with the right click
 			if (player.altFunctionUse == 2) {
+				Projectile.NewProjectile(source, position, Vector2.Zero, type, 0, knockback, player.whoAmI, 2f, 1f);
 				return false;
 			}
 			
@@ -119,7 +110,7 @@ namespace BooTao2.Content.Items.Aventurine
 				position.X = target.X;
 				position.X += Main.rand.NextFloat(30) * player.direction * i;
 
-				Projectile.NewProjectile(source, position, heading, type, damage, knockback, player.whoAmI, 0f, 1);
+				Projectile.NewProjectile(source, position, heading, type, damage, knockback, player.whoAmI, 0f);
 			}
 			return false;
 		}
@@ -127,21 +118,8 @@ namespace BooTao2.Content.Items.Aventurine
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
 				if (cooldown > 0) { return false; }
-				foreach (var ligma in Main.ActivePlayers) {
-					if (ligma.team != player.team) {
-						continue;
-					}
-					ligma.ClearBuff(ModContent.BuffType<AventurineShieldOrigin>());
-					ligma.AddBuff(ModContent.BuffType<AventurineShield>(), 59);
-					ligma.GetModPlayer<BooTaoPlayer>().AventurineShieldHP += player.statDefense;
-					if (ligma.GetModPlayer<BooTaoPlayer>().AventurineShieldHP >= player.statDefense * 2) {
-						ligma.GetModPlayer<BooTaoPlayer>().AventurineShieldHP = player.statDefense * 2;
-					}
-				}
-				player.AddBuff(ModContent.BuffType<AventurineShieldOrigin>(), 59);
 				cooldown = 120;
 				SoundEngine.PlaySound(AventurineSkill, player.Center);
-				return false;
 			}
 			Item.damage = player.statDefense;
 			Item.crit = (int)(player.statDefense / 2);

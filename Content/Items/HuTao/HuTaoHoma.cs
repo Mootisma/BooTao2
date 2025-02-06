@@ -50,11 +50,9 @@ namespace BooTao2.Content.Items.HuTao
 			Item.autoReuse = true; // Allows the player to hold click to automatically use the item again. Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
 			
 			// Weapon Properties
+			Item.damage = 55;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 120;
-			}
-			else {
-				Item.damage = 60;
+				Item.damage = 100;
 			}
 			Item.crit = 5;
 			Item.knockBack = 6.5f;
@@ -182,6 +180,7 @@ namespace BooTao2.Content.Items.HuTao
 		
 		// The fields related to the dash accessory
 		public bool DashAccessoryEquipped = false;
+		public bool XiaoPlungeEquipped = false;
 		public int DashDelay = 0; // frames remaining till we can dash again
 		public int DashTimer = 0; // frames remaining in the dash
 		
@@ -208,6 +207,13 @@ namespace BooTao2.Content.Items.HuTao
 				DashDelay = DashCooldown;
 				DashTimer = DashDuration;
 				Player.velocity = newVelocity;
+			}
+			if (XiaoPlungeEquipped && DashDelay == 0) {
+				
+				// start our dash
+				DashDelay = DashCooldown;
+				DashTimer = DashDuration;
+				Player.velocity = new Vector2(0, 70);
 			}
 			if (DashDelay > 0)
 				DashDelay--;

@@ -27,7 +27,7 @@ namespace BooTao2.Content.Projectiles.Furina
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			Player player = Main.LocalPlayer;
+			Player player = Main.player[Projectile.owner];
 			if (player.statLife > (int)(player.statLifeMax2 * 0.5) + 5) {
 				player.statLife -= 5;
 				//player.GetDamage(DamageClass.Generic) -= player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;

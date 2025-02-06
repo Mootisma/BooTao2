@@ -58,7 +58,7 @@ namespace BooTao2.Content.Items.Fiammetta
 		};
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 225 : 150;
+			Item.damage = (CalamityActive) ? 200 : 145;
 			Item.DamageType = DamageClass.Ranged;
 			Item.crit = 16;
 			Item.shoot = ModContent.ProjectileType<FiammettaProj>();

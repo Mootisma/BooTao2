@@ -12,7 +12,7 @@ Links to arts used:
 discord.gg/furinamains  
 [Kafka](https://twitter.com/dorkdragoon)  
 
-If you have suggestions, you can message me on Discord: mootisma
+If you have suggestions, you can message me on Bluesky: mootisma
 
 ## Notable Content
 A weapon that mimicks Hu Tao\
@@ -34,7 +34,8 @@ A weapon that mimicks Qingque\
 A weapon that mimicks Kafka (HSR)\
 A weapon that mimicks Kafka (AK)\
 A weapon that mimicks Absinthe\
-A weapon that mimicks La Pluma
+A weapon that mimicks La Pluma\
+A weapon that mimicks Kroos
 
 ## Todo
 Surtr\

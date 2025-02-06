@@ -48,6 +48,7 @@ namespace BooTao2.Content.Projectiles.Qingque
 				Projectile.timeLeft = 20;
 				Projectile.penetrate = -1;
 				Projectile.frame = player.GetModPlayer<BooTaoPlayer>().QingqueTiles[(int)TilePosition];
+				//Projectile.netUpdate = true;
 			}
 			if (ProjType > 0) {
 				Projectile.frame = (int)Projectile.ai[2];

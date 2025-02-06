@@ -219,6 +219,8 @@ namespace BooTao2
 		public float LaPlumaPassive = 0f;
 		public bool LaPlumaHolding;
 		public bool LaPlumaLifeRegen;
+		//
+		public int KroosSP = 0;
 		
 		public override void ResetEffects()
 		{
@@ -273,10 +275,12 @@ namespace BooTao2
 			AventurineShieldHP = 0;
 			JackieDodged = false;
 			LaPlumaPassive = 0f;
+			KroosSP = 0;
 		}
 		
 		public override void OnRespawn() {
 			AventurineShieldHP = 0;//https://docs.tmodloader.net/docs/stable/class_mod_player.html
+			AventurineBlindBet = 0;
 		}
 		
 		/*public override void NaturalLifeRegen (ref float regen)

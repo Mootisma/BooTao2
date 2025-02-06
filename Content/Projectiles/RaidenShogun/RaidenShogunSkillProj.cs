@@ -49,16 +49,17 @@ namespace BooTao2.Content.Projectiles.RaidenShogun {
 				Projectile.frameCounter = 0;
 				Projectile.frame++;
 			}
-		}
-		
-		public override void OnSpawn(IEntitySource source) {
-			foreach (var player in Main.ActivePlayers) {
-				if (Main.player[Projectile.owner].team != player.team) {
-					continue;
+			
+			if (Projectile.timeLeft == 19) {
+				foreach (var player in Main.ActivePlayers) {
+					if (Main.player[Projectile.owner].team == player.team) {
+						player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown = 52;
+					}
 				}
-				player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown = 54;
 			}
 		}
+		
+		//public override void OnSpawn(IEntitySource source) {}
 	}
 }
 /*

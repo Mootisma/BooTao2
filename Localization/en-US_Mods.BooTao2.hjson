@@ -465,6 +465,24 @@ Items: {
 			While at max stacks, ATK +8%
 			'''
 	}
+
+	XiaoItem: {
+		DisplayName: Xiao Item
+		Tooltip: ""
+	}
+
+	KroosItem: {
+		DisplayName: Kroos
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Double Tap - Auto] (Auto Trigger)
+			SP Cost: 4 [Offensive Recovery]
+			The next attack shoots 2 in a row, dealing 140% of ATK
+			[c/FFFF00:Targeting - Primary]
+			When attacking, 20% chance to deal 160% damage 
+			'''
+	}
 }
 
 Buffs: {
@@ -566,6 +584,26 @@ Buffs: {
 		DisplayName: Into the Groove
 		Description: 3 ASPD per stack
 	}
+
+	XiaoBuff: {
+		DisplayName: Xiao Buff
+		Description: Mods.BooTao2.Buffs.XiaoBuff.Description
+	}
+
+	MostimaSlow1: {
+		DisplayName: Mostima Slow1
+		Description: Mods.BooTao2.Buffs.MostimaSlow1.Description
+	}
+
+	MostimaSlow2: {
+		DisplayName: Mostima Slow2
+		Description: Mods.BooTao2.Buffs.MostimaSlow2.Description
+	}
+
+	MostimaSlow3: {
+		DisplayName: Mostima Slow3
+		Description: Mods.BooTao2.Buffs.MostimaSlow3.Description
+	}
 }
 
 Projectiles: {
@@ -613,6 +651,8 @@ Projectiles: {
 	KafkaAKProj.DisplayName: Kafka Strange Cube
 	AbsintheProj.DisplayName: Absinthe Proj
 	LaPlumaProj.DisplayName: La Pluma Proj
+	XiaoProj.DisplayName: Xiao Proj
+	KroosProj.DisplayName: Kroos Proj
 }
 
 Configs: {

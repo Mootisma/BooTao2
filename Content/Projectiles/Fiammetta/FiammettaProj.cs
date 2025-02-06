@@ -34,22 +34,20 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 		}
 		
 		public override void AI() {
-			if (Projectile.owner == Main.myPlayer) {
-				Player player = Main.LocalPlayer;
-				if (player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) {
-					Projectile.penetrate = -1;
-					// redirect the projectile to the mouse after it was sent straight up
-					if (Projectile.timeLeft == 55) {
-						Projectile.velocity = (player.GetModPlayer<BooTaoPlayer>().FiammettaStoreMouse - Projectile.Center).SafeNormalize(Vector2.UnitX);
-						Projectile.velocity *= 40f;
-					}
+			Player player = Main.player[Projectile.owner];
+			if (player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) {
+				Projectile.penetrate = -1;
+				// redirect the projectile to the mouse after it was sent straight up
+				if (Projectile.timeLeft == 55) {
+					Projectile.velocity = (player.GetModPlayer<BooTaoPlayer>().FiammettaStoreMouse - Projectile.Center).SafeNormalize(Vector2.UnitX);
+					Projectile.velocity *= 40f;
 				}
-				
-				// kill the projectile when it gets to the mouse position
-				float distancebtwn = Vector2.Distance(player.GetModPlayer<BooTaoPlayer>().FiammettaStoreMouse, Projectile.Center);
-				if (distancebtwn < 25 && ((Projectile.timeLeft < 55 && player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) || player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0)) {
-					Projectile.Kill();//
-				}
+			}
+			
+			// kill the projectile when it gets to the mouse position
+			float distancebtwn = Vector2.Distance(player.GetModPlayer<BooTaoPlayer>().FiammettaStoreMouse, Projectile.Center);
+			if (distancebtwn < 25 && ((Projectile.timeLeft < 55 && player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 1) || player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0)) {
+				Projectile.Kill();//
 			}
 			//position, width, height, type, speedx, speedy, alpha, color, scale
 			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
@@ -59,7 +57,7 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 		}
 		
 		public override void OnKill(int timeLeft) {
-			Player player = Main.LocalPlayer;
+			Player player = Main.player[Projectile.owner];
 			// spawn the explosion projectile after this projectile does its job
 			//var ffaf = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, 0), ProjectileID.Flames, Projectile.damage, Projectile.knockBack, Projectile.owner);
 			//ffaf.scale = 2f;
@@ -83,7 +81,7 @@ namespace BooTao2.Content.Projectiles.Fiammetta {
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			Player player = Main.LocalPlayer;
+			Player player = Main.player[Projectile.owner];
 			// Projectile.damage = 1;
 			if (player.GetModPlayer<BooTaoPlayer>().FiammettaSP < 15 && player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0) {
 				player.GetModPlayer<BooTaoPlayer>().FiammettaSP++;

@@ -33,4 +33,73 @@ namespace BooTao2.Content.Buffs.Mostima
 			}
 		}
 	}
+	
+	public class MostimaSlow1 : ModBuff
+	{
+		public override string Texture => "Terraria/Images/Buff_" + 3;
+		
+		public override void SetStaticDefaults() {
+			Main.debuff[Type] = true;
+			Main.buffNoSave[Type] = true;
+			Main.buffNoTimeDisplay[Type] = true;
+		}
+
+		public override void Update(Player player, ref int buffIndex) {
+			player.moveSpeed *= 0.5f;
+		}
+		
+		public override void Update(NPC npc, ref int buffIndex) {
+			npc.velocity *= 0.8f;
+			if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
+				npc.velocity *= 2f;
+			}
+			//npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
+		}
+	}
+	
+	public class MostimaSlow2 : ModBuff
+	{
+		public override string Texture => "Terraria/Images/Buff_" + 3;
+		
+		public override void SetStaticDefaults() {
+			Main.debuff[Type] = true;
+			Main.buffNoSave[Type] = true;
+			Main.buffNoTimeDisplay[Type] = true;
+		}
+
+		public override void Update(Player player, ref int buffIndex) {
+			player.moveSpeed *= 0.5f;
+		}
+		
+		public override void Update(NPC npc, ref int buffIndex) {
+			npc.velocity *= 0.8f;
+			if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
+				npc.velocity *= 2f;
+			}
+			//npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
+		}
+	}
+	
+	public class MostimaSlow3 : ModBuff
+	{
+		public override string Texture => "Terraria/Images/Buff_" + 3;
+		
+		public override void SetStaticDefaults() {
+			Main.debuff[Type] = true;
+			Main.buffNoSave[Type] = true;
+			Main.buffNoTimeDisplay[Type] = true;
+		}
+
+		public override void Update(Player player, ref int buffIndex) {
+			player.moveSpeed *= 0.5f;
+		}
+		
+		public override void Update(NPC npc, ref int buffIndex) {
+			npc.velocity *= 0.8f;
+			if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
+				npc.velocity *= 2f;
+			}
+			//npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
+		}
+	}
 }

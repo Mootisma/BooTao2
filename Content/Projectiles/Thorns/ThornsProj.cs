@@ -19,7 +19,7 @@ namespace BooTao2.Content.Projectiles.Thorns {
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			Player player = Main.LocalPlayer;
+			Player player = Main.player[Projectile.owner];
 			player.GetModPlayer<BooTaoPlayer>().ThornsHealingCD = 121;
 			if (player.GetModPlayer<BooTaoPlayer>().ThornsS3duration <= 0 && player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses < 2) {
 				player.GetModPlayer<BooTaoPlayer>().ThornsSP++;

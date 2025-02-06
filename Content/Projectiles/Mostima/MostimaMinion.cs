@@ -1,6 +1,6 @@
 using BooTao2.Content.Items.Mostima;
 using BooTao2.Content.Buffs.Mostima;
-using BooTao2.Content.Projectiles.Fiammetta;
+using BooTao2.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -77,11 +77,13 @@ namespace BooTao2.Content.Projectiles.Mostima
 
 		public override void AI() {
 			Player owner = Main.player[Projectile.owner];
-			if (Main.myPlayer != Projectile.owner)
-				return;
 
 			if (!CheckActive(owner)) {
 				return;
+			}
+			
+			if (Projectile.alpha > 0) {
+				Projectile.alpha -= 25;
 			}
 			
 			TimeStop(owner.GetModPlayer<BooTaoPlayer>().MostimaSkill);
@@ -97,15 +99,25 @@ namespace BooTao2.Content.Projectiles.Mostima
 				owner.GetModPlayer<BooTaoPlayer>().MostimaSkill = false;
 			}
 			
-			if (Projectile.alpha > 0) {
-				Projectile.alpha -= 25;
-			}
-			Projectile.spriteDirection = (Projectile.Center.X < Main.MouseWorld.X) ? 1 : -1;
-
 			GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);
-			SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
 			Movement(distanceToIdlePosition, vectorToIdlePosition, out Vector2 vel);
-			Visuals(foundTarget, distanceFromTarget, targetCenter, owner);
+			
+			if (Main.myPlayer != Projectile.owner) {
+				Projectile.frameCounter++;
+				if (Projectile.frameCounter >= 4) {
+					Projectile.frameCounter = 0;
+					Projectile.frame++;
+				}
+				if (Projectile.frame >= 58) {
+					Projectile.frame = 10;
+				}
+			}
+			else {
+				Projectile.spriteDirection = (Projectile.Center.X < Main.MouseWorld.X) ? 1 : -1;
+				SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
+				Visuals(foundTarget, distanceFromTarget, targetCenter, owner);
+			}
+			//Projectile.netUpdate = true;
 		}
 
 		// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
@@ -472,9 +484,10 @@ namespace BooTao2.Content.Projectiles.Mostima
 					if (Math.Abs(proj.velocity.Y) <= 0.1f && Math.Abs(proj.velocity.X) <= 0.1f) {
 						proj.velocity *= 2f;
 					}
+					proj.netUpdate = true;
 				}
 				foreach (var npc in Main.ActiveNPCs) {
-					float between = Vector2.Distance(npc.Center, Main.MouseWorld);
+					float between = Vector2.Distance(npc.Center, Projectile.Center);
 					if (between < 1000) {
 						if (isSkillActive) {
 							npc.velocity *= 0.01f;
@@ -504,6 +517,7 @@ namespace BooTao2.Content.Projectiles.Mostima
 							npc.velocity *= 5f;
 						}
 					}
+					npc.netUpdate = true;
 				}
 				counter = 0;
 			}

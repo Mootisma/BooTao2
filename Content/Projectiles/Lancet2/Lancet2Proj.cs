@@ -22,12 +22,10 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 		}
 		
 		public override void AI() {
-			if (Main.myPlayer != Projectile.owner)
-				return;
-			
 			SearchForTargets(out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter, out int trackLife, out Player target);
 			//Projectile.Intersects(player.Hitbox)
 			if (foundTarget) {
+				Projectile.netUpdate = true;
 				if (Vector2.Distance(target.Center, Projectile.Center) < 20f) {
 					Projectile.Kill();
 					target.Heal(Projectile.damage);
@@ -59,7 +57,8 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 				bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 				bool inRange = between < distanceFromTarget;
 				bool inRange2 = between < 300f && !player.GetModPlayer<BooTaoPlayer>().LaPlumaLifeRegen;
-				if (((closest && inRange && player.statLife < trackLife) || !foundTarget) && inRange2) {
+				bool NotFull = player.statLife < player.statLifeMax2 && !player.dead && player.active;
+				if (((closest && inRange && player.statLife < trackLife) || !foundTarget) && inRange2 && NotFull) {
 					distanceFromTarget = between;
 					targetCenter = player.Center;
 					foundTarget = true;

@@ -62,8 +62,6 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 		int counter = 0;
 		bool Healing = false;
 		public override void AI() {
-			if (Main.myPlayer != Projectile.owner)
-				return;
 			if (!CheckActive(Main.player[Projectile.owner])) {
 				return;
 			}
@@ -91,7 +89,7 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 			if (Healing) {
 				if (Projectile.frame == 7 && Projectile.frameCounter == 0) {
 					SearchForTargets(out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter, out int trackLife);
-					if (foundTarget) {
+					if (foundTarget && Main.myPlayer == Projectile.owner) {//only one projectile (?)
 						SoundEngine.PlaySound(Heal, Projectile.Center);
 						Vector2 todokete = (targetCenter - Projectile.Center).SafeNormalize(Vector2.UnitX) * 12f;
 						Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + new Vector2(30, -20), todokete, ModContent.ProjectileType<Lancet2Proj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
@@ -154,7 +152,7 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 				bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 				bool inRange = between < distanceFromTarget;
 				bool inRange2 = between < 500f && !player.GetModPlayer<BooTaoPlayer>().LaPlumaLifeRegen;
-				bool NotFull = player.statLife < player.statLifeMax2;
+				bool NotFull = player.statLife < player.statLifeMax2 && !player.dead && player.active;
 				if (((closest && inRange && player.statLife < trackLife) || !foundTarget) && inRange2 && NotFull) {
 					distanceFromTarget = between;
 					targetCenter = player.Center;

@@ -5,7 +5,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
-using BooTao2.Content.Projectiles.Lancet2;
 
 namespace BooTao2.Content.Projectiles {
 	public class Test : ModProjectile {
@@ -106,7 +105,10 @@ namespace BooTao2.Content.Projectiles {
 		}
 		
 		public override void Update(NPC npc, ref int buffIndex) {
-			npc.velocity *= 0f;
+			npc.velocity *= 0.8f;
+			if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
+				npc.velocity *= 2f;
+			}
 			//npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
 		}
 	}
