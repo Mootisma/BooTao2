@@ -15,27 +15,11 @@ discord.gg/furinamains
 If you have suggestions, you can message me on Bluesky: mootisma
 
 ## Notable Content
-A weapon that mimicks Hu Tao\
-A minion that mimicks Herta\
-A weapon that mimicks Ningguang\
-A minion that mimicks Furina\
-A minion that mimicks Yelan\
-A weapon that mimicks Thorns\
-A minion that mimicks Xiangling\
-A weapon that mimicks Fiammetta\
-A minion that mimicks Skadi the Corrupting Heart\
-A minion that mimicks Mostima\
-A minion that mimicks Lancet-2\
-A weapon that mimicks Aventurine\
-A minion that mimicks Raiden Shogun\
-A weapon that mimicks Beehunter\
-A weapon that mimicks Jackie\
-A weapon that mimicks Qingque\
-A weapon that mimicks Kafka (HSR)\
-A weapon that mimicks Kafka (AK)\
-A weapon that mimicks Absinthe\
-A weapon that mimicks La Pluma\
-A weapon that mimicks Kroos
+Weapons:\
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos\
+
+Minions:\
+Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun
 
 ## Todo
 Surtr\
