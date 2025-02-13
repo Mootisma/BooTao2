@@ -15,7 +15,7 @@ If you have suggestions or bug reports, you can message me on bluesky or comment
 
 ## Notable Content
 Weapons:
-Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper
 
 Minions:
 Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun
@@ -25,6 +25,7 @@ Some items don't fully work in multiplayer. I don't know how to fix these yet.
 Qingque's tiles don't change on all clients, but functionality still works.
 
 ## Changelog
+1.0.13.0: Added Caper
 1.0.12.0: Added Kroos
 1.0.11.3: Fixed Lancet-2, Raiden Shogun, and Aventurine in multiplayer
 1.0.11.2: Bug fix

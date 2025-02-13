@@ -483,6 +483,22 @@ Items: {
 			When attacking, 20% chance to deal 160% damage 
 			'''
 	}
+
+	CaperItem: {
+		DisplayName: Caper
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Trait]
+			Can only attack while holding a boomerang. 
+			The boomerang will return to the player upon reaching the cursor or when hitting an enemy.
+			[c/FFFF00:Double the Fun] (Auto Trigger)
+			SP Cost: 25 [Offensive Recovery]
+			ATK +60%, each attack fires 1 more boomerang
+			[c/FFFF00:Larking About]
+			When attacking, 25% chance to increase that attack's ATK to 160%
+			'''
+	}
 }
 
 Buffs: {
@@ -653,6 +669,7 @@ Projectiles: {
 	LaPlumaProj.DisplayName: La Pluma Proj
 	XiaoProj.DisplayName: Xiao Proj
 	KroosProj.DisplayName: Kroos Proj
+	CaperProj.DisplayName: Caper Proj
 }
 
 Configs: {

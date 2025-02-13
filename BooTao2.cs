@@ -194,7 +194,7 @@ namespace BooTao2
 		public int SkadiSP = 0;
 		//
 		public int MostimaSkillDuration = 0;
-		public int MostimaSkillSP = 0;
+		public int MostimaSkillSP = 2400;
 		public bool MostimaSkill;
 		//
 		public bool SkillReady;
@@ -221,6 +221,8 @@ namespace BooTao2
 		public bool LaPlumaLifeRegen;
 		//
 		public int KroosSP = 0;
+		//
+		public int CaperSP = 15;
 		
 		public override void ResetEffects()
 		{
