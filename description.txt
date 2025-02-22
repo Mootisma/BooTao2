@@ -11,11 +11,11 @@ Furina: https://www.pixiv.net/en/artworks/114000440
 discord.gg/furinamains
 Kafka: https://twitter.com/dorkdragoon
 
-If you have suggestions or bug reports, you can message me on bluesky or comment on the steam post
+If you have suggestions or bug reports, you can comment on the steam post
 
 ## Notable Content
 Weapons:
-Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao
 
 Minions:
 Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun
@@ -25,6 +25,7 @@ Some items don't fully work in multiplayer. I don't know how to fix these yet.
 Qingque's tiles don't change on all clients, but functionality still works.
 
 ## Changelog
+1.0.14.0: Added Xiao
 1.0.13.0: Added Caper
 1.0.12.0: Added Kroos
 1.0.11.3: Fixed Lancet-2, Raiden Shogun, and Aventurine in multiplayer

@@ -5,6 +5,8 @@ using Terraria.ModLoader;
 
 namespace BooTao2.Content.Projectiles.Qingque {
 	public class QingqueExplosionProj : ModProjectile {
+		public override string Texture => "BooTao2/Content/Projectiles/Fiammetta/FiammettaExplosionProj";
+		
 		public override void SetStaticDefaults() {
 			Main.projFrames[Projectile.type] = 5;
 		}

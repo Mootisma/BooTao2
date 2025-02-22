@@ -8,15 +8,12 @@ Items: {
 			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Normal Attack: Secret Spear of Wangsheng] (Left Click)
 			Perform a [c/c2ac06:Charged Attack], lunging forward and dealing damage along the way.
-			[c/FFFF00:Elemental Skill: Guide to Afterlife]
-			Right Click to enter the [c/FF9696:Paramita Papilio] state, consuming 30% of current HP
-			[c/FF9696:Paramita Papilio] (Right Click)
-			[c/c2ac06:Charged Attack] Damage is increased based on consumed HP.
-			[c/c2ac06:Charged Attack] Damage is increased when below half health.
-			[c/c2ac06:Charged Attack] is performed faster.
-			[c/c2ac06:Charged Attack] apply [c/FF9696:Blood Blossom] for 8 seconds.
-			Gain immunity to knockback and fall damage and 90% damage reduction.
-			9 second duration, 7 second cooldown.
+			[c/FFFF00:Elemental Skill: Guide to Afterlife] (Right Click)
+			Consume 30% of current HP and enter the [c/FF9696:Paramita Papilio] state.
+			[c/FF9696:Paramita Papilio] (Duration: 9s | CD: 7s)
+			[c/c2ac06:Charged Attack] Damage is increased based on consumed HP, and further increased when below half health.
+			[c/c2ac06:Charged Attack] is performed faster and applies [c/FF9696:Blood Blossom] for 8 seconds.
+			Gain immunity to knockback, fall damage, slightly increased movespeed, and 90% damage reduction.
 			While on cooldown, crit rate is increased by 12%.
 			[c/FF9696:Blood Blossom]
 			Periodically take additional damage based on the damage dealt by [c/c2ac06:Charged Attack]
@@ -166,7 +163,7 @@ Items: {
 		Tooltip:
 			'''
 			Art by [c/73a9ff:@amayuki] and Discord user ID [c/73a9ff:1263407368826261595]. Contains assets from the game [c/73a9ff:Genshin Impact]
-			[c/FFFF00:Salon Solitaire]
+			[c/FFFF00:Salon Solitaire] (Left Click)
 			Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance:
 			the Ball Octopus-shaped [c/c2ac06:Gentilhomme Usher], the Bubbly Seahorse-shaped [c/c2ac06:Surintendante Chevalmarin], and the Armored Crab-shaped [c/c2ac06:Mademoiselle Crabaletta].
 			Only one can be summoned at a time. Requires 3 minion slots to be summoned.
@@ -185,7 +182,7 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Genshin Impact]
-			[c/FFFF00:Depth-Clarion Dice]
+			[c/FFFF00:Depth-Clarion Dice] (Left Click)
 			Yelan creates an [c/c2ac06:Exquisite Throw] which aids her in battle.
 			Only one can be summoned at a time. Requires 1 minion slot to be summoned.
 			[c/c2ac06:Exquisite Throw]
@@ -219,7 +216,7 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Genshin Impact]
-			[c/FFFF00:Pyronado]
+			[c/FFFF00:Pyronado] (Left Click)
 			Displaying her mastery over both fire and polearms, Xiangling sends a Pyronado whirling around her.
 			The Pyronado will move with your character for the ability's duration, dealing Pyro DMG to all opponents in its path.
 			Only one can be summoned at a time. Requires 1 minion slot.
@@ -327,7 +324,7 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Genshin Impact]
-			[c/FFFF00:Transcendence: Baleful Omen]
+			[c/FFFF00:Transcendence: Baleful Omen] (Left Click)
 			The Raiden Shogun unveils a shard of her Euthymia, granting nearby allies the Eye of Stormy Judgment.
 			Only one can be summoned at a time. Requires 1 minion slot.
 			[c/FFFF00:Eye of Stormy Judgment]
@@ -426,7 +423,7 @@ Items: {
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
 			Has a 15 second redeployment time.
-			[c/FFFF00:Strange Cube] (Passive)
+			[c/FFFF00:Strange Cube] (Left Click)
 			Inflict [c/c2ac06:Sleep] on nearby non-boss enemies for 5 seconds.
 			[c/c2ac06:Sleep]
 			Unable to move, take action, or take damage.
@@ -468,7 +465,17 @@ Items: {
 
 	XiaoItem: {
 		DisplayName: Xiao Item
-		Tooltip: ""
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
+			[c/FFFF00:Normal Attack: Whirlwind Thrust] (Left Click)
+			Perform a [c/c2ac06:Plunging Attack], lunging downward and dealing damage along the way.
+			[c/FFFF00:Lemniscatic Wind Cycling] (Right Click | CD: 10s | 2 charges)
+			Xiao lunges towards the cursor, dealing damage along the way.
+			[c/FF9696:Yaksha's Mask]
+			While holding this weapon, gain immunity to knockback and fall damage, and
+			slightly increased movespeed, falling and jumping speed, but continuously lose HP. 
+			'''
 	}
 
 	KroosItem: {
@@ -602,8 +609,8 @@ Buffs: {
 	}
 
 	XiaoBuff: {
-		DisplayName: Xiao Buff
-		Description: Mods.BooTao2.Buffs.XiaoBuff.Description
+		DisplayName: Yaksha's Mask
+		Description: Xiao gets increased stats
 	}
 
 	MostimaSlow1: {
@@ -619,6 +626,11 @@ Buffs: {
 	MostimaSlow3: {
 		DisplayName: Mostima Slow3
 		Description: Mods.BooTao2.Buffs.MostimaSlow3.Description
+	}
+
+	SpeedBuff: {
+		DisplayName: 77th Director of the Wangsheng Funeral Parlor
+		Description: Hu Tao gets increased stats
 	}
 }
 
@@ -640,7 +652,7 @@ Projectiles: {
 	FurinaBubble2Proj.DisplayName: Furina Bubble2 Proj
 	FurinaBubble3Proj.DisplayName: Furina Bubble3 Proj
 	YelanDiceAttackProj.DisplayName: Yelan Dice Attack Proj
-	YelanMinionProj.DisplayName: Yelan Minion Proj
+	YelanMinionProj.DisplayName: Depth-Clarion Dice
 	ThornsProj.DisplayName: Thorns Proj
 	XianglingPyronado.DisplayName: Xiangling Pyronado
 	FiammettaProj.DisplayName: Fiammetta Proj
@@ -670,6 +682,7 @@ Projectiles: {
 	XiaoProj.DisplayName: Xiao Proj
 	KroosProj.DisplayName: Kroos Proj
 	CaperProj.DisplayName: Caper Proj
+	XiaoSkillProj.DisplayName: Xiao Skill Proj
 }
 
 Configs: {

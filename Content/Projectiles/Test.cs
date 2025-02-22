@@ -19,7 +19,7 @@ namespace BooTao2.Content.Projectiles {
 			Projectile.ignoreWater = true;
 			Projectile.light = 0.9f;
 			Projectile.tileCollide = true;
-			Projectile.timeLeft = 30000;
+			Projectile.timeLeft = 20;
 			Projectile.penetrate = -1;
 		}
 		
@@ -27,7 +27,9 @@ namespace BooTao2.Content.Projectiles {
 			if (Main.myPlayer != Projectile.owner)
 				return;
 			
-			Projectile.Kill();
+			Player player = Main.player[Projectile.owner];
+			player.velocity.Y += 2f;
+			//Projectile.Kill();
 		}
 	}
 	
@@ -67,27 +69,25 @@ namespace BooTao2.Content.Projectiles {
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.LightRed;
 			Item.DamageType = DamageClass.Melee;
+			//Item.shoot = ModContent.ProjectileType<Test>();
+			//Item.shootSpeed = 15f;
 		}
 		
 		public override bool CanUseItem(Player player) {
-			foreach (var npc in Main.ActiveNPCs) {
-				npc.AddBuff(ModContent.BuffType<TestBuff>(), 300);
-			}
+			//foreach (var npc in Main.ActiveNPCs) {
+			//	npc.AddBuff(ModContent.BuffType<TestBuff>(), 300);
+			//}
 			//foreach (var teehee in Main.ActivePlayers) {
 			//	teehee.AddBuff(ModContent.BuffType<TestBuff>(), 300, true);
 			//}
 			return true;
 		}
 		
-		//public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone){}
-		public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers) {
-			modifiers.DamageVariationScale *= 0f;
-			if (target.lifeRegen < 0) {
-				modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
-					hitInfo.Damage += Math.Abs(target.lifeRegen);
-				};
-			}
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone){
+			target.AddBuff(ModContent.BuffType<TestBuff>(), 300);
+			//target.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
 		}
+		//public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers) {}
 	}
 	
 	public class TestBuff : ModBuff
@@ -105,11 +105,11 @@ namespace BooTao2.Content.Projectiles {
 		}
 		
 		public override void Update(NPC npc, ref int buffIndex) {
-			npc.velocity *= 0.8f;
-			if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
-				npc.velocity *= 2f;
-			}
-			//npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
+			//npc.velocity *= 0.1f;
+			//if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
+			//	npc.velocity *= 2f;
+			//}
+			npc.GetGlobalNPC<BooTaoGlobalNPC>().test = true;
 		}
 	}
 }

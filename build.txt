@@ -1,7 +1,7 @@
 displayName = Mootisma's Collection
 author = mootisma
-version = 1.0.13.0
-homepage = https://bsky.app/profile/mootisma.bsky.social
+version = 1.0.14.0
+homepage = https://mootisma.github.io/tw/tmod/
 hideCode = true
 hideResources = true
 includeSource = false

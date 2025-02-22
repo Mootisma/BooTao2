@@ -223,6 +223,8 @@ namespace BooTao2
 		public int KroosSP = 0;
 		//
 		public int CaperSP = 15;
+		//
+		public int XiaoSP = 1200;
 		
 		public override void ResetEffects()
 		{
@@ -454,6 +456,10 @@ namespace BooTao2
 		//
 		public int KafkaDOTdmg = 0;
 		public int KafkaDOTduration = 0;
+		//
+		public bool MostimaSlow1;
+		public bool MostimaSlow2;
+		public bool MostimaSlow3;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
@@ -470,19 +476,36 @@ namespace BooTao2
 
 		public override void DrawEffects(NPC npc, ref Color drawColor) {
 			// This simple color effect indicates that the buff is active
-			if (BloodBlossom || ThornsDOTstack > 0) {
+			if (BloodBlossom || ThornsDOTstack > 0 || test) {
 				drawColor.G = 0;
 			}
 		}
 		//https://docs.tmodloader.net/docs/stable/class_global_n_p_c.html
 		public override bool PreAI(NPC npc) {
 			if (KafkaAKSleep) {
-				//Vector2 ligmaballs = Vector2.Lerp(npc.position, npc.oldPos[1], 1);
-				//npc.position -= ligmaballs * 0.5f;
-				Dust.NewDust(npc.Center, 0, 0, 34, 0, 0, 150, default, 1f);
+				//Dust.NewDust(npc.Center, 0, 0, 34, 0, 0, 150, default, 1f);
 				return false;
 			}
+			if (test && !npc.boss) {
+				//https://discord.com/channels/103110554649894912/534215632795729922/1266852701870882826
+				//https://discord.com/channels/103110554649894912/534215632795729922/1280133031839010908
+				//Vector2 ligmaballs = Vector2.Lerp(npc.position, npc.oldPos[1], 1);
+				//npc.position -= ligmaballs;
+				
+				//the current combination below slows the enemy by 50%, i *think*
+				// in reverse (multiplying here and dividing in postai) it seems to speed them up
+				npc.velocity /= 0.01f;
+			}
+			if (MostimaSlow1) {
+				npc.velocity /= 0.01f;
+			}
 			return true;
+		}
+		
+		public override void PostAI(NPC npc) {
+			if (test && !npc.boss) {
+				npc.velocity *= 0.01f;
+			}
 		}
 		
 		public override bool? CanBeHitByItem(NPC npc, Player player, Item item) {
@@ -502,8 +525,6 @@ namespace BooTao2
 				return false;
 			return true;
 		}
-		
-		// public override void PostAI(NPC npc) {}
 		
 		public override void UpdateLifeRegen(NPC npc, ref int damage) {
 			if (BloodBlossom) {

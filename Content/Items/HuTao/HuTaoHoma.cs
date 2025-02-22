@@ -1,4 +1,5 @@
 using BooTao2.Content.Projectiles.HuTao;
+using BooTao2.Content.Buffs.BloodBlossomBuff;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -111,7 +112,7 @@ namespace BooTao2.Content.Items.HuTao
 		
 		public override void HoldItem(Player player)
 		{
-			if (player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped = true) {
+			if (player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped == true) {
 				player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped = false;
 			}
 			if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
@@ -119,11 +120,10 @@ namespace BooTao2.Content.Items.HuTao
 				//player.endurance = 1f - (0.1f * (1f - player.endurance));
 				// player.statLifeMax2 += 100;
 				//player.statDefense += 50;
-				player.noKnockback = true;
-				player.noFallDmg = true;
 				if (player.statLife <= (player.statLifeMax2 * 0.5) ) {
 					player.GetDamage(DamageClass.Generic) += 0.33f;
 				}
+				player.AddBuff(ModContent.BuffType<SpeedBuff>(), 30, true);
 			}
 		}
 		
@@ -176,11 +176,13 @@ namespace BooTao2.Content.Items.HuTao
 		
 		// The initial velocity.  10 velocity is about 37.5 tiles/second or 50 mph
 		public const float DashVelocity = 12f;
+		public const float XiaoDashVelocity = 18f;
 		public const int DashDuration = 35; // Duration of the dash afterimage effect in frames
 		
 		// The fields related to the dash accessory
 		public bool DashAccessoryEquipped = false;
 		public bool XiaoPlungeEquipped = false;
+		public bool XiaoSkillDash = false;
 		public int DashDelay = 0; // frames remaining till we can dash again
 		public int DashTimer = 0; // frames remaining in the dash
 		
@@ -202,6 +204,11 @@ namespace BooTao2.Content.Items.HuTao
 				// set the new velocities 
 				newVelocity.Y = direction.Y * DashVelocity * 1.5f;
 				newVelocity.X = direction.X * DashVelocity;
+				
+				if (XiaoSkillDash) {
+					newVelocity.Y = direction.Y * XiaoDashVelocity * 1.5f;
+					newVelocity.X = direction.X * XiaoDashVelocity;
+				}
 				
 				// start our dash
 				DashDelay = DashCooldown;

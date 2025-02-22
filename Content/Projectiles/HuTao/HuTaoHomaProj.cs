@@ -1,5 +1,4 @@
-﻿using BooTao2.Content.Dusts;
-using BooTao2.Content.Buffs.BloodBlossomBuff;
+﻿using BooTao2.Content.Buffs.BloodBlossomBuff;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -56,17 +55,8 @@ namespace BooTao2.Content.Projectiles.HuTao
 				Projectile.rotation += MathHelper.ToRadians(135f);
 			}
 
-			// Avoid spawning dusts on dedicated servers
-			if (!Main.dedServ) {
-				// These dusts are added later, for the 'ExampleMod' effect
-				if (Main.rand.NextBool(3)) {
-					Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Sparkle>(), Projectile.velocity.X * 2f, Projectile.velocity.Y * 2f, Alpha: 128, Scale: 1.2f);
-				}
-
-				if (Main.rand.NextBool(4)) {
-					Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Sparkle>(), Alpha: 128, Scale: 0.3f);
-				}
-			}
+			Dust.NewDust(Projectile.Center, 3, 3, 114, Main.rand.Next(-8, 8), Main.rand.Next(-8, 8), 120, default, 1f);
+			Dust.NewDustPerfect(Projectile.Center, 114, null, 120, default, 1f);
 
 			return false; // Don't execute vanilla AI.
 		}
