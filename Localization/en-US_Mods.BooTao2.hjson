@@ -506,6 +506,20 @@ Items: {
 			When attacking, 25% chance to increase that attack's ATK to 160%
 			'''
 	}
+
+	PlatinumItem: {
+		DisplayName: Platinum
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Pegasian Sight] (Auto Trigger)
+			SP Cost: 50 [Auto Recovery]
+			ASPD reduces, but ATK +100%. Range expands
+			[c/FFFF00:All-Out Attack]
+			The longer the interval from the last attack is, the higher the ATK of the next attack will be
+			Caps at 2.5 seconds for 200% ATK
+			'''
+	}
 }
 
 Buffs: {
@@ -683,6 +697,7 @@ Projectiles: {
 	KroosProj.DisplayName: Kroos Proj
 	CaperProj.DisplayName: Caper Proj
 	XiaoSkillProj.DisplayName: Xiao Skill Proj
+	PlatinumProj.DisplayName: Platinum Proj
 }
 
 Configs: {
