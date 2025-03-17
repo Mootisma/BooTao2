@@ -21,7 +21,7 @@ namespace BooTao2.Content.Projectiles.Furina
 			Projectile.ignoreWater = true;
 			Projectile.light = 1f;
 			Projectile.tileCollide = false;
-			Projectile.timeLeft = 300;
+			Projectile.timeLeft = 200;
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {

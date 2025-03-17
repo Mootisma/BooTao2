@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BooTao2.Content.Buffs.Thorns;
 
 namespace BooTao2.Content.Projectiles.Thorns {
 	public class ThornsProj : ModProjectile {
@@ -15,7 +16,7 @@ namespace BooTao2.Content.Projectiles.Thorns {
 			Projectile.ignoreWater = true;
 			Projectile.light = 0.1f;
 			Projectile.tileCollide = true;
-			Projectile.timeLeft = 60;
+			Projectile.timeLeft = 80;
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
@@ -24,7 +25,7 @@ namespace BooTao2.Content.Projectiles.Thorns {
 			if (player.GetModPlayer<BooTaoPlayer>().ThornsS3duration <= 0 && player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses < 2) {
 				player.GetModPlayer<BooTaoPlayer>().ThornsSP++;
 			}
-			//target.AddBuff(ModContent.BuffType<ThornsBuff>(), 480);//
+			target.AddBuff(ModContent.BuffType<ThornsRegen>(), 180);
 			target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTduration = 180;
 			if (target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack < 4){
 				target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack++;

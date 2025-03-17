@@ -8,6 +8,8 @@ namespace BooTao2.Content.Projectiles.Platinum
 {
 	public class PlatinumProj : ModProjectile
 	{
+		public override string Texture => "BooTao2/Content/Projectiles/Kroos/KroosProj";
+		
 		SoundStyle KroosAttackHit = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Kroos/KroosAttackHit") {
 			Volume = 0.6f,
 			PitchVariance = 0.3f,

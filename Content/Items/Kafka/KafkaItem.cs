@@ -53,7 +53,15 @@ namespace BooTao2.Content.Items.Kafka
 			return true;
 		}
 
-		//public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {}
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
+			if (player.altFunctionUse == 2) {
+				SoundEngine.PlaySound(KafkaFUA, player.Center);
+			}
+			else {
+				SoundEngine.PlaySound(KafkaSkill, player.Center);
+			}
+			return true;
+		}
 
 		public override bool CanUseItem(Player player) {
 			if (player.statMana < Item.mana)
@@ -64,7 +72,7 @@ namespace BooTao2.Content.Items.Kafka
 				Item.shoot = ModContent.ProjectileType<KafkaProj2>();
 				Item.shootSpeed = 25f;
 				Item.reuseDelay = 15;
-				SoundEngine.PlaySound(KafkaFUA, player.Center);
+				//SoundEngine.PlaySound(KafkaFUA, player.Center);
 			}
 			else {
 				Item.useTime = 70;
@@ -72,7 +80,7 @@ namespace BooTao2.Content.Items.Kafka
 				Item.shoot = ModContent.ProjectileType<KafkaProj>();
 				Item.shootSpeed = 0f;
 				Item.reuseDelay = 0;
-				SoundEngine.PlaySound(KafkaSkill, player.Center);
+				//SoundEngine.PlaySound(KafkaSkill, player.Center);
 			}
 			return true;
 		}

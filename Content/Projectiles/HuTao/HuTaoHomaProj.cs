@@ -66,7 +66,7 @@ namespace BooTao2.Content.Projectiles.HuTao
 			if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
 				target.AddBuff(ModContent.BuffType<BloodBlossomBuff>(), 480);//
 				//target.AddBuff(24, 480);//
-				target.GetGlobalNPC<BooTaoGlobalNPC>().BloodBlossomDmg = (int)(damageDone / 4);
+				//target.GetGlobalNPC<BooTaoGlobalNPC>().BloodBlossomDmg = (int)(damageDone / 4);
 			}
 		}
 	}

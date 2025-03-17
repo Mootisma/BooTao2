@@ -4,20 +4,23 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BooTao2.Content.Projectiles.Kroos
+namespace BooTao2.Content.Projectiles.GreyThroat
 {
-	public class KroosProj : ModProjectile
+	public class GreyThroatProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// If this arrow would have strong effects (like Holy Arrow pierce), we can make it fire fewer projectiles from Daedalus Stormbow for game balance considerations like this:
-			//ProjectileID.Sets.FiresFewerFromDaedalusStormbow[Type] = true;
-		}
+		public override string Texture => "BooTao2/Content/Projectiles/Kroos/KroosProj";
 		
-		SoundStyle KroosAttackHit = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Kroos/KroosAttackHit") {
-			Volume = 0.6f,
-			PitchVariance = 0.3f,
+		SoundStyle BasicAttack = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/GreyThroat/BasicAttack") {
+			Volume = 0.5f,
+			PitchVariance = 0.2f,
 			MaxInstances = 6,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
+		
+		SoundStyle SkillAttack = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/GreyThroat/SkillAttack") {
+			Volume = 0.5f,
+			PitchVariance = 0.1f,
+			MaxInstances = 12,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
 		};
 		
@@ -52,9 +55,12 @@ namespace BooTao2.Content.Projectiles.Kroos
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			Player player = Main.player[Projectile.owner];
 			if (SPLockout < 1f) {
-				player.GetModPlayer<BooTaoPlayer>().KroosSP++;
+				player.GetModPlayer<BooTaoPlayer>().GreyThroatSP++;
+				SoundEngine.PlaySound(SkillAttack, Projectile.Center);
 			}
-			SoundEngine.PlaySound(KroosAttackHit, Projectile.Center);
+			else {
+				SoundEngine.PlaySound(BasicAttack, Projectile.Center);
+			}
 		}
 	}
 }

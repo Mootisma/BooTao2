@@ -16,7 +16,7 @@ Items: {
 			Gain immunity to knockback, fall damage, slightly increased movespeed, and 90% damage reduction.
 			While on cooldown, crit rate is increased by 12%.
 			[c/FF9696:Blood Blossom]
-			Periodically take additional damage based on the damage dealt by [c/c2ac06:Charged Attack]
+			Lose 12 life per second.
 			'''
 	}
 
@@ -202,12 +202,11 @@ Items: {
 			SP Cost: 15 [Offensive Recovery] | Duration: 30 seconds
 			Thorns' ATK and ASPD increases by 25%
 			Upon the second activation of this skill and afterwards, 
-			this skill has unlimited duration, and its bonuses are twice the base amount
+			this skill has unlimited duration, and its bonuses are twice the base amount.
 			[c/FFFF00:Nerve Corrosion]
-			Attacks poison the target, dealing 1/4 of Thorns' ATK every 2 seconds
-			Stacks up to 4 times, and lasts 3 seconds
+			Attacks poison the target, dealing 135 damage per second and lasts 3 seconds.
 			[c/FFFF00:Echoes of Ancestral Waves]
-			If Thorns hasn't attacked for 2 seconds, restores 5 HP every second
+			If Thorns hasn't attacked for 2 seconds, restores 5 HP every second.
 			'''
 	}
 
@@ -248,15 +247,15 @@ Items: {
 			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Trait]
 			Does not attack. Only one can be summoned at a time. Requires 1 minion slot.
-			Increases life regen of all players within range by 10% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK
+			Increases life regen of all players within range by 10% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK.
 			[c/FFFF00:Wish of Burial Beyond the Light] (Auto Trigger)
 			SP Cost: 56 [Auto Recovery] | Duration: Infinite
-			The life regen effect of this unit's Trait is doubled
-			All allied players within range gain [c/c2ac06:Inspiration]
+			The life regen effect of this unit's Trait is doubled.
+			All allied players within range gain [c/c2ac06:Inspiration].
 			[c/c2ac06:Inspiration]
-			Increases player's (vanilla) damage by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK, as a percentage
-			Increases player's defense by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK
-			[c/34b2fa:Skadi the Corrupting Heart] is unaffected by [c/c2ac06:Inspiration]
+			Increases player's (vanilla) damage by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK, as a percentage.
+			Increases player's defense by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK.
+			[c/34b2fa:Skadi the Corrupting Heart] is unaffected by [c/c2ac06:Inspiration].
 			'''
 	}
 
@@ -273,8 +272,8 @@ Items: {
 			Attack Range increases, attacks turn into ripples that spread outward,
 			knockback is greatly increased, damage is tripled, and the effects of [c/c2ac06:Subjective Time Dilation] are tripled.
 			[c/c2ac06:Subjective Time Dilation]
-			Movement speed of all enemies and projectiles in Mostima's range is reduced by 33%
-			Movement speed of all enemies and projectiles outside Mostima's range is instead reduced by 18% (unaffected by skill)
+			Movement speed of all enemies and projectiles in Mostima's range is reduced by 33%.
+			Movement speed of all enemies and projectiles outside Mostima's range is instead reduced by 18% (unaffected by skill).
 			'''
 	}
 
@@ -374,7 +373,7 @@ Items: {
 			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Grit Those Teeth!] (Auto Trigger)
 			SP Cost: 3 [Offensive Recovery]
-			Increases the ATK of next attack to 250%
+			Increases the ATK of next attack to 250%.
 			[c/FFFF00:Extreme Evasion]
 			30% chance to dodge contact damage. After a successful dodge, slightly increase Jackie's ASPD for 5 seconds.
 			'''
@@ -411,8 +410,8 @@ Items: {
 			Attacks at the cursor. If the target enemy is currently receiving DoT, 
 			all DoTs currently placed on that enemy immediately produce DMG equal to 75% of their original DMG.
 			[c/FFFF00:Talent: Gentle but Cruel] (Right Click)
-			Kafka uses her gun. Inflicts Shock DoT on the target hit equal to damage dealt, lasting for 3 seconds.
-			Shock DoT will not be lesser than 15 hp/s.
+			Kafka uses her gun. Inflicts Shock DoT on hit, lasting for 3 seconds.
+			Shock DoT deals 70 damage per second.
 			Kafka's attacks cannot crit.
 			'''
 	}
@@ -503,7 +502,7 @@ Items: {
 			SP Cost: 25 [Offensive Recovery]
 			ATK +60%, each attack fires 1 more boomerang
 			[c/FFFF00:Larking About]
-			When attacking, 25% chance to increase that attack's ATK to 160%
+			When attacking, 25% chance to deal 160% damage
 			'''
 	}
 
@@ -518,6 +517,35 @@ Items: {
 			[c/FFFF00:All-Out Attack]
 			The longer the interval from the last attack is, the higher the ATK of the next attack will be
 			Caps at 2.5 seconds for 200% ATK
+			'''
+	}
+
+	BlackSwanItem: {
+		DisplayName: Black Swan
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
+			[c/FFFF00:Basic ATK: Percipience, Silent Dawn] (Left Click)
+			Attacks at the cursor. Targets hit are inflicted with Arcana.
+			[c/FFFF00:Decadence, False Twilight] (Right Click)
+			Attacks at the cursor. Targets hit are inflicted with Arcana and
+			have their DEF reduced by 25% for 5 seconds. Has 2x mana cost.
+			[c/FFFF00:Talent: Loom of Fate's Caprice]
+			Enemies with Arcana receive Wind DoT equal to 200 damage per second.
+			Black Swan's attacks cannot crit. Arcana has unlimited duration.
+			'''
+	}
+
+	GreyThroatItem: {
+		DisplayName: GreyThroat
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Counterflow] (Right Click)
+			SP Cost: 30 [Offensive Recovery]
+			ATK +40%. Attacks 3 times consecutively.
+			[c/FFFF00:Tailwind]
+			When attacking, 20% chance to deal 150% damage 
 			'''
 	}
 }
@@ -646,6 +674,16 @@ Buffs: {
 		DisplayName: 77th Director of the Wangsheng Funeral Parlor
 		Description: Hu Tao gets increased stats
 	}
+
+	BlackSwanBuff: {
+		DisplayName: Black Swan Buff
+		Description: Mods.BooTao2.Buffs.BlackSwanBuff.Description
+	}
+
+	KafkaBuff: {
+		DisplayName: Kafka Buff
+		Description: Mods.BooTao2.Buffs.KafkaBuff.Description
+	}
 }
 
 Projectiles: {
@@ -698,6 +736,11 @@ Projectiles: {
 	CaperProj.DisplayName: Caper Proj
 	XiaoSkillProj.DisplayName: Xiao Skill Proj
 	PlatinumProj.DisplayName: Platinum Proj
+	BlackSwanBasicProj.DisplayName: Black Swan Basic Proj
+	BlackSwanHold.DisplayName: Black Swan Hold
+	BSPurple.DisplayName: B S Purple
+	BlackSwanSkill.DisplayName: Black Swan Skill
+	GreyThroatProj.DisplayName: Grey Throat Proj
 }
 
 Configs: {

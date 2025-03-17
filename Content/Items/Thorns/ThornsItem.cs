@@ -119,5 +119,9 @@ namespace BooTao2.Content.Items.Thorns
 			}
 			return true;
 		}
+		
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {
+			target.AddBuff(ModContent.BuffType<ThornsRegen>(), 180);
+		}
 	}
 }

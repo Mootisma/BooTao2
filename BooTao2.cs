@@ -225,6 +225,10 @@ namespace BooTao2
 		public int CaperSP = 15;
 		//
 		public int XiaoSP = 1200;
+		//
+		public bool BlackSwanHolding;
+		//
+		public int GreyThroatSP = 15;
 		
 		public override void ResetEffects()
 		{
@@ -243,6 +247,7 @@ namespace BooTao2
 			if (!Player.HasBuff(ModContent.BuffType<HomaPickaxeBuff>())) {
 				HomaPickaxes = new bool[7];
 			}
+			BlackSwanHolding = false;
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -447,24 +452,35 @@ namespace BooTao2
 	{
 		public override bool InstancePerEntity => true;
 		public bool BloodBlossom;
-		public int BloodBlossomDmg = 8;
+		public int BloodBlossomDmg = 12;
+		public bool tnspeepee;
 		public int ThornsDOTstack = 0;
 		public int ThornsDOTdmg = 0;
 		public int ThornsDOTduration = 0;
 		public bool test;
 		public bool KafkaAKSleep;
 		//
+		public bool kfpeepee;
 		public int KafkaDOTdmg = 0;
 		public int KafkaDOTduration = 0;
 		//
 		public bool MostimaSlow1;
 		public bool MostimaSlow2;
 		public bool MostimaSlow3;
+		//
+		public bool bspeepee;
+		public int Arcana = 0;
+		public int bsTimer = 0;
+		public int bsDmgDone = 0;
+		public int bsDefDownDur = 0;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
 			test = false;
 			KafkaAKSleep = false;
+			bspeepee = false;
+			kfpeepee = false;
+			tnspeepee = false;
 		}
 
 		/*public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
@@ -476,7 +492,7 @@ namespace BooTao2
 
 		public override void DrawEffects(NPC npc, ref Color drawColor) {
 			// This simple color effect indicates that the buff is active
-			if (BloodBlossom || ThornsDOTstack > 0 || test) {
+			if (BloodBlossom || ThornsDOTstack > 0 || test || bspeepee) {
 				drawColor.G = 0;
 			}
 		}
@@ -498,6 +514,16 @@ namespace BooTao2
 			}
 			if (MostimaSlow1) {
 				npc.velocity /= 0.01f;
+			}
+			bsTimer++;
+			if (bsTimer >= 300) {
+				if (Arcana > 1) {
+					Arcana = 1;
+				}
+				bsTimer = 0;
+			}
+			if (bsDefDownDur > 0) {
+				bsDefDownDur--;
 			}
 			return true;
 		}
@@ -531,28 +557,40 @@ namespace BooTao2
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= BloodBlossomDmg;
+				npc.lifeRegen -= 12 * 2;//BloodBlossomDmg;
 			}
-			if (ThornsDOTstack > 0 && ThornsDOTduration > 0) {
-				ThornsDOTduration--;
+			if (tnspeepee ){//&& ThornsDOTstack > 0 && ThornsDOTduration > 0) {
+				//ThornsDOTduration--;
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= ThornsDOTdmg;
+				npc.lifeRegen -= 135 * 2;//ThornsDOTdmg;
 			}
-			else {
-				ThornsDOTstack = 0;
-				ThornsDOTduration = 0;
-			}
-			if (KafkaDOTduration > 0) {
-				KafkaDOTduration--;
+			//else {
+			//	ThornsDOTstack = 0;
+			//	ThornsDOTduration = 0;
+			//}
+			if (kfpeepee){// && KafkaDOTduration > 0) {
+				//KafkaDOTduration--;
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
-				if (KafkaDOTdmg < 30)
-					npc.lifeRegen -= 30;
-				else
-					npc.lifeRegen -= KafkaDOTdmg;
+				//if (KafkaDOTdmg < 30)
+				npc.lifeRegen -= 70 * 2;
+				//else
+				//	npc.lifeRegen -= KafkaDOTdmg;
+			}
+			if (bspeepee) {
+				if (npc.lifeRegen > 0) {
+					npc.lifeRegen = 0;
+				}
+				npc.lifeRegen -= 200 * 2;//(int)(bsDmgDone * (2.4 + 0.12 * Arcana));
+			}
+		}
+		
+		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
+			if (bsDefDownDur > 0) {
+				modifiers.Defense *= 0.75f;
 			}
 		}
 		

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BooTao2.Content.Buffs.Kafka;
 
 namespace BooTao2.Content.Projectiles.Kafka {
 	public class KafkaProj2 : ModProjectile {
@@ -20,8 +21,9 @@ namespace BooTao2.Content.Projectiles.Kafka {
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			//target.AddBuff(ModContent.BuffType<ThornsBuff>(), 480);//
-			target.GetGlobalNPC<BooTaoGlobalNPC>().KafkaDOTduration = 180;
-			target.GetGlobalNPC<BooTaoGlobalNPC>().KafkaDOTdmg = damageDone * 5;
+			//target.GetGlobalNPC<BooTaoGlobalNPC>().KafkaDOTduration = 180;
+			//target.GetGlobalNPC<BooTaoGlobalNPC>().KafkaDOTdmg = damageDone * 5;
+			target.AddBuff(ModContent.BuffType<KafkaBuff>(), 180);
 			
 			for (int d = 0; d < 5; d++) {
 				Dust.NewDust(Projectile.position, 0, 0, 27, 0, 0, 150, default, 1f);

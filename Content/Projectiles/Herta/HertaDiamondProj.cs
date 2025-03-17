@@ -26,7 +26,7 @@ namespace BooTao2.Content.Projectiles.Herta
 			Projectile.ignoreWater = true; // Does the projectile's speed be influenced by water?
 			Projectile.light = 1f; // How much light emit around the projectile
 			Projectile.tileCollide = false; // Can the projectile collide with tiles?
-			Projectile.timeLeft = 600; // The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+			Projectile.timeLeft = 200; // The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 		}
 
 		// Custom AI

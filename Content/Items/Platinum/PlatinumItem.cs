@@ -39,7 +39,7 @@ namespace BooTao2.Content.Items.Platinum {
 		public override void SetDefaults() {
 			Item.width = 32;
 			Item.height = 32;
-			Item.rare = ItemRarityID.Orange;
+			Item.rare = ItemRarityID.White;
 			Item.value = Item.sellPrice(0, 4, 5, 25);
 			
 			Item.DamageType = DamageClass.Ranged;
