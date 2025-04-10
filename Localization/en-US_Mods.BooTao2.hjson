@@ -545,7 +545,29 @@ Items: {
 			SP Cost: 30 [Offensive Recovery]
 			ATK +40%. Attacks 3 times consecutively.
 			[c/FFFF00:Tailwind]
-			When attacking, 20% chance to deal 150% damage 
+			When attacking, 20% chance to deal 150% damage.
+			'''
+	}
+
+	WisadelItem: {
+		DisplayName: Wiš'adel
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Trait]
+			Attacks create two [c/c2ac06:Aftershocks] with 50% ATK.
+			[c/FFFF00:Explosive Dawn] (Right Click)
+			SP Cost: 50 [Auto Recovery]
+			Summons 1 [c/c2ac06:Revenant's Shadow] at Wiš'adel's position.
+			ATK +200%. Attack interval is greatly increased. Attacks do 200% ATK.
+			Splash area is greatly increased. [c/FFFF00:Souvenir] will have a 100% trigger chance.
+			Skill activation grants 6 ammo and the skill ends when all ammo is used.
+			[c/FFFF00:Souvenir]
+			[c/c2ac06:Aftershocks] have a 15% chance to explode again with 150% ATK.
+			[c/FFFF00:Revenant's Echo]
+			[c/c2ac06:Revenant's Shadow] will periodically attack nearby enemies based on Wiš'adel's ATK as Summon Damage.
+			Up to 3 [c/c2ac06:Revenant's Shadow] can be summoned at a time.
+			Wiš'adel will gain Invisibility buff when standing next to a [c/c2ac06:Revenant's Shadow].
 			'''
 	}
 }
@@ -657,17 +679,17 @@ Buffs: {
 
 	MostimaSlow1: {
 		DisplayName: Mostima Slow1
-		Description: Mods.BooTao2.Buffs.MostimaSlow1.Description
+		Description: Description
 	}
 
 	MostimaSlow2: {
 		DisplayName: Mostima Slow2
-		Description: Mods.BooTao2.Buffs.MostimaSlow2.Description
+		Description: Description
 	}
 
 	MostimaSlow3: {
 		DisplayName: Mostima Slow3
-		Description: Mods.BooTao2.Buffs.MostimaSlow3.Description
+		Description: Description
 	}
 
 	SpeedBuff: {
@@ -677,12 +699,17 @@ Buffs: {
 
 	BlackSwanBuff: {
 		DisplayName: Black Swan Buff
-		Description: Mods.BooTao2.Buffs.BlackSwanBuff.Description
+		Description: wife (2)
 	}
 
 	KafkaBuff: {
 		DisplayName: Kafka Buff
-		Description: Mods.BooTao2.Buffs.KafkaBuff.Description
+		Description: wife (1)
+	}
+
+	WisadelBuff: {
+		Description: The revenant's babbling again. Son-of-a-gun's got a filthy mouth.
+		DisplayName: Revenant's Shadow
 	}
 }
 
@@ -741,6 +768,11 @@ Projectiles: {
 	BSPurple.DisplayName: B S Purple
 	BlackSwanSkill.DisplayName: Black Swan Skill
 	GreyThroatProj.DisplayName: Grey Throat Proj
+	WisadelProjExplosion.DisplayName: Wisadel Proj Explosion
+	WisadelProjBasic.DisplayName: Wisadel Proj Basic
+	WisadelProjAftershock.DisplayName: Wisadel Proj Aftershock
+	RevenantShadowLaser.DisplayName: Revenant Shadow Laser
+	RevenantShadow.DisplayName: Revenant Shadow
 }
 
 Configs: {

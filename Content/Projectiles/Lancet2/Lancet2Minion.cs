@@ -47,7 +47,6 @@ namespace BooTao2.Content.Projectiles.Lancet2 {
 			Projectile.minion = true;//Projectile.sentry = true
 			Projectile.DamageType = DamageClass.Summon;
 			Projectile.minionSlots = 0f;
-			Projectile.penetrate = -1;
 		}
 		
 		public override void OnSpawn(IEntitySource source) {

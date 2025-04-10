@@ -147,6 +147,10 @@ namespace BooTao2
 			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
 			recipe.Register();
 			//
+			recipe = Recipe.Create(ItemID.SharpTears, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 14);
+			recipe.Register();
+			//
 			if (ModLoader.TryGetMod("SOTS", out Mod sots)) {
 				if (sots.TryFind("TinyPlanetFish", out ModItem planetfish)) {
 					recipe = Recipe.Create(planetfish.Type, 1);
@@ -229,6 +233,8 @@ namespace BooTao2
 		public bool BlackSwanHolding;
 		//
 		public int GreyThroatSP = 15;
+		//
+		public int WisadelAmmo = 0;
 		
 		public override void ResetEffects()
 		{

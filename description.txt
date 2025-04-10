@@ -15,16 +15,17 @@ If you have suggestions, feedback, or bug reports, you can comment on the steam 
 
 ## Notable Content
 Weapons:
-Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel
 
 Minions:
 Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun
 
 ## Known Issues
 Some items don't fully work in multiplayer. I don't know how to fix these yet.
-Qingque's tiles don't change on all clients, but functionality still works.
+Qingque's tiles don't visibly change on all clients, but functionality still works.
 
 ## Changelog
+1.0.18.0: Added Wiš'adel
 1.0.17.0: Added GreyThroat. Compromised on DoT effects for multiplayer functionality (i hope theres another way)
 1.0.16.0: Added Black Swan
 1.0.15.0: Added Platinum
