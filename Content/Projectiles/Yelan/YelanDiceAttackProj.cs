@@ -23,7 +23,7 @@ namespace BooTao2.Content.Projectiles.Yelan
 			Projectile.ignoreWater = true;
 			Projectile.light = 1f;
 			Projectile.tileCollide = false;
-			Projectile.timeLeft = 180;
+			Projectile.timeLeft = 160;
 		}
 
 		// Custom AI

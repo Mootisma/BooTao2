@@ -155,7 +155,7 @@ namespace BooTao2.Content.Items.Mostima
 			// add damage here based on progression
 			// https://docs.tmodloader.net/docs/1.4-preview/class_terraria_1_1_n_p_c.html
 			// also is there a better way to check these :skull:
-			if (NPC.downedMechBoss1)//destroyer
+			/* if (NPC.downedMechBoss1)//destroyer
 				damage += 3;
 			if (NPC.downedMechBoss2)//twins
 				damage += 3;
@@ -168,8 +168,42 @@ namespace BooTao2.Content.Items.Mostima
 			if (NPC.downedAncientCultist)//lunatic cultist
 				damage += 20;
 			if (NPC.downedMoonlord)
-				damage += 30;
+				damage += 30;*/
 		}
+		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            // https://github.com/ThePaperLuigi/The-Stars-Above/blob/main/Items/Weapons/Celestial/BrilliantSpectrum.cs
+			//bool slimeKing = NPC.downedSlimeKing;
+            //bool eye = NPC.downedBoss1;
+            //bool evilboss = NPC.downedBoss2;
+            //bool queenBee = NPC.downedQueenBee;
+            //bool skeletron = NPC.downedBoss3;
+            //bool hardmode = Main.hardMode;
+            bool anyMech = NPC.downedMechBossAny;
+            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
+
+            float damageMult = 1f +
+                //(slimeKing ? 0.1f : 0f) +
+                //(eye ? 0.12f : 0f) +
+                //(evilboss ? 0.14f : 0f) +
+                //(queenBee ? 0.36f : 0f) +
+                //(skeletron ? 0.58f : 0f) +
+                //(hardmode ? 1.2f : 0f) +
+                (anyMech ? 0.05f : 0f) +
+                (allMechs ? 0.05f : 0f) +
+                (plantera ? 0.05f : 0f) +
+                (golem ? 0.05f : 0f) +
+                (cultist ? 0.15f : 0f) +
+                (moonLord ? 0.15f : 0f);
+
+            damage *= damageMult;
+
+        }
 		
 		// useless counter so i can play a sound when i hold Mostima
 		int ligma = 0;

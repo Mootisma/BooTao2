@@ -126,6 +126,27 @@ namespace BooTao2.Content.Items.Fiammetta
 			//return true;
 		}
 		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            bool anyMech = NPC.downedMechBossAny;
+            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
+
+            float damageMult = 1f +
+                (anyMech ? 0.02f : 0f) +
+                (allMechs ? 0.02f : 0f) +
+                (plantera ? 0.02f : 0f) +
+                (golem ? 0.04f : 0f) +
+                (cultist ? 0.05f : 0f) +
+                (moonLord ? 0.05f : 0f);
+
+            damage *= damageMult;
+
+        }
+		
 		// useless counter so i can play a sound when i hold fiammetta
 		int ligma = 0;
 		public override void UpdateInventory (Player player) {

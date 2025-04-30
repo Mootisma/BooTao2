@@ -235,6 +235,9 @@ namespace BooTao2
 		public int GreyThroatSP = 15;
 		//
 		public int WisadelAmmo = 0;
+		//
+		public int TeleportCooldown = 0;//bronya, sparkle
+		
 		
 		public override void ResetEffects()
 		{

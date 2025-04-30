@@ -166,7 +166,7 @@ Items: {
 			[c/FFFF00:Salon Solitaire] (Left Click)
 			Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance:
 			the Ball Octopus-shaped [c/c2ac06:Gentilhomme Usher], the Bubbly Seahorse-shaped [c/c2ac06:Surintendante Chevalmarin], and the Armored Crab-shaped [c/c2ac06:Mademoiselle Crabaletta].
-			Only one can be summoned at a time. Requires 3 minion slots to be summoned.
+			Only one can be summoned at a time. Requires 3 minion slots to be summoned. When summoned, Furina can walk on water.
 			They will attack nearby opponents at intervals. If Furina is above 50% Max HP, their attacks will reduce Furina's HP but grant a damage buff. This damage buff resets every 20 seconds.
 			[c/c2ac06:Gentilhomme Usher]
 			Attacks every 3.3 seconds by firing a projectile at the opponent. Drains 10 HP and grants a 2% damage buff.
@@ -570,6 +570,60 @@ Items: {
 			Wiš'adel will gain Invisibility buff when standing next to a [c/c2ac06:Revenant's Shadow].
 			'''
 	}
+
+	BronyaItem: {
+		DisplayName: Bronya
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
+			[c/FFFF00:Basic ATK: Windrider Bullet] (Left Click)
+			Fires a bullet, and grants Bronya a slight movement speed buff for 4 seconds.
+			Costs 0 Mana.
+			[c/FFFF00:Skill: Combat Redeployment] (Right Click)
+			Teleport to the cursor, and grants Bronya a 50% damage buff for 4 seconds.
+			8 second cooldown.
+			'''
+	}
+
+	SilverWolfMaterial: {
+		DisplayName: Aether Editing
+		Tooltip: Silver Wolf already beat this game before you did. She's 'hacked' a few items, too.
+	}
+
+	SWBronyaItem: {
+		DisplayName: Bronya [SW]
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
+			[c/ec45ff:Some changes were made to this item..]
+			[c/FFFF00:Basic ATK: Windrider Bullet] (Left Click)
+			Fires [c/ec45ff:4 explosive bullets], and grants Bronya a slight movement speed buff for [c/ec45ff:15] seconds.
+			[c/FFFF00:Skill: Combat Redeployment] (Right Click)
+			Teleport to the cursor, and grants Bronya a 50% damage buff for [c/ec45ff:15] seconds.
+			'''
+	}
+
+	SWWisadelItem: {
+		DisplayName: Wiš'adel [SW]
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/ec45ff:Some changes were made to this item..]
+			[c/FFFF00:Trait]
+			Attacks create two [c/c2ac06:Aftershocks] with 50% ATK.
+			[c/FFFF00:Explosive Dawn] (Right Click)
+			Summons 1 [c/c2ac06:Revenant's Shadow] at Wiš'adel's position.
+			ATK +200%. Attack interval is greatly increased. Attacks do 200% ATK.
+			Splash area is greatly increased. [c/FFFF00:Souvenir] will have a 100% trigger chance.
+			[c/ec45ff:Skill is always active.]
+			[c/FFFF00:Souvenir]
+			[c/c2ac06:Aftershocks] have a 15% chance to explode again with 150% ATK.
+			[c/FFFF00:Revenant's Echo]
+			[c/c2ac06:Revenant's Shadow] will periodically attack nearby enemies based on Wiš'adel's ATK as Summon Damage.
+			Up to [c/ec45ff:5] [c/c2ac06:Revenant's Shadow] can be summoned at a time.
+			Wiš'adel will gain Invisibility buff when standing next to a [c/c2ac06:Revenant's Shadow].
+			'''
+	}
 }
 
 Buffs: {
@@ -710,6 +764,21 @@ Buffs: {
 	WisadelBuff: {
 		Description: The revenant's babbling again. Son-of-a-gun's got a filthy mouth.
 		DisplayName: Revenant's Shadow
+	}
+
+	BronyaBuff: {
+		DisplayName: Action Advanced, I guess?
+		Description: Slightly increased movement speed effects
+	}
+
+	BuffTeleportCooldown: {
+		DisplayName: Teleport Cooldown
+		Description: Just a timer to see the cooldown, doesn't actually do anything else.
+	}
+
+	BronyaDmgBuff: {
+		DisplayName: Combat Redeployment
+		Description: 50% Dmg Bonus
 	}
 }
 

@@ -26,6 +26,7 @@ namespace BooTao2.Content.Buffs.Furina
 				buffIndex--;
 			}
 			player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().FurinaDmgBuff;
+			player.waterWalk = true;
 		}
 	}
 }

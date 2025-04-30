@@ -80,6 +80,9 @@ namespace BooTao2.Content.Projectiles {
 			//foreach (var teehee in Main.ActivePlayers) {
 			//	teehee.AddBuff(ModContent.BuffType<TestBuff>(), 300, true);
 			//}
+			Vector2 tp = Main.MouseWorld;
+			NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, tp.X, tp.Y, 1, 0, 0);
+			player.Teleport(tp, 1, 0);
 			return true;
 		}
 		

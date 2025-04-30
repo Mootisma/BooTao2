@@ -1,4 +1,4 @@
-"Mootisma's Collection" is a non-profit, non-commercial Terraria Mod that I work on by myself.
+"Mootisma's Collection" is a non-profit, non-commercial Terraria Mod that I work on by myself for fun.
 
 This mod contains art and audio that does not belong to me.
 This mod contains content based on the game Arknights. You can download the game here: https://arknights.global/ and read their re-creation guidelines here: https://arknights.global/fankit/guidelines
@@ -11,11 +11,11 @@ Furina: https://www.pixiv.net/en/artworks/114000440
 discord.gg/furinamains
 Kafka: https://twitter.com/dorkdragoon
 
-If you have suggestions, feedback, or bug reports, you can comment on the steam post
+If you have suggestions, feedback, or bug reports, you can comment on the steam post.
 
 ## Notable Content
 Weapons:
-Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya
 
 Minions:
 Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun
@@ -25,6 +25,7 @@ Some items don't fully work in multiplayer. I don't know how to fix these yet.
 Qingque's tiles don't visibly change on all clients, but functionality still works.
 
 ## Changelog
+1.0.19.0: Added Bronya. Also added 'for fun' items flavored after Silver Wolf: Bronya and Wiš'adel.
 1.0.18.0: Added Wiš'adel
 1.0.17.0: Added GreyThroat. Compromised on DoT effects for multiplayer functionality (i hope theres another way)
 1.0.16.0: Added Black Swan
