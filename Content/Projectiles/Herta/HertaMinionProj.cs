@@ -172,7 +172,7 @@ namespace BooTao2.Content.Projectiles.Herta
 
 		private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter) {
 			// Starting search distance
-			distanceFromTarget = 1000f;
+			distanceFromTarget = 850f;
 			targetCenter = Projectile.position;
 			foundTarget = false;
 
@@ -182,7 +182,7 @@ namespace BooTao2.Content.Projectiles.Herta
 				float between = Vector2.Distance(npc.Center, Projectile.Center);
 
 				// Reasonable distance away so it doesn't target across multiple screens
-				if (between < 1700f) {
+				if (between < 1500f) {
 					distanceFromTarget = between;
 					targetCenter = npc.Center;
 					foundTarget = true;
@@ -219,7 +219,7 @@ namespace BooTao2.Content.Projectiles.Herta
 
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition, out Vector2 vel) {
 			// Default movement parameters (here for attacking)
-			float speed = 16f;
+			float speed = 18f;
 			float inertia = 10f;
 
 			if (foundTarget) {
@@ -235,7 +235,7 @@ namespace BooTao2.Content.Projectiles.Herta
 			}
 			else {
 				// Minion doesn't have a target: return to player and idle
-				if (distanceToIdlePosition > 600f) {
+				if (distanceToIdlePosition > 500f) {
 					// Speed up the minion if it's away from the player
 					speed = 20f;
 					inertia = 60f;

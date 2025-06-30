@@ -37,7 +37,7 @@ namespace BooTao2.Content.Items.Wisadel {
 			Item.crit = 46;
 			Item.knockBack = 4f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 600;
+				Item.damage = 650;
 				Item.knockBack = 5f;
 				Item.crit = 56;
 			}

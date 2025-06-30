@@ -18,7 +18,7 @@ namespace BooTao2.Content.Items.Bronya
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 210 : 120;
+			Item.damage = (CalamityActive) ? 300 : 120;
 			Item.crit = 96;
 			Item.knockBack = 5.5f;
 			Item.width = 32;

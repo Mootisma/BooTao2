@@ -11,15 +11,16 @@ Links to arts used:
 [Furina's summons](https://www.pixiv.net/en/artworks/114000440)  
 discord.gg/furinamains  
 [Kafka](https://twitter.com/dorkdragoon)  
+[Xiangling](https://twitter.com/melonbreadfbp)
 
 If you have suggestions, you can message me on Bluesky: mootisma
 
 ## Notable Content
 Weapons:\
-Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya, Sparkle
 
 Minions:\
-Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun
+Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun, Escoffier
 
 ## Todo
 Surtr\

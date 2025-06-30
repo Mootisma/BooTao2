@@ -44,23 +44,22 @@ namespace BooTao2.Content.Items.Absinthe
 			Item.damage = (CalamityActive) ? 55 : 45;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 10;
-			Item.crit = 1;
+			Item.crit = 3;
 			Item.knockBack = 3.5f;
 
 			Item.rare = ItemRarityID.Orange;
-			Item.value = Item.sellPrice(silver: 50);
+			Item.value = Item.sellPrice(gold: 5);
 		}
 
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.CobaltBar, 1);
+			recipe.AddIngredient(ItemID.SoulofLight, 1);
+			recipe.AddIngredient(ItemID.SoulofNight, 1);
 			recipe.AddIngredient(ItemID.Obsidian, 1);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.Register();
-			recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.PalladiumBar, 1);
-			recipe.AddIngredient(ItemID.Obsidian, 1);
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("EssenceofEleum", out ModItem essenceofEleum) ) {
+				recipe.AddIngredient(essenceofEleum.Type);
+			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

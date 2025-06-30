@@ -7,6 +7,8 @@ namespace BooTao2.Content.Projectiles.Ningguang
 {
 	public class NingStrongGeoProj : ModProjectile
 	{
+		public ref float SWBool => ref Projectile.ai[1];
+		
 		public override void SetStaticDefaults() {
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
@@ -29,7 +31,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
 		// Custom AI
 		public override void AI() {
 			float maxDetectRadius = 600f;
-			float projSpeed = 6f; 
+			float projSpeed = (SWBool > 42f) ? 16f : 10f;
 			if (Main.rand.Next(2) == 0) {
 				int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
 				Main.dust[dustnumber].noGravity = true;
@@ -40,9 +42,9 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			if (closestNPC == null)
 				return;
 
-			// We only rotate by 3 degrees an update to give it a smooth trajectory. Increase the rotation speed here to make tighter turns
+			// We only rotate by 5 degrees an update to give it a smooth trajectory. Increase the rotation speed here to make tighter turns
 			float targetAngle = Projectile.AngleTo(closestNPC.Center);
-			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(3)).ToRotationVector2() * projSpeed;
+			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(5)).ToRotationVector2() * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
 			
 			Dust.NewDust(Projectile.position, 0, 0, 32, 0, 0, 150, default, 1f);
@@ -66,6 +68,10 @@ namespace BooTao2.Content.Projectiles.Ningguang
 		
 		public override bool? CanCutTiles() {
 			return false;
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
 		}
 	}
 }

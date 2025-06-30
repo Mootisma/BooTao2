@@ -14,9 +14,13 @@ namespace BooTao2.Content.Items.Bronya
 		Vector2 TPposition = new Vector2(33450, 4923);
 		
 		public override void SetDefaults() {
-			Item.damage = 30;
-			Item.crit = 96;
+			Item.damage = 20;
 			Item.knockBack = 1.5f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				Item.damage = 25;
+				Item.knockBack = 2f;
+			}
+			Item.crit = 6;
 			Item.mana = 120;
 			Item.width = 32;
 			Item.height = 32;

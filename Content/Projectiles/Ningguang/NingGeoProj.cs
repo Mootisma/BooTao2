@@ -22,13 +22,13 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			Projectile.ignoreWater = true;
 			Projectile.light = 1f;
 			Projectile.tileCollide = false;
-			Projectile.timeLeft = 240;
+			Projectile.timeLeft = 180;
 		}
 
 		// Custom AI
 		public override void AI() {
 			float maxDetectRadius = 400f;
-			float projSpeed = 7f;
+			float projSpeed = 10f;
 			int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
 			Main.dust[dustnumber].noGravity = true;
 
@@ -58,6 +58,10 @@ namespace BooTao2.Content.Projectiles.Ningguang
 		
 		public override bool? CanCutTiles() {
 			return false;
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
 		}
 	}
 }

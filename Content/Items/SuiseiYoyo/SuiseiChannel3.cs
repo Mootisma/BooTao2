@@ -29,7 +29,7 @@ namespace BooTao2.Content.Items.SuiseiYoyo
 			Item.damage = 39;
 			Item.DamageType = DamageClass.MeleeNoSpeed;
 			Item.knockBack = 4f;
-			Item.crit = 46;
+			Item.crit = 29;
 			Item.channel = true;
 			Item.value = 1;
 			Item.rare = 4;

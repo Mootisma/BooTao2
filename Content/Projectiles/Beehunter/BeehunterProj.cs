@@ -25,7 +25,7 @@ namespace BooTao2.Content.Projectiles.Beehunter
 		}
 		
 		public override void SetDefaults() {
-			Projectile.Size = new Vector2(24); // This sets width and height to the same value (important when projectiles can rotate)
+			Projectile.Size = new Vector2(48); // This sets width and height to the same value (important when projectiles can rotate)
 			Projectile.aiStyle = -1; // Use our own AI to customize how it behaves, if you don't want that, keep this at ProjAIStyleID.ShortSword. You would still need to use the code in SetVisualOffsets() though
 			Projectile.friendly = true;
 			Projectile.penetrate = -1;

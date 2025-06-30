@@ -41,7 +41,7 @@ namespace BooTao2.Content.Projectiles.Ningguang
 				}
 				
 				float maxDetectRadius = 420f;
-				float projSpeed = 10f;
+				float projSpeed = 12f;
 
 				NPC closestNPC = FindClosestNPC(maxDetectRadius);
 				if (closestNPC == null) {
@@ -161,6 +161,10 @@ namespace BooTao2.Content.Projectiles.Ningguang
 		
 		public override bool? CanCutTiles() {
 			return false;
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
 		}
     }
 }

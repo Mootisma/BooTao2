@@ -20,8 +20,8 @@ namespace BooTao2.Content.Projectiles.Xiangling
 		}
 
 		public sealed override void SetDefaults() {
-			Projectile.width = 50;
-			Projectile.height = 50;
+			Projectile.width = 80;
+			Projectile.height = 80;
 			Projectile.tileCollide = false;
 			// These below are needed for a minion weapon
 			Projectile.friendly = true; // 
@@ -85,6 +85,10 @@ namespace BooTao2.Content.Projectiles.Xiangling
 				Projectile.timeLeft = 2;
 			}
 			return true;
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
 		}
 	}
 }

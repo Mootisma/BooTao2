@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
+using BooTao2.Content.Projectiles.Xiangling;
 
 namespace BooTao2.Content.Projectiles {
 	public class Test : ModProjectile {
@@ -63,14 +64,16 @@ namespace BooTao2.Content.Projectiles {
 			Item.knockBack = 1f;
 			Item.width = 32;
 			Item.height = 32;
-			Item.useTime = 6;
-			Item.useAnimation = 6;
+			Item.useTime = 5;
+			Item.useAnimation = 5;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.LightRed;
-			Item.DamageType = DamageClass.Melee;
-			//Item.shoot = ModContent.ProjectileType<Test>();
-			//Item.shootSpeed = 15f;
+			Item.DamageType = DamageClass.Summon;
+			
+			Item.autoReuse = true;
+			Item.shoot = 1;//ModContent.ProjectileType<Test>();
+			Item.shootSpeed = 7f;
 		}
 		
 		public override bool CanUseItem(Player player) {
@@ -80,10 +83,9 @@ namespace BooTao2.Content.Projectiles {
 			//foreach (var teehee in Main.ActivePlayers) {
 			//	teehee.AddBuff(ModContent.BuffType<TestBuff>(), 300, true);
 			//}
-			Vector2 tp = Main.MouseWorld;
-			NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, tp.X, tp.Y, 1, 0, 0);
-			player.Teleport(tp, 1, 0);
-			return true;
+			
+			
+			return false;
 		}
 		
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone){

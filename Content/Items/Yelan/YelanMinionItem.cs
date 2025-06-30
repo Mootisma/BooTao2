@@ -21,12 +21,12 @@ namespace BooTao2.Content.Items.Yelan
 
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 90;
+				Item.damage = 63;
 			}
 			else {
-				Item.damage = 50;
+				Item.damage = 46;
 			}
-			Item.knockBack = 3.2f;
+			Item.knockBack = 3f;
 			Item.mana = 10; // mana cost
 			Item.width = 32;
 			Item.height = 32;
@@ -34,7 +34,7 @@ namespace BooTao2.Content.Items.Yelan
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noUseGraphic = true;
-			Item.value = Item.sellPrice(gold: 20);
+			Item.value = Item.sellPrice(gold: 18);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Yelan/YelanBurst") {
 				Volume = 0.9f,
@@ -75,6 +75,10 @@ namespace BooTao2.Content.Items.Yelan
 			// Since we spawned the projectile manually already, we do not need the game to spawn it for ourselves anymore, so return false
 			return false;
 		}
+		
+		public override bool CanUseItem(Player player) {
+			return player.ownedProjectileCounts[Item.shoot] < 1;
+		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {//FragmentOfTide
@@ -83,6 +87,8 @@ namespace BooTao2.Content.Items.Yelan
 				recipe.AddIngredient(OldDie.Type);
 			}
 			recipe.AddIngredient(ItemID.ChlorophyteBar, 1);
+			recipe.AddIngredient(ItemID.WaterCandle, 1);
+			recipe.AddIngredient(ItemID.EskimoCoat, 1);
 			if (ModLoader.TryGetMod("SOTS", out Mod sots)){
 				if (sots.TryFind("FragmentOfTide", out ModItem tide) ) {
 					recipe.AddIngredient(tide.Type);

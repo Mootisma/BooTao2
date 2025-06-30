@@ -32,7 +32,7 @@ namespace BooTao2.Content.Items.Thorns
 			Item.damage = (CalamityActive) ? 80 : 52;
 			Item.DamageType = DamageClass.Melee;
 			Item.shoot = ModContent.ProjectileType<ThornsProj>();
-			Item.shootSpeed = 16f;
+			Item.shootSpeed = 17f;
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 40;
@@ -40,7 +40,7 @@ namespace BooTao2.Content.Items.Thorns
 			Item.useStyle = 1;
 			Item.knockBack = 6;
 			//
-			Item.value = Item.sellPrice(gold: 4);
+			Item.value = Item.sellPrice(gold: 11);
 			Item.rare = 3;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
@@ -50,7 +50,9 @@ namespace BooTao2.Content.Items.Thorns
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			// recipe.AddIngredient(ModContent.ItemType<Homa4>(), 1);
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AshesofCalamity", out ModItem ashesofcalamity) ) {
+				recipe.AddIngredient(ashesofcalamity.Type, 1);
+			}
 			recipe.AddIngredient(ItemID.PearlsandBlock, 1);
 			recipe.AddIngredient(ItemID.SandBlock, 1);
 			recipe.AddIngredient(ItemID.Sandgun, 1);

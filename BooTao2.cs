@@ -1,6 +1,7 @@
 using BooTao2.Content.Buffs;
 using BooTao2.Content.Buffs.BloodBlossomBuff;
 using BooTao2.Content.Buffs.Aventurine;
+using BooTao2.Content.Buffs.Escoffier;
 using BooTao2.Content.Items.HuTao;
 using BooTao2.Content.Items.RaidenShogun;
 using BooTao2.Content.Items.Herta;
@@ -24,15 +25,20 @@ namespace BooTao2
 		{//https://docs.tmodloader.net/docs/1.4-stable/class_terraria_1_1_i_d_1_1_item_i_d.html
 			Recipe recipe = Recipe.Create(/*ModContent.ItemType<Items.ExampleItem>()*/ItemID.BlackInk, 1);
 			recipe.AddIngredient(ItemID.StoneBlock, 2);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
-			//
+			recipe = Recipe.Create(ItemID.SharkFin, 5);
+			recipe.AddIngredient(ItemID.Goldfish, 1);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.JungleRose);
 			recipe.AddIngredient(ItemID.JungleSpores, 5);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
-			//
 			recipe = Recipe.Create(ItemID.FeralClaws);
 			recipe.AddIngredient(ItemID.JungleSpores, 5);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.LavaCharm);
@@ -56,95 +62,109 @@ namespace BooTao2
 			//
 			recipe = Recipe.Create(ItemID.WormholePotion, 30);
 			recipe.AddIngredient(ItemID.DirtBlock, 1);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.Revolver, 1);
 			recipe.AddIngredient(ItemID.DemoniteBar, 9);
 			recipe.Register();
-			//
 			recipe = Recipe.Create(ItemID.Revolver, 1);
 			recipe.AddIngredient(ItemID.CrimtaneBar, 9);
 			recipe.Register();
-			//
-			recipe = Recipe.Create(ItemID.Pho, 1);
-			recipe.AddIngredient(ItemID.Mushroom, 1);
-			recipe.Register();
-			//
-			recipe = Recipe.Create(ItemID.DPSMeter, 1);
-			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
-			recipe.Register();
-			//
 			recipe = Recipe.Create(ItemID.Spear, 1);
 			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.CobaltChainsaw, 1);
+			recipe.AddIngredient(ItemID.PalladiumChainsaw, 1);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.SummoningPotion, 1);
 			recipe.AddIngredient(ItemID.SoulofLight, 2);
 			recipe.Register();
-			//
+			recipe = Recipe.Create(ItemID.Pho, 1);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 1);
+			recipe.Register();
 			recipe = Recipe.Create(ItemID.ChocolateChipCookie, 1);
-			recipe.AddIngredient(ItemID.Mushroom, 2);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 1);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.Bass, 1);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 1);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.BlueBerries, 1);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 1);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.SliceOfCake, 1);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 1);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.IceCream, 1);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 1);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.ZapinatorOrange, 1);
-			recipe.AddIngredient(ItemID.SoulofLight, 2);
+			recipe.AddIngredient(ItemID.SoulofLight, 10);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.FrogLeg, 1);
 			recipe.AddIngredient(ItemID.ShinyRedBalloon, 1);
 			recipe.Register();
-			//
 			recipe = Recipe.Create(ItemID.PanicNecklace, 1);
 			recipe.AddIngredient(ItemID.Aglet, 1);
-			recipe.AddIngredient(ItemID.HealingPotion, 1);
+			recipe.AddIngredient(ItemID.HealingPotion, 2);
 			recipe.Register();
-			//
 			recipe = Recipe.Create(ItemID.ManaFlower, 1);
 			recipe.AddIngredient(ItemID.JungleRose, 1);
-			recipe.AddIngredient(ItemID.ManaPotion, 1);
+			recipe.AddIngredient(ItemID.ManaPotion, 2);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.Shellphone, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.AddIngredient(ItemID.MagicMirror, 1);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.DPSMeter, 1);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.BouncingShield, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.Gatligator, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.Katana, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.ZapinatorGray, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.CoinGun, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.PaladinsShield, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
-			recipe.Register();
-			recipe = Recipe.Create(ItemID.BlueBerries, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.AnkhCharm, 1);
-			recipe.AddIngredient(ItemID.LunarBar, 2);
+			recipe.AddIngredient(ItemID.LunarBar, 4);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.IceSkates, 1);
-			recipe.AddIngredient(ItemID.IceBlock, 2);
+			recipe.AddIngredient(ItemID.IceBlock, 20);
 			recipe.AddIngredient(ItemID.HermesBoots, 1);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.StylistKilLaKillScissorsIWish, 1);
-			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 4);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.EskimoCoat, 1);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 4);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.CompanionCube, 1);
-			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 4);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.SharpTears, 1);
@@ -156,6 +176,16 @@ namespace BooTao2
 					recipe = Recipe.Create(planetfish.Type, 1);
 					recipe.AddIngredient(ItemID.SoulofLight, 1);
 					recipe.AddIngredient(ItemID.Feather, 1);
+					recipe.Register();
+				}
+				if (sots.TryFind("PhaseBar", out ModItem phasebar) && sots.TryFind("PhaseOre", out ModItem phaseore) && sots.TryFind("ParticleRelocator", out ModItem particlerelocator)){
+					recipe = Recipe.Create(phasebar.Type, 1);
+					recipe.AddIngredient(phaseore.Type, 3);
+					recipe.AddTile(TileID.AdamantiteForge);
+					recipe.Register();
+					recipe = Recipe.Create(particlerelocator.Type, 1);
+					recipe.AddIngredient(phasebar.Type, 25);
+					recipe.AddTile(TileID.AdamantiteForge);
 					recipe.Register();
 				}
 			}
@@ -173,6 +203,7 @@ namespace BooTao2
 		public bool NingJade1State;
 		public bool NingJade2State;
 		public bool NingJade3State;
+		public bool NingJadeScreen;
 		//
 		public int coold = 0;
 		public int der = 0;
@@ -237,7 +268,8 @@ namespace BooTao2
 		public int WisadelAmmo = 0;
 		//
 		public int TeleportCooldown = 0;//bronya, sparkle
-		
+		//
+		public Vector2 GuobaStoreMouse = Vector2.Zero;
 		
 		public override void ResetEffects()
 		{
@@ -257,6 +289,7 @@ namespace BooTao2
 				HomaPickaxes = new bool[7];
 			}
 			BlackSwanHolding = false;
+			NingJadeScreen = false;
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -379,6 +412,11 @@ namespace BooTao2
 				JackieDodged = true;
 				return true;
 			}
+			if (NingJadeScreen) {
+				if(info.DamageSource.TryGetCausingEntity(out Entity entity) && entity is Projectile proj) {
+					return true;
+				}
+			}
 			return false;
 		}
 		
@@ -425,7 +463,7 @@ namespace BooTao2
 					damage = RaidenShogunSkillDamage;
 				Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(x, y), Vector2.Zero, ModContent.ProjectileType<RaidenShogunSkillProj>(), damage, 1, Player.whoAmI);
 				RaidenShogunCooldown = 54;
-				SoundEngine.PlaySound(SoundID.Item94);
+				SoundEngine.PlaySound(SoundID.Item94 with { Volume = 0.3f });
 			}
 		}
 	}
@@ -482,6 +520,8 @@ namespace BooTao2
 		public int bsTimer = 0;
 		public int bsDmgDone = 0;
 		public int bsDefDownDur = 0;
+		//
+		public bool EscoffierDebuff;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
@@ -490,14 +530,21 @@ namespace BooTao2
 			bspeepee = false;
 			kfpeepee = false;
 			tnspeepee = false;
+			EscoffierDebuff = false;
 		}
 
-		/*public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
+		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
 			if (BloodBlossom) {
 				// For best results, defense debuffs should be multiplicative
 				modifiers.Defense *= BloodBlossomBuff.DefenseMultiplier;
 			}
-		}*/
+			if (EscoffierDebuff) {
+				modifiers.Defense *= EscoffierBuff.DefenseMultiplier;
+			}
+			if (bsDefDownDur > 0) {
+				modifiers.Defense *= 0.75f;
+			}
+		}
 
 		public override void DrawEffects(NPC npc, ref Color drawColor) {
 			// This simple color effect indicates that the buff is active
@@ -594,12 +641,6 @@ namespace BooTao2
 					npc.lifeRegen = 0;
 				}
 				npc.lifeRegen -= 200 * 2;//(int)(bsDmgDone * (2.4 + 0.12 * Arcana));
-			}
-		}
-		
-		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
-			if (bsDefDownDur > 0) {
-				modifiers.Defense *= 0.75f;
 			}
 		}
 		

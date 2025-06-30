@@ -11,8 +11,8 @@ namespace BooTao2.Content.Items
 			Item.damage = 1;
 			Item.DamageType = DamageClass.Melee;
 			Item.crit = 1;
-			Item.width = 40;
-			Item.height = 40;
+			Item.width = 33;
+			Item.height = 31;
 			Item.useTime = 6;
 			Item.useAnimation = 6;
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -21,9 +21,8 @@ namespace BooTao2.Content.Items
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
-			Item.maxStack = 9999;
 			Item.axe = 70; // the axe power is this value multiplied by 5
-			Item.hammer = 120;
+			Item.hammer = 150;
 			Item.tileBoost = 5;
 		}
 
@@ -44,28 +43,10 @@ namespace BooTao2.Content.Items
 		public override bool AltFunctionUse(Player player) {
 			return true;
 		}
-		public override bool CanUseItem(Player player){
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage){
 			if (player.altFunctionUse == 2){
-				Item.damage = 1250;
-				Item.scale = 2f;
-				Item.crit = 96;
-				Item.axe = 0;
-				Item.hammer = 0;
-				Item.tileBoost = 0;
-				Item.useTime = 18;
-				Item.useAnimation = 18;
+				damage *= 500;
 			}
-			else{
-				Item.damage = 1;
-				Item.scale = 1f;
-				Item.crit = 1;
-				Item.axe = 70;
-				Item.hammer = 120;
-				Item.tileBoost = 5;
-				Item.useTime = 6;
-				Item.useAnimation = 6;
-			}
-			return base.CanUseItem(player);
 		}
 	}
 }

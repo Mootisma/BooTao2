@@ -76,17 +76,25 @@ Items: {
 
 	SuiseiChannel: {
 		DisplayName: sui-chan wa
-		Tooltip: very good
+		Tooltip: Does half damage against bosses
 	}
 
 	SuiseiChannel2: {
 		DisplayName: sui-chan wa
-		Tooltip: stellar
+		Tooltip:
+			'''
+			Does half damage against bosses
+			stellar
+			'''
 	}
 
 	SuiseiChannel3: {
 		DisplayName: sui-chan wa
-		Tooltip: kyou mo
+		Tooltip:
+			'''
+			Does half damage against bosses
+			kyou mo
+			'''
 	}
 
 	Homa4: {
@@ -144,11 +152,11 @@ Items: {
 			'''
 			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Sparkling Scatter]
-			[c/FF9696:Normal Attack]
-			Left click to shoot two gems and gain 1 [c/c2ac06:Star Jade] (max 3)
-			[c/FF9696:Charged Attack]
-			Right click to shoot a stronger gem at a higher mana cost.
-			This attack is enhanced based on the number of [c/c2ac06:Star Jade]
+			[c/FF9696:Normal Attack] (Left Click)
+			Shoot two gems and gain 1 [c/c2ac06:Star Jade] (max 3)
+			[c/FF9696:Charged Attack] (Right Click)
+			Shoot a stronger gem at a 2x higher mana cost.
+			This attack is enhanced based on the number of [c/c2ac06:Star Jade]:
 			Consume [c/c2ac06:Star Jade] instead of Mana for this attack.
 			Each [c/c2ac06:Star Jade] will be launched alongside this attack.
 			Each [c/c2ac06:Star Jade] empowers this attack's damage by 50%.
@@ -217,8 +225,12 @@ Items: {
 			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Pyronado] (Left Click)
 			Displaying her mastery over both fire and polearms, Xiangling sends a Pyronado whirling around her.
-			The Pyronado will move with your character for the ability's duration, dealing Pyro DMG to all opponents in its path.
+			The Pyronado will move with your character, dealing Pyro DMG to all opponents in its path.
 			Only one can be summoned at a time. Requires 1 minion slot.
+			[c/FFFF00:Guoba Attack] (Left Click)
+			Only available when Pyronado is on the field. Requires 1 sentry slot.
+			Summons Guoba, who will continuously breathe fire towards the cursor.
+			Guoba's aim is only updated when holding Xiangling.
 			'''
 	}
 
@@ -577,11 +589,10 @@ Items: {
 			'''
 			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
 			[c/FFFF00:Basic ATK: Windrider Bullet] (Left Click)
-			Fires a bullet, and grants Bronya a slight movement speed buff for 4 seconds.
-			Costs 0 Mana.
+			Fires a bullet, and grants Bronya a slight movement speed buff for 4 seconds. Costs 0 Mana.
 			[c/FFFF00:Skill: Combat Redeployment] (Right Click)
 			Teleport to the cursor, and grants Bronya a 50% damage buff for 4 seconds.
-			8 second cooldown.
+			8 second cooldown. Costs 120 mana.
 			'''
 	}
 
@@ -622,6 +633,74 @@ Items: {
 			[c/c2ac06:Revenant's Shadow] will periodically attack nearby enemies based on Wiš'adel's ATK as Summon Damage.
 			Up to [c/ec45ff:5] [c/c2ac06:Revenant's Shadow] can be summoned at a time.
 			Wiš'adel will gain Invisibility buff when standing next to a [c/c2ac06:Revenant's Shadow].
+			'''
+	}
+
+	SWNingItem: {
+		DisplayName: Ningguang [SW]
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
+			[c/ec45ff:Some changes were made to this item..]
+			[c/FFFF00:Sparkling Scatter] (Left Click)
+			[c/ec45ff:Perform a] [c/FF9696:Charged Attack] [c/ec45ff:that's always empowered by 7] [c/c2ac06:Star Jade].
+			[c/ec45ff:Each] [c/c2ac06:Star Jade] [c/ec45ff:will restore 1 Mana on hit.]
+			[c/FFFF00:Jade Screen] (Right Click)
+			Ningguang creates a [c/c2ac06:Jade Screen] out of gold, obsidian, and her great opulence, dealing AoE Geo DMG.
+			[c/FFFF00:Strategic Reserve]
+			When Ningguang is close to the [c/c2ac06:Jade Screen], Ningguang will gain a buff:
+			+12% DMG and immunity to projectiles.
+			'''
+	}
+
+	SWXianglingItem: {
+		DisplayName: Xiangling [SW]
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
+			[c/ec45ff:Some changes were made to this item..]
+			[c/FFFF00:Pyronado] (Left Click)
+			Displaying her mastery over both fire and polearms, Xiangling sends [c/ec45ff:8 Pyronados] whirling around her.
+			The Pyronados will move with your character, dealing Pyro DMG to all opponents in its path.
+			Only [c/ec45ff:eight] can be summoned at a time. Requires [c/ec45ff:0 minion slots].
+			[c/ec45ff:Having Pyronados out will additionally increase sentry slots by +9.]
+			[c/FFFF00:Guoba Attack] (Left Click)
+			Only available when Pyronado is on the field. Requires 1 sentry slot.
+			Summons Guoba, who will continuously breathe fire [c/ec45ff:at a much faster rate] towards the cursor.
+			Guoba's aim is only updated when holding Xiangling.
+			'''
+	}
+
+	SparkleItem: {
+		DisplayName: Sparkle
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
+			[c/FFFF00:Basic ATK: Monodrama] (Left Click)
+			Perform a "kick", and restore 10 mana on hit. Costs 0 Mana.
+			[c/FFFF00:Skill: Dreamdiver] (Right Click)
+			Teleport to the cursor, and grants Sparkle a 50% damage buff for 5 seconds.
+			5 second cooldown. Costs 100 mana.
+			[c/FFFF00:Skill: Fumo] (Right Click)
+			While [c/FFFF00:Skill: Dreamdiver] is unable to be used, [c/FFFF00:Skill: Fumo] will be available for use instead.
+			Places a [c/c2ac06:Fumo] on the cursor's position. Costs 20 mana.
+			[c/c2ac06:Fumo] will explode upon contact with an enemy, or after 15 seconds.
+			[c/c2ac06:Fumo] has an equal chance to deal 0x, 1x, 2x, 3x, or 4x damage.
+			'''
+	}
+
+	EscoffierItem: {
+		DisplayName: Escoffier
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Genshin Impact]
+			[c/FFFF00:Low-Temperature Cooking] (Left Click)
+			Behold the true meaning of "cooking"! Activates her All-Spectrum Multi-Use Cooking Mek in its Cold Storage mode.
+			Only one can be summoned at a time. Requires 1 minion slot to be summoned.
+			[c/c2ac06:Cooking Mek: Cold Storage Mode]
+			Follows Escoffier around and will fire Frosty Parfaits at the nearest enemy every second in combat.
+			[c/FFFF00:Inspiration-Immersed Seasoning]
+			Frosty Parfaits will reduce the defense of enemies hit by 50%.
 			'''
 	}
 }
@@ -780,6 +859,16 @@ Buffs: {
 		DisplayName: Combat Redeployment
 		Description: 50% Dmg Bonus
 	}
+
+	NingBuff: {
+		DisplayName: Strategic Reserve
+		Description: The canvas of stars is written upon this jade screen.
+	}
+
+	EscoffierBuff: {
+		DisplayName: All-Spectrum Multi-Use Cooking Mek
+		Description: In Escoffier's hands, it was a capable substitute for essentially any piece of kitchen hardware.
+	}
 }
 
 Projectiles: {
@@ -842,6 +931,13 @@ Projectiles: {
 	WisadelProjAftershock.DisplayName: Wisadel Proj Aftershock
 	RevenantShadowLaser.DisplayName: Revenant Shadow Laser
 	RevenantShadow.DisplayName: Revenant Shadow
+	NingJadeScreen.DisplayName: Ning Jade Screen
+	Guoba.DisplayName: Guoba
+	SWXianglingPyronado.DisplayName: S W Xiangling Pyronado
+	SparkleBomb.DisplayName: Sparkle Bomb
+	SparkleProj.DisplayName: Sparkle Kick
+	EscoffierSkill.DisplayName: All-Spectrum Multi-Use Cooking Mek
+	FrostyParfait.DisplayName: Frosty Parfait
 }
 
 Configs: {

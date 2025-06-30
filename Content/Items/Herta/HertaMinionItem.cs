@@ -22,16 +22,16 @@ namespace BooTao2.Content.Items.Herta
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 40 : 27;
+			Item.damage = (CalamityActive) ? 28 : 20;
 			Item.knockBack = 3.2f;
 			Item.mana = 20; // mana cost
 			Item.width = 32;
 			Item.height = 32;
-			Item.useTime = 30;
-			Item.useAnimation = 30;
+			Item.useTime = 25;
+			Item.useAnimation = 25;
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
 			Item.noUseGraphic = true;
-			Item.value = Item.sellPrice(gold: 10);
+			Item.value = Item.sellPrice(gold: 7);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/DoYouKnowHerta") {
 				Volume = 0.9f,
@@ -81,6 +81,10 @@ namespace BooTao2.Content.Items.Herta
 			recipe.AddIngredient(ItemID.HellstoneBar, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
+		}
+		
+		public override bool CanUseItem(Player player) {
+			return player.ownedProjectileCounts[Item.shoot] < 1;
 		}
 	}
 }

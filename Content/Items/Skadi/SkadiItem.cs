@@ -22,8 +22,8 @@ namespace BooTao2.Content.Items.Skadi
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 90 : 70;
-			Item.knockBack = 1f;
+			Item.damage = (CalamityActive) ? 80 : 60;
+			Item.knockBack = 0f;
 			Item.mana = 100; // mana cost
 			Item.width = 32;
 			Item.height = 32;
@@ -31,7 +31,7 @@ namespace BooTao2.Content.Items.Skadi
 			Item.useAnimation = 120;
 			//Item.reuseDelay = 60;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.value = Item.sellPrice(gold: 40);
+			Item.value = Item.sellPrice(gold: 30);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Skadi/Deployment") {
 				Volume = 1f,
@@ -73,11 +73,21 @@ namespace BooTao2.Content.Items.Skadi
 			// Since we spawned the projectile manually already, we do not need the game to spawn it for ourselves anymore, so return false
 			return false;
 		}
+		
+		public override bool CanUseItem(Player player) {
+			return player.ownedProjectileCounts[Item.shoot] < 1;
+		}
 
 		public override void AddRecipes() {
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DukeFishronMask, 1);
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("DepthCells", out ModItem depthcells) ) {
+				recipe.AddIngredient(depthcells.Type);
+			}
+			else {
+				recipe.AddIngredient(ItemID.DukeFishronMask, 1);
+			}
 			recipe.AddIngredient(ItemID.FishronWings, 1);
+			recipe.AddIngredient(ItemID.Harp, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

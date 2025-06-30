@@ -26,20 +26,46 @@ namespace BooTao2.Content.Projectiles.Ningguang
         bool floatUpOrDown; //false is Up, true is Down
 		bool damageState = false;
 		bool shoot = false;
+		public ref float SWBool => ref Projectile.ai[1];
+		
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-			if (player.GetModPlayer<BooTaoPlayer>().NingJade1State || damageState) {
+			if (SWBool > 42f) {
 				damageState = true;
 				Projectile.DamageType = DamageClass.Magic;
 				Projectile.friendly = true;
+				Projectile.penetrate = 1;
+				if (Main.rand.Next(6) == 0) {
+					int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
+					Main.dust[dustnumber].noGravity = true;
+				}
+				
+				float maxDetectRadius = 500f;
+				float projSpeed = 16f;
+
+				NPC closestNPC = FindClosestNPC(maxDetectRadius);
+				if (closestNPC == null) {
+					return;
+				}
+				float targetAngle = Projectile.AngleTo(closestNPC.Center);
+				Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(8)).ToRotationVector2() * projSpeed;
+				Projectile.rotation = Projectile.velocity.ToRotation();
+				
+				Dust.NewDust(Projectile.position, 0, 0, 32, 0, 0, 150, default, 1f);
+			}
+			else if (player.GetModPlayer<BooTaoPlayer>().NingJade1State || damageState) {
+				damageState = true;
+				Projectile.DamageType = DamageClass.Magic;
+				Projectile.friendly = true;
+				Projectile.penetrate = 1;
 				if (Main.rand.Next(6) == 0) {
 					int dustnumber = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemTopaz);
 					Main.dust[dustnumber].noGravity = true;
 				}
 				
 				float maxDetectRadius = 420f;
-				float projSpeed = 10f;
+				float projSpeed = 12f;
 
 				NPC closestNPC = FindClosestNPC(maxDetectRadius);
 				if (closestNPC == null) {
@@ -148,6 +174,14 @@ namespace BooTao2.Content.Projectiles.Ningguang
 			Player player = Main.LocalPlayer;
 			player.GetModPlayer<BooTaoPlayer>().NingJade1State = false;
 			damageState = false;
+			if (SWBool > 42f) {
+				// Restore mana
+				player.statMana += 1;
+				if (player.statMana > player.statManaMax2)
+					player.statMana = player.statManaMax2;
+				// Show the numbers
+				player.ManaEffect(1);
+			}
 		}
 		
 		public override void OnKill(int timeLeft) {
@@ -158,6 +192,10 @@ namespace BooTao2.Content.Projectiles.Ningguang
 		
 		public override bool? CanCutTiles() {
 			return false;
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
 		}
     }
 }

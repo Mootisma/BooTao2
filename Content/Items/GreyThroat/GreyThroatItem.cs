@@ -22,15 +22,16 @@ namespace BooTao2.Content.Items.GreyThroat {
 			Item.width = 32;
 			Item.height = 32;
 			Item.rare = ItemRarityID.Gray;
-			Item.value = Item.sellPrice(0, 4, 0, 0);
+			Item.value = Item.sellPrice(0, 10, 1, 0);
 			
 			Item.DamageType = DamageClass.Ranged;
-			Item.damage = 42;
+			Item.damage = 55;
 			Item.knockBack = 2.5f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 62;
+				Item.damage = 75;
 				Item.knockBack = 3f;
 			}
+			
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useAnimation = 27;
 			Item.useTime = 27;
@@ -101,18 +102,16 @@ namespace BooTao2.Content.Items.GreyThroat {
 		}
 
 		public override void AddRecipes() {
-			CreateRecipe()
-				.AddIngredient(ItemID.CobaltChainsaw, 4)
-				.AddIngredient(ItemID.Feather, 4)
-				.AddIngredient(ItemID.DaedalusStormbow, 1)
-				.AddTile(TileID.WorkBenches)
-				.Register();
-			CreateRecipe()
-				.AddIngredient(ItemID.PalladiumChainsaw, 4)
-				.AddIngredient(ItemID.Feather, 4)
-				.AddIngredient(ItemID.DaedalusStormbow, 1)
-				.AddTile(TileID.WorkBenches)
-				.Register();
+			Recipe recipe = CreateRecipe();
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("CryonicBar", out ModItem cryonicBar) ) {
+				recipe.AddIngredient(cryonicBar.Type, 1);
+			}
+			recipe.AddIngredient(ItemID.CobaltChainsaw, 1);
+			recipe.AddIngredient(ItemID.Feather, 4);
+			recipe.AddIngredient(ItemID.DaedalusStormbow, 1);
+			recipe.AddIngredient(ItemID.SoulofFright, 1);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
 		}
 	}
 }

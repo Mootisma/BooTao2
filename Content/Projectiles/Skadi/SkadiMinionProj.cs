@@ -73,7 +73,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 					
 					float distancebtwn = Vector2.Distance(Projectile.Center, player.Center);
 					if (distancebtwn < 1500) {
-						player.ClearBuff(ModContent.BuffType<SkadiS2Buff>());
+						//player.ClearBuff(ModContent.BuffType<SkadiS2Buff>());
 						player.AddBuff(ModContent.BuffType<SkadiS2Buff>(), 120, true);
 					}
 				}

@@ -50,7 +50,7 @@ namespace BooTao2.Content.Items.Xiao
 		public override void SetDefaults() {
 			// Common Properties
 			Item.rare = ItemRarityID.Lime;
-			Item.value = Item.sellPrice(gold: 3);
+			Item.value = Item.sellPrice(gold: 12);
 
 			// Use Properties
 			Item.useStyle = ItemUseStyleID.Shoot; // How you use the item (swinging, holding out, etc.)
@@ -62,7 +62,7 @@ namespace BooTao2.Content.Items.Xiao
 			// Weapon Properties
 			Item.damage = 70;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 100;
+				Item.damage = 130;
 			}
 			Item.crit = 6;
 			Item.knockBack = 9f;

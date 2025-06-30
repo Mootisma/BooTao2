@@ -85,7 +85,7 @@ namespace BooTao2.Content.Items.Mostima
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 90 : 70;
+			Item.damage = (CalamityActive) ? 80 : 60;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 24;
 			Item.shoot = ModContent.ProjectileType<MostimaMinion>();
@@ -99,7 +99,7 @@ namespace BooTao2.Content.Items.Mostima
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
-			Item.value = Item.sellPrice(gold: 40);
+			Item.value = Item.sellPrice(gold: 30);
 			Item.rare = ItemRarityID.Blue;
 			Item.autoReuse = false;
 			Item.useTurn = false;
@@ -232,8 +232,8 @@ namespace BooTao2.Content.Items.Mostima
 						SoundEngine.PlaySound(Battle4, player.Center);
 				}
 				return false;
-			}// return player.ownedProjectileCounts[Item.shoot] < 1;
-			return true;
+			}
+			return player.ownedProjectileCounts[Item.shoot] < 1;
 		}
 		
 		public override void HoldItem(Player player) {

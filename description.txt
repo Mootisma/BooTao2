@@ -10,6 +10,7 @@ Herta: https://www.pixiv.net/en/artworks/107442519
 Furina: https://www.pixiv.net/en/artworks/114000440
 discord.gg/furinamains
 Kafka: https://twitter.com/dorkdragoon
+Xiangling: https://twitter.com/melonbreadfbp
 
 If you have suggestions, feedback, or bug reports, you can comment on the steam post.
 
@@ -18,13 +19,16 @@ Weapons:
 Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya
 
 Minions:
-Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun
+Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun, Escoffier
 
 ## Known Issues
 Some items don't fully work in multiplayer. I don't know how to fix these yet.
 Qingque's tiles don't visibly change on all clients, but functionality still works.
 
 ## Changelog
+1.0.20.2: Minor changes, fixes, and balances
+1.0.20.1: Minor fixes and balances
+1.0.20.0: Added Sparkle and Escoffier
 1.0.19.0: Added Bronya. Also added 'for fun' items flavored after Silver Wolf: Bronya and Wiš'adel.
 1.0.18.0: Added Wiš'adel
 1.0.17.0: Added GreyThroat. Compromised on DoT effects for multiplayer functionality (i hope theres another way)

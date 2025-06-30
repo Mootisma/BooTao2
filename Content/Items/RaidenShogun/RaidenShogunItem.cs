@@ -12,6 +12,8 @@ namespace BooTao2.Content.Items.RaidenShogun
 {
 	public class RaidenShogunItem : ModItem
 	{
+		//
+		
 		public override void SetStaticDefaults() {
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
@@ -19,8 +21,12 @@ namespace BooTao2.Content.Items.RaidenShogun
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 50;
-			Item.knockBack = 1f;
+			Item.damage = 26;
+			Item.knockBack = 1.5f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				Item.damage = 33;
+				Item.knockBack = 2f;
+			}
 			Item.mana = 20;
 			Item.width = 32;
 			Item.height = 32;
@@ -28,7 +34,7 @@ namespace BooTao2.Content.Items.RaidenShogun
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noUseGraphic = true;
-			Item.value = Item.sellPrice(gold: 5);
+			Item.value = Item.sellPrice(gold: 8);
 			Item.rare = ItemRarityID.LightPurple;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/RaidenShogun/ElementalSkill_NoEscape") {
 				Volume = 0.9f,

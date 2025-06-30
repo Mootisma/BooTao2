@@ -20,7 +20,7 @@ namespace BooTao2.Content.Items.HomaPickaxe
 		
 		public override void SetDefaults()
 		{
-			Item.damage = 15;
+			Item.damage = 16;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;
 			Item.height = 40;

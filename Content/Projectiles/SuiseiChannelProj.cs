@@ -50,7 +50,16 @@ namespace BooTao2.Content.Projectiles
 
 		public override void PostAI() {
 			if (Main.rand.NextBool(5)) {
-				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Sparkle>()); // Makes the projectile emit dust.
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<SparkleDust>()); // Makes the projectile emit dust.
+			}
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
+			if (target.boss) {
+				modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+					hitInfo.Damage = (int)(hitInfo.Damage * 0.5);
+				};
 			}
 		}
 	}
