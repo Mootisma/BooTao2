@@ -1,5 +1,5 @@
-using BooTao2.Content.Buffs.Escoffier;
-using BooTao2.Content.Projectiles.Escoffier;
+using BooTao2.Content.Buffs.JuFufu;
+using BooTao2.Content.Projectiles.JuFufu;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -8,10 +8,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace BooTao2.Content.Items.Escoffier
+namespace BooTao2.Content.Items.JuFufu
 {
-	public class EscoffierItem : ModItem
+	public class JuFufuItem : ModItem
 	{
+		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
+		
 		public override void SetStaticDefaults() {
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true; // This lets the player target anywhere on the whole screen while using a controller
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
@@ -20,24 +22,19 @@ namespace BooTao2.Content.Items.Escoffier
 		}
 
 		public override void SetDefaults() {
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 130;
-			}
-			else {
-				Item.damage = 100;
-			}
-			Item.knockBack = 3.2f;
+			Item.damage = (CalamityActive) ? 130 : 100;
+			Item.knockBack = 3f;
 			Item.mana = 10; // mana cost
 			Item.width = 32;
 			Item.height = 32;
-			Item.useTime = 25;
-			Item.useAnimation = 25;
-			Item.useStyle = ItemUseStyleID.Swing;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
 			Item.noUseGraphic = true;
-			Item.value = Item.sellPrice(gold: 45);
-			Item.rare = ItemRarityID.Cyan;
-			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Escoffier/EscoffierSkill") {
-				Volume = 1f,
+			Item.value = Item.sellPrice(gold: 20);
+			Item.rare = ItemRarityID.Orange;
+			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/JuFufu/CarryYou") {
+				Volume = 0.8f,
 				PitchVariance = 0f,
 				MaxInstances = 1,
 				SoundLimitBehavior = SoundLimitBehavior.IgnoreNew//ReplaceOldest
@@ -46,13 +43,9 @@ namespace BooTao2.Content.Items.Escoffier
 			// These below are needed for a minion weapon
 			Item.noMelee = true; // this item doesn't do any melee damage
 			Item.DamageType = DamageClass.Summon; // Makes the damage register as summon. If your item does not have any damage type, it becomes true damage (which means that damage scalars will not affect it). Be sure to have a damage type
-			Item.buffType = ModContent.BuffType<EscoffierBuff>();
+			Item.buffType = ModContent.BuffType<JuFufuBuff>();
 			// No buffTime because otherwise the item tooltip would say something like "1 minute duration"
-			Item.shoot = ModContent.ProjectileType<EscoffierSkill>(); // This item creates the minion projectile
-		}
-		
-		public override bool CanUseItem(Player player) {
-			return player.ownedProjectileCounts[Item.shoot] < 1;
+			Item.shoot = ModContent.ProjectileType<JuFufuMinion>(); // This item creates the minion projectile
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
@@ -81,27 +74,27 @@ namespace BooTao2.Content.Items.Escoffier
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
-		public override void AddRecipes() {//FragmentOfTide
+		public override void AddRecipes() {
 			Recipe recipe = CreateRecipe();
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("UnholyEssence", out ModItem unholyessence) ) {
-				recipe.AddIngredient(unholyessence.Type);
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("UnholyEssence", out ModItem UnholyEssence) ) {
+				recipe.AddIngredient(UnholyEssence.Type);
 			}
 			recipe.AddIngredient(ItemID.LunarBar, 1);
-			recipe.AddIngredient(ItemID.CookingPot, 1);
-			recipe.AddIngredient(ItemID.SliceOfCake, 1);
-			recipe.AddIngredient(ItemID.IceCream, 1);
+			recipe.AddIngredient(ItemID.BlackBelt, 1);
+			recipe.AddIngredient(ItemID.Burger, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
+		}
+		
+		public override bool CanUseItem(Player player) {
+			return player.ownedProjectileCounts[Item.shoot] < 1;
 		}
 	}
 }
 /*
 https://docs.tmodloader.net/docs/stable/class_n_p_c.html
 https://docs.tmodloader.net/docs/stable/class_projectile.html
-https://github.com/ThePaperLuigi/The-Stars-Above/blob/main/Projectiles/Ranged/PleniluneGaze/FrostflakeArrow.cs
 https://docs.tmodloader.net/docs/stable/class_projectile.html#a76031be1e4228ce7e8a3ec67e2c293ad
 https://docs.tmodloader.net/docs/stable/class_mod_projectile.html
-https://hsr.yatta.top/en/archive/avatar/1013/herta?mode=details
-https://static.wikia.nocookie.net/houkai-star-rail/images/9/96/Herta_Sticker_02.png/revision/latest?cb=20231220232741
 
 */

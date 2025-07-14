@@ -1,5 +1,5 @@
-using BooTao2.Content.Items.Herta;
-using BooTao2.Content.Buffs.Herta;
+using BooTao2.Content.Items.JuFufu;
+using BooTao2.Content.Buffs.JuFufu;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -8,35 +8,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace BooTao2.Content.Projectiles.Herta
+namespace BooTao2.Content.Projectiles.JuFufu
 {
-	// This minion shows a few mandatory things that make it behave properly.
-	// Its attack pattern is simple: If an enemy is in range of 43 tiles, it will fly to it and deal contact damage
-	// If the player targets a certain NPC with right-click, it will fly through tiles to it
-	// If it isn't attacking, it will float near the player with minimal movement
-	public class HertaMinionProj : ModProjectile
+	public class JuFufuMinion : ModProjectile
 	{
-		SoundStyle KuruKuru2 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/kurukuru") {
-			Volume = 0.3f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
-		SoundStyle Kururin = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/kururinnn") {
-			Volume = 0.3f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
-		SoundStyle diamond = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/diamond") {
-			Volume = 0.7f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
 		public override void SetStaticDefaults() {
 			// Sets the amount of frames this minion has on its spritesheet
-			Main.projFrames[Projectile.type] = 6;
+			Main.projFrames[Projectile.type] = 46;
 			// This is necessary for right-click targeting
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 
@@ -47,8 +25,8 @@ namespace BooTao2.Content.Projectiles.Herta
 		}
 
 		public sealed override void SetDefaults() {
-			Projectile.width = 50;
-			Projectile.height = 50;
+			Projectile.width = 114;
+			Projectile.height = 64;
 			Projectile.tileCollide = false; // Makes the minion go through tiles freely
 
 			// These below are needed for a minion weapon
@@ -63,13 +41,13 @@ namespace BooTao2.Content.Projectiles.Herta
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			if (Main.rand.NextBool(5)) {
-				SoundEngine.PlaySound(KuruKuru2);
-			}
-			else if (Main.rand.NextBool(5)) {
-				SoundEngine.PlaySound(Kururin);
-			}
-			//target.AddBuff(47, 30);
+			// https://terraria.wiki.gg/wiki/Buff_IDs
+			Player owner = Main.player[Projectile.owner];
+			owner.GetModPlayer<BooTaoPlayer>().JuFufuMight += 2;
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
 		}
 
 		// Here you can decide if your minion breaks things like grass or pots
@@ -82,7 +60,6 @@ namespace BooTao2.Content.Projectiles.Herta
 			return true;
 		}
 
-		int counter = 0;
 		// The AI of this minion is split into multiple methods to avoid bloat. This method just passes values between calls actual parts of the AI.
 		public override void AI() {
 			Player owner = Main.player[Projectile.owner];
@@ -96,28 +73,35 @@ namespace BooTao2.Content.Projectiles.Herta
 			Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition, out Vector2 vel);
 			Visuals();
 			
-			// Main.rand.NextBool(20)
-			if (foundTarget && (counter >= 300) && (Main.myPlayer == Projectile.owner)) {
-				SoundEngine.PlaySound(diamond);
-				counter = 0;
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<HertaDiamondProj>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner, 0, 1);
+			if (owner.GetModPlayer<BooTaoPlayer>().JuFufuMight > 100) {
+				foreach (var player in Main.ActivePlayers) {
+					//only buff allies on the same team
+					// || player.team == 0 checks if the player is in a team (singleplayer cant pick teams though)
+					// (Main.netMode != NetmodeID.SinglePlayer)
+					if (owner.team != player.team) {
+						continue;
+					}
+					
+					float distancebtwn = Vector2.Distance(Projectile.Center, player.Center);
+					if (distancebtwn < 1500) {
+						//player.ClearBuff(ModContent.BuffType<SkadiS2Buff>());
+						player.AddBuff(ModContent.BuffType<JuFufuBuff2>(), 1800, true);
+					}
+				}
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<JuFufuBomb>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+				owner.GetModPlayer<BooTaoPlayer>().JuFufuMight = 0;
 			}
-			else {
-				counter++;
-			}
-			if (!foundTarget)
-				counter = 0;
 		}
 
 		// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
 		private bool CheckActive(Player owner) {
 			if (owner.dead || !owner.active) {
-				owner.ClearBuff(ModContent.BuffType<HertaMinionBuff>());
+				owner.ClearBuff(ModContent.BuffType<JuFufuBuff>());
 
 				return false;
 			}
 
-			if (owner.HasBuff(ModContent.BuffType<HertaMinionBuff>())) {
+			if (owner.HasBuff(ModContent.BuffType<JuFufuBuff>())) {
 				Projectile.timeLeft = 2;
 			}
 
@@ -219,12 +203,12 @@ namespace BooTao2.Content.Projectiles.Herta
 
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition, out Vector2 vel) {
 			// Default movement parameters (here for attacking)
-			float speed = 18f;
-			float inertia = 10f;
+			float speed = 22f;
+			float inertia = 15f;
 
 			if (foundTarget) {
 				// Minion has a target: attack (here, fly towards the enemy)
-				if (distanceFromTarget > 40f) {
+				if (distanceFromTarget > 60f) {
 					// The immediate range around the target (so it doesn't latch onto it when close)
 					Vector2 direction = targetCenter - Projectile.Center;
 					direction.Normalize();
@@ -265,7 +249,7 @@ namespace BooTao2.Content.Projectiles.Herta
 
 		private void Visuals() {
 			// So it will lean slightly towards the direction it's moving
-			Projectile.rotation = Projectile.velocity.X * 0.05f;
+			// Projectile.rotation = Projectile.velocity.X * 0.05f;
 
 			// This is a simple "loop through all frames from top to bottom" animation
 			int frameSpeed = 5;
@@ -282,7 +266,7 @@ namespace BooTao2.Content.Projectiles.Herta
 			}
 
 			// Some visuals here
-			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
+			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 1f);
 		}
 	}
 }

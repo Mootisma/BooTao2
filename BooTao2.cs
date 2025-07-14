@@ -171,6 +171,13 @@ namespace BooTao2
 			recipe.AddIngredient(ItemID.LunarBar, 14);
 			recipe.Register();
 			//
+			recipe = Recipe.Create(ItemID.Burger, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 1);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.BlackBelt, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 1);
+			recipe.Register();
+			//
 			if (ModLoader.TryGetMod("SOTS", out Mod sots)) {
 				if (sots.TryFind("TinyPlanetFish", out ModItem planetfish)) {
 					recipe = Recipe.Create(planetfish.Type, 1);
@@ -270,6 +277,10 @@ namespace BooTao2
 		public int TeleportCooldown = 0;//bronya, sparkle
 		//
 		public Vector2 GuobaStoreMouse = Vector2.Zero;
+		//
+		public bool LapplandSkill;
+		//
+		public int JuFufuMight = 0;
 		
 		public override void ResetEffects()
 		{
@@ -290,6 +301,7 @@ namespace BooTao2
 			}
 			BlackSwanHolding = false;
 			NingJadeScreen = false;
+			LapplandSkill = false;
 		}
 		
 		public bool CanUseHuTaoE() {

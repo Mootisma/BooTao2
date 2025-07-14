@@ -703,6 +703,38 @@ Items: {
 			Frosty Parfaits will reduce the defense of enemies hit by 50%.
 			'''
 	}
+
+	LapplandItem: {
+		DisplayName: Lappland the Decadenza
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Trait]
+			Up to four drones can be summoned at a time. Drones require 1 minion slot each.
+			Drones will fly towards the closest enemy and deal contact damage.
+			When all four drones are summoned, Lappland the Decadenza can attack normally.
+			[c/FFFF00:Finale: Catastrofe] (Right Click)
+			SP Cost: 54 [Auto Recovery] | Duration: 40 seconds
+			Prevents the left click from summoning new drones.
+			Normal attacks are empowered: ATK +80%. Drones can now inflict Confusion on enemies hit.
+			'''
+	}
+
+	JuFufuItem: {
+		DisplayName: Ju Fufu
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Zenless Zone Zero]
+			[c/FFFF00:Hu Wei] (Left Click)
+			Ju Fufu will spin towards the closest enemy and deal contact damage.
+			Only one can be summoned at a time. Requires 1 minion slot to be summoned.
+			[c/FFFF00:Core Passive: Fu-rocious Might]
+			Ju Fufu will accumulate 2 [c/c2ac06:Might] upon dealing damage to enemies.
+			When Ju Fufu hits an enemy and has at least 100 [c/c2ac06:Might]:
+			Launch [c/c2ac06:Chain Attack: Suppressing Tiger Cauldron]
+			Grant [c/c2ac06:Tiger's Roar], a 20% DMG Buff, to all nearby party members for 30 seconds.
+			'''
+	}
 }
 
 Buffs: {
@@ -869,6 +901,21 @@ Buffs: {
 		DisplayName: All-Spectrum Multi-Use Cooking Mek
 		Description: In Escoffier's hands, it was a capable substitute for essentially any piece of kitchen hardware.
 	}
+
+	LapplandBuff: {
+		Description: Be it in the city or out in the wilds, once the show begins, she will not abide any half-hearted performances.
+		DisplayName: Lappland, unemployed.
+	}
+
+	JuFufuBuff: {
+		Description: Fierce tigers prowl Yunkui Summit, where righteous heroes display their might!
+		DisplayName: Ju Fufu
+	}
+
+	JuFufuBuff2: {
+		Description: 20% (vanilla) DMG
+		DisplayName: Tiger's Roar
+	}
 }
 
 Projectiles: {
@@ -938,6 +985,11 @@ Projectiles: {
 	SparkleProj.DisplayName: Sparkle Kick
 	EscoffierSkill.DisplayName: All-Spectrum Multi-Use Cooking Mek
 	FrostyParfait.DisplayName: Frosty Parfait
+	LapplandWeaponProj2.DisplayName: Lappland Weapon Proj2
+	LapplandWeaponProj.DisplayName: Lappland Weapon Proj
+	LapplandMinionProj.DisplayName: Lappland Minion Proj
+	JuFufuMinion.DisplayName: Ju Fufu Minion
+	JuFufuBomb.DisplayName: Ju Fufu Bomb
 }
 
 Configs: {

@@ -1,5 +1,5 @@
-using BooTao2.Content.Items.Herta;
-using BooTao2.Content.Buffs.Herta;
+using BooTao2.Content.Items.Lappland;
+using BooTao2.Content.Buffs.Lappland;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -8,35 +8,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace BooTao2.Content.Projectiles.Herta
+namespace BooTao2.Content.Projectiles.Lappland
 {
 	// This minion shows a few mandatory things that make it behave properly.
 	// Its attack pattern is simple: If an enemy is in range of 43 tiles, it will fly to it and deal contact damage
 	// If the player targets a certain NPC with right-click, it will fly through tiles to it
 	// If it isn't attacking, it will float near the player with minimal movement
-	public class HertaMinionProj : ModProjectile
+	public class LapplandMinionProj : ModProjectile
 	{
-		SoundStyle KuruKuru2 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/kurukuru") {
-			Volume = 0.3f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
-		SoundStyle Kururin = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/kururinnn") {
-			Volume = 0.3f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
-		SoundStyle diamond = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Herta/diamond") {
-			Volume = 0.7f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
-		};
-		
 		public override void SetStaticDefaults() {
-			// Sets the amount of frames this minion has on its spritesheet
-			Main.projFrames[Projectile.type] = 6;
 			// This is necessary for right-click targeting
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 
@@ -47,8 +27,8 @@ namespace BooTao2.Content.Projectiles.Herta
 		}
 
 		public sealed override void SetDefaults() {
-			Projectile.width = 50;
-			Projectile.height = 50;
+			Projectile.width = 69;
+			Projectile.height = 69;
 			Projectile.tileCollide = false; // Makes the minion go through tiles freely
 
 			// These below are needed for a minion weapon
@@ -63,26 +43,25 @@ namespace BooTao2.Content.Projectiles.Herta
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			if (Main.rand.NextBool(5)) {
-				SoundEngine.PlaySound(KuruKuru2);
-			}
-			else if (Main.rand.NextBool(5)) {
-				SoundEngine.PlaySound(Kururin);
-			}
-			//target.AddBuff(47, 30);
+			// https://terraria.wiki.gg/wiki/Buff_IDs
+			Player owner = Main.player[Projectile.owner];
+			if (owner.GetModPlayer<BooTaoPlayer>().LapplandSkill)
+				target.AddBuff(31, 30); // confuse
+			target.AddBuff(35, 30); // silence
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
 		}
 
-		// Here you can decide if your minion breaks things like grass or pots
 		public override bool? CanCutTiles() {
 			return false;
 		}
 
-		// This is mandatory if your minion deals contact damage (further related stuff in AI() in the Movement region)
 		public override bool MinionContactDamage() {
 			return true;
 		}
 
-		int counter = 0;
 		// The AI of this minion is split into multiple methods to avoid bloat. This method just passes values between calls actual parts of the AI.
 		public override void AI() {
 			Player owner = Main.player[Projectile.owner];
@@ -95,29 +74,17 @@ namespace BooTao2.Content.Projectiles.Herta
 			SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
 			Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition, out Vector2 vel);
 			Visuals();
-			
-			// Main.rand.NextBool(20)
-			if (foundTarget && (counter >= 300) && (Main.myPlayer == Projectile.owner)) {
-				SoundEngine.PlaySound(diamond);
-				counter = 0;
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<HertaDiamondProj>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner, 0, 1);
-			}
-			else {
-				counter++;
-			}
-			if (!foundTarget)
-				counter = 0;
 		}
 
 		// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
 		private bool CheckActive(Player owner) {
 			if (owner.dead || !owner.active) {
-				owner.ClearBuff(ModContent.BuffType<HertaMinionBuff>());
+				owner.ClearBuff(ModContent.BuffType<LapplandBuff>());
 
 				return false;
 			}
 
-			if (owner.HasBuff(ModContent.BuffType<HertaMinionBuff>())) {
+			if (owner.HasBuff(ModContent.BuffType<LapplandBuff>())) {
 				Projectile.timeLeft = 2;
 			}
 
@@ -172,7 +139,7 @@ namespace BooTao2.Content.Projectiles.Herta
 
 		private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter) {
 			// Starting search distance
-			distanceFromTarget = 750f;
+			distanceFromTarget = 800f;
 			targetCenter = Projectile.position;
 			foundTarget = false;
 
@@ -199,7 +166,7 @@ namespace BooTao2.Content.Projectiles.Herta
 						bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
 						// Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
 						// The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
-						bool closeThroughWall = between < 750f;
+						bool closeThroughWall = between < 800f;
 
 						if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall)) {
 							distanceFromTarget = between;
@@ -264,25 +231,15 @@ namespace BooTao2.Content.Projectiles.Herta
 		}
 
 		private void Visuals() {
-			// So it will lean slightly towards the direction it's moving
-			Projectile.rotation = Projectile.velocity.X * 0.05f;
+			// Set spriteDirection based on moving left or right. Left -1, right 1
+			Projectile.spriteDirection = (Vector2.Dot(Projectile.velocity, Vector2.UnitX) >= 0f).ToDirectionInt();
 
-			// This is a simple "loop through all frames from top to bottom" animation
-			int frameSpeed = 5;
-
-			Projectile.frameCounter++;
-
-			if (Projectile.frameCounter >= frameSpeed) {
-				Projectile.frameCounter = 0;
-				Projectile.frame++;
-
-				if (Projectile.frame >= Main.projFrames[Projectile.type]) {
-					Projectile.frame = 0;
-				}
-			}
+			// Point towards where it is moving, applied offset for top right of the sprite respecting spriteDirection
+			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 - MathHelper.PiOver2 * Projectile.spriteDirection;;
 
 			// Some visuals here
-			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
+			//Dust.NewDust(Projectile.Center, 0, 0, 109, Projectile.velocity.X / 10, Projectile.velocity.Y / 10, 150, default, 1f);
+			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 1f);
 		}
 	}
 }
