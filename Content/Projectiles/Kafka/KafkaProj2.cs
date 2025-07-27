@@ -23,7 +23,7 @@ namespace BooTao2.Content.Projectiles.Kafka {
 			//target.AddBuff(ModContent.BuffType<ThornsBuff>(), 480);//
 			//target.GetGlobalNPC<BooTaoGlobalNPC>().KafkaDOTduration = 180;
 			//target.GetGlobalNPC<BooTaoGlobalNPC>().KafkaDOTdmg = damageDone * 5;
-			target.AddBuff(ModContent.BuffType<KafkaBuff>(), 180);
+			target.AddBuff(ModContent.BuffType<KafkaBuff>(), 600);
 			
 			for (int d = 0; d < 5; d++) {
 				Dust.NewDust(Projectile.position, 0, 0, 27, 0, 0, 150, default, 1f);

@@ -532,6 +532,7 @@ namespace BooTao2
 		public int bsTimer = 0;
 		public int bsDmgDone = 0;
 		public int bsDefDownDur = 0;
+		public bool bsDefDebuff;
 		//
 		public bool EscoffierDebuff;
 
@@ -543,6 +544,7 @@ namespace BooTao2
 			kfpeepee = false;
 			tnspeepee = false;
 			EscoffierDebuff = false;
+			bsDefDebuff = false;
 		}
 
 		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
@@ -553,7 +555,7 @@ namespace BooTao2
 			if (EscoffierDebuff) {
 				modifiers.Defense *= EscoffierBuff.DefenseMultiplier;
 			}
-			if (bsDefDownDur > 0) {
+			if (bsDefDebuff) {
 				modifiers.Defense *= 0.75f;
 			}
 		}
@@ -644,7 +646,7 @@ namespace BooTao2
 					npc.lifeRegen = 0;
 				}
 				//if (KafkaDOTdmg < 30)
-				npc.lifeRegen -= 70 * 2;
+				npc.lifeRegen -= 75 * 2;
 				//else
 				//	npc.lifeRegen -= KafkaDOTdmg;
 			}
@@ -652,7 +654,7 @@ namespace BooTao2
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= 200 * 2;//(int)(bsDmgDone * (2.4 + 0.12 * Arcana));
+				npc.lifeRegen -= 250 * 2;//(int)(bsDmgDone * (2.4 + 0.12 * Arcana));
 			}
 		}
 		

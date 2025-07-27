@@ -33,7 +33,7 @@ namespace BooTao2.Content.Projectiles.BlackSwan {
 			//target.GetGlobalNPC<BooTaoGlobalNPC>().bsTimer = 0;
 			//target.GetGlobalNPC<BooTaoGlobalNPC>().Arcana += 3;
 			//target.GetGlobalNPC<BooTaoGlobalNPC>().bsDmgDone = damageDone;
-			//target.GetGlobalNPC<BooTaoGlobalNPC>().bsDefDownDur = 300;
+			target.AddBuff(ModContent.BuffType<BlackSwanDefenseDebuff>(), 1800);
 			target.AddBuff(ModContent.BuffType<BlackSwanBuff>(), 16000);
 			
 		}

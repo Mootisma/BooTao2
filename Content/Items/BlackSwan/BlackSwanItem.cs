@@ -42,7 +42,7 @@ namespace BooTao2.Content.Items.BlackSwan
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.LunarBar, 1);
+			recipe.AddIngredient(ItemID.FragmentNebula, 1);
 			recipe.AddIngredient(ItemID.CrystalShard, 12);
 			recipe.AddIngredient(ItemID.CrystalBall, 1);
 			recipe.AddTile(TileID.WorkBenches);

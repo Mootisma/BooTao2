@@ -21,10 +21,10 @@ namespace BooTao2.Content.Items.Escoffier
 
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 130;
+				Item.damage = 110;
 			}
 			else {
-				Item.damage = 100;
+				Item.damage = 80;
 			}
 			Item.knockBack = 3.2f;
 			Item.mana = 10; // mana cost
@@ -34,7 +34,7 @@ namespace BooTao2.Content.Items.Escoffier
 			Item.useAnimation = 25;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noUseGraphic = true;
-			Item.value = Item.sellPrice(gold: 45);
+			Item.value = Item.sellPrice(gold: 30);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Escoffier/EscoffierSkill") {
 				Volume = 1f,
@@ -83,8 +83,8 @@ namespace BooTao2.Content.Items.Escoffier
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {//FragmentOfTide
 			Recipe recipe = CreateRecipe();
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("UnholyEssence", out ModItem unholyessence) ) {
-				recipe.AddIngredient(unholyessence.Type);
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("UelibloomBar", out ModItem uelibloom) ) {
+				recipe.AddIngredient(uelibloom.Type);
 			}
 			recipe.AddIngredient(ItemID.LunarBar, 1);
 			recipe.AddIngredient(ItemID.CookingPot, 1);

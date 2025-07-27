@@ -422,8 +422,8 @@ Items: {
 			Attacks at the cursor. If the target enemy is currently receiving DoT, 
 			all DoTs currently placed on that enemy immediately produce DMG equal to 75% of their original DMG.
 			[c/FFFF00:Talent: Gentle but Cruel] (Right Click)
-			Kafka uses her gun. Inflicts Shock DoT on hit, lasting for 3 seconds.
-			Shock DoT deals 70 damage per second.
+			Kafka uses her gun. Inflicts Shock DoT on hit, lasting for 10 seconds.
+			Shock DoT deals 75 damage per second.
 			Kafka's attacks cannot crit.
 			'''
 	}
@@ -541,9 +541,9 @@ Items: {
 			Attacks at the cursor. Targets hit are inflicted with Arcana.
 			[c/FFFF00:Decadence, False Twilight] (Right Click)
 			Attacks at the cursor. Targets hit are inflicted with Arcana and
-			have their DEF reduced by 25% for 5 seconds. Has 2x mana cost.
+			have their DEF reduced by 25% for 30 seconds. Has 2x mana cost.
 			[c/FFFF00:Talent: Loom of Fate's Caprice]
-			Enemies with Arcana receive Wind DoT equal to 200 damage per second.
+			Enemies with Arcana receive Wind DoT equal to 250 damage per second.
 			Black Swan's attacks cannot crit. Arcana has unlimited duration.
 			'''
 	}
@@ -915,6 +915,11 @@ Buffs: {
 	JuFufuBuff2: {
 		Description: 20% (vanilla) DMG
 		DisplayName: Tiger's Roar
+	}
+
+	BlackSwanDefenseDebuff: {
+		DisplayName: Black Swan Defense Debuff
+		Description: Mods.BooTao2.Buffs.BlackSwanDefenseDebuff.Description
 	}
 }
 
