@@ -1,6 +1,6 @@
 displayName = Mootisma's Collection
 author = mootisma
-version = 1.0.21.0
+version = 1.0.22.0
 homepage = https://steamcommunity.com/sharedfiles/filedetails/?id=3385920290
 hideCode = true
 hideResources = true

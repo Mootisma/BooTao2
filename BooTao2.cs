@@ -306,9 +306,8 @@ namespace BooTao2
 		
 		public bool CanUseHuTaoE() {
 			if (coold == 0) {
-				Player player = Main.LocalPlayer;
-				HuTaoHPDmgBuff = (float)((player.statLife * 0.3) / 100);
-				player.statLife = (int)(player.statLife * 0.7);
+				HuTaoHPDmgBuff = (float)((Player.statLife * 0.3) / 100);
+				Player.statLife = (int)(Player.statLife * 0.7);
 				coold = 960;
 				der = 540;
 				return true;

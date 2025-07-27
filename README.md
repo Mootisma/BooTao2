@@ -23,6 +23,9 @@ Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Ka
 Minions:\
 Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun, Escoffier, Ju Fufu, Lappland the Decadenza
 
+Accessories:\
+Pitt's Assorted Fruits, Hot Water Kettle
+
 ## Todo
 Surtr\
 Navia\

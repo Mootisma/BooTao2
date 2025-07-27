@@ -62,11 +62,26 @@ namespace BooTao2.Content.Projectiles.HuTao
 		}
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			Player player = Main.LocalPlayer;
+			Player player = Main.player[Projectile.owner];
 			if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
 				target.AddBuff(ModContent.BuffType<BloodBlossomBuff>(), 480);//
 				//target.AddBuff(24, 480);//
 				//target.GetGlobalNPC<BooTaoGlobalNPC>().BloodBlossomDmg = (int)(damageDone / 4);
+			}
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			Player player = Main.player[Projectile.owner];
+			float BelowHalf = 1;
+			if (player.statLife <= (player.statLifeMax2 * 0.5) ) {
+				BelowHalf = 1.33f;
+			}
+			
+			modifiers.DamageVariationScale *= 0f;
+			if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
+				modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+					hitInfo.Damage = (int)(hitInfo.Damage * (1 + player.GetModPlayer<BooTaoPlayer>().HuTaoHPDmgBuff) * BelowHalf );
+				};
 			}
 		}
 	}

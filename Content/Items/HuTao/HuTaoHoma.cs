@@ -116,13 +116,13 @@ namespace BooTao2.Content.Items.HuTao
 				player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped = false;
 			}
 			if (player.GetModPlayer<BooTaoPlayer>().der > 0) {
-				player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().HuTaoHPDmgBuff; // Increase ALL player damage
+				//player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().HuTaoHPDmgBuff; // Increase ALL player damage
 				//player.endurance = 1f - (0.1f * (1f - player.endurance));
 				// player.statLifeMax2 += 100;
 				//player.statDefense += 50;
-				if (player.statLife <= (player.statLifeMax2 * 0.5) ) {
-					player.GetDamage(DamageClass.Generic) += 0.33f;
-				}
+				//if (player.statLife <= (player.statLifeMax2 * 0.5) ) {
+				//	player.GetDamage(DamageClass.Generic) += 0.33f;
+				//}
 				player.AddBuff(ModContent.BuffType<SpeedBuff>(), 30, true);
 			}
 		}

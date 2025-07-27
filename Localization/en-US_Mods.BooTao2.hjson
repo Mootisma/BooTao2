@@ -540,10 +540,10 @@ Items: {
 			[c/FFFF00:Basic ATK: Percipience, Silent Dawn] (Left Click)
 			Attacks at the cursor. Targets hit are inflicted with Arcana.
 			[c/FFFF00:Decadence, False Twilight] (Right Click)
-			Attacks at the cursor. Targets hit are inflicted with Arcana and
-			have their DEF reduced by 25% for 30 seconds. Has 2x mana cost.
+			Attacks at the cursor for 2x mana cost. Targets hit are inflicted with Arcana and
+			have their DEF reduced by 25% for 30 seconds.
 			[c/FFFF00:Talent: Loom of Fate's Caprice]
-			Enemies with Arcana receive Wind DoT equal to 250 damage per second.
+			Enemies with Arcana receive 250 damage per second.
 			Black Swan's attacks cannot crit. Arcana has unlimited duration.
 			'''
 	}
@@ -733,6 +733,24 @@ Items: {
 			When Ju Fufu hits an enemy and has at least 100 [c/c2ac06:Might]:
 			Launch [c/c2ac06:Chain Attack: Suppressing Tiger Cauldron]
 			Grant [c/c2ac06:Tiger's Roar], a 20% DMG Buff, to all nearby party members for 30 seconds.
+			'''
+	}
+
+	PittsFruits: {
+		DisplayName: Pitt's Assorted Fruits
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			+3 minion slots
+			'''
+	}
+
+	WaterKettle: {
+		DisplayName: Hot Water Kettle
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			+20 HP
 			'''
 	}
 }
