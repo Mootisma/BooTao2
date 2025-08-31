@@ -7,6 +7,7 @@ using BooTao2.Content.Items.RaidenShogun;
 using BooTao2.Content.Items.Herta;
 using BooTao2.Content.Projectiles.RaidenShogun;
 using BooTao2.Content.Buffs.RaidenShogun;
+using BooTao2.Content.Buffs.Entelechia;
 using Microsoft.Xna.Framework;
 using System;
 using System.IO;
@@ -174,6 +175,9 @@ namespace BooTao2
 			recipe = Recipe.Create(ItemID.Burger, 1);
 			recipe.AddIngredient(ItemID.LunarBar, 1);
 			recipe.Register();
+			recipe = Recipe.Create(ItemID.BloodyMoscato, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 1);
+			recipe.Register();
 			recipe = Recipe.Create(ItemID.BlackBelt, 1);
 			recipe.AddIngredient(ItemID.LunarBar, 1);
 			recipe.Register();
@@ -281,6 +285,11 @@ namespace BooTao2
 		public bool LapplandSkill;
 		//
 		public int JuFufuMight = 0;
+		//
+		public Vector2 EntelechiaStoreMouse = Vector2.Zero;
+		public int EntelechiaMaxHPBuff = 0;
+		public bool EntelechiaRevive;
+		public int EnteReviveCD = 0;
 		
 		public override void ResetEffects()
 		{
@@ -302,6 +311,7 @@ namespace BooTao2
 			BlackSwanHolding = false;
 			NingJadeScreen = false;
 			LapplandSkill = false;
+			EntelechiaRevive = false;
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -324,6 +334,11 @@ namespace BooTao2
 			if (der > 0) {
 				modifiers.FinalDamage *= 0.1f;
 			}
+			
+			// if holding Entelechia item, and revive is on cooldown, gain 20% damage reduction (idk if i can make it physical hits only)
+			if (Player.HasBuff(ModContent.BuffType<EntelechiaBuff>()) && !EntelechiaRevive && EnteReviveCD > 0){
+				modifiers.FinalDamage *= 0.8f;
+			}
 		}
 		
 		public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) {
@@ -338,6 +353,9 @@ namespace BooTao2
 			JackieDodged = false;
 			LaPlumaPassive = 0f;
 			KroosSP = 0;
+			EntelechiaMaxHPBuff = 0;
+			EntelechiaRevive = false;
+			EnteReviveCD = 0;
 		}
 		
 		public override void OnRespawn() {
@@ -464,6 +482,19 @@ namespace BooTao2
 				//}
 				return true;
 			}
+			if (EntelechiaRevive) {
+				if (Player.statLife - info.Damage < Player.statLifeMax2 / 4) {
+					Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+					Player.Heal(Player.statLifeMax2);
+					EnteReviveCD = 10800;
+					for (int ibby = 0; ibby < 20; ibby++) {
+						Dust.NewDust(Player.position, 0, 0, 235, Main.rand.Next(-8, 8), Main.rand.Next(-8, 8), 90, default, 1f);
+						Dust.NewDustPerfect(Player.position, 235, null, 110, default, 1f);
+					}
+					SoundEngine.PlaySound(new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Entelechia/EnteReviveVO"));
+					return true;
+				}
+			}
 			return false;
 		}
 		
@@ -534,6 +565,8 @@ namespace BooTao2
 		public bool bsDefDebuff;
 		//
 		public bool EscoffierDebuff;
+		//
+		public bool entelechiadot;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
@@ -544,6 +577,7 @@ namespace BooTao2
 			tnspeepee = false;
 			EscoffierDebuff = false;
 			bsDefDebuff = false;
+			entelechiadot = false;
 		}
 
 		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
@@ -653,7 +687,13 @@ namespace BooTao2
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= 250 * 2;//(int)(bsDmgDone * (2.4 + 0.12 * Arcana));
+				npc.lifeRegen -= 300 * 2;//(int)(bsDmgDone * (2.4 + 0.12 * Arcana));
+			}
+			if (entelechiadot) {
+				if (npc.lifeRegen > 0) {
+					npc.lifeRegen = 0;
+				}
+				npc.lifeRegen -= 200 * 2;
 			}
 		}
 		

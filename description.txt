@@ -17,7 +17,7 @@ If you have suggestions, feedback, or bug reports, you can comment on the steam 
 
 ## Notable Content
 Weapons:
-Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya, Sparkle
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya, Sparkle, Entelechia
 
 Minions:
 Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun, Escoffier, Ju Fufu, Lappland the Decadenza
@@ -30,6 +30,7 @@ Some items don't fully work in multiplayer. I don't know how to fix these yet.
 Qingque's tiles don't visibly change on all clients, but functionality still works.
 
 ## Changelog
+1.0.23.0: Added Entelechia
 1.0.22.0: Added the first two accessories.
 1.0.21.0: Added Ju Fufu and Lappland the Decadenza
 1.0.20.2: Minor changes, fixes, and balances

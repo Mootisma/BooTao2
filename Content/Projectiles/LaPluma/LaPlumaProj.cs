@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BooTao2.Content.Buffs.Entelechia;
 
 namespace BooTao2.Content.Projectiles.LaPluma {
 	public class LaPlumaProj : ModProjectile {
@@ -32,9 +33,24 @@ namespace BooTao2.Content.Projectiles.LaPluma {
 		
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			Player owner = Main.player[Projectile.owner];
+			
+			// i reused this proj for entelechia so i put ente stuff here
+			if (owner.HasBuff(ModContent.BuffType<EntelechiaBuff>())) {
+				target.AddBuff(ModContent.BuffType<EntelechiaBuff>(), 300);
+				if (target.damage > 0) {
+					owner.Heal(6);
+					if (owner.GetModPlayer<BooTaoPlayer>().EntelechiaMaxHPBuff < 200) {
+						owner.GetModPlayer<BooTaoPlayer>().EntelechiaMaxHPBuff += 10;
+					}
+				}
+				return;
+			}
+			
 			target.GetLifeStats(out int statLife, out int statLifeMax);
-			if (target.damage > 0)
+			if (target.damage > 0) {
 				owner.Heal(5);
+			}
+			
 			if (target.damage > 0 && statLife <= 0 && owner.GetModPlayer<BooTaoPlayer>().LaPlumaPassive < 0.35f) {
 				owner.GetModPlayer<BooTaoPlayer>().LaPlumaPassive += 0.03f;
 			}

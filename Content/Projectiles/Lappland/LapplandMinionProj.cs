@@ -46,8 +46,8 @@ namespace BooTao2.Content.Projectiles.Lappland
 			// https://terraria.wiki.gg/wiki/Buff_IDs
 			Player owner = Main.player[Projectile.owner];
 			if (owner.GetModPlayer<BooTaoPlayer>().LapplandSkill)
-				target.AddBuff(31, 30); // confuse
-			target.AddBuff(35, 30); // silence
+				target.AddBuff(31, 60); // confuse
+			target.AddBuff(35, 60); // silence
 		}
 		
 		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
@@ -186,7 +186,7 @@ namespace BooTao2.Content.Projectiles.Lappland
 
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition, out Vector2 vel) {
 			// Default movement parameters (here for attacking)
-			float speed = 18f;
+			float speed = 22f;
 			float inertia = 10f;
 
 			if (foundTarget) {

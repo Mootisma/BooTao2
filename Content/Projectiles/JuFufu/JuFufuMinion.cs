@@ -203,7 +203,7 @@ namespace BooTao2.Content.Projectiles.JuFufu
 
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition, out Vector2 vel) {
 			// Default movement parameters (here for attacking)
-			float speed = 22f;
+			float speed = 27f;
 			float inertia = 15f;
 
 			if (foundTarget) {
@@ -221,7 +221,7 @@ namespace BooTao2.Content.Projectiles.JuFufu
 				// Minion doesn't have a target: return to player and idle
 				if (distanceToIdlePosition > 500f) {
 					// Speed up the minion if it's away from the player
-					speed = 20f;
+					speed = 25f;
 					inertia = 60f;
 				}
 				else {

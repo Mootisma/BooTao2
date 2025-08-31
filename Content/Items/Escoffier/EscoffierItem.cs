@@ -24,9 +24,9 @@ namespace BooTao2.Content.Items.Escoffier
 				Item.damage = 110;
 			}
 			else {
-				Item.damage = 80;
+				Item.damage = 75;
 			}
-			Item.knockBack = 3.2f;
+			Item.knockBack = 3f;
 			Item.mana = 10; // mana cost
 			Item.width = 32;
 			Item.height = 32;

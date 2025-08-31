@@ -711,12 +711,12 @@ Items: {
 			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Trait]
 			Up to four drones can be summoned at a time. Drones require 1 minion slot each.
-			Drones will fly towards the closest enemy and deal contact damage.
+			Drones will fly towards the closest enemy to deal damage and inflict Silence for 1 second.
 			When all four drones are summoned, Lappland the Decadenza can attack normally.
 			[c/FFFF00:Finale: Catastrofe] (Right Click)
 			SP Cost: 54 [Auto Recovery] | Duration: 40 seconds
 			Prevents the left click from summoning new drones.
-			Normal attacks are empowered: ATK +80%. Drones can now inflict Confusion on enemies hit.
+			Normal attacks are empowered: ATK +80%. Drones can now inflict Confusion for 1 second.
 			'''
 	}
 
@@ -751,6 +751,26 @@ Items: {
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
 			+20 HP
+			'''
+	}
+
+	EntelechiaItem: {
+		DisplayName: Entelechia
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Trait]
+			Disables life regen. Attacks recover 6 hp per enemy hit.
+			[c/FFFF00:Crimson Harvest] (Right Click)
+			SP Cost: 20 [Auto Recovery] | Duration: 12 seconds
+			Stops attacking and summons blood scythes around Entelechia and your cursor,
+			 dealing 200% ATK damage every 0.5 seconds.
+			[c/FFFF00:Blood Bank]
+			Attacks increase Entelechia's Max HP by 10 (up to 200; reset upon death)
+			 and deal 200 DoT for 5 seconds.
+			[c/FFFF00:Second Serving]
+			When HP drops below 25%, immediately recover to full HP. 3 minute cooldown.
+			While on cooldown, Entelechia has 20% damage reduction.
 			'''
 	}
 }
@@ -937,7 +957,12 @@ Buffs: {
 
 	BlackSwanDefenseDebuff: {
 		DisplayName: Black Swan Defense Debuff
-		Description: Mods.BooTao2.Buffs.BlackSwanDefenseDebuff.Description
+		Description: BUFF WHEN
+	}
+
+	EntelechiaBuff: {
+		Description: She may never depart from the river of blood -- or rather, she /is/ the river of blood.
+		DisplayName: Entelechia's Max HP and Revive
 	}
 }
 
@@ -1013,6 +1038,7 @@ Projectiles: {
 	LapplandMinionProj.DisplayName: Lappland Minion Proj
 	JuFufuMinion.DisplayName: Ju Fufu Minion
 	JuFufuBomb.DisplayName: Ju Fufu Bomb
+	EntelechiaProj.DisplayName: Entelechia Skill Proj
 }
 
 Configs: {
