@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BooTao2.Content.Projectiles.Aventurine;
 using BooTao2.Content.Buffs.Aventurine;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Aventurine {
 	public class AventurineProj : ModProjectile {

@@ -1,5 +1,6 @@
 using BooTao2.Content.Projectiles;
 using BooTao2.Content.Projectiles.Fiammetta;
+using BooTao2.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +13,7 @@ namespace BooTao2.Content.Items.Fiammetta
 	public class FiammettaItem : ModItem
 	{
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
+		private const int SP_COST = 15;
 		
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
 			Volume = 0.9f,
@@ -157,7 +159,7 @@ namespace BooTao2.Content.Items.Fiammetta
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
-				if (player.GetModPlayer<BooTaoPlayer>().FiammettaSP >= 15) {
+				if (player.GetModPlayer<BooTaoPlayer>().FiammettaSP >= SP_COST) {
 					player.GetModPlayer<BooTaoPlayer>().FiammettaSP = 0;
 					player.GetModPlayer<BooTaoPlayer>().FiammettaS3 = 1;
 					SoundEngine.PlaySound(Skill, player.Center);
@@ -197,7 +199,7 @@ namespace BooTao2.Content.Items.Fiammetta
 			}
 			// player.lifeRegen -= 16;
 			
-			if ((player.GetModPlayer<BooTaoPlayer>().FiammettaSP >= 15) && (player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0)) {
+			if ((player.GetModPlayer<BooTaoPlayer>().FiammettaSP >= SP_COST) && (player.GetModPlayer<BooTaoPlayer>().FiammettaS3 == 0)) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);

@@ -9,6 +9,7 @@ using BooTao2.Content.Projectiles.Wisadel;
 using BooTao2.Content.Projectiles;
 using BooTao2.Content.Buffs.Wisadel;
 using BooTao2.Content.Items;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.Wisadel {
 	public class SWWisadelItem : ModItem {

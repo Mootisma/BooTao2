@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Fiammetta {
 	public class FiammettaProj : ModProjectile {

@@ -1,6 +1,7 @@
 using BooTao2.Content.Projectiles;
 using BooTao2.Content.Projectiles.Mostima;
 using BooTao2.Content.Buffs.Mostima;
+using BooTao2.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -83,6 +84,8 @@ namespace BooTao2.Content.Items.Mostima
 		};
 		
 		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
+		private const int SP_COST = 3780;
+		private const int SKILL_DURATION = 1620;
 		
 		public override void SetDefaults() {
 			Item.damage = (CalamityActive) ? 80 : 60;
@@ -215,9 +218,9 @@ namespace BooTao2.Content.Items.Mostima
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
-				if (player.GetModPlayer<BooTaoPlayer>().MostimaSkillSP >= 3780 && !player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
+				if (player.GetModPlayer<BooTaoPlayer>().MostimaSkillSP >= SP_COST && !player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
 					player.GetModPlayer<BooTaoPlayer>().MostimaSkill = true;
-					player.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration = 1620;
+					player.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration = SKILL_DURATION;
 					player.GetModPlayer<BooTaoPlayer>().MostimaSkillSP = 0;
 					SoundEngine.PlaySound(Skill, player.Center);
 					SoundEngine.PlaySound(SkillActivate, player.Center);
@@ -246,7 +249,7 @@ namespace BooTao2.Content.Items.Mostima
 				}
 			}
 			ligma = 2;
-			if (player.GetModPlayer<BooTaoPlayer>().MostimaSkillSP >= 3780 && !player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
+			if (player.GetModPlayer<BooTaoPlayer>().MostimaSkillSP >= SP_COST && !player.GetModPlayer<BooTaoPlayer>().MostimaSkill) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);

@@ -1,5 +1,6 @@
 using BooTao2.Content.Projectiles.Absinthe;
 using BooTao2.Content.Projectiles;
+using BooTao2.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,6 +20,8 @@ namespace BooTao2.Content.Items.Absinthe
 		private int timer = 0;
 		private bool AbsintheSkillActive = false;
 		private int SkillDuration = 30;
+		private const int SP_COST = 50;
+		private const int SKILL_DURATION = 30;
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
 			Volume = 0.9f,
 			PitchVariance = 0f,
@@ -65,7 +68,7 @@ namespace BooTao2.Content.Items.Absinthe
 		}
 		
 		public override void HoldItem(Player player) {
-			if (!AbsintheSkillActive && AbsintheSP >= 50) {
+			if (!AbsintheSkillActive && AbsintheSP >= SP_COST) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);
@@ -97,9 +100,9 @@ namespace BooTao2.Content.Items.Absinthe
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
-				if (!AbsintheSkillActive && AbsintheSP >= 50) {
+				if (!AbsintheSkillActive && AbsintheSP >= SP_COST) {
 					AbsintheSkillActive = true;
-					SkillDuration = 30;
+					SkillDuration = SKILL_DURATION;
 					SoundEngine.PlaySound(Skill, player.Center);
 				}
 				return false;

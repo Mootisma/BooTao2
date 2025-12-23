@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ModLoader;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Beehunter
 {

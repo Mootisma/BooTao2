@@ -30,6 +30,7 @@ Some items don't fully work in multiplayer. I don't know how to fix these yet.
 Qingque's tiles don't visibly change on all clients, but functionality still works.
 
 ## Changelog
+1.0.24.0: Added Lemuen
 1.0.23.0: Added Entelechia
 1.0.22.0: Added the first two accessories.
 1.0.21.0: Added Ju Fufu and Lappland the Decadenza

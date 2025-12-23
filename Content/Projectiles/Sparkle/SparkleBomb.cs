@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BooTao2.Content.Projectiles.Wisadel;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Sparkle {
 	public class SparkleBomb : ModProjectile {

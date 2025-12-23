@@ -7,6 +7,7 @@ using Terraria.Audio;
 using System;
 using BooTao2.Content.Projectiles.Fiammetta;
 using BooTao2.Content.Projectiles.Qingque;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Xiao
 {

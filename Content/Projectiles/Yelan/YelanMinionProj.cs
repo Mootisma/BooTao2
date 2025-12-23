@@ -7,6 +7,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Yelan
 {

@@ -8,11 +8,13 @@ using Terraria.Audio;
 using BooTao2.Content.Projectiles.Wisadel;
 using BooTao2.Content.Projectiles;
 using BooTao2.Content.Buffs.Wisadel;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.Wisadel {
 	public class WisadelItem : ModItem {
 		private int SP = 2700;
 		private bool SkillActive = false;
+		private const int SP_COST = 3000;
 		
 		SoundStyle WisadelBasic = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Wisadel/WisadelBasic") {
 			Volume = 1.6f,
@@ -70,7 +72,7 @@ namespace BooTao2.Content.Items.Wisadel {
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
-				if (!SkillActive && SP >= 3000) {
+				if (!SkillActive && SP >= SP_COST) {
 					SkillActive = true;
 					SP = -1;
 					player.GetModPlayer<BooTaoPlayer>().WisadelAmmo = 6;
@@ -118,10 +120,10 @@ namespace BooTao2.Content.Items.Wisadel {
 			if (player.GetModPlayer<BooTaoPlayer>().WisadelAmmo <= 0) {
 				SkillActive = false;
 			}
-			if (SP < 3000 && !SkillActive) {
+			if (SP < SP_COST && !SkillActive) {
 				SP++;
 			}
-			if (!SkillActive && SP >= 3000) {
+			if (!SkillActive && SP >= SP_COST) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);

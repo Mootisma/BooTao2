@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using BooTao2.Content.Buffs.Wisadel;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Wisadel {
 	public class RevenantShadow : ModProjectile {

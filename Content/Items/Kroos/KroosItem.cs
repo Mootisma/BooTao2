@@ -6,9 +6,11 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using BooTao2.Content.Projectiles.Kroos;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.Kroos {
 	public class KroosItem : ModItem {
+		private const int SP_COST = 4;
 		public override void SetDefaults() {
 			Item.width = 32;
 			Item.height = 32;
@@ -39,7 +41,7 @@ namespace BooTao2.Content.Items.Kroos {
 		}
 		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
-			if (player.GetModPlayer<BooTaoPlayer>().KroosSP >= 4) {
+			if (player.GetModPlayer<BooTaoPlayer>().KroosSP >= SP_COST) {
 				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.4), knockback, player.whoAmI, 2f);
 				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.4), knockback, player.whoAmI, 2f);
 				player.GetModPlayer<BooTaoPlayer>().KroosSP = 0;

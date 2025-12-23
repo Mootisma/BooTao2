@@ -8,6 +8,7 @@ using Terraria.Audio;
 using BooTao2.Content.Projectiles.Fiammetta;
 using BooTao2.Content.Projectiles.Aventurine;
 using BooTao2.Content.Buffs.Aventurine;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.Aventurine
 {

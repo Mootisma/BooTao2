@@ -1,6 +1,7 @@
 using BooTao2.Content.Projectiles.LaPluma;
 using BooTao2.Content.Projectiles;
 using BooTao2.Content.Buffs.LaPluma;
+using BooTao2.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -17,6 +18,8 @@ namespace BooTao2.Content.Items.LaPluma
 		private int timer = 0;
 		private bool LaPlumaSkillActive = false;
 		private int SkillDuration = 25;
+		private const int SP_COST = 40;
+		private const int SKILL_DURATION = 25;
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
 			Volume = 0.9f,
 			PitchVariance = 0f,
@@ -80,7 +83,7 @@ namespace BooTao2.Content.Items.LaPluma
 		public override void HoldItem(Player player) {
 			player.GetModPlayer<BooTaoPlayer>().LaPlumaHolding = true;
 			player.AddBuff(ModContent.BuffType<LaPlumaBuff>(), (int)(2000 * player.GetModPlayer<BooTaoPlayer>().LaPlumaPassive + 59), true);
-			if (!LaPlumaSkillActive && LaPlumaSP >= 40) {
+			if (!LaPlumaSkillActive && LaPlumaSP >= SP_COST) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);
@@ -89,10 +92,11 @@ namespace BooTao2.Content.Items.LaPluma
 		}
 		
 		public override void UpdateInventory (Player player) {
-			if (timer > 0) { timer--; }
-			if (timer == 0) {
+			timer--;
+			if (timer <= 0) {
 				timer = 60;
-				if (LaPlumaSP < 60) { LaPlumaSP++; }
+				if (LaPlumaSP < SP_COST)
+					LaPlumaSP++;
 				if (LaPlumaSkillActive) {
 					LaPlumaSP = 0;
 					SkillDuration--;
@@ -106,10 +110,10 @@ namespace BooTao2.Content.Items.LaPluma
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
-				if (!LaPlumaSkillActive && LaPlumaSP >= 40) {
+				if (!LaPlumaSkillActive && LaPlumaSP >= SP_COST) {
 					timer = 60;
 					LaPlumaSkillActive = true;
-					SkillDuration = 25;
+					SkillDuration = SKILL_DURATION;
 					SoundEngine.PlaySound(Skill, player.Center);
 					SoundEngine.PlaySound(SkillActivationVO, player.Center);
 				}

@@ -773,6 +773,21 @@ Items: {
 			While on cooldown, Entelechia has 20% damage reduction.
 			'''
 	}
+
+	LemuenItem: {
+		DisplayName: Lemuen
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:'Magazine and Stained Glass']
+			Attacks restore 1 SP.
+			[c/FFFF00:Salutatio Sclopeti: Memento Mori] (Right Click)
+			SP Cost: 38 [Auto Recovery] | Ammo: 7
+			Stops attacking. Left click to consume 1 ammo and mark the cursor's location. (0.5s)
+			Upon using all ammo, bombards the marked locations, dealing 300% ATK.
+			Enemies in the center of the blast take 450% ATK instead.
+			'''
+	}
 }
 
 Buffs: {
@@ -1039,6 +1054,9 @@ Projectiles: {
 	JuFufuMinion.DisplayName: Ju Fufu Minion
 	JuFufuBomb.DisplayName: Ju Fufu Bomb
 	EntelechiaProj.DisplayName: Entelechia Skill Proj
+	LemuenTargetProj.DisplayName: Lemuen Target Proj
+	LemuenProj.DisplayName: Lemuen Proj
+	LemuenExplosionProj.DisplayName: Lemuen Explosion Proj
 }
 
 Configs: {
@@ -1128,3 +1146,5 @@ Configs: {
 		}
 	}
 }
+
+AventurineDead: "{0} lost it all"

@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Lancet2 {
 	public class Lancet2Proj : ModProjectile {

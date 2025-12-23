@@ -1,5 +1,6 @@
 using BooTao2.Content.Projectiles;
 using BooTao2.Content.Projectiles.Caper;
+using BooTao2.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,6 +19,8 @@ namespace BooTao2.Content.Items.Caper
 		};
 		
 		private int timer_hi = 0;
+		private const int SP_COST = 25;
+		private const int SKILL_DURATION = 1200;
 		
 		public override void SetDefaults() {
 			// Common Properties
@@ -50,9 +53,9 @@ namespace BooTao2.Content.Items.Caper
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
-				if (player.GetModPlayer<BooTaoPlayer>().CaperSP >= 25) {
+				if (player.GetModPlayer<BooTaoPlayer>().CaperSP >= SP_COST) {
 					player.GetModPlayer<BooTaoPlayer>().CaperSP = 0;
-					timer_hi = 1200;
+					timer_hi = SKILL_DURATION;
 					SoundEngine.PlaySound(Skill, player.Center);
 				}
 				return false;
@@ -90,7 +93,7 @@ namespace BooTao2.Content.Items.Caper
 		}
 		
 		public override void HoldItem(Player player) {
-			if (player.GetModPlayer<BooTaoPlayer>().CaperSP >= 25) {
+			if (player.GetModPlayer<BooTaoPlayer>().CaperSP >= SP_COST) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);

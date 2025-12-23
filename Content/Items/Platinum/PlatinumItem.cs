@@ -6,11 +6,13 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using BooTao2.Content.Projectiles.Platinum;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items.Platinum {
 	public class PlatinumItem : ModItem {
 		public int SP = 0;
 		public int counter = 0;
+		private const int SP_COST = 2999;//3000 / 60
 		
 		SoundStyle OffSkillATK = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Platinum/OffSkillATK") {
 			Volume = 0.6f,
@@ -61,7 +63,7 @@ namespace BooTao2.Content.Items.Platinum {
 		}
 		
 		public override bool CanUseItem(Player player) {
-			if (SP >= 2999) {
+			if (SP >= SP_COST) {
 				Item.useAnimation = 90;
 				Item.useTime = 90;
 				SoundEngine.PlaySound(OnSkillATK, player.Center);
@@ -71,7 +73,7 @@ namespace BooTao2.Content.Items.Platinum {
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			counter = 0;
-			if (SP >= 2999) {
+			if (SP >= SP_COST) {
 				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 2), knockback, player.whoAmI, 4f);
 				return false;
 			}
@@ -87,10 +89,10 @@ namespace BooTao2.Content.Items.Platinum {
 			if (counter < 150) {
 				counter++;
 			}
-			if (SP < 3000) {
+			if (SP < SP_COST + 1) {
 				SP++;
 			}
-			if (SP == 2999) {
+			if (SP == SP_COST) {
 				SoundEngine.PlaySound(PlatSkill, player.Center);
 				SoundEngine.PlaySound(BreakTheirLegs, player.Center);
 			}

@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using BooTao2.Content.Buffs.BlackSwan;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.BlackSwan {
 	public class BSPurple : ModProjectile {

@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BooTao2.Content.Buffs.Kafka;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Kafka {
 	public class KafkaProj2 : ModProjectile {

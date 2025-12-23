@@ -1,6 +1,7 @@
 using BooTao2.Content.Buffs.Lappland;
 using BooTao2.Content.Projectiles.Lappland;
 using BooTao2.Content.Projectiles;
+using BooTao2.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,6 +20,8 @@ namespace BooTao2.Content.Items.Lappland
 		private int LapplandSP = 38;
 		private int timer = 0;
 		private int SkillDuration = 0;
+		private const int SP_COST = 54;
+		private const int SKILL_DURATION = 40;
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
 			Volume = 0.9f,
 			PitchVariance = 0f,
@@ -79,7 +82,7 @@ namespace BooTao2.Content.Items.Lappland
 		}
 		
 		public override void HoldItem(Player player) {
-			if (LapplandSP >= 54) {
+			if (LapplandSP >= SP_COST) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);
@@ -95,7 +98,7 @@ namespace BooTao2.Content.Items.Lappland
 				if (SkillDuration > 0) {
 					SkillDuration--;
 				}
-				else if (LapplandSP < 60) {
+				else if (LapplandSP < SP_COST) {
 					LapplandSP++;
 				}
 			}
@@ -113,8 +116,8 @@ namespace BooTao2.Content.Items.Lappland
 		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
-				if (LapplandSP >= 54) {
-					SkillDuration = 40;
+				if (LapplandSP >= SP_COST) {
+					SkillDuration = SKILL_DURATION;
 					LapplandSP = 0;
 					timer = 0;
 					SoundEngine.PlaySound(Skill, player.Center);

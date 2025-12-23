@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Buffs.BloodBlossomBuff
 {
@@ -7,6 +8,8 @@ namespace BooTao2.Content.Buffs.BloodBlossomBuff
 	{
 		public const int DefenseReductionPercent = 25;
 		public static float DefenseMultiplier = 1 - DefenseReductionPercent / 100f;
+		
+		public override string Texture => "BooTao2/Content/Buffs/HomaPickaxeBuff";
 
 		public override void SetStaticDefaults() {
 			Main.pvpBuff[Type] = true; // This buff can be applied by other players in Pvp, so we need this to be true.

@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles
 {
@@ -21,9 +22,8 @@ namespace BooTao2.Content.Projectiles
             Projectile.tileCollide = false;
 			Projectile.scale = 0.7f;
         }
-        int idlePause;
-        bool floatUpOrDown; //false is Up, true is Down
-        public override void AI()
+        
+		public override void AI()
         {
             Player player = Main.player[Projectile.owner];
 

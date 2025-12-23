@@ -3,6 +3,7 @@ using BooTao2.Content.Projectiles.Entelechia;
 using BooTao2.Content.Projectiles;
 using BooTao2.Content.Buffs.LaPluma;
 using BooTao2.Content.Buffs.Entelechia;
+using BooTao2.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -19,6 +20,8 @@ namespace BooTao2.Content.Items.Entelechia
 		private int timer = 0;
 		private bool SkillActive = false;
 		private int SkillDuration = 25;
+		private const int SP_COST = 20;
+		private const int SKILL_DURATION = 12;
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
 			Volume = 0.9f,
 			PitchVariance = 0f,
@@ -80,7 +83,7 @@ namespace BooTao2.Content.Items.Entelechia
 			player.GetModPlayer<BooTaoPlayer>().LaPlumaHolding = true;
 			player.AddBuff(ModContent.BuffType<EntelechiaBuff>(), 600, true);
 			//
-			if (!SkillActive && SP >= 20) {
+			if (!SkillActive && SP >= SP_COST) {
 				player.GetModPlayer<BooTaoPlayer>().SkillReady = true;
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<SkillReady>()] < 1) {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<SkillReady>(), 0, 4, player.whoAmI, 0f);
@@ -93,7 +96,7 @@ namespace BooTao2.Content.Items.Entelechia
 			player.GetModPlayer<BooTaoPlayer>().EntelechiaStoreMouse = Main.MouseWorld;
 			if (timer == 0) {
 				timer = 60;
-				if (SP < 30) { SP++; }
+				if (SP < SP_COST) { SP++; }
 				if (player.GetModPlayer<BooTaoPlayer>().EnteReviveCD > 0) {
 					player.GetModPlayer<BooTaoPlayer>().EnteReviveCD--;
 				}
@@ -111,10 +114,10 @@ namespace BooTao2.Content.Items.Entelechia
 		public override bool CanUseItem(Player player) {
 			if (SkillActive){ return false; }
 			if (player.altFunctionUse == 2){
-				if (!SkillActive && SP >= 20) {
+				if (!SkillActive && SP >= SP_COST) {
 					timer = 60;
 					SkillActive = true;
-					SkillDuration = 12;
+					SkillDuration = SKILL_DURATION;
 					SoundEngine.PlaySound(Skill, player.Center);
 					SoundEngine.PlaySound(SkillActivationVO, player.Center);
 					return true;

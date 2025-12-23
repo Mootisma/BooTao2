@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using BooTao2.Content.Buffs.Lancet2;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Lancet2 {
 	public class Lancet2Minion : ModProjectile {
