@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Audio;
 using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles.Lemuen
@@ -13,6 +14,13 @@ namespace BooTao2.Content.Projectiles.Lemuen
         private bool dir = false;
 		public ref float delay => ref Projectile.ai[0];
 		private bool flag = false;
+		
+		SoundStyle LemuenSkillAim = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Lemuen/LemuenSkillAim") {
+			Volume = 1f,
+			PitchVariance = 0.0f,
+			MaxInstances = 8,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
 		
 		public override void SetDefaults()
         {
@@ -63,6 +71,10 @@ namespace BooTao2.Content.Projectiles.Lemuen
 		public override void OnKill(int timeLeft) {
 			Player player = Main.player[Projectile.owner];
 			Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LemuenExplosionProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
+		}
+		
+		public override void OnSpawn(IEntitySource source) {
+			SoundEngine.PlaySound(LemuenSkillAim, Projectile.Center);
 		}
     }
 }

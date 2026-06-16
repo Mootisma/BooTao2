@@ -3,10 +3,19 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BooTao2.Systems;
+using Terraria.Audio;
+using Terraria.DataStructures;
 
 namespace BooTao2.Content.Projectiles.Lemuen {
 	public class LemuenExplosionProj : ModProjectile {
 		public override string Texture => "BooTao2/Content/Projectiles/Fiammetta/FiammettaExplosionProj";
+		
+		SoundStyle LemuenSkillBoom = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Lemuen/LemuenSkillBoom") {
+			Volume = 1f,
+			PitchVariance = 0.3f,
+			MaxInstances = 9,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
 		
 		public override void SetStaticDefaults() {
 			Main.projFrames[Projectile.type] = 5;
@@ -58,6 +67,10 @@ namespace BooTao2.Content.Projectiles.Lemuen {
 				Projectile.light -= 0.1f * Projectile.frame;
 
 			}
+		}
+		
+		public override void OnSpawn(IEntitySource source) {
+			SoundEngine.PlaySound(LemuenSkillBoom, Projectile.Center);
 		}
 	}
 }

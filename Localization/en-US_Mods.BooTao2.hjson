@@ -788,6 +788,11 @@ Items: {
 			Enemies in the center of the blast take 450% ATK instead.
 			'''
 	}
+
+	ArturiaPetItem: {
+		DisplayName: Arturia Giallo
+		Tooltip: Let your heart speak up
+	}
 }
 
 Buffs: {
@@ -972,19 +977,28 @@ Buffs: {
 
 	BlackSwanDefenseDebuff: {
 		DisplayName: Black Swan Defense Debuff
-		Description: BUFF WHEN
+		Description: ill update her for nova flare later
 	}
 
 	EntelechiaBuff: {
 		Description: She may never depart from the river of blood -- or rather, she /is/ the river of blood.
 		DisplayName: Entelechia's Max HP and Revive
 	}
+
+	ArturiaPetBuff: {
+		DisplayName: Art
+		Description:
+			'''
+			If you yearn to be free,
+			just wear your heart on your sleeve
+			'''
+	}
 }
 
 Projectiles: {
 	SuiseiChannelProj.DisplayName: sui-chan wa
 	HuTaoHomaProj.DisplayName: Hu Tao Homa Proj
-	HertaMinionProj.DisplayName: Herta Minion Proj
+	HertaMinionProj.DisplayName: Herta
 	HertaDiamondProj.DisplayName: Herta Diamond Proj
 	NingStrongGeoProj.DisplayName: Ning Strong Geo Proj
 	NingJade.DisplayName: Ning Jade
@@ -998,7 +1012,7 @@ Projectiles: {
 	FurinaMinion3Proj.DisplayName: Surintendante Chevalmarin
 	FurinaBubble2Proj.DisplayName: Furina Bubble2 Proj
 	FurinaBubble3Proj.DisplayName: Furina Bubble3 Proj
-	YelanDiceAttackProj.DisplayName: Yelan Dice Attack Proj
+	YelanDiceAttackProj.DisplayName: Depth-Clarion Dice Attack Proj
 	YelanMinionProj.DisplayName: Depth-Clarion Dice
 	ThornsProj.DisplayName: Thorns Proj
 	XianglingPyronado.DisplayName: Xiangling Pyronado
@@ -1035,7 +1049,7 @@ Projectiles: {
 	BlackSwanHold.DisplayName: Black Swan Hold
 	BSPurple.DisplayName: B S Purple
 	BlackSwanSkill.DisplayName: Black Swan Skill
-	GreyThroatProj.DisplayName: Grey Throat Proj
+	GreyThroatProj.DisplayName: GreyThroat Proj
 	WisadelProjExplosion.DisplayName: Wisadel Proj Explosion
 	WisadelProjBasic.DisplayName: Wisadel Proj Basic
 	WisadelProjAftershock.DisplayName: Wisadel Proj Aftershock
@@ -1051,12 +1065,19 @@ Projectiles: {
 	LapplandWeaponProj2.DisplayName: Lappland Weapon Proj2
 	LapplandWeaponProj.DisplayName: Lappland Weapon Proj
 	LapplandMinionProj.DisplayName: Lappland Minion Proj
-	JuFufuMinion.DisplayName: Ju Fufu Minion
+	JuFufuMinion.DisplayName: Ju Fufu
 	JuFufuBomb.DisplayName: Ju Fufu Bomb
 	EntelechiaProj.DisplayName: Entelechia Skill Proj
 	LemuenTargetProj.DisplayName: Lemuen Target Proj
 	LemuenProj.DisplayName: Lemuen Proj
 	LemuenExplosionProj.DisplayName: Lemuen Explosion Proj
+
+	ArturiaPetProj: {
+		DisplayName: Arturia
+		DeathMessage: "{0}'s heart was revealed by Arturia"
+	}
+
+	ArturiaExplosionProj.DisplayName: Arturia Explosion Proj
 }
 
 Configs: {

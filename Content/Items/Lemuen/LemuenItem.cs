@@ -18,10 +18,11 @@ namespace BooTao2.Content.Items.Lemuen
 		private float LemuenBombOrder = 0f;
 		// im learning what good coding practices are
 		private const int SPCOST = 38;
-		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
-			Volume = 0.9f,
-			PitchVariance = 0f,
-			MaxInstances = 3,
+		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Lemuen/LemuenSkillStart") {
+			Volume = 1f,
+			PitchVariance = 0.0f,
+			MaxInstances = 6,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
 		};
 		
 		public override void SetDefaults() {

@@ -5,12 +5,29 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BooTao2.Systems;
+using Terraria.Audio;
 
 namespace BooTao2.Content.Projectiles.Lemuen
 {
     public class LemuenProj : ModProjectile
     {
-        public override void SetDefaults()
+        SoundStyle LemuenBasicAttack = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Lemuen/LemuenBasicAttack") {
+			Volume = 1f,
+			PitchVariance = 0.0f,
+			MaxInstances = 6,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
+		
+		SoundStyle LemuenBasicHit = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Lemuen/LemuenBasicHit") {
+			Volume = 1f,
+			PitchVariance = 0.0f,
+			MaxInstances = 6,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
+		
+		public override string Texture => "BooTao2/Content/Projectiles/Absinthe/AbsintheProj";
+		
+		public override void SetDefaults()
         {
             Projectile.width = 23;
             Projectile.height = 14;
@@ -53,6 +70,12 @@ namespace BooTao2.Content.Projectiles.Lemuen
 			if (player.GetModPlayer<BooTaoPlayer>().LemuenSP < 39 && player.GetModPlayer<BooTaoPlayer>().LemuenAmmo <= 0) {
 				player.GetModPlayer<BooTaoPlayer>().LemuenSP++;
 			}
+			
+			SoundEngine.PlaySound(LemuenBasicHit, Projectile.Center);
+		}
+		
+		public override void OnSpawn(IEntitySource source) {
+			SoundEngine.PlaySound(LemuenBasicAttack, Projectile.Center);
 		}
     }
 }
