@@ -22,10 +22,10 @@ namespace BooTao2.Content.Items.Escoffier
 
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 110;
+				Item.damage = 90;
 			}
 			else {
-				Item.damage = 75;
+				Item.damage = 60;
 			}
 			Item.knockBack = 3f;
 			Item.mana = 10; // mana cost

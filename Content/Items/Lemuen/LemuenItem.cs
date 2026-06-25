@@ -19,7 +19,7 @@ namespace BooTao2.Content.Items.Lemuen
 		// im learning what good coding practices are
 		private const int SPCOST = 38;
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Lemuen/LemuenSkillStart") {
-			Volume = 1f,
+			Volume = 0.8f,
 			PitchVariance = 0.0f,
 			MaxInstances = 6,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
@@ -30,7 +30,7 @@ namespace BooTao2.Content.Items.Lemuen
 			Item.crit = 16;
 			Item.DamageType = DamageClass.Ranged;
 			Item.shoot = ModContent.ProjectileType<LemuenProj>();
-			Item.shootSpeed = 40f;
+			Item.shootSpeed = 60f;
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 120;

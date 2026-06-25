@@ -45,7 +45,10 @@ namespace BooTao2.Content.Items.LaPluma
 		};
 		
 		public override void SetDefaults() {
-			Item.damage = 40;
+			Item.damage = 45;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				Item.damage = 65;
+			}
 			Item.knockBack = 5f;
 			Item.useStyle = 1;
 			Item.useAnimation = 55;

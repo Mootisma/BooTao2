@@ -13,6 +13,8 @@ namespace BooTao2.Content.Pets.Arturia
 		public override void Update(Player player, ref int buffIndex) { // This method gets called every frame your buff is active on your player.
 			bool unused = false;
 			player.BuffHandle_SpawnPetIfNeededAndSetTime(buffIndex, ref unused, ModContent.ProjectileType<ArturiaPetProj>());
+			
+			player.GetDamage(DamageClass.Generic) += 0.01f;
 		}
 	}
 }

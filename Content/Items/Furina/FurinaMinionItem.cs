@@ -21,10 +21,10 @@ namespace BooTao2.Content.Items.Furina
 
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 50;
+				Item.damage = 49;
 			}
 			else {
-				Item.damage = 38;
+				Item.damage = 37;
 			}
 			Item.knockBack = 3f;
 			Item.mana = 10;

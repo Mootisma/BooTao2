@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using BooTao2.Systems;
 
-namespace BooTao2.Content.Items.Accessories
+namespace BooTao2.Content.Accessories
 {
 	public class PittsFruits : ModItem
 	{
@@ -32,17 +32,18 @@ namespace BooTao2.Content.Items.Accessories
 			Item.defense = 1;
 			//Item.lifeRegen = 10;
 			
-			Item.value = Item.sellPrice(gold: 1);
-			Item.rare = ItemRarityID.Green;
+			Item.value = Item.sellPrice(gold: 4);
+			Item.rare = ItemRarityID.Purple;
 		}
 		
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("UnholyEssence", out ModItem unholyessence) ) {
-				recipe.AddIngredient(unholyessence.Type);
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("CosmiliteBar", out ModItem CosmiliteBar) ) {
+				recipe.AddIngredient(CosmiliteBar.Type);
 			}
 			recipe.AddIngredient(ItemID.FragmentStardust, 10);
+			recipe.AddIngredient(ModContent.ItemType<CoffeeCandy>(), 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
@@ -119,5 +120,5 @@ namespace BooTao2.Content.Items.Accessories
 https://arknights.wiki.gg/wiki/Pitt%27s_Assorted_Fruits
 https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content
 https://terraria.wiki.gg/wiki/Stardust_Fragment
-
+https://github.com/tModLoader/tModLoader/blob/1.4.5/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs
 */

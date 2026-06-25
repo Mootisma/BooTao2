@@ -35,10 +35,10 @@ namespace BooTao2.Content.Items
 				.Register();*/
 			Recipe recipe = CreateRecipe();
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("ShadowspecBar", out ModItem ShadowspecBar) ) {
-				recipe.AddIngredient(ShadowspecBar.Type, 1);
+				recipe.AddIngredient(ShadowspecBar.Type, 2);
 			}
 			else {
-				recipe.AddIngredient(ItemID.LunarBar, 99);
+				recipe.AddIngredient(ItemID.LunarBar, 67);
 			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();

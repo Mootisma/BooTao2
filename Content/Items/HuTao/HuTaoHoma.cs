@@ -52,7 +52,7 @@ namespace BooTao2.Content.Items.HuTao
 			Item.autoReuse = true; // Allows the player to hold click to automatically use the item again. Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
 			
 			// Weapon Properties
-			Item.damage = 55;
+			Item.damage = 60;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
 				Item.damage = 100;
 			}

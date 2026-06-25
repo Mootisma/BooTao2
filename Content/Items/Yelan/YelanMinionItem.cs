@@ -22,10 +22,10 @@ namespace BooTao2.Content.Items.Yelan
 
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 60;
+				Item.damage = 58;
 			}
 			else {
-				Item.damage = 45;
+				Item.damage = 43;
 			}
 			Item.knockBack = 3f;
 			Item.mana = 10; // mana cost

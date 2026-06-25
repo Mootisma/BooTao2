@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Audio;
 
 namespace BooTao2.Content.Pets.Arturia
 {
@@ -15,6 +16,12 @@ namespace BooTao2.Content.Pets.Arturia
 			Item.buffType = ModContent.BuffType<ArturiaPetBuff>(); // Apply buff upon usage of the Item.
 			Item.rare = ItemRarityID.Blue;
 			Item.value = Item.buyPrice(silver: 1, copper: 50);
+			
+			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/ArturiaVO1") {
+				Volume = 1f,
+				PitchVariance = 0f,
+				MaxInstances = 2,
+			};
 		}
 
 		public override bool? UseItem(Player player) {

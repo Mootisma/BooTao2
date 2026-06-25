@@ -66,7 +66,7 @@ Items: {
 	}
 
 	Platform1Item: {
-		DisplayName: shrek platform
+		DisplayName: a conspicuous green platform
 		Tooltip:
 			'''
 			i need to rebrand this
@@ -175,7 +175,7 @@ Items: {
 			Invites the guests of the Salon Solitaire to come forth and aid in Furina's performance:
 			the Ball Octopus-shaped [c/c2ac06:Gentilhomme Usher], the Bubbly Seahorse-shaped [c/c2ac06:Surintendante Chevalmarin], and the Armored Crab-shaped [c/c2ac06:Mademoiselle Crabaletta].
 			Only one can be summoned at a time. Requires 3 minion slots to be summoned. When summoned, Furina can walk on water.
-			They will attack nearby opponents at intervals. If Furina is above 50% Max HP, their attacks will reduce Furina's HP but grant a damage buff. This damage buff resets every 20 seconds.
+			If Furina is above 50% Max HP, their attacks will reduce Furina's HP but grant a stacking damage buff. This damage buff resets every 20 seconds.
 			[c/c2ac06:Gentilhomme Usher]
 			Attacks every 3.3 seconds by firing a projectile at the opponent. Drains 10 HP and grants a 2% damage buff.
 			[c/c2ac06:Surintendante Chevalmarin]
@@ -225,7 +225,7 @@ Items: {
 			Contains assets from the game [c/73a9ff:Genshin Impact]
 			[c/FFFF00:Pyronado] (Left Click)
 			Displaying her mastery over both fire and polearms, Xiangling sends a Pyronado whirling around her.
-			The Pyronado will move with your character, dealing Pyro DMG to all opponents in its path.
+			The Pyronado will move with your character, dealing damage to all opponents in its path.
 			Only one can be summoned at a time. Requires 1 minion slot.
 			[c/FFFF00:Guoba Attack] (Left Click)
 			Only available when Pyronado is on the field. Requires 1 sentry slot.
@@ -475,7 +475,7 @@ Items: {
 	}
 
 	XiaoItem: {
-		DisplayName: Xiao Item
+		DisplayName: Xiao
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Genshin Impact]
@@ -511,7 +511,7 @@ Items: {
 			Can only attack while holding a boomerang. 
 			The boomerang will return to the player upon reaching the cursor or when hitting an enemy.
 			[c/FFFF00:Double the Fun] (Auto Trigger)
-			SP Cost: 25 [Offensive Recovery]
+			SP Cost: 25 [Offensive Recovery] | Duration: 20 seconds
 			ATK +60%, each attack fires 1 more boomerang
 			[c/FFFF00:Larking About]
 			When attacking, 25% chance to deal 160% damage
@@ -524,7 +524,7 @@ Items: {
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Pegasian Sight] (Auto Trigger)
-			SP Cost: 50 [Auto Recovery]
+			SP Cost: 50 [Auto Recovery] | Duration: Infinite
 			ASPD reduces, but ATK +100%. Range expands
 			[c/FFFF00:All-Out Attack]
 			The longer the interval from the last attack is, the higher the ATK of the next attack will be
@@ -554,7 +554,7 @@ Items: {
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Counterflow] (Right Click)
-			SP Cost: 30 [Offensive Recovery]
+			SP Cost: 30 [Offensive Recovery] | Duration: 20 seconds
 			ATK +40%. Attacks 3 times consecutively.
 			[c/FFFF00:Tailwind]
 			When attacking, 20% chance to deal 150% damage.
@@ -569,7 +569,7 @@ Items: {
 			[c/FFFF00:Trait]
 			Attacks create two [c/c2ac06:Aftershocks] with 50% ATK.
 			[c/FFFF00:Explosive Dawn] (Right Click)
-			SP Cost: 50 [Auto Recovery]
+			SP Cost: 50 [Auto Recovery] | Ammo: 6
 			Summons 1 [c/c2ac06:Revenant's Shadow] at Wiš'adel's position.
 			ATK +200%. Attack interval is greatly increased. Attacks do 200% ATK.
 			Splash area is greatly increased. [c/FFFF00:Souvenir] will have a 100% trigger chance.
@@ -646,7 +646,7 @@ Items: {
 			[c/ec45ff:Perform a] [c/FF9696:Charged Attack] [c/ec45ff:that's always empowered by 7] [c/c2ac06:Star Jade].
 			[c/ec45ff:Each] [c/c2ac06:Star Jade] [c/ec45ff:will restore 1 Mana on hit.]
 			[c/FFFF00:Jade Screen] (Right Click)
-			Ningguang creates a [c/c2ac06:Jade Screen] out of gold, obsidian, and her great opulence, dealing AoE Geo DMG.
+			Ningguang creates a [c/c2ac06:Jade Screen] out of gold, obsidian, and her great opulence.
 			[c/FFFF00:Strategic Reserve]
 			When Ningguang is close to the [c/c2ac06:Jade Screen], Ningguang will gain a buff:
 			+12% DMG and immunity to projectiles.
@@ -661,7 +661,7 @@ Items: {
 			[c/ec45ff:Some changes were made to this item..]
 			[c/FFFF00:Pyronado] (Left Click)
 			Displaying her mastery over both fire and polearms, Xiangling sends [c/ec45ff:8 Pyronados] whirling around her.
-			The Pyronados will move with your character, dealing Pyro DMG to all opponents in its path.
+			The Pyronados will move with your character, dealing damage to all opponents in its path.
 			Only [c/ec45ff:eight] can be summoned at a time. Requires [c/ec45ff:0 minion slots].
 			[c/ec45ff:Having Pyronados out will additionally increase sentry slots by +9.]
 			[c/FFFF00:Guoba Attack] (Left Click)
@@ -741,7 +741,7 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
-			+3 minion slots
+			+3 max number of minions
 			'''
 	}
 
@@ -767,7 +767,7 @@ Items: {
 			 dealing 200% ATK damage every 0.5 seconds.
 			[c/FFFF00:Blood Bank]
 			Attacks increase Entelechia's Max HP by 10 (up to 200; reset upon death)
-			 and deal 200 DoT for 5 seconds.
+			Attacks deal 200 DoT for 5 seconds.
 			[c/FFFF00:Second Serving]
 			When HP drops below 25%, immediately recover to full HP. 3 minute cooldown.
 			While on cooldown, Entelechia has 20% damage reduction.
@@ -792,6 +792,98 @@ Items: {
 	ArturiaPetItem: {
 		DisplayName: Arturia Giallo
 		Tooltip: Let your heart speak up
+	}
+
+	BreezeItem: {
+		DisplayName: Breez
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			Harness the power of someone's favorite glup shitto
+			[c/FFFF00:Widespread Therapy]
+			20% chance to do 150% damage, but Breez does less damage against bosses
+			Breez heals for 5% of Breez's damage dealt
+			[c/FFFF00:Golden Breeze] (Right Click)
+			Right click to spawn a [c/c2ac06:Golden Breeze] directly at the cursor
+			[c/c2ac06:Golden Breeze] will explode upon enemy contact, but will very quickly despawn
+			Breez can also spawn a weaker [c/c2ac06:Golden Breeze] upon hitting an enemy
+			'''
+	}
+
+	BreezePetItem: {
+		DisplayName: Breez
+		Tooltip: Breeze, Medic Operator of Rhodes Island, will prove that teasing and treatment go hand in hand.
+	}
+
+	BreezeItemSW: {
+		DisplayName: Breez [SW]
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			[c/ec45ff:Some changes were made to this item..]
+			Harness the power of someone's favorite glup shitto
+			[c/FFFF00:Widespread Therapy]
+			[c/ec45ff:25% chance to do 200% damage]
+			Breez heals for 5% of Breez's damage dealt
+			[c/FFFF00:Golden Breeze] (Right Click)
+			Right click to spawn a [c/c2ac06:Golden Breeze] directly at the cursor
+			[c/c2ac06:Golden Breeze] will explode upon enemy contact, but will very quickly despawn
+			Breez can also spawn a weaker [c/c2ac06:Golden Breeze] upon hitting an enemy
+			'''
+	}
+
+	KingsLance: {
+		DisplayName: King's New Lance
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			When at 10 hp or less, gain +50 ASPD
+			'''
+	}
+
+	RoyalBrooch: {
+		DisplayName: Royal Brooch
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			Dodge one instance of damage. 2 minute CD.
+			'''
+	}
+
+	CoffeeBeans: {
+		DisplayName: Extra-Pungent Coffee Beans
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			+1 max number of minions, sentries, and +20 max HP
+			'''
+	}
+
+	CoffeeCandy: {
+		DisplayName: Coffee Plains Coffee Candy
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			+2 max number of minions
+			'''
+	}
+
+	MedicineSticks: {
+		DisplayName: Medicine Sticks
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			Dodge two instances of damage. 2 minute CD. (CD starts when the second shield is used.)
+			'''
+	}
+
+	OrangeStorm: {
+		DisplayName: Orange Storm
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Arknights]
+			+1 max number of minions
+			'''
 	}
 }
 
@@ -993,6 +1085,11 @@ Buffs: {
 			just wear your heart on your sleeve
 			'''
 	}
+
+	BreezePetBuff: {
+		DisplayName: Breez
+		Description: Wh- while it may not be right to compare her to Miss Franka, I think Miss Breeze is also something of a mischievous Vulpo girl.
+	}
 }
 
 Projectiles: {
@@ -1078,6 +1175,10 @@ Projectiles: {
 	}
 
 	ArturiaExplosionProj.DisplayName: Arturia Explosion Proj
+	BreezeProj.DisplayName: Breeze
+	BreezePetProj.DisplayName: Breez
+	BreezeProjSW.DisplayName: BreezeSW
+	BreezeProj2.DisplayName: Breeze Proj2
 }
 
 Configs: {

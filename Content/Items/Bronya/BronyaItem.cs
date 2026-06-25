@@ -15,10 +15,10 @@ namespace BooTao2.Content.Items.Bronya
 		Vector2 TPposition = new Vector2(33450, 4923);
 		
 		public override void SetDefaults() {
-			Item.damage = 20;
+			Item.damage = 16;
 			Item.knockBack = 1.5f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 25;
+				Item.damage = 21;
 				Item.knockBack = 2f;
 			}
 			Item.crit = 6;

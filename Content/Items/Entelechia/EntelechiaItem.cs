@@ -42,10 +42,10 @@ namespace BooTao2.Content.Items.Entelechia
 		
 		public override void SetDefaults() {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 1000;
+				Item.damage = 960;
 			}
 			else {
-				Item.damage = 250;
+				Item.damage = 230;
 			}
 			Item.knockBack = 5f;
 			Item.useStyle = 1;

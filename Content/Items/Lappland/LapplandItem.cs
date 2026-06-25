@@ -58,7 +58,7 @@ namespace BooTao2.Content.Items.Lappland
 			Item.height = 50;
 
 			// Weapon Properties
-			Item.damage = (CalamityActive) ? 130 : 100;
+			Item.damage = (CalamityActive) ? 125 : 75;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 10;
 			Item.crit = 1;

@@ -23,8 +23,8 @@ namespace BooTao2.Content.Items.Herta
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 28 : 20;
-			Item.knockBack = 3.2f;
+			Item.damage = (CalamityActive) ? 27 : 19;
+			Item.knockBack = 3.0f;
 			Item.mana = 20; // mana cost
 			Item.width = 32;
 			Item.height = 32;

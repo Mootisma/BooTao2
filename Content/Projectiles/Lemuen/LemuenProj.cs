@@ -12,7 +12,7 @@ namespace BooTao2.Content.Projectiles.Lemuen
     public class LemuenProj : ModProjectile
     {
         SoundStyle LemuenBasicAttack = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Lemuen/LemuenBasicAttack") {
-			Volume = 1f,
+			Volume = 0.8f,
 			PitchVariance = 0.0f,
 			MaxInstances = 6,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
@@ -31,7 +31,7 @@ namespace BooTao2.Content.Projectiles.Lemuen
         {
             Projectile.width = 23;
             Projectile.height = 14;
-            Projectile.timeLeft = 90;
+            Projectile.timeLeft = 30;
             Projectile.alpha = 0;
 			Projectile.hide = false;
 			Projectile.friendly = true;

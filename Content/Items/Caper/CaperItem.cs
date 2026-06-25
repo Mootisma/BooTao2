@@ -35,9 +35,9 @@ namespace BooTao2.Content.Items.Caper
 			Item.noUseGraphic = true;
 			
 			Item.DamageType = DamageClass.Ranged;
-			Item.damage = 31;
+			Item.damage = 27;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 36;
+				Item.damage = 32;
 			}
 			Item.crit = 1;
 			Item.knockBack = 3.5f;

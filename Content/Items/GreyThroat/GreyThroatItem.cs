@@ -28,10 +28,10 @@ namespace BooTao2.Content.Items.GreyThroat {
 			Item.value = Item.sellPrice(0, 10, 1, 0);
 			
 			Item.DamageType = DamageClass.Ranged;
-			Item.damage = 55;
+			Item.damage = 43;
 			Item.knockBack = 2.5f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 75;
+				Item.damage = 62;
 				Item.knockBack = 3f;
 			}
 			
@@ -109,7 +109,6 @@ namespace BooTao2.Content.Items.GreyThroat {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("CryonicBar", out ModItem cryonicBar) ) {
 				recipe.AddIngredient(cryonicBar.Type, 1);
 			}
-			recipe.AddIngredient(ItemID.CobaltChainsaw, 1);
 			recipe.AddIngredient(ItemID.Feather, 4);
 			recipe.AddIngredient(ItemID.DaedalusStormbow, 1);
 			recipe.AddIngredient(ItemID.SoulofFright, 1);

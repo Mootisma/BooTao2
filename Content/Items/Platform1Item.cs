@@ -22,8 +22,8 @@ namespace BooTao2.Content.Items
 			Item.maxStack = 9999;
 			Item.useTurn = true;
 			Item.autoReuse = true;
-			Item.useAnimation = 8;
-			Item.useTime = 8;
+			Item.useAnimation = 7;
+			Item.useTime = 7;
 			Item.useStyle = 1;
 			//item.consumable = true;
 			Item.value = 2;

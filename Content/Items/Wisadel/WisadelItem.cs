@@ -53,10 +53,10 @@ namespace BooTao2.Content.Items.Wisadel {
 			Item.value = Item.sellPrice(1, 50, 0, 0);
 			
 			Item.DamageType = DamageClass.Ranged;
-			Item.damage = 500;
+			Item.damage = 450;
 			Item.knockBack = 3f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 600;
+				Item.damage = 570;
 				Item.knockBack = 4f;
 			}
 			Item.useStyle = ItemUseStyleID.Shoot;

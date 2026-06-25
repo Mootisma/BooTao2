@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using BooTao2.Systems;
 
-namespace BooTao2.Content.Items.Accessories
+namespace BooTao2.Content.Accessories
 {
 	public class WaterKettle : ModItem
 	{
@@ -16,14 +16,16 @@ namespace BooTao2.Content.Items.Accessories
 			Item.height = 79;
 			Item.accessory = true;
 			
-			Item.value = Item.sellPrice(silver: 1);
+			Item.value = Item.sellPrice(silver: 2);
 			Item.rare = ItemRarityID.Blue;
 		}
 		
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.BottledWater, 1);
+			recipe.AddIngredient(ItemID.BottledWater, 2);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 1);
+			recipe.AddIngredient(ItemID.LifeCrystal, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

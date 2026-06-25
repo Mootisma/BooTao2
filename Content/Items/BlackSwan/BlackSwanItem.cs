@@ -27,10 +27,10 @@ namespace BooTao2.Content.Items.BlackSwan
 			Item.UseSound = SoundID.Item67;
 
 			// Weapon Properties
-			Item.damage = 70;
+			Item.damage = 65;
 			Item.knockBack = 2.5f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 110;
+				Item.damage = 105;
 				Item.knockBack = 3.5f;
 			}
 			Item.DamageType = DamageClass.Magic;

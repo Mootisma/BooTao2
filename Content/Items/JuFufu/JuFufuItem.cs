@@ -23,7 +23,7 @@ namespace BooTao2.Content.Items.JuFufu
 		}
 
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 110 : 80;
+			Item.damage = (CalamityActive) ? 90 : 60;
 			Item.knockBack = 3f;
 			Item.mana = 10; // mana cost
 			Item.width = 32;
@@ -32,7 +32,7 @@ namespace BooTao2.Content.Items.JuFufu
 			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
 			Item.noUseGraphic = true;
-			Item.value = Item.sellPrice(gold: 30);
+			Item.value = Item.sellPrice(gold: 25);
 			Item.rare = ItemRarityID.Orange;
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/JuFufu/CarryYou") {
 				Volume = 0.8f,

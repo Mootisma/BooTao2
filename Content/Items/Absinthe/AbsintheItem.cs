@@ -44,7 +44,7 @@ namespace BooTao2.Content.Items.Absinthe
 			Item.UseSound = SoundID.Item11;
 
 			// Weapon Properties
-			Item.damage = (CalamityActive) ? 55 : 45;
+			Item.damage = (CalamityActive) ? 50 : 40;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 10;
 			Item.crit = 3;

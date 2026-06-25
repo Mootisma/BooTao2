@@ -111,6 +111,12 @@ namespace BooTao2.Systems
 		//
 		public int LemuenAmmo = 0;
 		public int LemuenSP = 32;
+		//
+		public bool RoyalBrooch;
+		public int RBcd = 0;
+		public bool MedicineSticks;
+		public int MScd = 0;
+		public bool MSn;
 		
 		public override void ResetEffects()
 		{
@@ -133,6 +139,9 @@ namespace BooTao2.Systems
 			NingJadeScreen = false;
 			LapplandSkill = false;
 			EntelechiaRevive = false;
+			RoyalBrooch = false;
+			MedicineSticks = false;
+			MSn = false;
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -305,6 +314,24 @@ namespace BooTao2.Systems
 				//if (Main.netMode != NetmodeID.SinglePlayer) {
 					//SendExampleDodgeMessage;
 				//}
+				return true;
+			}
+			if (RoyalBrooch && RBcd <= 0) {
+				Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+				RBcd = 7200;
+				return true;
+			}
+			if (MedicineSticks && MScd <= 0) {
+				// Medicine Sticks grants two shields. For this implementation,
+				// I use the bool MSn to track which of the two shields the player is currently on.
+				// If the player has two shields, MSn should be true. Upon dodging, it will be set to false.
+				// If the player has one shield left, MSn should be false. Upon dodging, set to true and raise the CD to 2 mins
+				Player.SetImmuneTimeForAllTypes(Player.longInvince ? 90 : 60);
+				if (!MSn) {
+					MSn = true;
+					MScd = 7200;
+				}
+				else { MSn = false; }
 				return true;
 			}
 			if (EntelechiaRevive) {
