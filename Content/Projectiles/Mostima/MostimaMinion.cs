@@ -87,10 +87,11 @@ namespace BooTao2.Content.Projectiles.Mostima
 				Projectile.alpha -= 25;
 			}
 			
-			TimeStop(owner.GetModPlayer<BooTaoPlayer>().MostimaSkill);
-			if (owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration == 1) {
-				TimeResume();
-			}
+			if (Main.netMode == NetmodeID.SinglePlayer)
+				TimeStop(owner.GetModPlayer<BooTaoPlayer>().MostimaSkill);
+			//if (owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration == 1) {
+			//	TimeResume();
+			//}
 			if (owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration > 0) {
 				owner.GetModPlayer<BooTaoPlayer>().MostimaSkillDuration--;
 			}
@@ -463,46 +464,60 @@ namespace BooTao2.Content.Projectiles.Mostima
 		private void TimeStop(bool isSkillActive) {
 			if (counter > 6) { //https://docs.tmodloader.net/docs/stable/class_main.html#a55969af8fef5fd9819d1854403cf794b
 				foreach (var proj in Main.ActiveProjectiles) {
-					if (proj.owner == Projectile.owner || !proj.hostile) {
+					if (!proj.hostile) {
 						continue;
 					}
 					float between = Vector2.Distance(proj.Center, Projectile.Center);
-					if (between < 1000) {
+					if (between < 1000f) {
 						if (isSkillActive) {
-							proj.velocity *= 0.01f;//Vector2.Zero
+							proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow1 = false;
+							proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow2 = false;
+							proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow3 = true;
 						}
 						else {
-							proj.velocity *= 0.66f;
+							proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow1 = false;
+							proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow2 = true;
+							proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow3 = false;
 						}
-						//position, width, height, type, speedx, speedy, alpha, color, scale
-						Dust.NewDust(proj.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					}
 					else {
-						proj.velocity *= 0.82f;
-						Dust.NewDust(proj.Center, 0, 0, 56, 0, 0, 150, default, 1f);
+						proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow1 = true;
+						proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow2 = false;
+						proj.GetGlobalProjectile<BooTaoGlobalProjectile>().MostimaSlow3 = false;
 					}
 					// if they reach zero velocity give them a nudge
-					if (Math.Abs(proj.velocity.Y) <= 0.1f && Math.Abs(proj.velocity.X) <= 0.1f) {
-						proj.velocity *= 2f;
-					}
+					//if (Math.Abs(proj.velocity.Y) <= 0.1f && Math.Abs(proj.velocity.X) <= 0.1f) {
+					//	proj.velocity *= 2f;
+					//}
+					//position, width, height, type, speedx, speedy, alpha, color, scale
+					Dust.NewDust(proj.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					proj.netUpdate = true;
 				}
 				foreach (var npc in Main.ActiveNPCs) {
+					if (!npc.CanBeChasedBy())
+						continue;
 					float between = Vector2.Distance(npc.Center, Projectile.Center);
-					if (between < 1000) {
+					if (between < 1000f) {
 						if (isSkillActive) {
-							npc.velocity *= 0.01f;
+							//npc.velocity *= 0.01f;
+							npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow1 = false;
+							npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow2 = false;
+							npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow3 = true;
 						}
 						else {
-							npc.velocity *= 0.66f;
+							npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow1 = false;
+							npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow2 = true;
+							npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow3 = false;
 						}
 					}
 					else {
-						npc.velocity *= 0.82f;
+						npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow1 = true;
+						npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow2 = false;
+						npc.GetGlobalNPC<BooTaoGlobalNPC>().MostimaSlow3 = false;
 					}
 					Dust.NewDust(npc.Center, 0, 0, 56, 0, 0, 150, default, 1f);
 					// if they approach zero velocity give them a nudge
-					if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
+					/*if (Math.Abs(npc.velocity.Y) <= 0.1f && Math.Abs(npc.velocity.X) <= 0.1f) {
 						if (isSkillActive) {
 							npc.velocity *= 2f;
 						}
@@ -517,7 +532,7 @@ namespace BooTao2.Content.Projectiles.Mostima
 						else {
 							npc.velocity *= 5f;
 						}
-					}
+					}*/
 					npc.netUpdate = true;
 				}
 				counter = 0;
@@ -526,7 +541,7 @@ namespace BooTao2.Content.Projectiles.Mostima
 			counter++;
 		}
 		
-		private void TimeResume() {
+		/*private void TimeResume() {
 			foreach (var proj in Main.ActiveProjectiles) {
 				if (proj.owner == Projectile.owner) {
 					continue;
@@ -536,9 +551,11 @@ namespace BooTao2.Content.Projectiles.Mostima
 			foreach (var npc in Main.ActiveNPCs) {
 				npc.velocity *= 10f;
 			}
-		}
+		}*/
 	}
 }
 /*
 had to change pixel format to RGBA so the compression wouldnt make mostima ugly :(
+https://docs.tmodloader.net/docs/stable/class_main.html#ab4646d8c91e9c4d9eebb6355cbeda8f9
+https://docs.tmodloader.net/docs/stable/class_global_n_p_c.html
 */

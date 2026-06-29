@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Items
 {
@@ -35,8 +36,9 @@ namespace BooTao2.Content.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			player.statDefense += 500;
-			player.lifeRegen += 100;
+			player.statDefense += 50;
+			//player.lifeRegen += 100;
+			player.GetModPlayer<BooTaoPlayer>().croutonHealing = true;
 			base.HoldItem(player);
 		}
 		

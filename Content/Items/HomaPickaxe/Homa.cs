@@ -22,9 +22,9 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Item.knockBack = 9;
 			Item.pick = 59;
             Item.tileBoost = 1;
-			Item.value = 1;
+			Item.value = Item.sellPrice(gold: 1);
 			Item.rare = 10;
-			Item.UseSound = SoundID.Item1;
+			Item.UseSound = SoundID.Item1 with { Volume = 0.3f };
 			Item.autoReuse = true;
 			Item.useTurn = true;
 		}
@@ -38,11 +38,19 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			recipe.Register();
 		}
 		
+		public override void HoldItem(Player player) {
+			if ( player.GetModPlayer<BooTaoPlayer>().GetMagnet2Config() ) {
+				player.GetModPlayer<BooTaoPlayer>().Magnet2 = true;
+				player.AddBuff(ModContent.BuffType<Magnet2Buff>(), 10, true);
+			}
+		}
+		
 		public override void UpdateInventory (Player player) {
-			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
 			bool[] ligma = player.GetModPlayer<BooTaoPlayer>().GetHomaConfig();
 			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[0] = ligma[0];
 			player.GetModPlayer<BooTaoPlayer>().HomaPickaxes[1] = ligma[1];
+			player.GetModPlayer<BooTaoPlayer>().BuffClutter = player.GetModPlayer<BooTaoPlayer>().GetBuffClutterConfig();
+			player.AddBuff(ModContent.BuffType<HomaPickaxeBuff>(), 10, true);
 		}
 	}
 }

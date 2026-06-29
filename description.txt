@@ -29,10 +29,12 @@ Pets:
 Arturia, Breeze
 
 ## Known Issues
-Some items don't fully work. I don't know how to fix these yet.
+Some items don't fully work, especially in multiplayer. I don't know how to fix these yet.
 Qingque, Entelechia, and Lemuen have a visual bug in multiplayer but functionality is still OK (I think)
 
 ## Changelog
+1.0.26.0: Added Serval
+1.0.25.2: Adjustments, fixes, balances
 1.0.25.1: Added more accessories; some slight adjustments
 1.0.25.0: Added Breez
 1.0.24.0: Added Lemuen and Arturia (pet)

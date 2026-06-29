@@ -35,10 +35,7 @@ namespace BooTao2.Content.Items.Caper
 			Item.noUseGraphic = true;
 			
 			Item.DamageType = DamageClass.Ranged;
-			Item.damage = 27;
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 32;
-			}
+			Item.damage = 25;
 			Item.crit = 1;
 			Item.knockBack = 3.5f;
 			Item.noMelee = true;
@@ -46,6 +43,15 @@ namespace BooTao2.Content.Items.Caper
 			Item.shoot = ModContent.ProjectileType<CaperProj>();
 			Item.shootSpeed = 22f;
 		}
+		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            float damageMult = 1f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				damageMult += 0.2f;
+			}
+			damage *= damageMult;
+        }
 		
 		public override bool AltFunctionUse(Player player) {
 			return true;

@@ -17,6 +17,10 @@ namespace BooTao2.Systems
 				//player.GetModPlayer<BooTaoPlayer>().Magnet = true; //paste to accessory :)
 				grabRange += 2000;
 			}
+			if(player.GetModPlayer<BooTaoPlayer>().Magnet2)
+			{
+				grabRange += 500;
+			}
 		}
 		
 		//public override void PostUpdate(Item item) {
@@ -24,7 +28,7 @@ namespace BooTao2.Systems
 		//}
 		
 		public override bool GrabStyle(Item item, Player player) {
-			if(player.GetModPlayer<BooTaoPlayer>().Magnet)
+			if(player.GetModPlayer<BooTaoPlayer>().Magnet || player.GetModPlayer<BooTaoPlayer>().Magnet2)
 			{
 				Vector2 movement = item.DirectionTo(player.Center) * 20f;
 				item.velocity = movement;

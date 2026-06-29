@@ -15,7 +15,6 @@ namespace BooTao2.Content.Items.Absinthe
 {
 	public class AbsintheItem : ModItem
 	{
-		public bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		private int AbsintheSP = 0;
 		private int timer = 0;
 		private bool AbsintheSkillActive = false;
@@ -44,7 +43,7 @@ namespace BooTao2.Content.Items.Absinthe
 			Item.UseSound = SoundID.Item11;
 
 			// Weapon Properties
-			Item.damage = (CalamityActive) ? 50 : 40;
+			Item.damage = 40;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 10;
 			Item.crit = 3;
@@ -66,6 +65,15 @@ namespace BooTao2.Content.Items.Absinthe
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
+		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            float damageMult = 1f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				damageMult += 0.2f;
+			}
+			damage *= damageMult;
+        }
 		
 		public override void HoldItem(Player player) {
 			if (!AbsintheSkillActive && AbsintheSP >= SP_COST) {

@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using BooTao2.Systems;
 
 namespace BooTao2.Content.Pets.Breeze
 {
@@ -14,7 +15,7 @@ namespace BooTao2.Content.Pets.Breeze
 			bool unused = false;
 			player.BuffHandle_SpawnPetIfNeededAndSetTime(buffIndex, ref unused, ModContent.ProjectileType<BreezePetProj>());
 			
-			player.lifeRegen += 2;
+			player.GetModPlayer<BooTaoPlayer>().BreezeHealing = true;
 		}
 	}
 }

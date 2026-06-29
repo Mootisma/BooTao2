@@ -5,14 +5,16 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
+using Terraria.Localization;
 using Terraria.Audio;
+using Microsoft.Xna.Framework;
+using System;
+using System.IO;
 
 namespace BooTao2.Content.Items.Fiammetta
 {
 	public class FiammettaItem : ModItem
 	{
-		bool CalamityActive = ModLoader.TryGetMod("CalamityMod", out Mod calamityMod);
 		private const int SP_COST = 15;
 		
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
@@ -60,7 +62,7 @@ namespace BooTao2.Content.Items.Fiammetta
 		};
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 200 : 145;
+			Item.damage = 145;
 			Item.DamageType = DamageClass.Ranged;
 			Item.crit = 16;
 			Item.shoot = ModContent.ProjectileType<FiammettaProj>();
@@ -130,22 +132,24 @@ namespace BooTao2.Content.Items.Fiammetta
 		
 		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            bool anyMech = NPC.downedMechBossAny;
-            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
-            bool plantera = NPC.downedPlantBoss;
-            bool golem = NPC.downedGolemBoss;
-            bool cultist = NPC.downedAncientCultist;
-            bool moonLord = NPC.downedMoonlord;
-
+            //bool anyMech = NPC.downedMechBossAny;
+            //bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            //bool plantera = NPC.downedPlantBoss;
+            //bool golem = NPC.downedGolemBoss;
+            //bool cultist = NPC.downedAncientCultist;
+            //bool moonLord = NPC.downedMoonlord;
+//	https://github.com/tModLoader/tModLoader/blob/stable/patches/tModLoader/Terraria/Condition.cs
             float damageMult = 1f +
-                (anyMech ? 0.02f : 0f) +
-                (allMechs ? 0.02f : 0f) +
-                (plantera ? 0.02f : 0f) +
-                (golem ? 0.04f : 0f) +
-                (cultist ? 0.05f : 0f) +
-                (moonLord ? 0.05f : 0f);
+                (Condition.DownedMechBossAll.IsMet() ? 0.02f : 0f) +
+                (Condition.DownedPlantera.IsMet() ? 0.02f : 0f) +
+                (Condition.DownedGolem.IsMet() ? 0.02f : 0f) +
+                (Condition.DownedCultist.IsMet() ? 0.04f : 0f) +
+                (Condition.DownedMoonLord.IsMet() ? 0.05f : 0f);
 
-            damage *= damageMult;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				damageMult += 0.3f;
+			}
+			damage *= damageMult;
 
         }
 		
@@ -210,4 +214,7 @@ namespace BooTao2.Content.Items.Fiammetta
 }
 /*
 https://docs.tmodloader.net/docs/1.4-preview/class_terraria_1_1_utilities_1_1_unified_random.html
+The HP burn is 5% of current HP every second. Even more accurately, it’s 0.5% current HP every 0.1 second. 
+https://github.com/tModLoader/tModLoader/wiki/Conditions
+
 */

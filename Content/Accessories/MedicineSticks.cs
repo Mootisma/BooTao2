@@ -12,8 +12,8 @@ namespace BooTao2.Content.Accessories
 	public class MedicineSticks : ModItem
 	{
 		public override void SetDefaults() {
-			Item.width = 80;
-			Item.height = 79;
+			Item.width = 67;
+			Item.height = 85;
 			Item.accessory = true;
 			Item.defense = 1;
 			

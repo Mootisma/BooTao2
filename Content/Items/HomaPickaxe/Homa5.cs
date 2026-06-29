@@ -26,7 +26,7 @@ namespace BooTao2.Content.Items.HomaPickaxe
             Item.tileBoost = 5;
 			Item.value = Item.sellPrice(gold: 20);
 			Item.rare = 10;
-			Item.UseSound = SoundID.Item1;
+			Item.UseSound = SoundID.Item1 with { Volume = 0.3f };
 			Item.autoReuse = true;
 			Item.useTurn = true;
 			Item.maxStack = 1;
@@ -39,10 +39,19 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			recipe.AddIngredient(ItemID.Picksaw, 1);
 			recipe.AddIngredient(ItemID.Ectoplasm, 1);
 			if (ModContent.GetInstance<BooTaoServerConfig>().Homa5) {
-				recipe.AddIngredient(ItemID.BundleofBalloons, 1);
+				//recipe.AddIngredient(ItemID.BundleofBalloons, 1);
+				recipe.AddIngredient(ItemID.WarTable, 1);
+				recipe.AddIngredient(ItemID.SliceOfCake, 1);
 			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
+		}
+		
+		public override void HoldItem(Player player) {
+			if ( player.GetModPlayer<BooTaoPlayer>().GetMagnet2Config() ) {
+				player.GetModPlayer<BooTaoPlayer>().Magnet2 = true;
+				player.AddBuff(ModContent.BuffType<Magnet2Buff>(), 10, true);
+			}
 		}
 		
 		public override void UpdateInventory (Player player) {

@@ -5,6 +5,7 @@ using BooTao2.Content.Buffs.Escoffier;
 using BooTao2.Content.Items.HuTao;
 using BooTao2.Content.Items.RaidenShogun;
 using BooTao2.Content.Items.Herta;
+using BooTao2.Content.Items.Breeze;
 using BooTao2.Content.Projectiles.RaidenShogun;
 using BooTao2.Content.Buffs.RaidenShogun;
 using BooTao2.Content.Buffs.Entelechia;
@@ -24,10 +25,10 @@ namespace BooTao2.Systems
 		public override bool InstancePerEntity => true;
 		public bool BloodBlossom;
 		public int BloodBlossomDmg = 12;
-		public bool tnspeepee;
-		public int ThornsDOTstack = 0;
-		public int ThornsDOTdmg = 0;
-		public int ThornsDOTduration = 0;
+		public bool ThornsDoT;
+		//public int ThornsDOTstack = 0;
+		//public int ThornsDOTdmg = 0;
+		//public int ThornsDOTduration = 0;
 		public bool test;
 		public bool KafkaAKSleep;
 		//
@@ -49,6 +50,9 @@ namespace BooTao2.Systems
 		public bool EscoffierDebuff;
 		//
 		public bool entelechiadot;
+		//
+		public bool AKstun;
+		public bool ServalDoT;
 
 		public override void ResetEffects(NPC npc) {
 			BloodBlossom = false;
@@ -56,10 +60,12 @@ namespace BooTao2.Systems
 			KafkaAKSleep = false;
 			bspeepee = false;
 			kfpeepee = false;
-			tnspeepee = false;
+			ThornsDoT = false;
 			EscoffierDebuff = false;
 			bsDefDebuff = false;
 			entelechiadot = false;
+			AKstun = false;
+			ServalDoT = false;
 		}
 
 		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers) {
@@ -77,17 +83,47 @@ namespace BooTao2.Systems
 
 		public override void DrawEffects(NPC npc, ref Color drawColor) {
 			// This simple color effect indicates that the buff is active
-			if (BloodBlossom || ThornsDOTstack > 0 || test || bspeepee) {
+			if (BloodBlossom || test || bspeepee) {
 				drawColor.G = 0;
 			}
+			if (MostimaSlow1) {
+				//npc.netUpdate = true;
+				if (npc.boss) { npc.velocity /= 0.9f; }
+				else {npc.velocity /= 0.82f; }
+			}
+			if (MostimaSlow2) {
+				if (npc.boss) { npc.velocity /= 0.78f; }
+				else {npc.velocity /= 0.66f; }
+			}
+			if (MostimaSlow3) {
+				if (npc.boss) { npc.velocity /= 0.1f; }
+				else {npc.velocity /= 0.01f; }
+			}
 		}
+		
+		public override void PostAI(NPC npc) {
+			if (MostimaSlow1) {
+				if (npc.boss) { npc.velocity *= 0.9f; }
+				else {npc.velocity *= 0.82f; }
+			}
+			if (MostimaSlow2) {
+				if (npc.boss) { npc.velocity *= 0.78f; }
+				else {npc.velocity *= 0.66f; }
+			}
+			if (MostimaSlow3) {
+				if (npc.boss) { npc.velocity *= 0.1f; }
+				else {npc.velocity *= 0.01f; }
+			}
+		}
+		
+		
 		//https://docs.tmodloader.net/docs/stable/class_global_n_p_c.html
 		public override bool PreAI(NPC npc) {
-			if (KafkaAKSleep) {
+			if (KafkaAKSleep || AKstun) {
 				//Dust.NewDust(npc.Center, 0, 0, 34, 0, 0, 150, default, 1f);
 				return false;
 			}
-			if (test && !npc.boss) {
+			//if (test && !npc.boss) {
 				//https://discord.com/channels/103110554649894912/534215632795729922/1266852701870882826
 				//https://discord.com/channels/103110554649894912/534215632795729922/1280133031839010908
 				//Vector2 ligmaballs = Vector2.Lerp(npc.position, npc.oldPos[1], 1);
@@ -95,11 +131,9 @@ namespace BooTao2.Systems
 				
 				//the current combination below slows the enemy by 50%, i *think*
 				// in reverse (multiplying here and dividing in postai) it seems to speed them up
-				npc.velocity /= 0.01f;
-			}
-			if (MostimaSlow1) {
-				npc.velocity /= 0.01f;
-			}
+				//npc.velocity /= 0.5f;
+			//}
+
 			bsTimer++;
 			if (bsTimer >= 300) {
 				if (Arcana > 1) {
@@ -111,12 +145,6 @@ namespace BooTao2.Systems
 				bsDefDownDur--;
 			}
 			return true;
-		}
-		
-		public override void PostAI(NPC npc) {
-			if (test && !npc.boss) {
-				npc.velocity *= 0.01f;
-			}
 		}
 		
 		public override bool? CanBeHitByItem(NPC npc, Player player, Item item) {
@@ -132,7 +160,7 @@ namespace BooTao2.Systems
 		}
 		
 		public override bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot){
-			if (KafkaAKSleep)
+			if (KafkaAKSleep || AKstun)
 				return false;
 			return true;
 		}
@@ -144,12 +172,12 @@ namespace BooTao2.Systems
 				}
 				npc.lifeRegen -= 12 * 2;//BloodBlossomDmg;
 			}
-			if (tnspeepee ){//&& ThornsDOTstack > 0 && ThornsDOTduration > 0) {
+			if (ThornsDoT ){//&& ThornsDOTstack > 0 && ThornsDOTduration > 0) {
 				//ThornsDOTduration--;
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= 135 * 2;//ThornsDOTdmg;
+				npc.lifeRegen -= 100 * 2;//ThornsDOTdmg;
 			}
 			//else {
 			//	ThornsDOTstack = 0;
@@ -161,7 +189,7 @@ namespace BooTao2.Systems
 					npc.lifeRegen = 0;
 				}
 				//if (KafkaDOTdmg < 30)
-				npc.lifeRegen -= 75 * 2;
+				npc.lifeRegen -= 50 * 2;
 				//else
 				//	npc.lifeRegen -= KafkaDOTdmg;
 			}
@@ -175,7 +203,13 @@ namespace BooTao2.Systems
 				if (npc.lifeRegen > 0) {
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= 200 * 2;
+				npc.lifeRegen -= 150 * 2;
+			}
+			if (ServalDoT) {
+				if (npc.lifeRegen > 0) {
+					npc.lifeRegen = 0;
+				}
+				npc.lifeRegen -= 25 * 2;
 			}
 		}
 		
@@ -192,6 +226,12 @@ namespace BooTao2.Systems
 			if (npc.type == NPCID.IceElemental){
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HertaMinionItem>(), 40));
 			}
+			if (npc.type == NPCID.Pinky){
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BreezeItem>(), 40));
+			}
 		}
 	}
 }
+/*
+https://docs.tmodloader.net/docs/stable/class_global_n_p_c.html
+*/

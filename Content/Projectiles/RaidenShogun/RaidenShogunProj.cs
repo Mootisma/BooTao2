@@ -56,11 +56,11 @@ namespace BooTao2.Content.Projectiles.RaidenShogun
 
 			Lighting.AddLight(Projectile.Center, Color.Purple.ToVector3() * 0.5f);
 			
-			foreach (var player in Main.ActivePlayers) {
-				player.GetModPlayer<BooTaoPlayer>().RaidenShogunSkillDamage = Projectile.damage;
-				if (player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown > 0)
-					player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown--;
-			}
+			//foreach (var player in Main.ActivePlayers) {
+			//	player.GetModPlayer<BooTaoPlayer>().RaidenShogunSkillDamage = Projectile.damage;
+			//	if (player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown > 0)
+			//		player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown--;
+			//}
 			
 			if (counter > 53) {
 				foreach (var player in Main.ActivePlayers) {
@@ -71,8 +71,12 @@ namespace BooTao2.Content.Projectiles.RaidenShogun
 						continue;
 					}
 					
+					player.GetModPlayer<BooTaoPlayer>().RaidenShogunSkillDamage = Projectile.damage;
+					if (player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown > 0)
+						player.GetModPlayer<BooTaoPlayer>().RaidenShogunCooldown--;
+					
 					float distancebtwn = Vector2.Distance(Projectile.Center, player.Center);
-					if (distancebtwn < 1500) {
+					if (distancebtwn < 1200) {
 						player.ClearBuff(ModContent.BuffType<RaidenShogunAura>());
 						player.AddBuff(ModContent.BuffType<RaidenShogunAura>(), 120, true);
 					}

@@ -18,7 +18,7 @@ If you have suggestions, you can message me on Bluesky: mootisma
 
 ## Notable Content
 Weapons:\
-Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya, Sparkle, Entelechia, Lemuen, Breeze
+Hu Tao, Ningguang, Thorns, Fiammetta, Aventurine, Beehunter, Jackie, Qingque, Kafka (HSR), Kafka (AK), Absinthe, La Pluma, Kroos, Caper, Xiao, Platinum, Black Swan, GreyThroat, Wiš'adel, Bronya, Sparkle, Entelechia, Lemuen, Breeze, Serval
 
 Minions:\
 Herta, Furina, Yelan, Xiangling, Skadi the Corrupting Heart, Mostima, Lancet-2, Raiden Shogun, Escoffier, Ju Fufu, Lappland the Decadenza

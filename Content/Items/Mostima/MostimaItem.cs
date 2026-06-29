@@ -183,26 +183,12 @@ namespace BooTao2.Content.Items.Mostima
             //bool queenBee = NPC.downedQueenBee;
             //bool skeletron = NPC.downedBoss3;
             //bool hardmode = Main.hardMode;
-            bool anyMech = NPC.downedMechBossAny;
-            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
-            bool plantera = NPC.downedPlantBoss;
-            bool golem = NPC.downedGolemBoss;
-            bool cultist = NPC.downedAncientCultist;
-            bool moonLord = NPC.downedMoonlord;
-
             float damageMult = 1f +
-                //(slimeKing ? 0.1f : 0f) +
-                //(eye ? 0.12f : 0f) +
-                //(evilboss ? 0.14f : 0f) +
-                //(queenBee ? 0.36f : 0f) +
-                //(skeletron ? 0.58f : 0f) +
-                //(hardmode ? 1.2f : 0f) +
-                (anyMech ? 0.05f : 0f) +
-                (allMechs ? 0.05f : 0f) +
-                (plantera ? 0.05f : 0f) +
-                (golem ? 0.05f : 0f) +
-                (cultist ? 0.15f : 0f) +
-                (moonLord ? 0.15f : 0f);
+                (Condition.DownedMechBossAll.IsMet() ? 0.02f : 0f) +
+                (Condition.DownedPlantera.IsMet() ? 0.02f : 0f) +
+                (Condition.DownedGolem.IsMet() ? 0.02f : 0f) +
+                (Condition.DownedCultist.IsMet() ? 0.04f : 0f) +
+                (Condition.DownedMoonLord.IsMet() ? 0.05f : 0f);
 
             damage *= damageMult;
 
@@ -224,7 +210,7 @@ namespace BooTao2.Content.Items.Mostima
 					player.GetModPlayer<BooTaoPlayer>().MostimaSkillSP = 0;
 					SoundEngine.PlaySound(Skill, player.Center);
 					SoundEngine.PlaySound(SkillActivate, player.Center);
-					int choice = Main.rand.Next(5);
+					int choice = Main.rand.Next(4);
 					if (choice == 0)
 						SoundEngine.PlaySound(Battle1, player.Center);
 					if (choice == 1)

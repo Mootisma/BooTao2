@@ -25,7 +25,7 @@ namespace BooTao2.Content.Projectiles.Breeze
         {
             Projectile.width = 128;
             Projectile.height = 128;
-            Projectile.timeLeft = 40;
+            Projectile.timeLeft = 50;
             Projectile.alpha = 0;
 			Projectile.hide = false;
 			Projectile.friendly = true;

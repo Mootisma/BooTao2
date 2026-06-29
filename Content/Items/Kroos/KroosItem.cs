@@ -40,6 +40,10 @@ namespace BooTao2.Content.Items.Kroos {
 			Item.shootSpeed = 15f;
 		}
 		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage) {
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) { damage *= 1.2f; }
+		}
+		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			if (player.GetModPlayer<BooTaoPlayer>().KroosSP >= SP_COST) {
 				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.4), knockback, player.whoAmI, 2f);

@@ -31,13 +31,10 @@ namespace BooTao2.Content.Items.Breeze
 			Item.width = 32;
 			Item.height = 32;
 			Item.rare = ItemRarityID.Orange;
-			Item.value = Item.sellPrice(0, 1, 0, 0);
+			Item.value = Item.sellPrice(0, 2, 67, 0);
 			
 			Item.DamageType = DamageClass.Ranged;
-			Item.damage = 45;
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 55;
-			}
+			Item.damage = 42;
 			Item.knockBack = 3f;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useAnimation = 48;
@@ -47,7 +44,7 @@ namespace BooTao2.Content.Items.Breeze
 			Item.noMelee = true; // The projectile will do the damage and not the item
 			
 			Item.UseSound = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Breeze/BreezeUse") {
-				Volume = 0.8f,
+				Volume = 0.7f,
 				PitchVariance = 0.2f,
 				MaxInstances = 5,
 			};
@@ -55,6 +52,15 @@ namespace BooTao2.Content.Items.Breeze
 			Item.shoot = ModContent.ProjectileType<BreezeProj>();
 			Item.shootSpeed = 22f;
 		}
+		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            float damageMult = 1f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				damageMult += 0.2f;
+			}
+			damage *= damageMult;
+        }
 		
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
 			if (Main.rand.NextBool(5)) {// 1 in 5 

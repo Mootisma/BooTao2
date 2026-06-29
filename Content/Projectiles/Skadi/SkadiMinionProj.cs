@@ -72,8 +72,10 @@ namespace BooTao2.Content.Projectiles.Skadi
 						continue;
 					}
 					
+					player.GetModPlayer<BooTaoPlayer>().SkadiATK = Projectile.damage;
+					
 					float distancebtwn = Vector2.Distance(Projectile.Center, player.Center);
-					if (distancebtwn < 1500) {
+					if (distancebtwn < 1200 && owner.GetModPlayer<BooTaoPlayer>().SkadiSP > 56) {
 						//player.ClearBuff(ModContent.BuffType<SkadiS2Buff>());
 						player.AddBuff(ModContent.BuffType<SkadiS2Buff>(), 120, true);
 					}
@@ -85,6 +87,7 @@ namespace BooTao2.Content.Projectiles.Skadi
 					SoundEngine.PlaySound(Skill, Projectile.Center);
 				}
 				counter = 0;
+				Dust.NewDust(Projectile.Center, 0, 0, 33, Projectile.velocity.X / 10, Projectile.velocity.Y / 10, 190, default, 1f);
 			}
 			counter++;
 			

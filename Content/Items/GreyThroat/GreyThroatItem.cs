@@ -29,11 +29,7 @@ namespace BooTao2.Content.Items.GreyThroat {
 			
 			Item.DamageType = DamageClass.Ranged;
 			Item.damage = 43;
-			Item.knockBack = 2.5f;
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 62;
-				Item.knockBack = 3f;
-			}
+			Item.knockBack = 3f;
 			
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useAnimation = 27;
@@ -73,11 +69,16 @@ namespace BooTao2.Content.Items.GreyThroat {
 			return true;
 		}
 		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage) {
+			if (timer_hi > 0) { damage *= 1.4f; }
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) { damage *= 1.4f; }
+		}
+		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			if (timer_hi > 0) {
-				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.4), knockback, player.whoAmI, 4f);
-				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.4), knockback, player.whoAmI, 4f);
-				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.4), knockback, player.whoAmI, 4f);
+				Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 4f);
+				//Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 4f);
+				//Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 4f);
 				return false;
 			}
 			return true;

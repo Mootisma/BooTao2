@@ -21,12 +21,9 @@ namespace BooTao2.Content.Items.Escoffier
 		}
 
 		public override void SetDefaults() {
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+			Item.damage = 60;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 				Item.damage = 90;
-			}
-			else {
-				Item.damage = 60;
-			}
 			Item.knockBack = 3f;
 			Item.mana = 10; // mana cost
 			Item.width = 32;

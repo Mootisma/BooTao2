@@ -12,8 +12,8 @@ namespace BooTao2.Content.Accessories
 	public class OrangeStorm : ModItem
 	{
 		public override void SetDefaults() {
-			Item.width = 80;
-			Item.height = 79;
+			Item.width = 75;
+			Item.height = 81;
 			Item.accessory = true;
 			Item.defense = 1;
 			

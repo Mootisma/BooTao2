@@ -24,9 +24,9 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			Item.knockBack = 12;
 			Item.pick = 200;
             Item.tileBoost = 4;
-			Item.value = 2;
+			Item.value = Item.sellPrice(gold: 15);
 			Item.rare = 10;
-			Item.UseSound = SoundID.Item1;
+			Item.UseSound = SoundID.Item1 with { Volume = 0.3f };
 			Item.autoReuse = true;
 			Item.useTurn = true;
 			Item.maxStack = 1;
@@ -38,14 +38,24 @@ namespace BooTao2.Content.Items.HomaPickaxe
 			recipe.AddIngredient(ModContent.ItemType<Homa3>(), 1);
 			recipe.AddIngredient(ItemID.HallowedBar, 2);
 			if (ModContent.GetInstance<BooTaoServerConfig>().Homa4) {
-				recipe.AddIngredient(ItemID.CrossNecklace, 1);
-				recipe.AddIngredient(ItemID.PhilosophersStone, 1);
-				recipe.AddIngredient(ItemID.PanicNecklace, 1);
-				recipe.AddIngredient(ItemID.FrogLeg, 1);
-				recipe.AddIngredient(ItemID.ManaFlower, 1);
+				//recipe.AddIngredient(ItemID.CrossNecklace, 1);
+				//recipe.AddIngredient(ItemID.PhilosophersStone, 1);
+				//recipe.AddIngredient(ItemID.PanicNecklace, 1);
+				//recipe.AddIngredient(ItemID.FrogLeg, 1);
+				//recipe.AddIngredient(ItemID.ManaFlower, 1);
+				recipe.AddIngredient(ItemID.AmmoBox, 1);
+				recipe.AddIngredient(ItemID.SharpeningStation, 1);
+				recipe.AddIngredient(ItemID.CrystalBall, 1);
 			}
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
+		}
+		
+		public override void HoldItem(Player player) {
+			if ( player.GetModPlayer<BooTaoPlayer>().GetMagnet2Config() ) {
+				player.GetModPlayer<BooTaoPlayer>().Magnet2 = true;
+				player.AddBuff(ModContent.BuffType<Magnet2Buff>(), 10, true);
+			}
 		}
 		
 		public override void UpdateInventory (Player player) {

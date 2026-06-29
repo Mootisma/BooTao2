@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using BooTao2.Content.Projectiles.Xiangling;
+using BooTao2.Content.Buffs;
 using BooTao2.Systems;
 
 namespace BooTao2.Content.Projectiles {
@@ -84,8 +85,9 @@ namespace BooTao2.Content.Projectiles {
 			//foreach (var teehee in Main.ActivePlayers) {
 			//	teehee.AddBuff(ModContent.BuffType<TestBuff>(), 300, true);
 			//}
-			
-			
+			foreach (var proj in Main.ActiveProjectiles) {
+				proj.GetGlobalProjectile<BooTaoGlobalProjectile>().test = true;
+			}
 			return false;
 		}
 		
@@ -123,4 +125,5 @@ namespace BooTao2.Content.Projectiles {
 https://prts.wiki/w/%E6%B5%8A%E5%BF%83%E6%96%AF%E5%8D%A1%E8%92%82#%E6%B3%A8%E9%87%8A%E4%B8%8E%E9%93%BE%E6%8E%A5
 https://github.com/tModLoader/tModLoader/blob/ARCHIVED-2022.11-1.4.3/ExampleMod/Content/NPCs/ExampleCustomAISlimeNPC.cs
 https://ezgif.com
+https://docs.tmodloader.net/docs/stable/class_player.html
 */

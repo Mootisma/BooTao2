@@ -30,10 +30,10 @@ Items: {
 		Tooltip:
 			'''
 			was never a staff
-			All effects below can be toggled via the config.
+			All effects below can be toggled or customized via the config.
 			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
-			Grants light emitting from the player and night vision potion effect.
+			Grants Shine and Night Owl potion effects.
 			'''
 	}
 
@@ -41,11 +41,11 @@ Items: {
 		DisplayName: R2 Homa
 		Tooltip:
 			'''
-			All effects below can be toggled via the config.
+			All effects below can be toggled or customized via the config.
 			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
-			Grants light emitting from the player and night vision potion effect.
-			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+			Grants Shine and Night Owl potion effects.
+			Grants Campfire and Star in a Bottle buff effects.
 			Grants Spelunker and Hunter potion effects.
 			'''
 	}
@@ -54,14 +54,14 @@ Items: {
 		DisplayName: R3 Homa
 		Tooltip:
 			'''
-			All effects below can be toggled via the config.
+			All effects below can be toggled or customized via the config.
 			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
-			Grants light emitting from the player and night vision potion effect.
-			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+			Grants Shine and Night Owl potion effects.
+			Grants Campfire and Star in a Bottle buff effects.
 			Grants Spelunker and Hunter potion effects.
-			Grants a few Cell Phone accessory effects.
-			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
+			Grants the Metal Detector effect.
+			Grants Heart in a Lantern, Bast Statue, and Bewitching Table buff effects.
 			'''
 	}
 
@@ -104,13 +104,12 @@ Items: {
 			All effects below can be toggled via the config.
 			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
-			Grants light emitting from the player and night vision potion effect.
-			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+			Grants Shine and Night Owl potion effects.
+			Grants Campfire and Star in a Bottle buff effects.
 			Grants Spelunker and Hunter potion effects.
-			Grants a few Cell Phone related accessory effects.
-			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
-			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
-			Grants the Frog Leg effects and the Mana Flower effect.
+			Grants the Metal Detector effect.
+			Grants Heart in a Lantern, Bast Statue, and Bewitching Table buff effects.
+			Grants Ammo Box, Crystal Ball, and Sharpening Station buff effects.
 			'''
 	}
 
@@ -121,14 +120,13 @@ Items: {
 			All effects below can be toggled via the config.
 			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
-			Grants light emitting from the player and night vision potion effect.
-			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+			Grants Shine and Night Owl potion effects.
+			Grants Campfire and Star in a Bottle buff effects.
 			Grants Spelunker and Hunter potion effects.
-			Grants a few fishing related accessory effects.
-			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
-			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
-			Grants the Frog Leg effects and the Mana Flower effect.
-			Grants the Bundle of Balloons' effects, and immunity to knockback and fall damage.
+			Grants the Metal Detector effect.
+			Grants Heart in a Lantern, Bast Statue, and Bewitching Table buff effects.
+			Grants Ammo Box, Crystal Ball, and Sharpening Station buff effects.
+			Grants War Table and Slice of Cake buff effects.
 			'''
 	}
 
@@ -143,7 +141,7 @@ Items: {
 			[c/FFFF00:Ultimate: It's Magic, I Added Some Magic]
 			Every 5 seconds in combat, Herta will give a [c/c2ac06:Big Diamond] to the nearest enemy.
 			[c/c2ac06:Big Diamond]
-			A homing projectile that does double damage.
+			An explosive, homing projectile that does double damage against non-boss enemies.
 			'''
 	}
 
@@ -208,11 +206,11 @@ Items: {
 			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Destreza] (Right Click)
 			SP Cost: 15 [Offensive Recovery] | Duration: 30 seconds
-			Thorns' ATK and ASPD increases by 25%
+			Thorns' ATK and ASPD increases by 60% and 25%, respectively.
 			Upon the second activation of this skill and afterwards, 
-			this skill has unlimited duration, and its bonuses are twice the base amount.
+			this skill has unlimited duration, and its bonuses are doubled.
 			[c/FFFF00:Nerve Corrosion]
-			Attacks poison the target, dealing 135 damage per second and lasts 3 seconds.
+			Attacks poison the target for 3 seconds, dealing 100 damage per second.
 			[c/FFFF00:Echoes of Ancestral Waves]
 			If Thorns hasn't attacked for 2 seconds, restores 5 HP every second.
 			'''
@@ -239,6 +237,8 @@ Items: {
 		Tooltip:
 			'''
 			Contains assets from the game [c/73a9ff:Arknights]
+			[c/FFFF00:Trait]
+			Attacks at the cursor.
 			[c/FFFF00:'Reponite'] (Right Click)
 			SP Cost: 15 [Offensive Recovery] | Duration: Infinite
 			Changes the attack to a vertical barrage aimed at the cursor.
@@ -259,10 +259,10 @@ Items: {
 			Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Trait]
 			Does not attack. Only one can be summoned at a time. Requires 1 minion slot.
-			Increases life regen of all players within range by 10% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK.
+			Increases the owner's life regen by 10% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK.
 			[c/FFFF00:Wish of Burial Beyond the Light] (Auto Trigger)
 			SP Cost: 56 [Auto Recovery] | Duration: Infinite
-			The life regen effect of this unit's Trait is doubled.
+			The life regen effect of this unit's Trait is doubled and shared with nearby allied players.
 			All allied players within range gain [c/c2ac06:Inspiration].
 			[c/c2ac06:Inspiration]
 			Increases player's (vanilla) damage by 20% of [c/34b2fa:Skadi the Corrupting Heart]'s ATK, as a percentage.
@@ -278,7 +278,7 @@ Items: {
 			Art by [c/73a9ff:silenxe*]. Contains assets from the game [c/73a9ff:Arknights]
 			[c/FFFF00:Trait]
 			Only one can be summoned at a time. Requires 1 minion slot.
-			Attacks deal AOE damage aimed at the closest enemy within range to the cursor.
+			Attacks deal damage aimed at the closest enemy within range to the cursor.
 			[c/FFFF00:Key of Chronology] (Right Click)
 			SP Cost: 63 [Auto Recovery] | Duration: 27 seconds
 			Attack Range increases, attacks turn into ripples that spread outward,
@@ -353,16 +353,13 @@ Items: {
 			All effects below can be toggled via the config.
 			Grants greatly increased item grab range and speed.
 			Grants significantly increased wall and tile placement speed, and mining speed.
-			Grants light emitting from the player and night vision potion effect.
-			Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+			Grants Shine and Night Owl potion effects.
+			Grants Campfire and Star in a Bottle buff effects.
 			Grants Spelunker and Hunter potion effects.
-			Grants a few fishing related accessory effects.
-			Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
-			Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
-			Grants the Frog Leg effects and the Mana Flower effect.
-			Grants the Bundle of Balloons' effects, and immunity to knockback and fall damage.
-			Grants 12% (vanilla) damage increase.
-			When not moving, slightly increases life regen, defense, minion and sentry count.
+			Grants the Metal Detector effect.
+			Grants Bast Statue and Bewitching Table buff effects.
+			Grants Ammo Box, Crystal Ball, and Sharpening Station buff effects.
+			Grants War Table buff effects.
 			'''
 	}
 
@@ -422,8 +419,8 @@ Items: {
 			Attacks at the cursor. If the target enemy is currently receiving DoT, 
 			all DoTs currently placed on that enemy immediately produce DMG equal to 75% of their original DMG.
 			[c/FFFF00:Talent: Gentle but Cruel] (Right Click)
-			Kafka uses her gun. Inflicts Shock DoT on hit, lasting for 10 seconds.
-			Shock DoT deals 75 damage per second.
+			Kafka uses her gun. Inflicts DoT on hit, lasting for 10 seconds.
+			DoT deals 50 damage per second.
 			Kafka's attacks cannot crit.
 			'''
 	}
@@ -885,6 +882,40 @@ Items: {
 			+1 max number of minions
 			'''
 	}
+
+	ServalItem: {
+		DisplayName: Serval
+		Tooltip:
+			'''
+			Contains assets from the game [c/73a9ff:Honkai: Star Rail]
+			[c/FFFF00:Basic Attack: Roaring Thunderclap]
+			Attacks from the cursor, dealing AoE damage.
+			[c/FFFF00:Skill: Lightning Flash]
+			Attacks multiple times from the cursor, dealing stronger AoE damage.
+			Enemies hit are inflicted with 25 damage per second for 5 seconds.
+			Costs 2x mana to use.
+			'''
+	}
+
+	Camper: {
+		DisplayName: roschill
+		Tooltip:
+			'''
+			Increases damage dealt when standing still if there is no active boss
+			Otherwise, greatly reduces damage dealt
+			'''
+	}
+
+	Camper2: {
+		DisplayName: roschill
+		Tooltip:
+			'''
+			Greatly increases damage dealt when standing still if there is no active boss
+			Greatly reduces damage taken when standing still if there is no active boss
+			Otherwise, greatly reduces damage dealt and greatly increases damage taken
+			+2 minions and sentries when standing still
+			'''
+	}
 }
 
 Buffs: {
@@ -1090,6 +1121,30 @@ Buffs: {
 		DisplayName: Breez
 		Description: Wh- while it may not be right to compare her to Miss Franka, I think Miss Breeze is also something of a mischievous Vulpo girl.
 	}
+
+	AKStun: {
+		DisplayName: Stunned
+		Description: Unable to act.
+	}
+
+	Magnet2Buff: {
+		DisplayName: Smaller Magnet
+		Description:
+			'''
+			Can be toggled on or off in the server config.
+			As a reminder, you have to toggle off the stronger magnet to use this one properly.
+			'''
+	}
+
+	ServalBuff: {
+		DisplayName: Shock DoT
+		Description: DoT
+	}
+
+	CamperBuff: {
+		Description: AFK
+		DisplayName: roschill
+	}
 }
 
 Projectiles: {
@@ -1179,6 +1234,7 @@ Projectiles: {
 	BreezePetProj.DisplayName: Breez
 	BreezeProjSW.DisplayName: BreezeSW
 	BreezeProj2.DisplayName: Breeze Proj2
+	ServalProj.DisplayName: Serval Proj
 }
 
 Configs: {
@@ -1196,15 +1252,37 @@ Configs: {
 				'''
 		}
 
-		Homa1: {
-			Label: Homa
+		Magnet2: {
+			Label: Magnet 2
 			Tooltip:
 				'''
-				Toggle (true=enabled, false=disabled) the new benefits (except the Magnet) granted by Homa
+				Toggle (on=enabled, off=disabled) an alternative Magnet effect
+
+				Grants increased item grab range and speed.
+				Compared to Magnet 1, the range is much smaller, and only active on the pickaxe when held, instead of always active passively.
+				This may be more preferable in multiplayer.
+				'''
+		}
+
+		BuffClutter: {
+			Label: Remove Buff Clutter
+			Tooltip:
+				'''
+				Toggle (on=enabled, off=disabled) whether the pickaxe should grant the buffs themselves or just the equivalent effect.
+
+				For example, False will make R1 Homa grant the Shine and Night Owl buffs that show up below the hotbar.
+				'''
+		}
+
+		Homa1: {
+			Label: R1 Homa
+			Tooltip:
+				'''
+				Toggle (on=enabled, off=disabled) the new benefits (except the Magnet) granted by Homa
 				A restart is not required to enable/disable its effects
 
 				Grants significantly increased wall and tile placement speed, and mining speed.
-				Grants light emitting from the player and night vision potion effect.
+				Grants Shine and Night Owl potion effects.
 				'''
 		}
 
@@ -1212,10 +1290,10 @@ Configs: {
 			Label: R2 Homa
 			Tooltip:
 				'''
-				Toggle (true=enabled, false=disabled) the new benefits granted by R2 Homa
+				Toggle (on=enabled, off=disabled) the new benefits granted by R2 Homa
 				A restart is required to alter R2 Homa's recipe, but a restart is not required to enable/disable its effects
 
-				Grants slightly increased life and mana regen, akin to the Campfire and Star in a Bottle.
+				Grants Campfire and Star in a Bottle buff effects.
 				Grants Spelunker and Hunter potion effects.
 				'''
 		}
@@ -1224,11 +1302,11 @@ Configs: {
 			Label: R3 Homa
 			Tooltip:
 				'''
-				Toggle (true=enabled, false=disabled) the new benefits granted by R3 Homa
+				Toggle (on=enabled, off=disabled) the new benefits granted by R3 Homa
 				A restart is required to alter R3 Homa's recipe, but a restart is not required to enable/disable its effects
 
-				Grants a few fishing related accessory effects.
-				Grants 5 defense and +1 minion, akin to the Bast Statue and Bewitching Table.
+				Grants the Metal Detector effect.
+				Grants Heart in a Lantern, Bast Statue, and Bewitching Table buff effects.
 				'''
 		}
 
@@ -1236,11 +1314,10 @@ Configs: {
 			Label: R4 Homa
 			Tooltip:
 				'''
-				Toggle (true=enabled, false=disabled) the new benefits granted by R4 Homa
+				Toggle (on=enabled, off=disabled) the new benefits granted by R4 Homa
 				A restart is required to alter R4 Homa's recipe, but a restart is not required to enable/disable its effects
 
-				Grants several mimic accessory effects: Cross Necklace, Panic Necklace, and Philosopher Stone.
-				Grants the Frog Leg effects and the Mana Flower effect.
+				Grants Ammo Box, Crystal Ball, and Sharpening Station buff effects.
 				'''
 		}
 
@@ -1248,10 +1325,10 @@ Configs: {
 			Label: R5 Homa
 			Tooltip:
 				'''
-				Toggle (true=enabled, false=disabled) the new benefits granted by R5 Homa
+				Toggle (on=enabled, off=disabled) the new benefits granted by R5 Homa
 				A restart is required to alter R5 Homa's recipe, but a restart is not required to enable/disable its effects
 
-				Grants the Bundle of Balloons' effects, and immunity to knockback and fall damage.
+				Grants War Table and Slice of Cake buff effects.
 				'''
 		}
 
@@ -1259,11 +1336,10 @@ Configs: {
 			Label: R6 Homa
 			Tooltip:
 				'''
-				Toggle (true=enabled, false=disabled) the new benefits granted by R6 Homa
+				Toggle (on=enabled, off=disabled) the new benefits granted by R6 Homa
 				A restart is required to alter R6 Homa's recipe, but a restart is not required to enable/disable its effects
 
-				Grants 12% (vanilla) damage increase.
-				When not moving, slightly increases life regen, defense, minion and sentry count.
+
 				'''
 		}
 	}

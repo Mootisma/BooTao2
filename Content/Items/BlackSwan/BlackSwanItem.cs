@@ -28,11 +28,7 @@ namespace BooTao2.Content.Items.BlackSwan
 
 			// Weapon Properties
 			Item.damage = 65;
-			Item.knockBack = 2.5f;
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 105;
-				Item.knockBack = 3.5f;
-			}
+			Item.knockBack = 3f;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 20;
 
@@ -49,6 +45,15 @@ namespace BooTao2.Content.Items.BlackSwan
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
+		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            float damageMult = 1f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				damageMult += 0.4f;
+			}
+			damage *= damageMult;
+        }
 		
 		public override bool AltFunctionUse(Player player) {
 			return true;

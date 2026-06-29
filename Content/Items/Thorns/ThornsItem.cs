@@ -32,7 +32,7 @@ namespace BooTao2.Content.Items.Thorns
 		};
 		
 		public override void SetDefaults() {
-			Item.damage = (CalamityActive) ? 77 : 50;
+			Item.damage = (CalamityActive) ? 45 : 38;
 			Item.DamageType = DamageClass.Melee;
 			Item.shoot = ModContent.ProjectileType<ThornsProj>();
 			Item.shootSpeed = 17f;
@@ -94,6 +94,16 @@ namespace BooTao2.Content.Items.Thorns
 			player.GetModPlayer<BooTaoPlayer>().ThornsHealingCD = 121;
 		}
 		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage){
+			// 45 38
+			if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 1 && player.GetModPlayer<BooTaoPlayer>().ThornsS3duration > 0){
+				damage *= 1.6f;
+			}
+			else if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 2){
+				damage *= 2.2f;
+			}
+		}
+		
 		public override bool CanUseItem(Player player) {
 			if (player.altFunctionUse == 2){
 				if (player.GetModPlayer<BooTaoPlayer>().ThornsSP >= SP_COST && player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses < 2) {
@@ -108,19 +118,16 @@ namespace BooTao2.Content.Items.Thorns
 			Item.shoot = ModContent.ProjectileType<ThornsProj>();
 			Item.shootSpeed = 16f;
 			if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 1 && player.GetModPlayer<BooTaoPlayer>().ThornsS3duration > 0){
-				Item.useAnimation = 30;
-				Item.useTime = 30;
-				Item.damage = (CalamityActive) ? 100 : 65;
+				Item.useAnimation = 35;
+				Item.useTime = 35;
 			}
 			else if (player.GetModPlayer<BooTaoPlayer>().ThornsS3numUses == 2){
-				Item.useAnimation = 20;
-				Item.useTime = 20;
-				Item.damage = (CalamityActive) ? 120 : 78;
+				Item.useAnimation = 30;
+				Item.useTime = 30;
 			}
 			else {
 				Item.useAnimation = 40;
 				Item.useTime = 40;
-				Item.damage = (CalamityActive) ? 80 : 52;
 			}
 			return true;
 		}

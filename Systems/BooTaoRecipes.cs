@@ -86,7 +86,7 @@ namespace BooTao2.Systems
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.SliceOfCake, 1);
-			recipe.AddIngredient(ItemID.GlowingMushroom, 1);
+			recipe.AddIngredient(ItemID.HellstoneBar, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.IceCream, 1);
@@ -154,6 +154,7 @@ namespace BooTao2.Systems
 			//
 			recipe = Recipe.Create(ItemID.CompanionCube, 1);
 			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 4);
+			recipe.AddIngredient(ItemID.HellstoneBar, 1);
 			recipe.Register();
 			//
 			recipe = Recipe.Create(ItemID.SharpTears, 1);
@@ -168,6 +169,20 @@ namespace BooTao2.Systems
 			recipe.Register();
 			recipe = Recipe.Create(ItemID.BlackBelt, 1);
 			recipe.AddIngredient(ItemID.LunarBar, 1);
+			recipe.Register();
+			//
+			recipe = Recipe.Create(ItemID.AmmoBox, 1);
+			recipe.AddIngredient(ItemID.ChlorophyteBar, 1);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.WarTable, 1);
+			recipe.AddIngredient(ItemID.ChlorophyteBar, 1);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.MetalDetector, 1);
+			recipe.AddIngredient(ItemID.HellstoneBar, 1);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+			recipe.Register();
+			recipe = Recipe.Create(ItemID.ChlorophyteBar);
+			recipe.AddIngredient(ItemID.Ectoplasm, 2);
 			recipe.Register();
 			//
 			if (ModLoader.TryGetMod("SOTS", out Mod sots)) {

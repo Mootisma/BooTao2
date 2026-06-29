@@ -86,5 +86,6 @@ https://honkai-star-rail.fandom.com/wiki/Kafka/Media?file=Kafka_Character_Previe
 https://docs.tmodloader.net/docs/stable/struct_n_p_c_1_1_hit_modifiers.html
 https://docs.tmodloader.net/docs/stable/class_dust.html
 https://docs.tmodloader.net/docs/stable/class_mod_projectile.html
+https://docs.tmodloader.net/docs/stable/class_player.html
 
 */

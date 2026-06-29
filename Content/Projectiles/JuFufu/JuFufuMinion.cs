@@ -84,7 +84,7 @@ namespace BooTao2.Content.Projectiles.JuFufu
 					}
 					
 					float distancebtwn = Vector2.Distance(Projectile.Center, player.Center);
-					if (distancebtwn < 1500) {
+					if (distancebtwn < 1200) {
 						//player.ClearBuff(ModContent.BuffType<SkadiS2Buff>());
 						player.AddBuff(ModContent.BuffType<JuFufuBuff2>(), 1800, true);
 					}

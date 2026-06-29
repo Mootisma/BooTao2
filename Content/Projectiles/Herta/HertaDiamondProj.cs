@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BooTao2.Systems;
+using BooTao2.Content.Projectiles.Qingque;
 
 namespace BooTao2.Content.Projectiles.Herta
 {
@@ -45,6 +46,19 @@ namespace BooTao2.Content.Projectiles.Herta
 			float targetAngle = Projectile.AngleTo(closestNPC.Center);
 			Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(4)).ToRotationVector2() * projSpeed;
 			Projectile.rotation = Projectile.velocity.ToRotation();
+		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			modifiers.DamageVariationScale *= 0f;
+			if (target.boss) {
+				modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+					hitInfo.Damage = (int)(hitInfo.Damage * 0.5);
+				};
+			}
+		}
+		
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center + new Vector2(0, -65), Vector2.Zero, ModContent.ProjectileType<QingqueExplosionProj>(), (int)(Projectile.damage * 0.25f), (int)(Projectile.knockBack * 0.25f), Projectile.owner);
 		}
 
 		// Finding the closest NPC to attack within maxDetectDistance range

@@ -23,8 +23,11 @@ namespace BooTao2.Systems
 
         [Header("Pickaxes")]
 		//
-		[DefaultValue(true)]
+		[DefaultValue(false)]
 		public bool Magnet;
+		
+		[DefaultValue(true)]
+		public bool Magnet2;
 		
 		[DefaultValue(true)]
 		public bool Homa1;
@@ -43,10 +46,15 @@ namespace BooTao2.Systems
 		
 		[DefaultValue(true)]
 		public bool Homa6;
+		
+		[DefaultValue(false)]
+		public bool BuffClutter;
 
         public override void OnChanged()
         {
-            BooTaoPlayer.HomaConfig = [Magnet, Homa1, Homa2, Homa3, Homa4, Homa5, Homa6];
+            BooTaoPlayer.HomaConfig = [Magnet, Homa1, Homa2, Homa3, Homa4, Homa5, Homa6,];
+			BooTaoPlayer.Magnet2Config = Magnet2;
+			BooTaoPlayer.BuffClutterConfig = BuffClutter;
         }
     }
 }

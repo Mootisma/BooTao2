@@ -12,8 +12,8 @@ namespace BooTao2.Content.Accessories
 	public class CoffeeBeans : ModItem
 	{
 		public override void SetDefaults() {
-			Item.width = 80;
-			Item.height = 79;
+			Item.width = 69;
+			Item.height = 88;
 			Item.accessory = true;
 			Item.defense = 1;
 			

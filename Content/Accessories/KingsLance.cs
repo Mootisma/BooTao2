@@ -27,7 +27,7 @@ namespace BooTao2.Content.Accessories
 */
 		public override void SetDefaults() {
 			Item.width = 80;
-			Item.height = 79;
+			Item.height = 84;
 			Item.accessory = true;
 			Item.defense = 1;
 			//Item.lifeRegen = 10;

@@ -14,11 +14,11 @@ namespace BooTao2.Content.Buffs.Thorns {
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			player.lifeRegen += 10;//5 hp/s
+			player.GetModPlayer<BooTaoPlayer>().ThornsHealing = true;
 		}
 		
 		public override void Update(NPC npc, ref int buffIndex) {
-			npc.GetGlobalNPC<BooTaoGlobalNPC>().tnspeepee = true;
+			npc.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDoT = true;
 		}
 	}
 }

@@ -18,17 +18,18 @@ namespace BooTao2.Content.Buffs.Skadi
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			int healing = (int)(player.GetModPlayer<BooTaoPlayer>().SkadiATK / 10);
-			if (player.GetModPlayer<BooTaoPlayer>().SkadiSP >= 56) {
+			//int healing = (int)(player.GetModPlayer<BooTaoPlayer>().SkadiATK / 10);
+			//if (player.GetModPlayer<BooTaoPlayer>().SkadiSP >= 56) {
 				// 10% of skadi's attack as life regen. if skadi has 100 atk, life regen is 10, or 5 HP/s
-				player.lifeRegen += healing;
+				//player.lifeRegen += healing;
 				// 20% of skadi's attack as defense. 
-				player.statDefense += (int)(player.GetModPlayer<BooTaoPlayer>().SkadiATK / 5);
+			player.statDefense += (int)(player.GetModPlayer<BooTaoPlayer>().SkadiATK / 5);
 				// 20% of skadi's attack, as a percentage increase
 				// if skadi has 100 atk, player gets a 20% damage increase
-				player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().SkadiATK / 500;
-			}
-			player.lifeRegen += healing;
+			player.GetDamage(DamageClass.Generic) += player.GetModPlayer<BooTaoPlayer>().SkadiATK / 500;
+			//}
+			//player.lifeRegen += healing;
+			player.GetModPlayer<BooTaoPlayer>().SkadiHealing = true;
 		}
 	}
 }

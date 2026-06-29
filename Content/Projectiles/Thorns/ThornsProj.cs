@@ -27,11 +27,11 @@ namespace BooTao2.Content.Projectiles.Thorns {
 				player.GetModPlayer<BooTaoPlayer>().ThornsSP++;
 			}
 			target.AddBuff(ModContent.BuffType<ThornsRegen>(), 180);
-			target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTduration = 180;
-			if (target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack < 4){
-				target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack++;
-			}
-			target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTdmg = (int)(damageDone * target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack / 4);
+			//target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTduration = 180;
+			//if (target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack < 4){
+			//	target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack++;
+			//}
+			//target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTdmg = (int)(damageDone * target.GetGlobalNPC<BooTaoGlobalNPC>().ThornsDOTstack / 4);
 			
 			for (int d = 0; d < 5; d++) {
 				Dust.NewDust(Projectile.position, 0, 0, 32, 0, 0, 150, default, 1f);

@@ -15,12 +15,8 @@ namespace BooTao2.Content.Items.Bronya
 		Vector2 TPposition = new Vector2(33450, 4923);
 		
 		public override void SetDefaults() {
-			Item.damage = 16;
+			Item.damage = 13;
 			Item.knockBack = 1.5f;
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 21;
-				Item.knockBack = 2f;
-			}
 			Item.crit = 6;
 			Item.mana = 120;
 			Item.width = 32;
@@ -39,6 +35,15 @@ namespace BooTao2.Content.Items.Bronya
 			Item.shoot = ProjectileID.BulletHighVelocity;
 			Item.shootSpeed = 15f;
 		}
+		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            float damageMult = 1f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				damageMult += 0.2f;
+			}
+			damage *= damageMult;
+        }
 		
 		public override bool AltFunctionUse(Player player) {
 			return true;

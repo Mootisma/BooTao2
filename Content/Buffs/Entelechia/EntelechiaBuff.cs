@@ -27,7 +27,7 @@ namespace BooTao2.Content.Buffs.Entelechia {
 		}
 		
 		public override void Update(NPC npc, ref int buffIndex) {
-			npc.GetGlobalNPC<BooTaoGlobalNPC>().tnspeepee = true;
+			npc.GetGlobalNPC<BooTaoGlobalNPC>().entelechiadot = true;
 		}
 	}
 }

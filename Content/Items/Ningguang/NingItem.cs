@@ -21,7 +21,7 @@ namespace BooTao2.Content.Items.Ningguang
 			Item.noMelee = true;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useAnimation = 30;
-			Item.useTime = 15;
+			Item.useTime = 30;
 			Item.autoReuse = true;
 			//
 			Item.shootSpeed = 10f;
@@ -80,15 +80,9 @@ namespace BooTao2.Content.Items.Ningguang
 		bool Jade1Flag = false;
 		bool Jade2Flag = false;
 		bool Jade3Flag = false;
-		public override bool CanUseItem(Player player) {
-			if (player.altFunctionUse == 2){
-				Item.useTime = 30;
-			}
-			else {
-				Item.useTime = 15;
-			}
-			return true;
-		}
+		//public override bool CanUseItem(Player player) {
+		//	return true;
+		//}
 		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			int newDamage = damage;
@@ -112,22 +106,22 @@ namespace BooTao2.Content.Items.Ningguang
 				Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<NingStrongGeoProj>(), newDamage, knockback, player.whoAmI, 0f);
 				return false;
 			}
-			if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 1) {
+			if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 0) {
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade1>(), damage / 2, 1, player.whoAmI, 0f);
 				Jade1Flag = true;
 			}
-			else if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 3) {
+			else if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 2) {
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade2>(), damage / 2, 1, player.whoAmI, 0f);
 				Jade2Flag = true;
 			}
-			else if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 5) {
+			else if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff == 4) {
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<NingJade3>(), damage / 2, 1, player.whoAmI, 0f);
 				Jade3Flag = true;
 			}
 			if (player.GetModPlayer<BooTaoPlayer>().NingNumBuff < 6)
-				player.GetModPlayer<BooTaoPlayer>().NingNumBuff++;
+				player.GetModPlayer<BooTaoPlayer>().NingNumBuff += 2;
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
-			return false;
+			return true;
 		}
 
 		public override void ModifyManaCost(Player player, ref float reduce, ref float mult) {

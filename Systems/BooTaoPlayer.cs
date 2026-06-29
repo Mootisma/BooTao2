@@ -26,6 +26,13 @@ namespace BooTao2.Systems
 		public bool Magnet;
 		public bool[] HomaPickaxes = new bool[7];
 		public static bool[] HomaConfig = new bool[7];
+		public static bool Magnet2Config;
+		public bool Magnet2;
+		public static bool BuffClutterConfig;
+		public bool BuffClutter;
+		
+		public bool HomaHealing1;
+		public bool HomaHealing2;
 		public bool lifeRegenDebuff;
 		public bool BloodBlossom;
 		public bool NingHolding; // player.GetModPlayer<BooTaoPlayer>().NingHolding
@@ -49,17 +56,21 @@ namespace BooTao2.Systems
 		public int ThornsDOTstack = 0;
 		public int ThornsS3duration = 0;
 		public int ThornsHealingCD = 0;
+		public bool ThornsHealing;
 		//
 		public int FiammettaS3 = 0;
 		public int FiammettaSP = 0;
 		public Vector2 FiammettaStoreMouse = Vector2.Zero;
+		public bool FiammettaHealing;
 		//
 		public float SkadiATK = 0;
 		public int SkadiSP = 0;
+		public bool SkadiHealing;
 		//
 		public int MostimaSkillDuration = 0;
 		public int MostimaSkillSP = 2400;
 		public bool MostimaSkill;
+		public bool MostimaHealing;
 		//
 		public bool SkillReady;
 		//
@@ -112,15 +123,21 @@ namespace BooTao2.Systems
 		public int LemuenAmmo = 0;
 		public int LemuenSP = 32;
 		//
+		public bool BreezeHealing;
+		public bool croutonHealing;
 		public bool RoyalBrooch;
 		public int RBcd = 0;
 		public bool MedicineSticks;
 		public int MScd = 0;
 		public bool MSn;
+		public bool Camper;
+		public bool Camper2;
+		public bool ServalDoT;
 		
 		public override void ResetEffects()
 		{
 			Magnet = false;
+			Magnet2 = false;
 			lifeRegenDebuff = false;
 			BloodBlossom = false;
 			NingHolding = false;
@@ -142,6 +159,17 @@ namespace BooTao2.Systems
 			RoyalBrooch = false;
 			MedicineSticks = false;
 			MSn = false;
+			HomaHealing1 = false;
+			HomaHealing2 = false;
+			ThornsHealing = false;
+			SkadiHealing = false;
+			BreezeHealing = false;
+			FiammettaHealing = false;
+			MostimaHealing = false;
+			croutonHealing = false;
+			ServalDoT = false;
+			Camper = false;
+			Camper2 = false;
 		}
 		
 		public bool CanUseHuTaoE() {
@@ -159,6 +187,12 @@ namespace BooTao2.Systems
 		public bool[] GetHomaConfig() {
 			return HomaConfig;
 		}
+		public bool GetMagnet2Config() {
+			return Magnet2Config;
+		}
+		public bool GetBuffClutterConfig() {
+			return BuffClutterConfig;
+		}
 		
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers) {
 			if (der > 0) {
@@ -168,6 +202,12 @@ namespace BooTao2.Systems
 			// if holding Entelechia item, and revive is on cooldown, gain 20% damage reduction (idk if i can make it physical hits only)
 			if (Player.HasBuff(ModContent.BuffType<EntelechiaBuff>()) && !EntelechiaRevive && EnteReviveCD > 0){
 				modifiers.FinalDamage *= 0.8f;
+			}
+			
+			//https://docs.tmodloader.net/docs/stable/class_main_1_1_current_frame_flags.html
+			if (Camper2) {
+				if (Main.CurrentFrameFlags.AnyActiveBossNPC || Player.velocity != Vector2.Zero) modifiers.FinalDamage *= 10f;
+				else modifiers.FinalDamage *= 0.3f;
 			}
 		}
 		
@@ -195,14 +235,39 @@ namespace BooTao2.Systems
 			AventurineBlindBet = 0;
 		}
 		
-		/*public override void NaturalLifeRegen (ref float regen)
+		public override void NaturalLifeRegen (ref float regen)
 		{
-			if(Shrek){
-				regen = regen * 12.1f;
+			if(HomaHealing1){
+				regen *= 1.1f;
 			}
-		}*/
+		}
 		
 		public override void UpdateLifeRegen() {
+			if (HomaHealing1) {//campfire
+				Player.lifeRegen += 1;
+			}
+			if (HomaHealing2) {//heart lantern
+				Player.lifeRegen += 2;
+			}
+			if (ThornsHealing) {
+				Player.lifeRegen += 10;
+			}
+			if (SkadiHealing) {
+				if (SkadiSP > 56){
+					Player.lifeRegen += (int)(SkadiATK / 10);
+				}
+				Player.lifeRegen += (int)(SkadiATK / 10);
+			}
+			if (MostimaHealing) {
+				Player.lifeRegen += 2;
+			}
+			if (croutonHealing) {
+				Player.lifeRegen += 20;
+			}
+			if (BreezeHealing) {
+				Player.lifeRegen += 1;
+			}
+			
 			if (LaPlumaLifeRegen) {
 				if (Player.lifeRegen > 0)
 					Player.lifeRegen = 0;
@@ -221,9 +286,13 @@ namespace BooTao2.Systems
 				// lifeRegen is measured in 1/2 life per second. Therefore, this effect causes 8 life lost per second
 				Player.lifeRegen -= 16;
 			}
+			if (ServalDoT) {
+				if (Player.lifeRegen > 0)
+					Player.lifeRegen = 0;
+				Player.lifeRegenTime = 0;
+				Player.lifeRegen -= 16;
+			}
 		}
-		
-		// public override void UpdateLifeRegen() {}
 		
 		public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright) {
 			if (BloodBlossom) {
@@ -360,5 +429,41 @@ namespace BooTao2.Systems
 				SoundEngine.PlaySound(SoundID.Item94 with { Volume = 0.3f });
 			}
 		}
+		
+		public override void ModifyHitNPC (NPC target, ref NPC.HitModifiers modifiers) {
+			if (Camper) {
+				modifiers.DamageVariationScale *= 0f;
+				if (!Main.CurrentFrameFlags.AnyActiveBossNPC && Player.velocity == Vector2.Zero) {
+					modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+						hitInfo.Damage = (int)(hitInfo.Damage * 1.5);
+					};
+				}
+				else {
+					modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+						hitInfo.Damage = (int)(hitInfo.Damage * 0.1);
+					};
+				}
+			}
+			if (Camper2) {
+				modifiers.DamageVariationScale *= 0f;
+				if (!Main.CurrentFrameFlags.AnyActiveBossNPC && Player.velocity == Vector2.Zero) {
+					modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+						hitInfo.Damage = (int)(hitInfo.Damage * 1.5);
+					};
+				}
+				else {
+					modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) => {
+						hitInfo.Damage = (int)(hitInfo.Damage * 0.1);
+					};
+				}
+			}
+		}
 	}
 }
+/*
+https://github.com/ThePaperLuigi/The-Stars-Above
+https://github.com/tModLoader/tModLoader/wiki/Basic-Dust
+https://docs.tmodloader.net/docs/stable/class_n_p_c.html#a8d6296daef89c984bc583ecb51593f4a
+https://docs.tmodloader.net/docs/stable/class_mod_projectile.html
+
+*/

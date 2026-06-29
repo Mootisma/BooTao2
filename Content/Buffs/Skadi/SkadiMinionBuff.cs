@@ -18,6 +18,7 @@ namespace BooTao2.Content.Buffs.Skadi
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
+			player.GetModPlayer<BooTaoPlayer>().SkadiHealing = true;
 			// If the minions exist reset the buff time, otherwise remove the buff from the player
 			if (player.ownedProjectileCounts[ModContent.ProjectileType<SkadiMinionProj>()] > 0) {
 				player.buffTime[buffIndex] = 18000;
