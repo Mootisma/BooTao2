@@ -12,7 +12,7 @@ using BooTao2.Systems;
 namespace BooTao2.Content.Items.GreyThroat {
 	public class GreyThroatItem : ModItem {
 		SoundStyle Skill = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Thorns/AtkBoost") {
-			Volume = 0.9f,
+			Volume = 0.8f,
 			PitchVariance = 0f,
 			MaxInstances = 3,
 		};
@@ -37,7 +37,7 @@ namespace BooTao2.Content.Items.GreyThroat {
 			Item.autoReuse = true;
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
-			Item.UseSound = SoundID.Item5;
+			Item.UseSound = SoundID.Item5 with { Volume = 0.3f };
 
 			Item.shoot = ModContent.ProjectileType<GreyThroatProj>();
 			Item.shootSpeed = 17f;

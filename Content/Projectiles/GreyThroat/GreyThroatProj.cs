@@ -12,14 +12,14 @@ namespace BooTao2.Content.Projectiles.GreyThroat
 		public override string Texture => "BooTao2/Content/Projectiles/Kroos/KroosProj";
 		
 		SoundStyle BasicAttack = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/GreyThroat/BasicAttack") {
-			Volume = 0.4f,
+			Volume = 0.3f,
 			PitchVariance = 0.2f,
 			MaxInstances = 6,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
 		};
 		
 		SoundStyle SkillAttack = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/GreyThroat/SkillAttack") {
-			Volume = 0.4f,
+			Volume = 0.3f,
 			PitchVariance = 0.1f,
 			MaxInstances = 12,
 			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest

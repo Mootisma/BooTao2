@@ -14,18 +14,29 @@ namespace BooTao2.Content.Items.Breeze
 	{
 		public override string Texture => "BooTao2/Content/Items/Breeze/BreezeItem";
 		
+		SoundStyle BreezeSelect1 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Breeze/BreezeSelect1") {
+			Volume = 1.0f,
+			PitchVariance = 0f,
+			MaxInstances = 1,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
+		
+		SoundStyle BreezeSelect2 = new SoundStyle($"{nameof(BooTao2)}/Assets/Sounds/Items/Breeze/BreezeSelect2") {
+			Volume = 1.0f,
+			PitchVariance = 0f,
+			MaxInstances = 1,
+			SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+		};
+		
 		public override void SetDefaults() 
 		{
 			Item.width = 32;
 			Item.height = 32;
 			Item.rare = ItemRarityID.Orange;
-			Item.value = Item.sellPrice(0, 1, 0, 0);
+			Item.value = Item.sellPrice(2, 1, 0, 0);
 			
 			Item.DamageType = DamageClass.Ranged;
 			Item.damage = 200;
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
-				Item.damage = 600;
-			}
 			Item.knockBack = 6f;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useAnimation = 18;
@@ -50,6 +61,15 @@ namespace BooTao2.Content.Items.Breeze
 			}
 		}
 		
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            float damageMult = 1f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) {
+				damageMult += 2f;
+			}
+			damage *= damageMult;
+        }
+		
 		public override bool AltFunctionUse(Player player) {
 			return true;
 		}
@@ -61,6 +81,25 @@ namespace BooTao2.Content.Items.Breeze
 				return false;
 			}
 			return true;
+		}
+		
+		int ligma = 0;
+		public override void UpdateInventory (Player player) {
+			if (ligma > 0) {
+				ligma--;
+			}
+		}
+		
+		public override void HoldItem(Player player) {
+			if (ligma == 0) {
+				if (Main.rand.Next(2) == 1) {
+					SoundEngine.PlaySound(BreezeSelect1, player.Center);
+				}
+				else {
+					SoundEngine.PlaySound(BreezeSelect2, player.Center);
+				}
+			}
+			ligma = 2;
 		}
 
 		public override void AddRecipes() {
